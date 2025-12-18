@@ -1,26 +1,26 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Cpu, Zap, Brain } from "lucide-react"
+import { motion } from "framer-motion";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Cpu, Zap, Brain } from "lucide-react";
 
 interface AICapabilitiesSectionProps {
   t: {
-    title: string
-    subtitle: string
+    title: string;
+    subtitle: string;
     automation: {
-      title: string
-      description: string
-    }
+      title: string;
+      description: string;
+    };
     integration: {
-      title: string
-      description: string
-    }
+      title: string;
+      description: string;
+    };
     custom: {
-      title: string
-      description: string
-    }
-  }
+      title: string;
+      description: string;
+    };
+  };
 }
 
 export function AICapabilitiesSection({ t }: AICapabilitiesSectionProps) {
@@ -46,10 +46,10 @@ export function AICapabilitiesSection({ t }: AICapabilitiesSectionProps) {
       color: "text-purple-500",
       bgColor: "bg-purple-500/10",
     },
-  ]
+  ];
 
   return (
-    <section className="bg-gradient-to-b from-background to-muted/30 py-24 lg:py-32">
+    <section className="bg-linear-to-b from-background to-muted/30 py-24 lg:py-32">
       <div className="container mx-auto px-4 lg:px-8">
         {/* Header */}
         <motion.div
@@ -58,8 +58,12 @@ export function AICapabilitiesSection({ t }: AICapabilitiesSectionProps) {
           viewport={{ once: true }}
           className="mx-auto mb-16 max-w-3xl text-center"
         >
-          <h2 className="mb-4 text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">{t.title}</h2>
-          <p className="text-pretty text-lg text-muted-foreground lg:text-xl">{t.subtitle}</p>
+          <h2 className="mb-4 text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+            {t.title}
+          </h2>
+          <p className="text-pretty text-lg text-muted-foreground lg:text-xl">
+            {t.subtitle}
+          </p>
         </motion.div>
 
         {/* Capabilities */}
@@ -74,13 +78,19 @@ export function AICapabilitiesSection({ t }: AICapabilitiesSectionProps) {
             >
               <Card className="h-full border-border/50 bg-card transition-all hover:border-primary/50 hover:shadow-lg">
                 <CardHeader>
-                  <div className={`mb-4 inline-flex rounded-xl ${capability.bgColor} p-4`}>
-                    <capability.icon className={`h-8 w-8 ${capability.color}`} />
+                  <div
+                    className={`mb-4 inline-flex rounded-xl ${capability.bgColor} p-4`}
+                  >
+                    <capability.icon
+                      className={`h-8 w-8 ${capability.color}`}
+                    />
                   </div>
                   <CardTitle className="text-xl">{capability.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground leading-relaxed">{capability.description}</p>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {capability.description}
+                  </p>
                 </CardContent>
               </Card>
             </motion.div>
@@ -88,5 +98,5 @@ export function AICapabilitiesSection({ t }: AICapabilitiesSectionProps) {
         </div>
       </div>
     </section>
-  )
+  );
 }

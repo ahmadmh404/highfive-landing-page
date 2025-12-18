@@ -1,18 +1,18 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import Image from "next/image"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { ArrowRight } from "lucide-react"
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 
 interface ProjectsSectionProps {
   t: {
-    title: string
-    subtitle: string
-    viewCase: string
-  }
+    title: string;
+    subtitle: string;
+    viewCase: string;
+  };
 }
 
 export function ProjectsSection({ t }: ProjectsSectionProps) {
@@ -39,7 +39,7 @@ export function ProjectsSection({ t }: ProjectsSectionProps) {
       category: "Social Media",
       technologies: ["Video Production", "Animation"],
     },
-  ]
+  ];
 
   return (
     <section id="projects" className="bg-muted/30 py-24 lg:py-32">
@@ -51,8 +51,12 @@ export function ProjectsSection({ t }: ProjectsSectionProps) {
           viewport={{ once: true }}
           className="mx-auto mb-16 max-w-3xl text-center"
         >
-          <h2 className="mb-4 text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">{t.title}</h2>
-          <p className="text-pretty text-lg text-muted-foreground lg:text-xl">{t.subtitle}</p>
+          <h2 className="mb-4 text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+            {t.title}
+          </h2>
+          <p className="text-pretty text-lg text-muted-foreground lg:text-xl">
+            {t.subtitle}
+          </p>
         </motion.div>
 
         {/* Projects Grid */}
@@ -73,12 +77,18 @@ export function ProjectsSection({ t }: ProjectsSectionProps) {
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <Badge className="absolute top-4 left-4 bg-primary text-primary-foreground">{project.category}</Badge>
+                  <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
+                  <Badge className="absolute top-4 left-4 bg-primary text-primary-foreground">
+                    {project.category}
+                  </Badge>
                 </div>
                 <CardContent className="p-6">
-                  <h3 className="mb-2 text-xl font-semibold">{project.title}</h3>
-                  <p className="mb-4 text-sm text-muted-foreground leading-relaxed">{project.description}</p>
+                  <h3 className="mb-2 text-xl font-semibold">
+                    {project.title}
+                  </h3>
+                  <p className="mb-4 text-sm text-muted-foreground leading-relaxed">
+                    {project.description}
+                  </p>
                   <div className="mb-4 flex flex-wrap gap-2">
                     {project.technologies.map((tech) => (
                       <Badge key={tech} variant="secondary" className="text-xs">
@@ -97,5 +107,5 @@ export function ProjectsSection({ t }: ProjectsSectionProps) {
         </div>
       </div>
     </section>
-  )
+  );
 }

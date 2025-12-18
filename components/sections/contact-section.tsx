@@ -1,24 +1,31 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Card, CardContent } from "@/components/ui/card"
-import { Send, CheckCircle2, AlertCircle, Mail, MapPin, Phone } from "lucide-react"
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  Send,
+  CheckCircle2,
+  AlertCircle,
+  Mail,
+  MapPin,
+  Phone,
+} from "lucide-react";
 
 interface ContactSectionProps {
   t: {
-    title: string
-    subtitle: string
-    name: string
-    email: string
-    message: string
-    send: string
-  }
+    title: string;
+    subtitle: string;
+    name: string;
+    email: string;
+    message: string;
+    send: string;
+  };
 }
 
 export function ContactSection({ t }: ContactSectionProps) {
@@ -26,25 +33,28 @@ export function ContactSection({ t }: ContactSectionProps) {
     name: "",
     email: "",
     message: "",
-  })
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
-  const [responseMessage, setResponseMessage] = useState("")
+  });
+
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
+  const [responseMessage, setResponseMessage] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setStatus("loading")
+    e.preventDefault();
+    setStatus("loading");
 
     // Simulate API call - replace with actual backend integration
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1500))
-      setStatus("success")
-      setResponseMessage("Thank you! We'll get back to you soon.")
-      setFormData({ name: "", email: "", message: "" })
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+      setStatus("success");
+      setResponseMessage("Thank you! We'll get back to you soon.");
+      setFormData({ name: "", email: "", message: "" });
     } catch (error) {
-      setStatus("error")
-      setResponseMessage("Failed to send message. Please try again.")
+      setStatus("error");
+      setResponseMessage("Failed to send message. Please try again.");
     }
-  }
+  };
 
   const contactInfo = [
     {
@@ -65,7 +75,7 @@ export function ContactSection({ t }: ContactSectionProps) {
       value: "123 Tech Street, Innovation City",
       href: null,
     },
-  ]
+  ];
 
   return (
     <section id="contact" className="bg-muted/30 py-24 lg:py-32">
@@ -77,25 +87,38 @@ export function ContactSection({ t }: ContactSectionProps) {
           viewport={{ once: true }}
           className="mx-auto mb-16 max-w-3xl text-center"
         >
-          <h2 className="mb-4 text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">{t.title}</h2>
-          <p className="text-pretty text-lg text-muted-foreground lg:text-xl">{t.subtitle}</p>
+          <h2 className="mb-4 text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+            {t.title}
+          </h2>
+          <p className="text-pretty text-lg text-muted-foreground lg:text-xl">
+            {t.subtitle}
+          </p>
         </motion.div>
 
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 lg:grid-cols-2">
           {/* Contact Form */}
-          <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+          >
             <Card className="border-border/50">
               <CardContent className="p-8">
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
-                    <label htmlFor="name" className="mb-2 block text-sm font-medium">
+                    <label
+                      htmlFor="name"
+                      className="mb-2 block text-sm font-medium"
+                    >
                       {t.name}
                     </label>
                     <Input
                       id="name"
                       type="text"
                       value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({ ...formData, name: e.target.value })
+                      }
                       required
                       className="h-12"
                       disabled={status === "loading"}
@@ -103,14 +126,19 @@ export function ContactSection({ t }: ContactSectionProps) {
                   </div>
 
                   <div>
-                    <label htmlFor="email" className="mb-2 block text-sm font-medium">
+                    <label
+                      htmlFor="email"
+                      className="mb-2 block text-sm font-medium"
+                    >
                       {t.email}
                     </label>
                     <Input
                       id="email"
                       type="email"
                       value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({ ...formData, email: e.target.value })
+                      }
                       required
                       className="h-12"
                       disabled={status === "loading"}
@@ -118,13 +146,18 @@ export function ContactSection({ t }: ContactSectionProps) {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="mb-2 block text-sm font-medium">
+                    <label
+                      htmlFor="message"
+                      className="mb-2 block text-sm font-medium"
+                    >
                       {t.message}
                     </label>
                     <Textarea
                       id="message"
                       value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({ ...formData, message: e.target.value })
+                      }
                       required
                       rows={6}
                       className="resize-none"
@@ -132,7 +165,12 @@ export function ContactSection({ t }: ContactSectionProps) {
                     />
                   </div>
 
-                  <Button type="submit" size="lg" className="w-full gap-2" disabled={status === "loading"}>
+                  <Button
+                    type="submit"
+                    size="lg"
+                    className="w-full gap-2"
+                    disabled={status === "loading"}
+                  >
                     {status === "loading" ? (
                       <>Sending...</>
                     ) : (
@@ -170,26 +208,35 @@ export function ContactSection({ t }: ContactSectionProps) {
           </motion.div>
 
           {/* Contact Info */}
-          <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+          >
             <div className="space-y-8">
               <div>
                 <h3 className="mb-6 text-2xl font-semibold">Get In Touch</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Have a project in mind? We'd love to hear from you. Send us a message and we'll respond as soon as
-                  possible.
+                  Have a project in mind? We'd love to hear from you. Send us a
+                  message and we'll respond as soon as possible.
                 </p>
               </div>
 
               <div className="space-y-4">
                 {contactInfo.map((info) => (
-                  <Card key={info.label} className="border-border/50 bg-card/50">
+                  <Card
+                    key={info.label}
+                    className="border-border/50 bg-card/50"
+                  >
                     <CardContent className="p-4">
                       <div className="flex items-start gap-4">
                         <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
                           <info.icon className="h-5 w-5 text-primary" />
                         </div>
                         <div className="flex-1">
-                          <div className="mb-1 text-sm font-medium text-muted-foreground">{info.label}</div>
+                          <div className="mb-1 text-sm font-medium text-muted-foreground">
+                            {info.label}
+                          </div>
                           {info.href ? (
                             <a
                               href={info.href}
@@ -198,7 +245,9 @@ export function ContactSection({ t }: ContactSectionProps) {
                               {info.value}
                             </a>
                           ) : (
-                            <div className="font-medium text-foreground">{info.value}</div>
+                            <div className="font-medium text-foreground">
+                              {info.value}
+                            </div>
                           )}
                         </div>
                       </div>
@@ -211,5 +260,5 @@ export function ContactSection({ t }: ContactSectionProps) {
         </div>
       </div>
     </section>
-  )
+  );
 }
