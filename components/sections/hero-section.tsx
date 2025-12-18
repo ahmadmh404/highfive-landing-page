@@ -1,23 +1,23 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { ArrowRight, Sparkles } from "lucide-react"
-import Link from "next/link"
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Sparkles } from "lucide-react";
+import Link from "next/link";
 
 interface HeroSectionProps {
-  locale: string
+  locale: string;
   t: {
-    title: string
-    subtitle: string
-    cta: string
-    ctaSecondary: string
-  }
+    title: string;
+    subtitle: string;
+    cta: string;
+    ctaSecondary: string;
+  };
 }
 
 export function HeroSection({ locale, t }: HeroSectionProps) {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-background via-background to-muted/20 pt-24 pb-20 lg:pt-32 lg:pb-28">
+    <section className="relative overflow-hidden bg-linear-to-b from-background via-background to-muted/20 pt-24 pb-20 lg:pt-32 lg:pb-28">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-20 left-1/4 h-72 w-72 rounded-full bg-primary/10 blur-3xl animate-pulse-glow" />
@@ -75,7 +75,12 @@ export function HeroSection({ locale, t }: HeroSectionProps) {
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="text-base bg-transparent">
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className="text-base bg-transparent"
+            >
               <Link href={`/${locale}#projects`}>{t.ctaSecondary}</Link>
             </Button>
           </motion.div>
@@ -95,12 +100,16 @@ export function HeroSection({ locale, t }: HeroSectionProps) {
             { value: "98%", label: "Client Satisfaction" },
           ].map((stat, index) => (
             <div key={index} className="text-center">
-              <div className="text-3xl font-bold text-foreground lg:text-4xl">{stat.value}</div>
-              <div className="mt-2 text-sm text-muted-foreground lg:text-base">{stat.label}</div>
+              <div className="text-3xl font-bold text-foreground lg:text-4xl">
+                {stat.value}
+              </div>
+              <div className="mt-2 text-sm text-muted-foreground lg:text-base">
+                {stat.label}
+              </div>
             </div>
           ))}
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

@@ -1,29 +1,29 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Search, Palette, Code, Rocket } from "lucide-react"
+import { motion } from "framer-motion";
+import { Search, Palette, Code, Rocket } from "lucide-react";
 
 interface ProcessSectionProps {
   t: {
-    title: string
-    subtitle: string
+    title: string;
+    subtitle: string;
     discovery: {
-      title: string
-      description: string
-    }
+      title: string;
+      description: string;
+    };
     design: {
-      title: string
-      description: string
-    }
+      title: string;
+      description: string;
+    };
     development: {
-      title: string
-      description: string
-    }
+      title: string;
+      description: string;
+    };
     launch: {
-      title: string
-      description: string
-    }
-  }
+      title: string;
+      description: string;
+    };
+  };
 }
 
 export function ProcessSection({ t }: ProcessSectionProps) {
@@ -52,7 +52,7 @@ export function ProcessSection({ t }: ProcessSectionProps) {
       title: t.launch.title,
       description: t.launch.description,
     },
-  ]
+  ];
 
   return (
     <section className="py-24 lg:py-32">
@@ -64,8 +64,12 @@ export function ProcessSection({ t }: ProcessSectionProps) {
           viewport={{ once: true }}
           className="mx-auto mb-16 max-w-3xl text-center"
         >
-          <h2 className="mb-4 text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">{t.title}</h2>
-          <p className="text-pretty text-lg text-muted-foreground lg:text-xl">{t.subtitle}</p>
+          <h2 className="mb-4 text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+            {t.title}
+          </h2>
+          <p className="text-pretty text-lg text-muted-foreground lg:text-xl">
+            {t.subtitle}
+          </p>
         </motion.div>
 
         {/* Process Steps */}
@@ -86,12 +90,20 @@ export function ProcessSection({ t }: ProcessSectionProps) {
                 }`}
               >
                 {/* Content */}
-                <div className={`flex-1 ${index % 2 === 0 ? "lg:text-right" : "lg:text-left"}`}>
+                <div
+                  className={`flex-1 ${
+                    index % 2 === 0 ? "lg:text-right" : "lg:text-left"
+                  }`}
+                >
                   <div className="inline-flex items-center gap-3 mb-3">
-                    <span className="text-5xl font-bold text-primary/20">{step.number}</span>
+                    <span className="text-5xl font-bold text-primary/20">
+                      {step.number}
+                    </span>
                   </div>
                   <h3 className="mb-2 text-2xl font-semibold">{step.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{step.description}</p>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {step.description}
+                  </p>
                 </div>
 
                 {/* Icon */}
@@ -107,5 +119,5 @@ export function ProcessSection({ t }: ProcessSectionProps) {
         </div>
       </div>
     </section>
-  )
+  );
 }
