@@ -44,7 +44,7 @@ export function Header({ locale, t }: HeaderProps) {
           <Image
             width={140}
             height={40}
-            src={"/images/logo.png"}
+            src={"/logo.png"}
             alt="highfive_logo"
           />
         </Link>
