@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { locales } from "@/lib/i18n/config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://highfive.example.com";
+  const baseUrl = "https://highfive-eight.vercel.app/en";
 
   const routes = ["", "/services", "/projects", "/about", "/contact"];
 
