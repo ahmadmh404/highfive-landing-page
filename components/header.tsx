@@ -9,6 +9,7 @@ import { LanguageSwitcher } from "@/components/language-switcher";
 import { HighFiveLogo } from "@/components/logo";
 import type { Locale } from "@/lib/i18n/config";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 interface HeaderProps {
   locale: Locale;
@@ -34,14 +35,18 @@ export function Header({ locale, t }: HeaderProps) {
 
   return (
     <header
-      dir="ltr"
       suppressHydrationWarning
       className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60"
     >
       <nav className="container mx-auto flex h-16 items-center justify-between px-4 lg:px-8">
         {/* Logo */}
         <Link href={`/${locale}`} className="flex items-center">
-          <HighFiveLogo />
+          <Image
+            width={140}
+            height={40}
+            src={"/images/logo.png"}
+            alt="highfive_logo"
+          />
         </Link>
 
         {/* Desktop Navigation */}
