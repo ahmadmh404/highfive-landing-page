@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/", "/admin/"],
     },
-    sitemap: "https://highfive.example.com/sitemap.xml",
+    sitemap: "https://highfive-eight.vercel.app/sitemap.xml",
   };
 }
