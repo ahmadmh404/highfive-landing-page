@@ -1,0 +1,47 @@
+# [PROJECT_NAME] Constitution
+
+## Core Principles
+
+### I. [PRINCIPLE_1_NAME]
+
+[PRINCIPLE_1_DESCRIPTION]
+
+### II. [PRINCIPLE_2_NAME]
+
+[PRINCIPLE_2_DESCRIPTION]
+
+### III. [PRINCIPLE_3_NAME]
+
+[PRINCIPLE_3_DESCRIPTION]
+
+### IV. [PRINCIPLE_4_NAME]
+
+[PRINCIPLE_4_DESCRIPTION]
+
+### V. [PRINCIPLE_5_NAME]
+
+[PRINCIPLE_5_DESCRIPTION]
+
+## Technical Constraints
+
+[TECHNICAL_CONSTRAINTS]
+
+## Development Phases
+
+### Phase 1 – [PHASE_1_NAME]
+
+[PHASE_1_DESCRIPTION]
+
+### Phase 2 – [PHASE_2_NAME]
+
+[PHASE_2_DESCRIPTION]
+
+### Phase 3 – [PHASE_3_NAME]
+
+[PHASE_3_DESCRIPTION]
+
+## Governance
+
+[GOVERNANCE]
+
+**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
