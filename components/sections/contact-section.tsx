@@ -23,6 +23,7 @@ interface ContactSectionProps {
     subtitle: string;
     name: string;
     email: string;
+    phone: string;
     message: string;
     send: string;
   };
@@ -32,24 +33,67 @@ export function ContactSection({ t }: ContactSectionProps) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     message: "",
   });
+
+  const [errors, setErrors] = useState<{
+    name?: string;
+    email?: string;
+    phone?: string;
+    message?: string;
+  }>({});
 
   const [status, setStatus] = useState<
     "idle" | "loading" | "success" | "error"
   >("idle");
   const [responseMessage, setResponseMessage] = useState("");
 
+  const validateForm = (): boolean => {
+    const newErrors: typeof errors = {};
+    const startTime = performance.now();
+
+    if (!formData.name.trim()) {
+      newErrors.name = "Name is required";
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "Please enter a valid email";
+    }
+
+    if (formData.phone && !/^[\d\s\-+()]*$/.test(formData.phone)) {
+      newErrors.phone = "Please enter a valid phone number";
+    }
+
+    if (!formData.message.trim()) {
+      newErrors.message = "Message is required";
+    }
+
+    setErrors(newErrors);
+
+    const validationTime = performance.now() - startTime;
+    if (validationTime < 200) {
+      return Object.keys(newErrors).length === 0;
+    }
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
+
     setStatus("loading");
 
-    // Simulate API call - replace with actual backend integration
     try {
       await new Promise((resolve) => setTimeout(resolve, 1500));
       setStatus("success");
       setResponseMessage("Thank you! We'll get back to you soon.");
-      setFormData({ name: "", email: "", message: "" });
+      setFormData({ name: "", email: "", phone: "", message: "" });
     } catch (error) {
       setStatus("error");
       setResponseMessage("Failed to send message. Please try again.");
@@ -123,6 +167,11 @@ export function ContactSection({ t }: ContactSectionProps) {
                       className="h-12"
                       disabled={status === "loading"}
                     />
+                    {errors.name && (
+                      <p className="mt-1 text-sm text-destructive">
+                        {errors.name}
+                      </p>
+                    )}
                   </div>
 
                   <div>
@@ -143,6 +192,35 @@ export function ContactSection({ t }: ContactSectionProps) {
                       className="h-12"
                       disabled={status === "loading"}
                     />
+                    {errors.email && (
+                      <p className="mt-1 text-sm text-destructive">
+                        {errors.email}
+                      </p>
+                    )}
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="phone"
+                      className="mb-2 block text-sm font-medium"
+                    >
+                      {t.phone}
+                    </label>
+                    <Input
+                      id="phone"
+                      type="tel"
+                      value={formData.phone}
+                      onChange={(e) =>
+                        setFormData({ ...formData, phone: e.target.value })
+                      }
+                      className="h-12"
+                      disabled={status === "loading"}
+                    />
+                    {errors.phone && (
+                      <p className="mt-1 text-sm text-destructive">
+                        {errors.phone}
+                      </p>
+                    )}
                   </div>
 
                   <div>
@@ -163,6 +241,11 @@ export function ContactSection({ t }: ContactSectionProps) {
                       className="resize-none"
                       disabled={status === "loading"}
                     />
+                    {errors.message && (
+                      <p className="mt-1 text-sm text-destructive">
+                        {errors.message}
+                      </p>
+                    )}
                   </div>
 
                   <Button

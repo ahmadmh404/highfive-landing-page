@@ -38,7 +38,7 @@ export function HeroSection({ locale, t }: HeroSectionProps) {
           >
             <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm font-medium text-primary">
               <Sparkles className="h-4 w-4" />
-              <span>AI-Powered Digital Solutions</span>
+              <span>We build custom apps, AI tools &amp; teach coding</span>
             </div>
           </motion.div>
 

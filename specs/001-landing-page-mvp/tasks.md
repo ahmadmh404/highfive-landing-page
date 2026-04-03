@@ -12,10 +12,10 @@ Landing page implementation tasks organized by user story in priority order. Ind
 
 Project initialization and configuration.
 
-- [X] T001 Verify existing Next.js 16 setup and dependencies in package.json
-- [X] T002 [P] Verify existing dark/light mode setup (next-themes) in app/providers.tsx
-- [X] T003 [P] Verify existing localization setup (next-intl) in app/[locale]/
-- [X] T004 Create project directory structure: components/sections/, components/features/ai-demos/, lib/data/
+- [x] T001 Verify existing Next.js 16 setup and dependencies in package.json
+- [x] T002 [P] Verify existing dark/light mode setup (next-themes) in app/providers.tsx
+- [x] T003 [P] Verify existing localization setup (next-intl) in app/[locale]/
+- [x] T004 Create project directory structure: components/sections/, components/features/ai-demos/, lib/data/
 
 **Independent Test**: All commands run without errors.
 
@@ -25,10 +25,10 @@ Project initialization and configuration.
 
 Blocking prerequisites that MUST complete before user stories.
 
-- [X] T005 Create base TypeScript types for all entities in lib/types/index.ts
-- [X] T006 [P] Create site constants (team, services, AI tools placeholder data) in lib/constants.ts
-- [X] T007 [P] Create mock data files in lib/data/: team.ts, ai-tools.ts, projects.ts, courses.ts
-- [X] T008 Create reusable section wrapper component in components/sections/SectionWrapper.tsx
+- [x] T005 Create base TypeScript types for all entities in lib/types/index.ts
+- [x] T006 [P] Create site constants (team, services, AI tools placeholder data) in lib/constants.ts
+- [x] T007 [P] Create mock data files in lib/data/: team.ts, ai-tools.ts, projects.ts, courses.ts
+- [x] T008 Create reusable section wrapper component in components/sections/SectionWrapper.tsx
 
 **Dependencies**: Phase 1 complete  
 **Independent Test**: Types compile without errors, constants export valid data.
@@ -43,11 +43,11 @@ Blocking prerequisites that MUST complete before user stories.
 
 ### Implementation
 
-- [ ] T009 [US1] Create Hero section component in components/sections/Hero.tsx
-- [ ] T010 [US1] Create services cards component in components/sections/Services.tsx
-- [ ] T011 [US1] Create contact form component in components/sections/ContactForm.tsx
-- [ ] T012 [US1] Implement contact form client-side validation (name, email required; phone optional)
-- [ ] T013 [US1] Add smooth-scroll behavior for "Start a Project" CTA to contact form
+- [X] T009 [US1] Create Hero section component in components/sections/Hero.tsx
+- [X] T010 [US1] Create services cards component in components/sections/Services.tsx
+- [X] T011 [US1] Create contact form component in components/sections/ContactForm.tsx
+- [X] T012 [US1] Implement contact form client-side validation (name, email required; phone optional)
+- [X] T013 [US1] Add smooth-scroll behavior for "Start a Project" CTA to contact form
 
 **Tests**: Contact form validation <200ms, form clears on success (FR-019)
 
