@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { projects } from "@/lib/data/projects";
 
-type Category = "all" | "web" | "mobile" | "ai" | "design";
+type Category = "all" | "web&apps" | "aiFeatures" | "tools";
 
 interface ProjectsSectionProps {
   t: {
@@ -18,10 +18,9 @@ interface ProjectsSectionProps {
     viewCase: string;
     filter?: {
       all: string;
-      web: string;
-      mobile: string;
-      ai: string;
-      design: string;
+      webApps: string;
+      aiFeatures: string;
+      tools: string;
     };
   };
 }
@@ -36,10 +35,9 @@ export function ProjectsSection({ t }: ProjectsSectionProps) {
 
   const filters: { key: Category; label: string }[] = [
     { key: "all", label: t.filter?.all || "All" },
-    { key: "web", label: t.filter?.web || "Web" },
-    { key: "mobile", label: t.filter?.mobile || "Mobile" },
-    { key: "ai", label: t.filter?.ai || "AI" },
-    { key: "design", label: t.filter?.design || "Design" },
+    { key: "web&apps", label: t.filter?.webApps || "Web & Apps" },
+    { key: "aiFeatures", label: t.filter?.aiFeatures || "AI Features" },
+    { key: "tools", label: t.filter?.tools || "Tools" },
   ];
 
   return (

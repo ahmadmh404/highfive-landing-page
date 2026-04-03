@@ -50,7 +50,7 @@ export interface Project {
   id: string;
   title: string;
   description: string;
-  category: "web" | "mobile" | "ai" | "design";
+  category: "web&apps" | "aiFeatures" | "tools";
   image: string;
   link?: string;
   technologies: string[];

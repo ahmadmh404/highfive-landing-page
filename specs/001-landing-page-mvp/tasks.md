@@ -43,11 +43,11 @@ Blocking prerequisites that MUST complete before user stories.
 
 ### Implementation
 
-- [X] T009 [US1] Create Hero section component in components/sections/Hero.tsx
-- [X] T010 [US1] Create services cards component in components/sections/Services.tsx
-- [X] T011 [US1] Create contact form component in components/sections/ContactForm.tsx
-- [X] T012 [US1] Implement contact form client-side validation (name, email required; phone optional)
-- [X] T013 [US1] Add smooth-scroll behavior for "Start a Project" CTA to contact form
+- [x] T009 [US1] Create Hero section component in components/sections/Hero.tsx
+- [x] T010 [US1] Create services cards component in components/sections/Services.tsx
+- [x] T011 [US1] Create contact form component in components/sections/ContactForm.tsx
+- [x] T012 [US1] Implement contact form client-side validation (name, email required; phone optional)
+- [x] T013 [US1] Add smooth-scroll behavior for "Start a Project" CTA to contact form
 
 **Tests**: Contact form validation <200ms, form clears on success (FR-019)
 
@@ -61,12 +61,12 @@ Blocking prerequisites that MUST complete before user stories.
 
 ### Implementation
 
-- [X] T014 [US2] Create AI Tools section component in components/sections/AiTools.tsx
-- [X] T015 [US2] Create AI demo modal component in components/features/ai-demos/DemoModal.tsx
-- [X] T016 [US2] Create mock API function with 2-5s delay in lib/api/mock-ai-demo.ts
-- [X] T017 [US2] Add loading animation during demo processing
-- [X] T018 [US2] Handle rapid click protection (extend to max 10s with warning)
-- [X] T019 [US2] Add smooth-scroll behavior for "Explore AI Tools" CTA to AI Tools section
+- [x] T014 [US2] Create AI Tools section component in components/sections/AiTools.tsx
+- [x] T015 [US2] Create AI demo modal component in components/features/ai-demos/DemoModal.tsx
+- [x] T016 [US2] Create mock API function with 2-5s delay in lib/api/mock-ai-demo.ts
+- [x] T017 [US2] Add loading animation during demo processing
+- [x] T018 [US2] Handle rapid click protection (extend to max 10s with warning)
+- [x] T019 [US2] Add smooth-scroll behavior for "Explore AI Tools" CTA to AI Tools section
 
 **Tests**: Demo completes full cycle <8s (SC-002), loading animation visible (SC-009)
 
@@ -80,8 +80,8 @@ Blocking prerequisites that MUST complete before user stories.
 
 ### Implementation
 
-- [ ] T020 [US3] Create Team section component in components/sections/Team.tsx
-- [ ] T021 [US3] Create team member card component in components/sections/TeamMemberCard.tsx
+- [x] T020 [US3] Create Team section component in components/sections/Team.tsx
+- [x] T021 [US3] Create team member card component in components/sections/TeamMemberCard.tsx
 
 **Dependencies**: T006 (constants)
 
@@ -95,10 +95,10 @@ Blocking prerequisites that MUST complete before user stories.
 
 ### Implementation
 
-- [ ] T022 [US4] Create Projects section component in components/sections/Projects.tsx
-- [ ] T023 [US4] Create project filter bar component in components/sections/ProjectsFilter.tsx
-- [ ] T024 [US4] Implement real-time filter without page reload (<300ms)
-- [ ] T025 [US4] Create project card component in components/sections/ProjectCard.tsx
+- [x] T022 [US4] Create Projects section component in components/sections/Projects.tsx
+- [x] T023 [US4] Create project filter bar component in components/sections/ProjectsFilter.tsx
+- [x] T024 [US4] Implement real-time filter without page reload (<300ms)
+- [x] T025 [US4] Create project card component in components/sections/ProjectCard.tsx
 
 **Tests**: Filter update <300ms (SC-007)
 
@@ -112,8 +112,8 @@ Blocking prerequisites that MUST complete before user stories.
 
 ### Implementation
 
-- [ ] T026 [US5] Create Courses section component in components/sections/Courses.tsx
-- [ ] T027 [US5] Create course card component in components/sections/CourseCard.tsx
+- [x] T026 [US5] Create Courses section component in components/sections/Courses.tsx
+- [x] T027 [US5] Create course card component in components/sections/CourseCard.tsx
 
 ---
 
@@ -125,8 +125,8 @@ Blocking prerequisites that MUST complete before user stories.
 
 ### Implementation
 
-- [ ] T028 [US6] Verify dark/light mode transitions smoothly (<500ms)
-- [ ] T029 [US6] Add new content keys to localization files for any new text
+- [x] T028 [US6] Verify dark/light mode transitions smoothly (<500ms)
+- [x] T029 [US6] Add new content keys to localization files for any new text
 
 **Tests**: Theme transition <500ms (SC-004)
 
@@ -138,7 +138,7 @@ Blocking prerequisites that MUST complete before user stories.
 
 ### Implementation
 
-- [ ] T030 Create HowWeWork section component in components/sections/HowWeWork.tsx
+- [x] T030 Create HowWeWork section component in components/sections/HowWeWork.tsx
 
 ---
 
@@ -146,11 +146,11 @@ Blocking prerequisites that MUST complete before user stories.
 
 Cross-cutting concerns and final integration.
 
-- [ ] T031 [P] Create responsive navigation bar with mobile hamburger in components/sections/Navbar.tsx
-- [ ] T032 [P] Add mobile-first responsive styles to all sections (320px-2560px)
-- [ ] T033 Add smooth-scroll anchor support to navbar (FR-017)
-- [ ] T034 Integrate all sections into app/page.tsx in correct order
-- [ ] T035 Remove all placeholder/fake content per FR-016
+- [x] T031 [P] Create responsive navigation bar with mobile hamburger in components/sections/Navbar.tsx
+- [x] T032 [P] Add mobile-first responsive styles to all sections (320px-2560px)
+- [x] T033 Add smooth-scroll anchor support to navbar (FR-017)
+- [x] T034 Integrate all sections into app/page.tsx in correct order
+- [x] T035 Remove all placeholder/fake content per FR-016
 
 **Tests**: Lighthouse score >90 (SC-008), responsive 320px-2560px (SC-003)
 

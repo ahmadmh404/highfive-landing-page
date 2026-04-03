@@ -17,27 +17,19 @@ export const translations = {
       title: "Trusted by innovative companies worldwide",
     },
     services: {
-      title: "Our Services",
+      title: "What We Offer",
       subtitle: "Comprehensive digital solutions for modern businesses",
-      webApps: {
-        title: "Web Apps & Websites",
-        description:
-          "Custom web development, optimization, and upgrades using the latest technologies.",
+      customDev: {
+        title: "Custom Development",
+        description: "Tailored web applications, mobile apps, and custom software solutions built with cutting-edge technologies.",
       },
-      mobileApps: {
-        title: "Mobile Apps",
-        description:
-          "Cross-platform mobile applications built with Flutter for iOS and Android.",
+      aiTools: {
+        title: "AI Tools & Packages",
+        description: "Ready-to-use AI tools and machine learning packages to accelerate your business automation.",
       },
-      socialMedia: {
-        title: "Social Media Ad Filming",
-        description:
-          "High-conversion video ads that drive engagement and sales.",
-      },
-      aiSolutions: {
-        title: "AI Solutions",
-        description:
-          "Intelligent automation, AI integrations, and custom AI systems.",
+      courses: {
+        title: "Programming Courses",
+        description: "Expert-led programming courses covering web, mobile, and AI development.",
       },
     },
     whyChooseUs: {
@@ -80,15 +72,14 @@ export const translations = {
       },
     },
     projects: {
-      title: "Featured Projects",
+      title: "Our Projects",
       subtitle: "Recent work we are proud of",
       viewCase: "View Case Study",
       filter: {
         all: "All",
-        web: "Web",
-        mobile: "Mobile",
-        ai: "AI",
-        design: "Design",
+        webApps: "Web & Apps",
+        aiFeatures: "AI Features",
+        tools: "Tools",
       },
     },
     team: {
@@ -102,15 +93,11 @@ export const translations = {
         backendDev: "Backend Developer",
       },
       bios: {
-        ahmed:
-          "Ahmed leads our technical strategy with 10+ years in full-stack development. Expert in React, Node.js, and cloud architecture.",
-        sarah:
-          "Sarah specializes in machine learning and AI integration. PhD in Computer Science from MIT.",
-        omar: "Omar creates beautiful, intuitive interfaces that users love. 8 years of experience in UI/UX design.",
-        fatima:
-          "Fatima ensures projects deliver on time and on budget. PMP certified with experience managing cross-functional teams.",
-        karim:
-          "Karim builds robust backend systems and APIs. Expert in Python, Go, and distributed systems.",
+        ahmed: "Ahmad leads our technical strategy with 10+ years in full-stack development. Expert in React, Node.js, and cloud architecture.",
+        ali: "Ali specializes in machine learning and AI integration. PhD in Computer Science from MIT.",
+        yara: "Yara creates beautiful, intuitive interfaces that users love. 8 years of experience in UI/UX design.",
+        khalil: "Khalil ensures projects deliver on time and on budget. PMP certified with experience managing cross-functional teams.",
+        abdulrahman: "Abdulrahman builds robust backend systems and APIs. Expert in Python, Go, and distributed systems.",
       },
     },
     techStack: {
@@ -125,6 +112,24 @@ export const translations = {
         beginner: "Beginner",
         intermediate: "Intermediate",
         advanced: "Advanced",
+      },
+      items: {
+        frontend: {
+          title: "Complete Frontend Roadmap from HTML to Next.js",
+          desc: "Master web development from basics to advanced React and Next.js frameworks.",
+        },
+        backend: {
+          title: "Complete Backend Roadmap PHP Laravel and More",
+          desc: "Build robust server-side applications with PHP, Laravel, and modern APIs.",
+        },
+        aiml: {
+          title: "AI/ML Course with Python",
+          desc: "Learn machine learning fundamentals and build AI models with Python.",
+        },
+        marketing: {
+          title: "Digital Marketing Course",
+          desc: "Master digital marketing strategies for growth and brand awareness.",
+        },
       },
     },
     aiCapabilities: {
@@ -144,9 +149,37 @@ export const translations = {
       },
     },
     aiTools: {
-      title: "Try Our AI Tools",
+      title: "AI Tools & Packages",
       subtitle: "Experience the power of AI with interactive demos",
-      tryDemo: "Try Demo",
+      tryDemo: "Try Live",
+      tools: {
+        scorpeSearch: {
+          title: "Scorpe Search",
+          desc: "Intelligent search with relevance ranking and filtering capabilities.",
+        },
+        scorpeRank: {
+          title: "Scorpe Rank",
+          desc: "Analytics tool for ranking and scoring data points.",
+        },
+        scorpeRecommend: {
+          title: "Scorpe Recommend",
+          desc: "Personalized recommendations based on user preferences.",
+        },
+      },
+      fields: {
+        query: "Search Query",
+        queryPlaceholder: "Enter your search terms...",
+        filters: "Filters (optional)",
+        filtersPlaceholder: "Apply filters...",
+        data: "Data",
+        dataPlaceholder: "Enter data to rank...",
+        metric: "Ranking Metric",
+        userId: "User ID",
+        userIdPlaceholder: "Enter user ID...",
+        context: "Context",
+        contextPlaceholder: "Additional context...",
+        count: "Number of Results",
+      },
     },
     testimonials: {
       title: "What Our Clients Say",
@@ -206,25 +239,19 @@ export const translations = {
       title: "موثوق به من قبل شركات مبتكرة حول العالم",
     },
     services: {
-      title: "خدماتنا",
+      title: "ما نقدمه",
       subtitle: "حلول رقمية شاملة للشركات الحديثة",
-      webApps: {
-        title: "تطبيقات الويب والمواقع",
-        description: "تطوير ويب مخصص، تحسين، وترقيات باستخدام أحدث التقنيات.",
+      customDev: {
+        title: "تطوير مخصص",
+        description: "تطبيقات ويب مخصصة وتطبيقات موبايل وحلول برمجية مصممة خصيصاً لاحتياجاتك.",
       },
-      mobileApps: {
-        title: "تطبيقات الموبايل",
-        description:
-          "تطبيقات موبايل متعددة المنصات مبنية بـ Flutter لنظامي iOS و Android.",
+      aiTools: {
+        title: "أدوات الذكاء الاصطناعي",
+        description: "أدوات ذكاء اصطناعي جاهزة وحزم تعلم آلي لتسريع أتمتة عملك.",
       },
-      socialMedia: {
-        title: "تصوير إعلانات السوشيال ميديا",
-        description: "إعلانات فيديو عالية التحويل تزيد من التفاعل والمبيعات.",
-      },
-      aiSolutions: {
-        title: "حلول الذكاء الاصطناعي",
-        description:
-          "أتمتة ذكية، تكامل الذكاء الاصطناعي، وأنظمة ذكاء اصطناعي مخصصة.",
+      courses: {
+        title: "دورات البرمجة",
+        description: "دورات برمجة متخصصة تغطي تطوير الويب والموبايل والذكاء الاصطناعي.",
       },
     },
     whyChooseUs: {
@@ -266,15 +293,14 @@ export const translations = {
       },
     },
     projects: {
-      title: "المشاريع المميزة",
+      title: "مشاريعنا",
       subtitle: "أعمال حديثة نفخر بها",
       viewCase: "عرض دراسة الحالة",
       filter: {
         all: "الكل",
-        web: "ويب",
-        mobile: "موبايل",
-        ai: "ذكاء اصطناعي",
-        design: "تصميم",
+        webApps: "ويب وتطبيقات",
+        aiFeatures: "ميزات الذكاء الاصطناعي",
+        tools: "أدوات",
       },
     },
     team: {
@@ -288,15 +314,11 @@ export const translations = {
         backendDev: "مطور backend",
       },
       bios: {
-        ahmed:
-          "أحمد يقود استراتيجيتنا التقنية بأكثر من 10 سنوات في تطوير full-stack. خبير في React وNode.js.",
-        sarah:
-          "سارة متخصصة في التعلم الآلي وتكامل الذكاء الاصطناعي. حاصلة على دكتوراه في علوم الحاسب من MIT.",
-        عمر: "عمر يصنع واجهات جميلة وسهلة الاستخدام. 8 سنوات خبرة في تصميم UI/UX.",
-        fatima:
-          "فاطمة تضمن تسليم المشاريع في الوقت المحدد والميزانية. حاصلة على PMP.",
-        karim:
-          "كريم يبني أنظمة backend قوية وواجهات برمجة. خبير في Python وGo والأنظمة الموزعة.",
+        ahmed: "أحمد يقود استراتيجيتنا التقنية بأكثر من 10 سنوات في تطوير full-stack. خبير في React وNode.js.",
+        ali: "علي متخصص في التعلم الآلي وتكامل الذكاء الاصطناعي. حاصل على دكتوراه في علوم الحاسب من MIT.",
+        yara: "يارا تصنع واجهات جميلة وسهلة الاستخدام. 8 سنوات خبرة في تصميم UI/UX.",
+        khalil: "خليل يضمن تسليم المشاريع في الوقت المحدد والميزانية. حاصل على PMP.",
+        abdulrahman: "عبد الرحمن يبني أنظمة backend قوية وواجهات برمجة. خبير في Python وGo والأنظمة الموزعة.",
       },
     },
     techStack: {
@@ -311,6 +333,24 @@ export const translations = {
         beginner: "مبتدئ",
         intermediate: "متوسط",
         advanced: "متقدم",
+      },
+      items: {
+        frontend: {
+          title: "خارطة الطريق الكاملة للفرونت إند من HTML إلى Next.js",
+          desc: "أتقن تطوير الويب من الأساسيات إلى أطر عمل React وNext.js المتقدمة.",
+        },
+        backend: {
+          title: "خارطة الطريق الكاملة للبيكإند PHP Laravel والمزيد",
+          desc: "بناء تطبيقات قوية من جانب الخادم باستخدام PHP وLaravel وواجهات برمجة حديثة.",
+        },
+        aiml: {
+          title: "دورة الذكاء الاصطناعي والتعلم الآلي مع بايثون",
+          desc: "تعلم أساسيات التعلم الآلي وبناء نماذج ذكاء اصطناعي مع بايثون.",
+        },
+        marketing: {
+          title: "دورة التسويق الرقمي",
+          desc: "أتقن استراتيجيات التسويق الرقمي للنمو والوعي بالعلامة التجارية.",
+        },
       },
     },
     aiCapabilities: {
@@ -330,9 +370,37 @@ export const translations = {
       },
     },
     aiTools: {
-      title: "جرب أدوات الذكاء الاصطناعي",
+      title: "أدوات الذكاء الاصطناعي",
       subtitle: "قم بتجربة قوة الذكاء الاصطناعي مع عروض تفاعلية",
       tryDemo: "جرب الآن",
+      tools: {
+        scorpeSearch: {
+          title: "Scorpe Search",
+          desc: "بحث ذكي مع ترتيب ومعايير.",
+        },
+        scorpeRank: {
+          title: "Scorpe Rank",
+          desc: "أداة تحليلية لترتيب ونقاط.",
+        },
+        scorpeRecommend: {
+          title: "Scorpe Recommend",
+          desc: "توصيات مخصصة بناءً على تفضيلات المستخدم.",
+        },
+      },
+      fields: {
+        query: "استعلام البحث",
+        queryPlaceholder: "أدخل مصطلحات البحث...",
+        filters: "الفلاتر (اختياري)",
+        filtersPlaceholder: "تطبيق الفلاتر...",
+        data: "البيانات",
+        dataPlaceholder: "أدخل البيانات للترتيب...",
+        metric: "مقياس الترتيب",
+        userId: "معرف المستخدم",
+        userIdPlaceholder: "أدخل معرف المستخدم...",
+        context: "السياق",
+        contextPlaceholder: "سياق إضافي...",
+        count: "عدد النتائج",
+      },
     },
     testimonials: {
       title: "ماذا يقول عملاؤنا",

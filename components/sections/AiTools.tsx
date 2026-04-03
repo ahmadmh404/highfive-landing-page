@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import type { AITool } from "@/lib/types";
 import { aiTools } from "@/lib/data/ai-tools";
 import { DemoModal } from "@/components/features/ai-demos/DemoModal";
-import { Code2, Palette, FileText, Play } from "lucide-react";
+import { Code2, Palette, FileText, Play, Search, TrendingUp, Sparkles } from "lucide-react";
 
 interface AiToolsSectionProps {
   t: {
@@ -21,6 +21,9 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Code2,
   Palette,
   FileText,
+  Search,
+  TrendingUp,
+  Sparkles,
 };
 
 export function AiToolsSection({ t }: AiToolsSectionProps) {
