@@ -1,109 +1,67 @@
 "use client";
-
-import { useState } from "react";
-import Link from "next/link";
-import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/theme-toggle";
-import { LanguageSwitcher } from "@/components/language-switcher";
-import { HighFiveLogo } from "@/components/logo";
-import type { Locale } from "@/lib/i18n/config";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
+import { Logo } from "@/components/logo";
+import { useScroll } from "@/hooks/use-scroll";
+import { Button } from "@/components/ui/button";
+import { MobileNav } from "@/components/mobile-nav";
 
-interface HeaderProps {
-  locale: Locale;
-  t: {
-    nav: {
-      services: string;
-      projects: string;
-      about: string;
-      contact: string;
-    };
-  };
-}
+export const navLinks = [
+	{
+		label: "Services",
+		href: "#services",
+	},
+	{
+		label: "Projects",
+		href: "#projects",
+	},
+	{
+		label: "About",
+		href: "#team",
+	},
+];
 
-export function Header({ locale, t }: HeaderProps) {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+export function Header() {
+	const scrolled = useScroll(10);
 
-  const navLinks = [
-    { href: `/${locale}#services`, label: t.nav.services },
-    { href: `/${locale}#projects`, label: t.nav.projects },
-    { href: `/${locale}#about`, label: t.nav.about },
-    { href: `/${locale}#contact`, label: t.nav.contact },
-  ];
-
-  return (
-    <header
-      suppressHydrationWarning
-      className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60"
-    >
-      <nav className="container mx-auto flex h-16 items-center justify-between px-4 lg:px-8">
-        {/* Logo */}
-        <Link href={`/${locale}`} className="flex items-center">
-          <Image
-            width={140}
-            height={40}
-            src={"/logo.png"}
-            alt="highfive_logo"
-          />
-        </Link>
-
-        {/* Desktop Navigation */}
-        <div className="hidden items-center gap-8 md:flex">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </div>
-
-        {/* Actions */}
-        <div className="flex items-center gap-2">
-          <ThemeToggle />
-          <LanguageSwitcher currentLocale={locale} />
-
-          {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? (
-              <X className="h-5 w-5" />
-            ) : (
-              <Menu className="h-5 w-5" />
-            )}
-            <span className="sr-only">Toggle menu</span>
-          </Button>
-        </div>
-      </nav>
-
-      {/* Mobile Menu */}
-      <div
-        className={cn(
-          "md:hidden overflow-hidden transition-all duration-300 border-b border-border/40",
-          mobileMenuOpen ? "max-h-64" : "max-h-0",
-        )}
-      >
-        <div className="container mx-auto flex flex-col gap-4 px-4 py-4">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {link.label}
-            </Link>
-          ))}
-        </div>
-      </div>
-    </header>
-  );
+	return (
+		<header
+			className={cn(
+				"sticky top-0 z-50 mx-auto w-full max-w-4xl border-transparent border-b md:rounded-md md:border md:transition-all md:ease-out",
+				{
+					"border-border bg-background/95 backdrop-blur-sm supports-backdrop-filter:bg-background/50 md:top-2 md:max-w-3xl md:shadow":
+						scrolled,
+				}
+			)}
+		>
+			<nav
+				className={cn(
+					"flex h-14 w-full items-center justify-between px-4 md:h-12 md:transition-all md:ease-out",
+					{
+						"md:px-2": scrolled,
+					}
+				)}
+			>
+				<a
+					className="rounded-md p-2 hover:bg-muted dark:hover:bg-muted/50"
+					href="#"
+				>
+					<Logo className="h-4" />
+				</a>
+				<div className="hidden items-center gap-2 md:flex">
+					<div>
+						{navLinks.map((link) => (
+							<Button asChild key={link.label} size="sm" variant="ghost">
+								<a href={link.href}>{link.label}</a>
+							</Button>
+						))}
+					</div>
+					<Button size="sm" variant="outline">
+						Sign In
+					</Button>
+					<Button size="sm">Get Started</Button>
+				</div>
+				<MobileNav />
+			</nav>
+		</header>
+	);
 }
