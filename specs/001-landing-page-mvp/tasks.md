@@ -12,10 +12,10 @@ Landing page implementation tasks organized by user story in priority order. Ind
 
 Project initialization and configuration.
 
-- [ ] T001 Verify existing Next.js 16 setup and dependencies in package.json
-- [ ] T002 [P] Verify existing dark/light mode setup (next-themes) in app/providers.tsx
-- [ ] T003 [P] Verify existing localization setup (next-intl) in app/[locale]/
-- [ ] T004 Create project directory structure: components/sections/, components/features/ai-demos/, lib/data/
+- [X] T001 Verify existing Next.js 16 setup and dependencies in package.json
+- [X] T002 [P] Verify existing dark/light mode setup (next-themes) in app/providers.tsx
+- [X] T003 [P] Verify existing localization setup (next-intl) in app/[locale]/
+- [X] T004 Create project directory structure: components/sections/, components/features/ai-demos/, lib/data/
 
 **Independent Test**: All commands run without errors.
 
@@ -25,10 +25,10 @@ Project initialization and configuration.
 
 Blocking prerequisites that MUST complete before user stories.
 
-- [ ] T005 Create base TypeScript types for all entities in lib/types/index.ts
-- [ ] T006 [P] Create site constants (team, services, AI tools placeholder data) in lib/constants.ts
-- [ ] T007 [P] Create mock data files in lib/data/: team.ts, ai-tools.ts, projects.ts, courses.ts
-- [ ] T008 Create reusable section wrapper component in components/sections/SectionWrapper.tsx
+- [X] T005 Create base TypeScript types for all entities in lib/types/index.ts
+- [X] T006 [P] Create site constants (team, services, AI tools placeholder data) in lib/constants.ts
+- [X] T007 [P] Create mock data files in lib/data/: team.ts, ai-tools.ts, projects.ts, courses.ts
+- [X] T008 Create reusable section wrapper component in components/sections/SectionWrapper.tsx
 
 **Dependencies**: Phase 1 complete  
 **Independent Test**: Types compile without errors, constants export valid data.

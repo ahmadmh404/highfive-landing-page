@@ -1,0 +1,56 @@
+import type { Project } from "@/lib/types";
+
+export const projects: Project[] = [
+  {
+    id: "1",
+    title: "E-Commerce Platform",
+    description: "projects.items.ecommerce.desc",
+    category: "web",
+    image: "/images/projects/ecommerce.jpg",
+    link: "https://example.com/ecommerce",
+    technologies: ["Next.js", "TypeScript", "Stripe", "PostgreSQL"],
+  },
+  {
+    id: "2",
+    title: "Healthcare Mobile App",
+    description: "projects.items.healthcare.desc",
+    category: "mobile",
+    image: "/images/projects/healthcare.jpg",
+    link: "https://example.com/healthcare",
+    technologies: ["React Native", "Firebase", "GraphQL"],
+  },
+  {
+    id: "3",
+    title: "AI Chatbot Integration",
+    description: "projects.items.chatbot.desc",
+    category: "ai",
+    image: "/images/projects/chatbot.jpg",
+    link: "https://example.com/chatbot",
+    technologies: ["Python", "LangChain", "OpenAI", "FastAPI"],
+  },
+  {
+    id: "4",
+    title: "Brand Identity Design",
+    description: "projects.items.brand.desc",
+    category: "design",
+    image: "/images/projects/brand.jpg",
+    technologies: ["Figma", "Adobe Illustrator", "After Effects"],
+  },
+  {
+    id: "5",
+    title: "SaaS Dashboard",
+    description: "projects.items.dashboard.desc",
+    category: "web",
+    image: "/images/projects/dashboard.jpg",
+    link: "https://example.com/dashboard",
+    technologies: ["React", "D3.js", "Node.js", "MongoDB"],
+  },
+  {
+    id: "6",
+    title: "Fitness Tracking App",
+    description: "projects.items.fitness.desc",
+    category: "mobile",
+    image: "/images/projects/fitness.jpg",
+    technologies: ["Flutter", "TensorFlow Lite", "Google Fit"],
+  },
+];
