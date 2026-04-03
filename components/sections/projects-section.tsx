@@ -1,50 +1,50 @@
 "use client";
 
+import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { projects } from "@/lib/data/projects";
+
+type Category = "all" | "web" | "mobile" | "ai" | "design";
 
 interface ProjectsSectionProps {
   t: {
     title: string;
     subtitle: string;
     viewCase: string;
+    filter?: {
+      all: string;
+      web: string;
+      mobile: string;
+      ai: string;
+      design: string;
+    };
   };
 }
 
 export function ProjectsSection({ t }: ProjectsSectionProps) {
-  // Mock projects - in production, fetch from Strapi CMS
-  const projects = [
-    {
-      title: "E-Commerce Platform",
-      description: "Modern shopping experience with AI recommendations",
-      image: "/modern-ecommerce-dashboard.png",
-      category: "Web App",
-      technologies: ["Next.js", "AI", "Stripe"],
-    },
-    {
-      title: "Fitness Mobile App",
-      description: "Cross-platform fitness tracking with real-time analytics",
-      image: "/fitness-app-interface.png",
-      category: "Mobile App",
-      technologies: ["Flutter", "Firebase"],
-    },
-    {
-      title: "Brand Campaign",
-      description: "High-converting video ads for luxury fashion brand",
-      image: "/luxury-fashion-video-production.jpg",
-      category: "Social Media",
-      technologies: ["Video Production", "Animation"],
-    },
+  const [activeFilter, setActiveFilter] = useState<Category>("all");
+
+  const filteredProjects = useMemo(() => {
+    if (activeFilter === "all") return projects;
+    return projects.filter((project) => project.category === activeFilter);
+  }, [activeFilter]);
+
+  const filters: { key: Category; label: string }[] = [
+    { key: "all", label: t.filter?.all || "All" },
+    { key: "web", label: t.filter?.web || "Web" },
+    { key: "mobile", label: t.filter?.mobile || "Mobile" },
+    { key: "ai", label: t.filter?.ai || "AI" },
+    { key: "design", label: t.filter?.design || "Design" },
   ];
 
   return (
     <section id="projects" className="bg-muted/30 py-24 lg:py-32">
       <div className="container mx-auto px-4 lg:px-8">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -59,15 +59,34 @@ export function ProjectsSection({ t }: ProjectsSectionProps) {
           </p>
         </motion.div>
 
-        {/* Projects Grid */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-12 flex flex-wrap justify-center gap-2"
+        >
+          {filters.map((filter) => (
+            <Button
+              key={filter.key}
+              variant={activeFilter === filter.key ? "default" : "outline"}
+              onClick={() => setActiveFilter(filter.key)}
+              className="transition-all"
+              size="sm"
+            >
+              {filter.label}
+            </Button>
+          ))}
+        </motion.div>
+
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project, index) => (
+          {filteredProjects.map((project, index) => (
             <motion.div
-              key={project.title}
+              key={project.id}
               initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
               transition={{ delay: index * 0.1 }}
+              layout
             >
               <Card className="group h-full overflow-hidden border-border/50 transition-all hover:border-primary/50 hover:shadow-xl">
                 <div className="relative aspect-video overflow-hidden">
@@ -83,9 +102,7 @@ export function ProjectsSection({ t }: ProjectsSectionProps) {
                   </Badge>
                 </div>
                 <CardContent className="p-6">
-                  <h3 className="mb-2 text-xl font-semibold">
-                    {project.title}
-                  </h3>
+                  <h3 className="mb-2 text-xl font-semibold">{project.title}</h3>
                   <p className="mb-4 text-sm text-muted-foreground leading-relaxed">
                     {project.description}
                   </p>
@@ -96,10 +113,18 @@ export function ProjectsSection({ t }: ProjectsSectionProps) {
                       </Badge>
                     ))}
                   </div>
-                  <Button variant="link" className="group/btn -ml-4 gap-2 p-4">
-                    {t.viewCase}
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
-                  </Button>
+                  {project.link && (
+                    <Button
+                      variant="link"
+                      className="group/btn -ml-4 gap-2 p-4"
+                      asChild
+                    >
+                      <a href={project.link} target="_blank" rel="noopener noreferrer">
+                        {t.viewCase}
+                        <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
+                      </a>
+                    </Button>
+                  )}
                 </CardContent>
               </Card>
             </motion.div>

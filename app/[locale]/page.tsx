@@ -7,7 +7,9 @@ import { TrustedBySection } from "@/components/sections/trusted-by-section";
 import { ServicesSection } from "@/components/sections/services-section";
 import { WhyChooseUsSection } from "@/components/sections/why-choose-us-section";
 import { ProcessSection } from "@/components/sections/process-section";
+import { TeamSection } from "@/components/sections/team-section";
 import { ProjectsSection } from "@/components/sections/projects-section";
+import { CoursesSection } from "@/components/sections/courses-section";
 import { TechStackSection } from "@/components/sections/tech-stack-section";
 import { AICapabilitiesSection } from "@/components/sections/ai-capabilities-section";
 import { AiToolsSection } from "@/components/sections/AiTools";
@@ -27,14 +29,16 @@ export default async function HomePage({
 
   return (
     <>
-      <Header locale={locale} t={t} />
+      <Header />
       <main>
         <HeroSection locale={locale} t={t.hero} />
         <TrustedBySection t={t.trustedBy} />
         <ServicesSection t={t.services} />
         <WhyChooseUsSection t={t.whyChooseUs} />
         <ProcessSection t={t.process} />
+        <TeamSection t={t.team} />
         <ProjectsSection t={t.projects} />
+        <CoursesSection t={t.courses} />
         <TechStackSection t={t.techStack} />
         <AICapabilitiesSection t={t.aiCapabilities} />
         <AiToolsSection t={t.aiTools} />

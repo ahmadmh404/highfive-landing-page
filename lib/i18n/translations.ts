@@ -83,10 +83,49 @@ export const translations = {
       title: "Featured Projects",
       subtitle: "Recent work we are proud of",
       viewCase: "View Case Study",
+      filter: {
+        all: "All",
+        web: "Web",
+        mobile: "Mobile",
+        ai: "AI",
+        design: "Design",
+      },
+    },
+    team: {
+      title: "Meet Our Team",
+      subtitle: "The experts behind your success",
+      roles: {
+        leadDeveloper: "Lead Developer",
+        aiEngineer: "AI Engineer",
+        uiDesigner: "UI/UX Designer",
+        projectManager: "Project Manager",
+        backendDev: "Backend Developer",
+      },
+      bios: {
+        ahmed:
+          "Ahmed leads our technical strategy with 10+ years in full-stack development. Expert in React, Node.js, and cloud architecture.",
+        sarah:
+          "Sarah specializes in machine learning and AI integration. PhD in Computer Science from MIT.",
+        omar: "Omar creates beautiful, intuitive interfaces that users love. 8 years of experience in UI/UX design.",
+        fatima:
+          "Fatima ensures projects deliver on time and on budget. PMP certified with experience managing cross-functional teams.",
+        karim:
+          "Karim builds robust backend systems and APIs. Expert in Python, Go, and distributed systems.",
+      },
     },
     techStack: {
       title: "Technologies We Master",
       subtitle: "Building with industry-leading tools",
+    },
+    courses: {
+      title: "Available Courses",
+      subtitle: "Level up your skills with expert-led training",
+      viewCourse: "View Course",
+      levels: {
+        beginner: "Beginner",
+        intermediate: "Intermediate",
+        advanced: "Advanced",
+      },
     },
     aiCapabilities: {
       title: "AI-Powered Solutions",
@@ -230,10 +269,49 @@ export const translations = {
       title: "المشاريع المميزة",
       subtitle: "أعمال حديثة نفخر بها",
       viewCase: "عرض دراسة الحالة",
+      filter: {
+        all: "الكل",
+        web: "ويب",
+        mobile: "موبايل",
+        ai: "ذكاء اصطناعي",
+        design: "تصميم",
+      },
+    },
+    team: {
+      title: "تعرّف على فريقنا",
+      subtitle: "الخبراء وراء نجاحك",
+      roles: {
+        leadDeveloper: "المطور الرئيسي",
+        aiEngineer: "مهندس الذكاء الاصطناعي",
+        uiDesigner: "مصمم UI/UX",
+        projectManager: "مدير المشروع",
+        backendDev: "مطور backend",
+      },
+      bios: {
+        ahmed:
+          "أحمد يقود استراتيجيتنا التقنية بأكثر من 10 سنوات في تطوير full-stack. خبير في React وNode.js.",
+        sarah:
+          "سارة متخصصة في التعلم الآلي وتكامل الذكاء الاصطناعي. حاصلة على دكتوراه في علوم الحاسب من MIT.",
+        عمر: "عمر يصنع واجهات جميلة وسهلة الاستخدام. 8 سنوات خبرة في تصميم UI/UX.",
+        fatima:
+          "فاطمة تضمن تسليم المشاريع في الوقت المحدد والميزانية. حاصلة على PMP.",
+        karim:
+          "كريم يبني أنظمة backend قوية وواجهات برمجة. خبير في Python وGo والأنظمة الموزعة.",
+      },
     },
     techStack: {
       title: "التقنيات التي نتقنها",
       subtitle: "البناء بأدوات رائدة في الصناعة",
+    },
+    courses: {
+      title: "الدورات المتاحة",
+      subtitle: "ارفع مستواك مع تدريب من خبراء",
+      viewCourse: "عرض الدورة",
+      levels: {
+        beginner: "مبتدئ",
+        intermediate: "متوسط",
+        advanced: "متقدم",
+      },
     },
     aiCapabilities: {
       title: "حلول مدعومة بالذكاء الاصطناعي",
