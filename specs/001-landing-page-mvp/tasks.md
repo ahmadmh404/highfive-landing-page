@@ -61,12 +61,12 @@ Blocking prerequisites that MUST complete before user stories.
 
 ### Implementation
 
-- [ ] T014 [US2] Create AI Tools section component in components/sections/AiTools.tsx
-- [ ] T015 [US2] Create AI demo modal component in components/features/ai-demos/DemoModal.tsx
-- [ ] T016 [US2] Create mock API function with 2-5s delay in lib/api/mock-ai-demo.ts
-- [ ] T017 [US2] Add loading animation during demo processing
-- [ ] T018 [US2] Handle rapid click protection (extend to max 10s with warning)
-- [ ] T019 [US2] Add smooth-scroll behavior for "Explore AI Tools" CTA to AI Tools section
+- [X] T014 [US2] Create AI Tools section component in components/sections/AiTools.tsx
+- [X] T015 [US2] Create AI demo modal component in components/features/ai-demos/DemoModal.tsx
+- [X] T016 [US2] Create mock API function with 2-5s delay in lib/api/mock-ai-demo.ts
+- [X] T017 [US2] Add loading animation during demo processing
+- [X] T018 [US2] Handle rapid click protection (extend to max 10s with warning)
+- [X] T019 [US2] Add smooth-scroll behavior for "Explore AI Tools" CTA to AI Tools section
 
 **Tests**: Demo completes full cycle <8s (SC-002), loading animation visible (SC-009)
 

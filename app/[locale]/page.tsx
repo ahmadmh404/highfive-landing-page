@@ -10,6 +10,7 @@ import { ProcessSection } from "@/components/sections/process-section";
 import { ProjectsSection } from "@/components/sections/projects-section";
 import { TechStackSection } from "@/components/sections/tech-stack-section";
 import { AICapabilitiesSection } from "@/components/sections/ai-capabilities-section";
+import { AiToolsSection } from "@/components/sections/AiTools";
 import { TestimonialsSection } from "@/components/sections/testimonials-section";
 import { NewsletterSection } from "@/components/sections/newsletter-section";
 import { FAQSection } from "@/components/sections/faq-section";
@@ -36,6 +37,7 @@ export default async function HomePage({
         <ProjectsSection t={t.projects} />
         <TechStackSection t={t.techStack} />
         <AICapabilitiesSection t={t.aiCapabilities} />
+        <AiToolsSection t={t.aiTools} />
         <TestimonialsSection t={t.testimonials} />
         <NewsletterSection t={t.newsletter} />
         <FAQSection t={t.faq} />

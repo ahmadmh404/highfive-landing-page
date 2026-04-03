@@ -32,7 +32,7 @@ export async function generateMetadata({
 
   return {
     title: titles[locale],
-    description: descriptions[locale],=
+    description: descriptions[locale],
     generator: "Next.js",
     applicationName: "HighFive",
     keywords: [

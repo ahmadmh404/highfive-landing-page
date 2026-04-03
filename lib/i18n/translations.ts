@@ -11,7 +11,7 @@ export const translations = {
       subtitle:
         "We build cutting-edge web apps, mobile solutions, AI integrations, and high-converting social media content for global businesses.",
       cta: "Start Your Project",
-      ctaSecondary: "View Our Work",
+      ctaSecondary: "Explore AI Tools",
     },
     trustedBy: {
       title: "Trusted by innovative companies worldwide",
@@ -104,6 +104,11 @@ export const translations = {
         description: "Build intelligent solutions tailored to your needs.",
       },
     },
+    aiTools: {
+      title: "Try Our AI Tools",
+      subtitle: "Experience the power of AI with interactive demos",
+      tryDemo: "Try Demo",
+    },
     testimonials: {
       title: "What Our Clients Say",
       subtitle: "Real feedback from real businesses",
@@ -156,7 +161,7 @@ export const translations = {
       subtitle:
         "نبني تطبيقات ويب متطورة، حلول موبايل، تكامل الذكاء الاصطناعي، ومحتوى إعلانات سوشيال ميديا عالية التحويل للشركات العالمية.",
       cta: "ابدأ مشروعك",
-      ctaSecondary: "شاهد أعمالنا",
+      ctaSecondary: "استكشف أدوات الذكاء الاصطناعي",
     },
     trustedBy: {
       title: "موثوق به من قبل شركات مبتكرة حول العالم",
@@ -245,6 +250,11 @@ export const translations = {
         title: "أنظمة ذكاء اصطناعي مخصصة",
         description: "بناء حلول ذكية مصممة خصيصًا لاحتياجاتك.",
       },
+    },
+    aiTools: {
+      title: "جرب أدوات الذكاء الاصطناعي",
+      subtitle: "قم بتجربة قوة الذكاء الاصطناعي مع عروض تفاعلية",
+      tryDemo: "جرب الآن",
     },
     testimonials: {
       title: "ماذا يقول عملاؤنا",

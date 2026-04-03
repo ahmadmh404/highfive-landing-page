@@ -81,7 +81,7 @@ export function HeroSection({ locale, t }: HeroSectionProps) {
               size="lg"
               className="text-base bg-transparent"
             >
-              <Link href={`/${locale}#projects`}>{t.ctaSecondary}</Link>
+              <Link href={`/${locale}#ai-tools`}>{t.ctaSecondary}</Link>
             </Button>
           </motion.div>
         </div>
