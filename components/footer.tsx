@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Logo } from "@/components/logo";
+import { HighfiveLogo } from "@/components/logo";
 import type { Locale } from "@/lib/i18n/config";
 import { Github, Linkedin, Twitter, Instagram } from "lucide-react";
 
@@ -60,7 +60,7 @@ export function Footer({ locale, t }: FooterProps) {
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link href={`/${locale}`} className="inline-block">
-              <Logo />
+              <HighfiveLogo />
             </Link>
             <p className="mt-4 max-w-xs text-sm text-muted-foreground">
               {t.footer.tagline}

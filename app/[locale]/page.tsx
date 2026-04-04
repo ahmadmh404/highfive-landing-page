@@ -29,7 +29,7 @@ export default async function HomePage({
 
   return (
     <>
-      <Header />
+      <Header locale={locale} />
       <main>
         <HeroSection locale={locale} t={t.hero} />
         <TrustedBySection t={t.trustedBy} />

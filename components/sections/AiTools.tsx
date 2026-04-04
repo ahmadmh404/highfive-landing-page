@@ -2,12 +2,26 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import type { AITool } from "@/lib/types";
 import { aiTools } from "@/lib/data/ai-tools";
 import { DemoModal } from "@/components/features/ai-demos/DemoModal";
-import { Code2, Palette, FileText, Play, Search, TrendingUp, Sparkles } from "lucide-react";
+import {
+  Code2,
+  Palette,
+  FileText,
+  Play,
+  Search,
+  TrendingUp,
+  Sparkles,
+} from "lucide-react";
 
 interface AiToolsSectionProps {
   t: {
@@ -55,7 +69,7 @@ export function AiToolsSection({ t }: AiToolsSectionProps) {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {aiTools.map((tool, index) => {
             const Icon = iconMap[tool.icon] || Code2;
-            
+
             return (
               <motion.div
                 key={tool.id}
@@ -75,7 +89,7 @@ export function AiToolsSection({ t }: AiToolsSectionProps) {
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <Button 
+                    <Button
                       onClick={() => handleToolClick(tool)}
                       className="w-full gap-2"
                     >

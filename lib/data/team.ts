@@ -25,7 +25,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     id: "3",
-    name: "Yara Daoud Ali Habib",
+    name: "Yara Daoud",
     role: "team.roles.uiDesigner",
     bio: "team.bios.yara",
     photo: "/images/team/yara.jpg",
@@ -46,10 +46,10 @@ export const teamMembers: TeamMember[] = [
   },
   {
     id: "5",
-    name: "Abdulrahman Daoud",
-    role: "team.roles.backendDev",
-    bio: "team.bios.abdulrahman",
-    photo: "/images/team/abdulrahman.jpg",
+    name: "Ali Habib",
+    role: "team.roles.flutter",
+    bio: "team.bios.alihabib",
+    photo: "/images/team/alihabib.jpg",
     socialLinks: {
       linkedin: "https://linkedin.com/in/abdulrahmandaoud",
       github: "https://github.com/abdulrahmandaoud",
