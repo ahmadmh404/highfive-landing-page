@@ -1,26 +1,21 @@
 {
   "$schema": "https://ui.shadcn.com/schema.json",
-  "style": "new-york",
+  "style": "default",
   "rsc": true,
   "tsx": true,
   "tailwind": {
-    "config": "",
+    "config": "tailwind.config.ts",
     "css": "app/globals.css",
-    "baseColor": "neutral",
+    "baseColor": "zinc",
     "cssVariables": true,
     "prefix": ""
   },
   "iconLibrary": "lucide",
   "aliases": {
     "components": "@/components",
-    "utils": "@/lib/utils",
-    "ui": "@/components/ui",
-    "lib": "@/lib",
-    "hooks": "@/hooks"
+    "utils": "@/lib/utils"
   },
   "registries": {
-    "@aceternity": "https://ui.aceternity.com/registry/{name}.json",
-    "@efferd": "https://efferd.com/r/{style}/{name}.json",
-    "@magicui": "https://magicui.design/r/{name}"
+    "@kibo-ui": "https://www.kibo-ui.com/r/{name}.json"
   }
 }

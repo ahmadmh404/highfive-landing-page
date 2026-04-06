@@ -7,11 +7,18 @@ export const translations = {
       contact: "Contact",
     },
     hero: {
+      badgeText: "We build custom apps, AI tools &amp; teach coding",
       title: "Transform Your Digital Vision Into Reality",
       subtitle:
         "We build cutting-edge web apps, mobile solutions, AI integrations, and high-converting social media content for global businesses.",
       cta: "Start Your Project",
       ctaSecondary: "Explore AI Tools",
+      stats: {
+        projects_delivered: "Projects Delivered",
+        global_clients: "Global Clients",
+        years_experience: "Years Experience",
+        client_satisfaction: "Client Satisfaction",
+      },
     },
     trustedBy: {
       title: "Trusted by innovative companies worldwide",
@@ -21,15 +28,18 @@ export const translations = {
       subtitle: "Comprehensive digital solutions for modern businesses",
       customDev: {
         title: "Custom Development",
-        description: "Tailored web applications, mobile apps, and custom software solutions built with cutting-edge technologies.",
+        description:
+          "Tailored web applications, mobile apps, and custom software solutions built with cutting-edge technologies.",
       },
       aiTools: {
         title: "AI Tools & Packages",
-        description: "Ready-to-use AI tools and machine learning packages to accelerate your business automation.",
+        description:
+          "Ready-to-use AI tools and machine learning packages to accelerate your business automation.",
       },
       courses: {
         title: "Programming Courses",
-        description: "Expert-led programming courses covering web, mobile, and AI development.",
+        description:
+          "Expert-led programming courses covering web, mobile, and AI development.",
       },
     },
     whyChooseUs: {
@@ -93,11 +103,14 @@ export const translations = {
         backendDev: "Backend Developer",
       },
       bios: {
-        ahmed: "Ahmad leads our technical strategy with 10+ years in full-stack development. Expert in React, Node.js, and cloud architecture.",
+        ahmed:
+          "Ahmad leads our technical strategy with 10+ years in full-stack development. Expert in React, Node.js, and cloud architecture.",
         ali: "Ali specializes in machine learning and AI integration. PhD in Computer Science from MIT.",
         yara: "Yara creates beautiful, intuitive interfaces that users love. 8 years of experience in UI/UX design.",
-        khalil: "Khalil ensures projects deliver on time and on budget. PMP certified with experience managing cross-functional teams.",
-        abdulrahman: "Abdulrahman builds robust backend systems and APIs. Expert in Python, Go, and distributed systems.",
+        khalil:
+          "Khalil ensures projects deliver on time and on budget. PMP certified with experience managing cross-functional teams.",
+        abdulrahman:
+          "Abdulrahman builds robust backend systems and APIs. Expert in Python, Go, and distributed systems.",
       },
     },
     techStack: {
@@ -229,11 +242,19 @@ export const translations = {
       contact: "اتصل بنا",
     },
     hero: {
+      badgeText:
+        "نحن نبني  تطبيقات متخصصة, أدوات ذكاء اصطناعي و نعلم البرمحة  ",
       title: "حول رؤيتك الرقمية إلى واقع",
       subtitle:
         "نبني تطبيقات ويب متطورة، حلول موبايل، تكامل الذكاء الاصطناعي، ومحتوى إعلانات سوشيال ميديا عالية التحويل للشركات العالمية.",
       cta: "ابدأ مشروعك",
       ctaSecondary: "استكشف أدوات الذكاء الاصطناعي",
+      stats: {
+        projects_delivered: "مشاريع تم تسليمها",
+        global_clients: "عدد العملاء",
+        years_experience: "سنوات الخبرة",
+        client_satisfaction: "رضا العملائ",
+      },
     },
     trustedBy: {
       title: "موثوق به من قبل شركات مبتكرة حول العالم",
@@ -243,15 +264,18 @@ export const translations = {
       subtitle: "حلول رقمية شاملة للشركات الحديثة",
       customDev: {
         title: "تطوير مخصص",
-        description: "تطبيقات ويب مخصصة وتطبيقات موبايل وحلول برمجية مصممة خصيصاً لاحتياجاتك.",
+        description:
+          "تطبيقات ويب مخصصة وتطبيقات موبايل وحلول برمجية مصممة خصيصاً لاحتياجاتك.",
       },
       aiTools: {
         title: "أدوات الذكاء الاصطناعي",
-        description: "أدوات ذكاء اصطناعي جاهزة وحزم تعلم آلي لتسريع أتمتة عملك.",
+        description:
+          "أدوات ذكاء اصطناعي جاهزة وحزم تعلم آلي لتسريع أتمتة عملك.",
       },
       courses: {
         title: "دورات البرمجة",
-        description: "دورات برمجة متخصصة تغطي تطوير الويب والموبايل والذكاء الاصطناعي.",
+        description:
+          "دورات برمجة متخصصة تغطي تطوير الويب والموبايل والذكاء الاصطناعي.",
       },
     },
     whyChooseUs: {
@@ -314,11 +338,14 @@ export const translations = {
         backendDev: "مطور backend",
       },
       bios: {
-        ahmed: "أحمد يقود استراتيجيتنا التقنية بأكثر من 10 سنوات في تطوير full-stack. خبير في React وNode.js.",
+        ahmed:
+          "أحمد يقود استراتيجيتنا التقنية بأكثر من 10 سنوات في تطوير full-stack. خبير في React وNode.js.",
         ali: "علي متخصص في التعلم الآلي وتكامل الذكاء الاصطناعي. حاصل على دكتوراه في علوم الحاسب من MIT.",
         yara: "يارا تصنع واجهات جميلة وسهلة الاستخدام. 8 سنوات خبرة في تصميم UI/UX.",
-        khalil: "خليل يضمن تسليم المشاريع في الوقت المحدد والميزانية. حاصل على PMP.",
-        abdulrahman: "عبد الرحمن يبني أنظمة backend قوية وواجهات برمجة. خبير في Python وGo والأنظمة الموزعة.",
+        khalil:
+          "خليل يضمن تسليم المشاريع في الوقت المحدد والميزانية. حاصل على PMP.",
+        abdulrahman:
+          "عبد الرحمن يبني أنظمة backend قوية وواجهات برمجة. خبير في Python وGo والأنظمة الموزعة.",
       },
     },
     techStack: {

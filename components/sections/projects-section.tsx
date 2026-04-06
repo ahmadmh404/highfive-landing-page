@@ -100,7 +100,9 @@ export function ProjectsSection({ t }: ProjectsSectionProps) {
                   </Badge>
                 </div>
                 <CardContent className="p-6">
-                  <h3 className="mb-2 text-xl font-semibold">{project.title}</h3>
+                  <h3 className="mb-2 text-xl font-semibold">
+                    {project.title}
+                  </h3>
                   <p className="mb-4 text-sm text-muted-foreground leading-relaxed">
                     {project.description}
                   </p>
@@ -117,7 +119,11 @@ export function ProjectsSection({ t }: ProjectsSectionProps) {
                       className="group/btn -ml-4 gap-2 p-4"
                       asChild
                     >
-                      <a href={project.link} target="_blank" rel="noopener noreferrer">
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         {t.viewCase}
                         <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
                       </a>

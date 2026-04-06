@@ -1,13 +1,18 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import { motion } from "framer-motion";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 interface FAQSectionProps {
   t: {
-    title: string
-    subtitle: string
-  }
+    title: string;
+    subtitle: string;
+  };
 }
 
 export function FAQSection({ t }: FAQSectionProps) {
@@ -43,7 +48,7 @@ export function FAQSection({ t }: FAQSectionProps) {
       answer:
         "Yes, we have expertise in building bilingual and multilingual applications with proper RTL support for Arabic and other languages. Our team ensures cultural appropriateness and linguistic accuracy.",
     },
-  ]
+  ];
 
   return (
     <section className="bg-muted/30 py-24 lg:py-32">
@@ -55,8 +60,12 @@ export function FAQSection({ t }: FAQSectionProps) {
           viewport={{ once: true }}
           className="mx-auto mb-16 max-w-3xl text-center"
         >
-          <h2 className="mb-4 text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">{t.title}</h2>
-          <p className="text-pretty text-lg text-muted-foreground lg:text-xl">{t.subtitle}</p>
+          <h2 className="mb-4 text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+            {t.title}
+          </h2>
+          <p className="text-pretty text-lg text-muted-foreground lg:text-xl">
+            {t.subtitle}
+          </p>
         </motion.div>
 
         {/* FAQ Accordion */}
@@ -76,12 +85,14 @@ export function FAQSection({ t }: FAQSectionProps) {
                 <AccordionTrigger className="text-left text-base font-semibold hover:no-underline">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground leading-relaxed">{faq.answer}</AccordionContent>
+                <AccordionContent className="text-muted-foreground leading-relaxed">
+                  {faq.answer}
+                </AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

@@ -1,15 +1,15 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Card, CardContent } from "@/components/ui/card"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Star } from "lucide-react"
+import { motion } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Star } from "lucide-react";
 
 interface TestimonialsSectionProps {
   t: {
-    title: string
-    subtitle: string
-  }
+    title: string;
+    subtitle: string;
+  };
 }
 
 export function TestimonialsSection({ t }: TestimonialsSectionProps) {
@@ -42,7 +42,7 @@ export function TestimonialsSection({ t }: TestimonialsSectionProps) {
       avatar: "/placeholder.svg?height=80&width=80",
       rating: 5,
     },
-  ]
+  ];
 
   return (
     <section className="py-24 lg:py-32">
@@ -54,8 +54,12 @@ export function TestimonialsSection({ t }: TestimonialsSectionProps) {
           viewport={{ once: true }}
           className="mx-auto mb-16 max-w-3xl text-center"
         >
-          <h2 className="mb-4 text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">{t.title}</h2>
-          <p className="text-pretty text-lg text-muted-foreground lg:text-xl">{t.subtitle}</p>
+          <h2 className="mb-4 text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+            {t.title}
+          </h2>
+          <p className="text-pretty text-lg text-muted-foreground lg:text-xl">
+            {t.subtitle}
+          </p>
         </motion.div>
 
         {/* Testimonials Grid */}
@@ -73,17 +77,25 @@ export function TestimonialsSection({ t }: TestimonialsSectionProps) {
                   {/* Rating */}
                   <div className="mb-4 flex gap-1">
                     {Array.from({ length: testimonial.rating }).map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                      <Star
+                        key={i}
+                        className="h-4 w-4 fill-yellow-400 text-yellow-400"
+                      />
                     ))}
                   </div>
 
                   {/* Content */}
-                  <p className="mb-6 text-muted-foreground leading-relaxed">{testimonial.content}</p>
+                  <p className="mb-6 text-muted-foreground leading-relaxed">
+                    {testimonial.content}
+                  </p>
 
                   {/* Author */}
                   <div className="flex items-center gap-4">
                     <Avatar className="h-12 w-12">
-                      <AvatarImage src={testimonial.avatar || "/placeholder.svg"} alt={testimonial.name} />
+                      <AvatarImage
+                        src={testimonial.avatar || "/placeholder.svg"}
+                        alt={testimonial.name}
+                      />
                       <AvatarFallback>
                         {testimonial.name
                           .split(" ")
@@ -105,5 +117,5 @@ export function TestimonialsSection({ t }: TestimonialsSectionProps) {
         </div>
       </div>
     </section>
-  )
+  );
 }

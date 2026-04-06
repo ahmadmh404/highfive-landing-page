@@ -67,10 +67,7 @@ export function CoursesSection({ t }: CoursesSectionProps) {
               <Card className="group h-full overflow-hidden border-border/50 transition-all hover:border-primary/50 hover:shadow-xl">
                 <CardContent className="flex flex-col p-6">
                   <div className="mb-4 flex items-center justify-between">
-                    <Badge
-                      variant="secondary"
-                      className="text-xs font-normal"
-                    >
+                    <Badge variant="secondary" className="text-xs font-normal">
                       {getLevelLabel(course.level)}
                     </Badge>
                     <div className="flex items-center gap-1 text-xs text-muted-foreground">

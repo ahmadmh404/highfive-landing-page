@@ -1,25 +1,25 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Award, Globe2, TrendingUp } from "lucide-react"
+import { motion } from "framer-motion";
+import { Award, Globe2, TrendingUp } from "lucide-react";
 
 interface WhyChooseUsSectionProps {
   t: {
-    title: string
-    subtitle: string
+    title: string;
+    subtitle: string;
     expertise: {
-      title: string
-      description: string
-    }
+      title: string;
+      description: string;
+    };
     global: {
-      title: string
-      description: string
-    }
+      title: string;
+      description: string;
+    };
     results: {
-      title: string
-      description: string
-    }
-  }
+      title: string;
+      description: string;
+    };
+  };
 }
 
 export function WhyChooseUsSection({ t }: WhyChooseUsSectionProps) {
@@ -39,7 +39,7 @@ export function WhyChooseUsSection({ t }: WhyChooseUsSectionProps) {
       title: t.results.title,
       description: t.results.description,
     },
-  ]
+  ];
 
   return (
     <section id="about" className="bg-muted/30 py-24 lg:py-32">
@@ -51,8 +51,12 @@ export function WhyChooseUsSection({ t }: WhyChooseUsSectionProps) {
           viewport={{ once: true }}
           className="mx-auto mb-16 max-w-3xl text-center"
         >
-          <h2 className="mb-4 text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">{t.title}</h2>
-          <p className="text-pretty text-lg text-muted-foreground lg:text-xl">{t.subtitle}</p>
+          <h2 className="mb-4 text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+            {t.title}
+          </h2>
+          <p className="text-pretty text-lg text-muted-foreground lg:text-xl">
+            {t.subtitle}
+          </p>
         </motion.div>
 
         {/* Features */}
@@ -70,11 +74,13 @@ export function WhyChooseUsSection({ t }: WhyChooseUsSectionProps) {
                 <feature.icon className="h-8 w-8 text-primary" />
               </div>
               <h3 className="mb-3 text-xl font-semibold">{feature.title}</h3>
-              <p className="text-pretty text-muted-foreground leading-relaxed">{feature.description}</p>
+              <p className="text-pretty text-muted-foreground leading-relaxed">
+                {feature.description}
+              </p>
             </motion.div>
           ))}
         </div>
       </div>
     </section>
-  )
+  );
 }

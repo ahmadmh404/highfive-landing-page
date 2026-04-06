@@ -4,14 +4,22 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
 import Link from "next/link";
+import { STATS } from "@/lib/constants";
 
 interface HeroSectionProps {
   locale: string;
   t: {
+    badgeText: string;
     title: string;
     subtitle: string;
     cta: string;
     ctaSecondary: string;
+    stats: {
+      projects_delivered: string;
+      global_clients: string;
+      years_experience: string;
+      client_satisfaction: string;
+    };
   };
 }
 
@@ -38,7 +46,7 @@ export function HeroSection({ locale, t }: HeroSectionProps) {
           >
             <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm font-medium text-primary">
               <Sparkles className="h-4 w-4" />
-              <span>We build custom apps, AI tools &amp; teach coding</span>
+              <span>{t.badgeText}</span>
             </div>
           </motion.div>
 
@@ -93,18 +101,13 @@ export function HeroSection({ locale, t }: HeroSectionProps) {
           transition={{ duration: 0.7, delay: 0.4 }}
           className="mx-auto mt-20 grid max-w-5xl grid-cols-2 gap-8 md:grid-cols-4"
         >
-          {[
-            { value: "500+", label: "Projects Delivered" },
-            { value: "50+", label: "Global Clients" },
-            { value: "15+", label: "Years Experience" },
-            { value: "98%", label: "Client Satisfaction" },
-          ].map((stat, index) => (
+          {STATS.map((stat, index) => (
             <div key={index} className="text-center">
               <div className="text-3xl font-bold text-foreground lg:text-4xl">
                 {stat.value}
               </div>
               <div className="mt-2 text-sm text-muted-foreground lg:text-base">
-                {stat.label}
+                {t.stats[stat.label as keyof typeof t.stats]}
               </div>
             </div>
           ))}

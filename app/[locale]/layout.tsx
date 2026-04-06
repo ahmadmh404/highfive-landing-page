@@ -1,13 +1,23 @@
 import type React from "react";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Cairo } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next";
+import {
+  Geist,
+  Geist_Mono,
+  Cairo,
+  Space_Grotesk,
+  Inter,
+} from "next/font/google";
 import { ThemeProvider } from "@/lib/theme/theme-provider";
 import { isRTL, type Locale } from "@/lib/i18n/config";
 import "../globals.css";
 
-const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
-const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-mono" });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
+});
+
 const cairo = Cairo({
   subsets: ["arabic", "latin"],
   variable: "--font-arabic",
@@ -90,15 +100,14 @@ export default async function LocaleLayout({
 }) {
   const { locale } = await params;
   const dir = isRTL(locale) ? "rtl" : "ltr";
-  const fontClass = locale === "ar" ? cairo.variable : geist.variable;
+  const fontClass = locale === "ar" ? cairo.variable : inter.variable;
 
   return (
     <html lang={locale} dir={dir}>
       <body
-        className={`${fontClass} ${geistMono.variable} font-sans antialiased`}
+        className={`${fontClass} ${spaceGrotesk.variable} font-sans antialiased`}
       >
         <ThemeProvider>{children}</ThemeProvider>
-        <Analytics />
       </body>
     </html>
   );

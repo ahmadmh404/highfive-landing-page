@@ -1,0 +1,111 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { Button } from "./ui/MovingBorders";
+import { FaCode, FaBrain, FaGraduationCap } from "react-icons/fa6";
+
+const icons = [FaCode, FaBrain, FaGraduationCap];
+
+interface ServicesSectionProps {
+  t: {
+    title: string;
+    subtitle: string;
+    customDev: {
+      title: string;
+      description: string;
+    };
+    aiTools: {
+      title: string;
+      description: string;
+    };
+    courses: {
+      title: string;
+      description: string;
+    };
+  };
+}
+
+export default function ServicesSection({ t }: ServicesSectionProps) {
+  const services = [
+    { key: "customDev", icon: FaCode, color: "#CBACF9" },
+    { key: "aiTools", icon: FaBrain, color: "#E4ECFF" },
+    { key: "courses", icon: FaGraduationCap, color: "#CBACF9" },
+  ];
+
+  return (
+    <section id="services" className="w-full py-20">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="text-center mb-16"
+      >
+        <h2 className="heading">
+          {t.title.split(" ").map((word: string, i: number) =>
+            i === 2 ? (
+              <span key={i} className="text-purple">
+                {" "}
+                {word}
+              </span>
+            ) : (
+              <span key={i}> {word}</span>
+            ),
+          )}
+        </h2>
+        <p
+          className="mt-4 text-base md:text-lg max-w-2xl mx-auto"
+          style={{ color: "#C1C2D3" }}
+        >
+          {t.subtitle}
+        </p>
+      </motion.div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+        {services.map(({ key, icon: Icon, color }, i) => (
+          <motion.div
+            key={key}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: i * 0.15 }}
+          >
+            <Button
+              borderRadius="1.5rem"
+              containerClassName="w-full h-full"
+              duration={Math.floor(Math.random() * 5000) + 8000}
+              style={{
+                background: "rgb(4,7,29)",
+                backgroundColor:
+                  "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
+                borderRadius: "calc(1.5rem * 0.96)",
+              }}
+              className="w-full text-white border-white/10"
+            >
+              <div className="p-8 flex flex-col gap-4 h-full">
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center"
+                  style={{
+                    background: `${color}15`,
+                    border: `1px solid ${color}30`,
+                  }}
+                >
+                  <Icon style={{ color }} className="w-5 h-5" />
+                </div>
+                <h3 className="text-xl font-bold font-display text-white">
+                  {(t as any)[key].title}
+                </h3>
+                <p
+                  className="text-sm leading-relaxed"
+                  style={{ color: "#BEC1DD" }}
+                >
+                  {(t as any)[key].description}
+                </p>
+              </div>
+            </Button>
+          </motion.div>
+        ))}
+      </div>
+    </section>
+  );
+}

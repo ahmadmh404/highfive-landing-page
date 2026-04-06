@@ -1,23 +1,21 @@
 import { getTranslations } from "@/lib/i18n/get-translations";
 import type { Locale } from "@/lib/i18n/config";
-import { Header } from "@/components/header";
-import { Footer } from "@/components/footer";
-import { HeroSection } from "@/components/sections/hero-section";
-import { TrustedBySection } from "@/components/sections/trusted-by-section";
-import { ServicesSection } from "@/components/sections/services-section";
-import { WhyChooseUsSection } from "@/components/sections/why-choose-us-section";
-import { ProcessSection } from "@/components/sections/process-section";
-import { TeamSection } from "@/components/sections/team-section";
-import { ProjectsSection } from "@/components/sections/projects-section";
-import { CoursesSection } from "@/components/sections/courses-section";
-import { TechStackSection } from "@/components/sections/tech-stack-section";
-import { AICapabilitiesSection } from "@/components/sections/ai-capabilities-section";
-import { AiToolsSection } from "@/components/sections/AiTools";
-import { TestimonialsSection } from "@/components/sections/testimonials-section";
-import { NewsletterSection } from "@/components/sections/newsletter-section";
 import { FAQSection } from "@/components/sections/faq-section";
-import { CTASection } from "@/components/sections/cta-section";
-import { ContactSection } from "@/components/sections/contact-section";
+import { FloatingNav } from "@/components/ui/FloatingNavbar";
+import AIToolsSection from "@/components/AIToolsSection";
+import FooterSection from "@/components/FooterSection";
+import { navItems } from "@/data";
+import HeroSection from "@/components/HeroSection";
+import ServicesSection from "@/components/ServicesSection";
+import WhyChooseUsSection from "@/components/WhyChooseUsSection";
+import ProcessSection from "@/components/ProcessSection";
+import TeamSection from "@/components/TeamSection";
+import ProjectsSection from "@/components/ProjectsSection";
+import TechStackSection from "@/components/TechStackSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import ContactSection from "@/components/ContactSection";
+import { CoursesSection } from "@/components/sections/courses-section";
+import CoursesCarousel from "./courses-carousel";
 
 export default async function HomePage({
   params,
@@ -28,27 +26,22 @@ export default async function HomePage({
   const t = getTranslations(locale);
 
   return (
-    <>
-      <Header locale={locale} />
-      <main>
+    <main className="relative flex justify-center items-center flex-col overflow-hidden mx-auto sm:px-10 px-5 bg-[rgb(4,7,29)] bg-linear-[(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)]">
+      <div className="max-w-7xl w-full">
+        <FloatingNav locale={locale} navItems={navItems} />
         <HeroSection locale={locale} t={t.hero} />
-        <TrustedBySection t={t.trustedBy} />
         <ServicesSection t={t.services} />
         <WhyChooseUsSection t={t.whyChooseUs} />
         <ProcessSection t={t.process} />
         <TeamSection t={t.team} />
         <ProjectsSection t={t.projects} />
-        <CoursesSection t={t.courses} />
         <TechStackSection t={t.techStack} />
-        <AICapabilitiesSection t={t.aiCapabilities} />
-        <AiToolsSection t={t.aiTools} />
         <TestimonialsSection t={t.testimonials} />
-        <NewsletterSection t={t.newsletter} />
+        <AIToolsSection t={t.aiTools} />
         <FAQSection t={t.faq} />
-        <CTASection locale={locale} t={t.cta} />
         <ContactSection t={t.contact} />
-      </main>
-      <Footer locale={locale} t={t} />
-    </>
+        <FooterSection t={t.footer} />
+      </div>
+    </main>
   );
 }

@@ -1,0 +1,7 @@
+{
+  "rules": {
+    "no-unused-vars": "warn",
+    "import/no-unused-modules": ["warn", { "unusedExports": true }]
+  },
+  "extends": "next/core-web-vitals"
+}

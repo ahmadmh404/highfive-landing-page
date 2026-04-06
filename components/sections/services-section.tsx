@@ -1,7 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Code, Sparkles, GraduationCap } from "lucide-react";
 
 interface ServicesSectionProps {
@@ -60,7 +66,9 @@ export function ServicesSection({ t }: ServicesSectionProps) {
           <h2 className="mb-4 text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
             {t.title}
           </h2>
-          <p className="text-pretty text-lg text-muted-foreground lg:text-xl">{t.subtitle}</p>
+          <p className="text-pretty text-lg text-muted-foreground lg:text-xl">
+            {t.subtitle}
+          </p>
         </motion.div>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
