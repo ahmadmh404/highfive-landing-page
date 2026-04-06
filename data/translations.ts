@@ -60,6 +60,18 @@ export const translations = {
         description:
           "We focus on measurable outcomes that drive your business forward.",
       },
+      techStack: {
+        title: "Tech Stack",
+        description: "We master the tools that matter.",
+      },
+      bilingual: {
+        title: "Bilingual Agency — Arabic & English",
+      },
+      ready: {
+        title: "Ready to start a project?",
+        CTA: "Cop Our Email Address!",
+        success: "Email is Copied!",
+      },
     },
     process: {
       title: "Our Process",
@@ -260,6 +272,18 @@ export const translations = {
       results: {
         title: "مدفوع بالنتائج",
         description: "نركز على النتائج القابلة للقياس التي تدفع عملك للأمام.",
+      },
+      techStack: {
+        title: "التقنيات المستخدمة",
+        description: "نتقن الأدوات التي تُحدث الفرق.",
+      },
+      bilingual: {
+        title: "وكالة ثنائية اللغة — العربية والإنجليزية",
+      },
+      ready: {
+        title: "هل أنت مستد للبء بمشروعك",
+        CTA: "انسخ الإيميل الخاص بنا",
+        success: "تم نسخ الإيميل!",
       },
     },
     process: {

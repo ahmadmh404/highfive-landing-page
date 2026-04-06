@@ -60,6 +60,17 @@ export const translations = {
         description:
           "We focus on measurable outcomes that drive your business forward.",
       },
+      techStack: {
+        title: "Tech Stack",
+        description: "We master the tools that matter.",
+      },
+      bilingual: {
+        title: "Bilingual Agency — Arabic & English",
+      },
+      ready: {
+        title: "Ready to start a project?",
+        CTA: "Cop Our Email Address!",
+      },
     },
     process: {
       title: "Our Process",
@@ -80,6 +91,10 @@ export const translations = {
         title: "Launch & Support",
         description: "Deploy and provide ongoing maintenance.",
       },
+    },
+    techStack: {
+      title: "Technologies We Master",
+      subtitle: "Building with industry-leading tools",
     },
     projects: {
       title: "Our Projects",
@@ -112,10 +127,6 @@ export const translations = {
         abdulrahman:
           "Abdulrahman builds robust backend systems and APIs. Expert in Python, Go, and distributed systems.",
       },
-    },
-    techStack: {
-      title: "Technologies We Master",
-      subtitle: "Building with industry-leading tools",
     },
     courses: {
       title: "Available Courses",
@@ -295,6 +306,17 @@ export const translations = {
         title: "مدفوع بالنتائج",
         description: "نركز على النتائج القابلة للقياس التي تدفع عملك للأمام.",
       },
+      techStack: {
+        title: "التقنيات المستخدمة",
+        description: "نتقن الأدوات التي تُحدث الفرق.",
+      },
+      bilingual: {
+        title: "وكالة ثنائية اللغة — العربية والإنجليزية",
+      },
+      ready: {
+        title: "هل أنت مستد للبء بمشروعك",
+        CTA: "انسخ الإيميل الخاص بنا",
+      },
     },
     process: {
       title: "عمليتنا",
@@ -315,6 +337,10 @@ export const translations = {
         title: "الإطلاق والدعم",
         description: "نطلق ونوفر صيانة مستمرة.",
       },
+    },
+    techStack: {
+      title: "التقنيات التي نتقنها",
+      subtitle: "البناء بأدوات رائدة في الصناعة",
     },
     projects: {
       title: "مشاريعنا",
@@ -348,10 +374,7 @@ export const translations = {
           "عبد الرحمن يبني أنظمة backend قوية وواجهات برمجة. خبير في Python وGo والأنظمة الموزعة.",
       },
     },
-    techStack: {
-      title: "التقنيات التي نتقنها",
-      subtitle: "البناء بأدوات رائدة في الصناعة",
-    },
+
     courses: {
       title: "الدورات المتاحة",
       subtitle: "ارفع مستواك مع تدريب من خبراء",

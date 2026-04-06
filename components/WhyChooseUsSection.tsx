@@ -20,6 +20,18 @@ interface WhyChooseUsSectionProps {
       title: string;
       description: string;
     };
+    techStack: {
+      title: string;
+      description: string;
+    };
+    bilingual: {
+      title: string;
+    };
+    ready: {
+      title: string;
+      CTA: string;
+      success: string;
+    };
   };
 }
 
@@ -34,6 +46,8 @@ export default function WhyChooseUsSection({ t }: WhyChooseUsSectionProps) {
       titleClassName: "justify-end",
       img: "/b1.svg",
       spareImg: "",
+      CTA: "",
+      success: "",
     },
     {
       id: 2,
@@ -44,26 +58,32 @@ export default function WhyChooseUsSection({ t }: WhyChooseUsSectionProps) {
       titleClassName: "justify-start",
       img: "",
       spareImg: "",
+      CTA: "",
+      success: "",
     },
     {
       id: 3,
-      title: "Tech Stack",
-      description: "We master the tools that matter",
+      title: t.techStack.title,
+      description: t.techStack.description,
       className: "lg:col-span-2 md:col-span-3 md:row-span-2",
       imgClassName: "",
       titleClassName: "justify-center",
       img: "",
       spareImg: "",
+      CTA: "",
+      success: "",
     },
     {
       id: 4,
-      title: "Bilingual Agency — Arabic & English",
+      title: t.bilingual.title,
       description: "",
       className: "lg:col-span-2 md:col-span-3 md:row-span-1",
       imgClassName: "",
       titleClassName: "justify-start",
       img: "/grid.svg",
       spareImg: "/b4.svg",
+      CTA: "",
+      success: "",
     },
     {
       id: 5,
@@ -74,16 +94,20 @@ export default function WhyChooseUsSection({ t }: WhyChooseUsSectionProps) {
       titleClassName: "justify-center md:justify-start lg:justify-center",
       img: "/b5.svg",
       spareImg: "/grid.svg",
+      CTA: "",
+      success: "",
     },
     {
       id: 6,
-      title: "Ready to start a project?",
+      title: t.ready.title,
       description: "",
       className: "lg:col-span-2 md:col-span-3 md:row-span-1",
       imgClassName: "",
       titleClassName: "justify-center md:max-w-full max-w-60 text-center",
       img: "",
       spareImg: "",
+      CTA: t.ready.CTA,
+      success: t.ready.success,
     },
   ];
 
@@ -119,6 +143,8 @@ export default function WhyChooseUsSection({ t }: WhyChooseUsSectionProps) {
             imgClassName={item.imgClassName}
             titleClassName={item.titleClassName}
             spareImg={item.spareImg}
+            CTA={item.CTA}
+            success={item.success}
           />
         ))}
       </BentoGrid>

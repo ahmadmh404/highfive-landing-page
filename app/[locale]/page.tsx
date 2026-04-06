@@ -14,8 +14,6 @@ import ProjectsSection from "@/components/ProjectsSection";
 import TechStackSection from "@/components/TechStackSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactSection from "@/components/ContactSection";
-import { CoursesSection } from "@/components/sections/courses-section";
-import CoursesCarousel from "./courses-carousel";
 
 export default async function HomePage({
   params,
