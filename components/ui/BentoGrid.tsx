@@ -78,14 +78,10 @@ export const BentoGridItem = ({
   return (
     <div
       className={cn(
-        "row-span-1 relative overflow-hidden rounded-3xl border border-white/[0.1] group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none justify-between flex flex-col space-y-4",
+        "row-span-1 relative overflow-hidden border border-border group/bento hover:shadow-2xl transition duration-300 flex flex-col space-y-4 bg-card",
         className,
       )}
-      style={{
-        background: "rgb(4,7,29)",
-        backgroundColor:
-          "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
-      }}
+      style={{ borderRadius: "var(--radius-xl)" }}
     >
       {/* add img divs */}
       <div className={`${id === 6 && "flex justify-center"} h-full`}>
@@ -143,7 +139,11 @@ export const BentoGridItem = ({
           </div>
 
           {/* for the github 3d globe */}
-          {id === 2 && <GridGlobe />}
+          {id === 2 && (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <GridGlobe />
+            </div>
+          )}
 
           {/* Tech stack list div */}
           {id === 3 && (

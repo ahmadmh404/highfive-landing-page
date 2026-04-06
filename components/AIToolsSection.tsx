@@ -73,7 +73,7 @@ export default function AIToolsSection({ t }: AIToolsSectionProps) {
         </p>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 items-start gap-6">
         {toolKeys.map((key, i) => {
           const Icon = toolIcons[i];
           const color = toolColors[i];
@@ -87,7 +87,7 @@ export default function AIToolsSection({ t }: AIToolsSectionProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.15 }}
-              className="relative rounded-2xl overflow-hidden cursor-pointer group"
+              className="relative rounded-2xl overflow-hidden cursor-pointer group shrink-0"
               style={{
                 background: "rgb(4,7,29)",
                 border: isActive

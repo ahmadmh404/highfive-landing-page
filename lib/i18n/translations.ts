@@ -70,6 +70,7 @@ export const translations = {
       ready: {
         title: "Ready to start a project?",
         CTA: "Cop Our Email Address!",
+        success: "Email is Copied!",
       },
     },
     process: {
@@ -316,6 +317,7 @@ export const translations = {
       ready: {
         title: "هل أنت مستد للبء بمشروعك",
         CTA: "انسخ الإيميل الخاص بنا",
+        success: "تم نسخ الإيميل!",
       },
     },
     process: {

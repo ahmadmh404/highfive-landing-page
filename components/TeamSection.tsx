@@ -1,17 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { CanvasRevealEffect } from "./ui/CanvasRevealEffect";
-import type { Lang } from "@/data/translations";
+import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 interface TeamMember {
   nameKey: string;
   roleKey: string;
   bioKey: string;
-  initials: string;
-  color: string;
-  canvasColors: number[][];
+  image: string; // Added image path
+  rotation: number; // For the "tilted" effect
 }
 
 const members: TeamMember[] = [
@@ -19,171 +17,135 @@ const members: TeamMember[] = [
     nameKey: "Ahmad",
     roleKey: "leadDeveloper",
     bioKey: "ahmed",
-    initials: "AH",
-    color: "#CBACF9",
-    canvasColors: [[203, 172, 249]],
+    image: "/team/ahmad.jpg",
+    rotation: -3,
   },
   {
     nameKey: "Ali",
     roleKey: "aiEngineer",
     bioKey: "ali",
-    initials: "AL",
-    color: "#E4ECFF",
-    canvasColors: [[100, 150, 255]],
+    image: "/team/ali.jpg",
+    rotation: 2,
   },
   {
     nameKey: "Yara",
     roleKey: "uiDesigner",
     bioKey: "yara",
-    initials: "YA",
-    color: "#CBACF9",
-    canvasColors: [
-      [203, 172, 249],
-      [100, 80, 200],
-    ],
+    image: "/team/yara.jpg",
+    rotation: -2,
   },
   {
     nameKey: "Khalil",
     roleKey: "projectManager",
     bioKey: "khalil",
-    initials: "KH",
-    color: "#E4ECFF",
-    canvasColors: [[80, 120, 220]],
+    image: "/team/khalil.jpg",
+    rotation: 3,
   },
   {
     nameKey: "Abdulrahman",
     roleKey: "backendDev",
     bioKey: "abdulrahman",
-    initials: "AB",
-    color: "#CBACF9",
-    canvasColors: [
-      [160, 100, 255],
-      [203, 172, 249],
-    ],
+    image: "/team/abdul.jpg",
+    rotation: -1,
   },
 ];
 
-interface TeamSectionProps {
-  t: {
-    title: string;
-    subtitle: string;
-  };
-}
-
 function TeamCard({ member, t }: { member: TeamMember; t: any }) {
-  const [hovered, setHovered] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div
-      className="relative h-72 w-full cursor-pointer group rounded-2xl overflow-hidden"
-      style={{
-        background: "rgb(4,7,29)",
-        border: `1px solid rgba(255,255,255,0.1)`,
+    <motion.div
+      className="relative group cursor-pointer"
+      initial={{ rotate: member.rotation }}
+      whileHover={{
+        rotate: 0,
+        scale: 1.05,
+        zIndex: 20,
+        transition: { type: "spring", stiffness: 260, damping: 20 },
       }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
     >
-      {/* Canvas Reveal Effect on hover */}
-      <div className="absolute inset-0">
-        {hovered && (
-          <CanvasRevealEffect
-            animationSpeed={3}
-            containerClassName="bg-transparent absolute inset-0"
-            colors={member.canvasColors}
-            dotSize={2}
-            showGradient={false}
-          />
-        )}
-        {/* Dark overlay — fades out on hover to reveal canvas */}
-        <div
-          className="absolute inset-0 transition-opacity duration-500"
-          style={{
-            background: "rgb(4,7,29)",
-            opacity: hovered ? 0 : 1,
-          }}
+      {/* 1. The Main Image Container */}
+      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-white/10 bg-[#04071D]">
+        <Image
+          src={member.image}
+          alt={member.nameKey}
+          fill
+          className={`object-cover transition-all duration-700 ease-in-out ${
+            isHovered ? "grayscale-0 scale-110" : "grayscale opacity-60"
+          }`}
         />
-      </div>
 
-      {/* Content — always on top */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full gap-4 p-6">
-        {/* Avatar */}
-        <div
-          className="w-20 h-20 rounded-full flex items-center justify-center text-2xl font-bold font-display transition-all duration-300"
-          style={{
-            background: hovered
-              ? "rgba(255,255,255,0.15)"
-              : `${member.color}20`,
-            border: `2px solid ${hovered ? "rgba(255,255,255,0.4)" : `${member.color}50`}`,
-            color: hovered ? "#fff" : member.color,
-          }}
-        >
-          {member.initials}
+        {/* 2. Glassmorphism Overlay (The "Label") */}
+        <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-background via-background/80 to-transparent translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+          <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-xl p-4 shadow-2xl">
+            <h3 className="font-bold text-foreground text-lg font-display tracking-tight">
+              {member.nameKey}
+            </h3>
+            <p className="text-[10px] uppercase tracking-[0.2em] text-[#CBACF9] font-semibold">
+              {(t.roles as any)[member.roleKey]}
+            </p>
+
+            {/* Bio appears on hover */}
+            <AnimatePresence>
+              {isHovered && (
+                <motion.p
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  className="text-xs text-muted-foreground mt-3 leading-relaxed overflow-hidden"
+                >
+                  {(t.bios as any)[member.bioKey]}
+                </motion.p>
+              )}
+            </AnimatePresence>
+          </div>
         </div>
 
-        {/* Name & Role */}
-        <div className="text-center">
-          <h3
-            className="font-bold text-lg transition-colors duration-300"
-            style={{ color: hovered ? "#fff" : "#E4ECFF" }}
-          >
-            {member.nameKey}
-          </h3>
-          <p
-            className="text-sm mt-1 transition-colors duration-300"
-            style={{ color: hovered ? "rgba(255,255,255,0.8)" : "#C1C2D3" }}
-          >
-            {(t.roles as any)[member.roleKey]}
-          </p>
-        </div>
-
-        {/* Bio — only visible on hover */}
-        <motion.p
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 8 }}
-          transition={{ duration: 0.3 }}
-          className="text-xs text-center leading-relaxed absolute bottom-6 left-4 right-4"
-          style={{ color: "rgba(255,255,255,0.7)" }}
-        >
-          {(t.bios as any)[member.bioKey]}
-        </motion.p>
+        {/* 3. Top Shimmer Highlight (HighFive Signature) */}
+        <div className="absolute inset-0 border border-white/10 rounded-2xl pointer-events-none group-hover:border-[#CBACF9]/30 transition-colors" />
       </div>
-    </div>
+
+      {/* 4. Soft Glow behind card */}
+      <div className="absolute -inset-2 bg-primary/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
+    </motion.div>
   );
 }
 
-export default function TeamSection({ t }: TeamSectionProps) {
+export default function TeamSection({ t }: any) {
   return (
-    <section id="team" className="w-full py-20">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="text-center mb-16"
-      >
-        <h2 className="heading">
-          Meet Our <span className="text-purple">Team</span>
-        </h2>
-        <p
-          className="mt-4 text-base md:text-lg max-w-2xl mx-auto"
-          style={{ color: "#C1C2D3" }}
+    <section id="team" className="relative w-full py-24 overflow-hidden">
+      {/* Background Ambient Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-accent/5 blur-[120px] rounded-full pointer-events-none" />
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-24"
         >
-          {t.subtitle}
-        </p>
-      </motion.div>
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight font-display bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/60">
+            The <span className="text-primary">Architects</span> behind the code
+          </h2>
+          <p className="mt-4 text-muted-foreground max-w-lg mx-auto text-base md:text-lg leading-relaxed">
+            {t.subtitle}
+          </p>
+        </motion.div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-        {members.map((member, i) => (
-          <motion.div
-            key={member.nameKey}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: i * 0.1 }}
-          >
-            <TeamCard member={member} t={t} />
-          </motion.div>
-        ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-8 px-4">
+          {members.map((member, i) => (
+            <motion.div
+              key={member.nameKey}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+            >
+              <TeamCard member={member} t={t} />
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

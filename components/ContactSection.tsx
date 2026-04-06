@@ -10,81 +10,6 @@ import {
   FaMapPin,
 } from "react-icons/fa6";
 
-const World = dynamic(() => import("./ui/Globe").then((m) => m.World), {
-  ssr: false,
-});
-
-const globeConfig = {
-  pointSize: 4,
-  globeColor: "#062056",
-  showAtmosphere: true,
-  atmosphereColor: "#FFFFFF",
-  atmosphereAltitude: 0.1,
-  emissive: "#062056",
-  emissiveIntensity: 0.1,
-  shininess: 0.9,
-  polygonColor: "rgba(255,255,255,0.7)",
-  ambientLight: "#38bdf8",
-  directionalLeftLight: "#ffffff",
-  directionalTopLight: "#ffffff",
-  pointLight: "#ffffff",
-  arcTime: 1000,
-  arcLength: 0.9,
-  rings: 1,
-  maxRings: 3,
-  initialPosition: { lat: 24.7136, lng: 46.6753 },
-  autoRotate: true,
-  autoRotateSpeed: 0.5,
-};
-
-const sampleArcs = [
-  {
-    order: 1,
-    startLat: 24.7136,
-    startLng: 46.6753,
-    endLat: 51.5072,
-    endLng: -0.1276,
-    arcAlt: 0.4,
-    color: "#CBACF9",
-  },
-  {
-    order: 2,
-    startLat: 25.2048,
-    startLng: 55.2708,
-    endLat: 40.7128,
-    endLng: -74.006,
-    arcAlt: 0.5,
-    color: "#E4ECFF",
-  },
-  {
-    order: 3,
-    startLat: 30.0444,
-    startLng: 31.2357,
-    endLat: 48.8566,
-    endLng: 2.3522,
-    arcAlt: 0.3,
-    color: "#CBACF9",
-  },
-  {
-    order: 4,
-    startLat: 33.8869,
-    startLng: 9.5375,
-    endLat: 1.3521,
-    endLng: 103.8198,
-    arcAlt: 0.6,
-    color: "#E4ECFF",
-  },
-  {
-    order: 5,
-    startLat: 51.5072,
-    startLng: -0.1276,
-    endLat: 35.6762,
-    endLng: 139.6503,
-    arcAlt: 0.4,
-    color: "#CBACF9",
-  },
-];
-
 interface ContactSectionProps {
   t: {
     title: string;
@@ -115,13 +40,6 @@ export default function ContactSection({ t }: ContactSectionProps) {
 
   return (
     <section id="contact" className="w-full py-20 relative">
-      {/* Globe background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-30">
-        <div className="absolute right-0 top-0 w-full h-full max-w-xl ml-auto">
-          <World data={sampleArcs} globeConfig={globeConfig} />
-        </div>
-      </div>
-
       {/* Grid background overlay */}
       <div className="w-full absolute left-0 -bottom-72 min-h-96 pointer-events-none">
         <img
