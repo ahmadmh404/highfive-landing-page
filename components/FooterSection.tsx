@@ -42,15 +42,6 @@ interface FooterSectionProps {
 export default function FooterSection({ t }: FooterSectionProps) {
   return (
     <footer className="w-full pt-20 pb-10 relative" id="footer">
-      {/* Grid background */}
-      <div className="w-full absolute left-0 -bottom-72 min-h-96">
-        <img
-          src="/footer-grid.svg"
-          alt="grid"
-          className="w-full h-full opacity-50"
-        />
-      </div>
-
       {/* CTA Block */}
       <div className="relative z-10 flex flex-col items-center text-center mb-16">
         <motion.h2
