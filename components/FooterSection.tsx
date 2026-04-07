@@ -51,7 +51,7 @@ export default function FooterSection({ t }: FooterSectionProps) {
           transition={{ duration: 0.6 }}
           className="text-3xl md:text-5xl font-bold max-w-2xl leading-tight font-display"
         >
-          Ready to take <span className="text-purple">your</span> digital
+          Ready to take <span className="text-primary">your</span> digital
           presence to the next level?
         </motion.h2>
         <p

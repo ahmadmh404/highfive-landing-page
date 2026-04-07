@@ -97,7 +97,7 @@ export default function ProjectsSection({ t }: ProjectsSectionProps) {
         className="text-center mb-12"
       >
         <h2 className="heading">
-          Our <span className="text-purple">Projects</span>
+          Our <span className="text-primary">Projects</span>
         </h2>
         <p
           className="mt-4 text-base md:text-lg max-w-2xl mx-auto text-muted-foreground"

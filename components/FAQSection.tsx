@@ -51,7 +51,7 @@ export default function FAQSection({ lang, t }: FAQSectionProps) {
         className="text-center mb-16"
       >
         <h2 className="heading">
-          Frequently Asked <span className="text-purple">Questions</span>
+          Frequently Asked <span className="text-primary">Questions</span>
         </h2>
         <p
           className="mt-4 text-base md:text-lg max-w-2xl mx-auto text-muted-foreground"
@@ -67,7 +67,7 @@ export default function FAQSection({ lang, t }: FAQSectionProps) {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: i * 0.08 }}
+            transition={{ duration: 0.6, delay: i * 0.1 }}
             className={`rounded-2xl overflow-hidden bg-background border transition-colors duration-300 ${
               openIndex === i ? "border-primary/30" : "border-border"
             }`}
@@ -94,7 +94,7 @@ export default function FAQSection({ lang, t }: FAQSectionProps) {
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: "auto", opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  transition={{ duration: 0.3 }}
                   className="overflow-hidden"
                 >
                   <div

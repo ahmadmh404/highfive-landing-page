@@ -55,7 +55,7 @@ export default function TestimonialsSection({ t }: TestimonialsSectionProps) {
         className="text-center mb-16"
       >
         <h2 className="heading">
-          What Our <span className="text-purple">Clients Say</span>
+          What Our <span className="text-primary">Clients Say</span>
         </h2>
         <p
           className="mt-4 text-base md:text-lg max-w-2xl mx-auto text-muted-foreground"

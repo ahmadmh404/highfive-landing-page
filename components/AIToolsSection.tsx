@@ -63,7 +63,7 @@ export default function AIToolsSection({ t }: AIToolsSectionProps) {
         className="text-center mb-16"
       >
         <h2 className="heading">
-          AI <span className="text-purple">Tools</span>
+          AI <span className="text-primary">Tools</span>
         </h2>
         <p
           className="mt-4 text-base md:text-lg max-w-2xl mx-auto text-muted-foreground"
@@ -85,7 +85,7 @@ export default function AIToolsSection({ t }: AIToolsSectionProps) {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.15 }}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
               className="relative rounded-2xl overflow-hidden cursor-pointer group shrink-0 bg-background border border-border"
               style={{
                 boxShadow: isActive ? `0 0 30px ${color}15` : "none",

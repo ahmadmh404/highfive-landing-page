@@ -272,7 +272,7 @@ export default function HeroSection({ locale, t }: HeroSectionProps) {
                 {stat.value}
               </span>
 
-              <span className="text-[10px] md:text-xs mt-2 uppercase tracking-[0.2em] font-medium text-center text-muted-foreground">
+              <span className="text-xs mt-2 uppercase tracking-[0.2em] font-medium text-center text-muted-foreground">
                 {t.stats[stat.label as keyof typeof t.stats]}
               </span>
 

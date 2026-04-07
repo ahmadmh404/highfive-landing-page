@@ -57,7 +57,7 @@ export default function ContactSection({ t }: ContactSectionProps) {
         className="text-center mb-16 relative z-10"
       >
         <h2 className="heading">
-          Get In <span className="text-purple">Touch</span>
+          Get In <span className="text-primary">Touch</span>
         </h2>
         <p
           className="mt-4 text-base md:text-lg max-w-2xl mx-auto text-muted-foreground"

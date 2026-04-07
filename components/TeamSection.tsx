@@ -102,7 +102,7 @@ function TeamCard({ member, t }: { member: TeamMember; t: TeamTranslations }) {
             <h3 className="font-bold text-foreground text-lg font-display tracking-tight">
               {member.nameKey}
             </h3>
-            <p className="text-[10px] uppercase tracking-[0.2em] text-primary font-semibold">
+            <p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold">
               {t.roles[member.roleKey as keyof typeof t.roles]}
             </p>
 

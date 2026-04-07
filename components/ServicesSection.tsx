@@ -44,7 +44,7 @@ export default function ServicesSection({ t }: ServicesSectionProps) {
         <h2 className="heading">
           {t.title.split(" ").map((word: string, i: number) =>
             i === 2 ? (
-              <span key={i} className="text-purple">
+              <span key={i} className="text-primary">
                 {" "}
                 {word}
               </span>
@@ -67,7 +67,7 @@ export default function ServicesSection({ t }: ServicesSectionProps) {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: i * 0.15 }}
+            transition={{ duration: 0.6, delay: i * 0.1 }}
           >
             <Button
               borderRadius="1.5rem"

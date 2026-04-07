@@ -121,7 +121,7 @@ export default function WhyChooseUsSection({ t }: WhyChooseUsSectionProps) {
         className="text-center mb-16"
       >
         <h2 className="heading">
-          Why Choose <span className="text-purple">HighFive</span>
+          Why Choose <span className="text-primary">HighFive</span>
         </h2>
         <p
           className="mt-4 text-base md:text-lg max-w-2xl mx-auto text-muted-foreground"

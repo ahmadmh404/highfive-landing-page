@@ -51,7 +51,7 @@ export default function TechStackSection({ t }: TechStackSectionProps) {
         className="text-center mb-16"
       >
         <h2 className="heading">
-          Technologies We <span className="text-purple">Master</span>
+          Technologies We <span className="text-primary">Master</span>
         </h2>
         <p
           className="mt-4 text-base md:text-lg max-w-2xl mx-auto text-muted-foreground"
@@ -67,7 +67,7 @@ export default function TechStackSection({ t }: TechStackSectionProps) {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: i * 0.15 }}
+            transition={{ duration: 0.6, delay: i * 0.1 }}
             className="rounded-2xl p-6 bg-background border border-border"
           >
             <h3
@@ -80,12 +80,8 @@ export default function TechStackSection({ t }: TechStackSectionProps) {
                 <motion.div
                   key={tech.name}
                   whileHover={{ scale: 1.05, y: -2 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  className="flex items-center gap-3 p-3 rounded-xl"
-                  style={{
-                    background: "rgba(255,255,255,0.03)",
-                    border: "1px solid rgba(255,255,255,0.06)",
-                  }}
+                  transition={{ duration: 0.2 }}
+                  className="flex items-center gap-3 p-3 rounded-xl bg-white/[0.03] border border-white/10"
                 >
                   <div className="w-8 h-8 flex items-center justify-center">
                     <img
