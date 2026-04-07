@@ -207,7 +207,7 @@ export default function HeroSection({ locale, t }: HeroSectionProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-bold text-center text-white text-balance max-w-4xl leading-tight font-display"
+          className="text-4xl md:text-6xl lg:text-7xl font-bold text-center text-foreground text-balance max-w-4xl leading-tight font-display"
         >
           {t.title}
         </motion.h1>

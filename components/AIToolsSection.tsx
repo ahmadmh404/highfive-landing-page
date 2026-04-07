@@ -126,7 +126,7 @@ export default function AIToolsSection({ t }: AIToolsSectionProps) {
                 </div>
 
                 {/* Title & desc */}
-                <h3 className="text-lg font-bold text-white mb-2 font-display">
+                <h3 className="text-lg font-bold text-foreground mb-2 font-display">
                   {tool.title}
                 </h3>
                 <p
@@ -146,10 +146,7 @@ export default function AIToolsSection({ t }: AIToolsSectionProps) {
                       className="overflow-hidden"
                     >
                       <div
-                        className="pt-4 pb-2"
-                        style={{
-                          borderTop: "1px solid rgba(255,255,255,0.07)",
-                        }}
+                        className="pt-4 pb-2 border-t border-white/5"
                       >
                         <div className="space-y-3">
                           <div>
@@ -184,8 +181,7 @@ export default function AIToolsSection({ t }: AIToolsSectionProps) {
 
                 {/* Footer */}
                 <div
-                  className="flex items-center justify-between mt-4 pt-4"
-                  style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
+                  className="flex items-center justify-between mt-4 pt-4 border-t border-white/5"
                 >
                   <button
                     className="text-xs text-muted-foreground/70"

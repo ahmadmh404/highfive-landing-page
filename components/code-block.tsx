@@ -29,11 +29,7 @@ export function HeroCodeBlock() {
     >
       {/* Window chrome */}
       <div
-        className="flex items-center gap-2 px-4 py-3"
-        style={{
-          background: "rgba(255,255,255,0.03)",
-          borderBottom: "1px solid rgba(255,255,255,0.06)",
-        }}
+        className="flex items-center gap-2 px-4 py-3 bg-white/[0.03] border-b border-white/5"
       >
         <div className="w-3 h-3 rounded-full bg-red-500/70" />
         <div className="w-3 h-3 rounded-full bg-yellow-500/70" />

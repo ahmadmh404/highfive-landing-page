@@ -76,7 +76,7 @@ export default function ContactSection({ t }: ContactSectionProps) {
           className="flex flex-col gap-6"
         >
           <div>
-            <h3 className="text-2xl font-bold text-white mb-2 font-display">
+            <h3 className="text-2xl font-bold text-foreground mb-2 font-display">
               {"Let's build something together"}
             </h3>
             <p className="text-sm leading-relaxed text-muted-foreground">

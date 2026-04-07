@@ -76,7 +76,7 @@ export default function FAQSection({ lang, t }: FAQSectionProps) {
               className="w-full flex items-center justify-between p-6 text-left"
               onClick={() => setOpenIndex(openIndex === i ? null : i)}
             >
-              <span className="text-base font-semibold text-white pr-4">
+              <span className="text-base font-semibold text-foreground pr-4">
                 {faq.q}
               </span>
               <motion.div
@@ -98,10 +98,7 @@ export default function FAQSection({ lang, t }: FAQSectionProps) {
                   className="overflow-hidden"
                 >
                   <div
-                    className="px-6 pb-6 text-sm leading-relaxed text-muted-foreground/80"
-                    style={{
-                      borderTop: "1px solid rgba(255,255,255,0.06)",
-                    }}
+                    className="px-6 pb-6 text-sm leading-relaxed text-muted-foreground/80 pt-4 border-t border-white/5"
                   >
                     <div className="pt-4">{faq.a}</div>
                   </div>

@@ -73,13 +73,7 @@ export default function ServicesSection({ t }: ServicesSectionProps) {
               borderRadius="1.5rem"
               containerClassName="w-full h-full"
               duration={Math.floor(Math.random() * 5000) + 8000}
-              style={{
-                background: "rgb(4,7,29)",
-                backgroundColor:
-                  "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
-                borderRadius: "calc(1.5rem * 0.96)",
-              }}
-              className="w-full text-white border-white/10"
+              className="w-full text-foreground border border-white/10 bg-background"
             >
               <div className="p-8 flex flex-col gap-4 h-full">
                 <div
@@ -91,7 +85,7 @@ export default function ServicesSection({ t }: ServicesSectionProps) {
                 >
                   <Icon style={{ color }} className="w-5 h-5" />
                 </div>
-                <h3 className="text-xl font-bold font-display text-white">
+                <h3 className="text-xl font-bold font-display text-foreground">
                   {(t as any)[key].title}
                 </h3>
                 <p
