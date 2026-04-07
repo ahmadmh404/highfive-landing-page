@@ -1,42 +1,27 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 type Direction = "TOP" | "LEFT" | "BOTTOM" | "RIGHT";
 
-type HoverBorderProps = {
+interface HoverBorderGradientProps {
   children?: React.ReactNode;
   containerClassName?: string;
   className?: string;
-  as?: "button" | "div" | "span";
   duration?: number;
   clockwise?: boolean;
-} & Omit<React.HTMLAttributes<HTMLButtonElement>, "children">;
+}
 
 export function HoverBorderGradient({
   children,
   containerClassName,
   className,
-  as: Tag = "button",
   duration = 1,
   clockwise = true,
-  ...restProps
-}: HoverBorderProps) {
-  const { onMouseEnter, onMouseLeave, ...restPropsWithoutHandlers } = restProps;
-  const props = restPropsWithoutHandlers as React.HTMLAttributes<HTMLElement>;
-  const [hovered, setHovered] = useState(false);
-
-  const handleMouseEnter = (event: React.MouseEvent) => {
-    setHovered(true);
-    onMouseEnter?.(event);
-  };
-
-  const handleMouseLeave = (event: React.MouseEvent) => {
-    setHovered(false);
-    onMouseLeave?.(event);
-  };
+}: HoverBorderGradientProps) {
+  const [hovered, setHovered] = useState<boolean>(false);
   const [direction, setDirection] = useState<Direction>("TOP");
 
   const rotateDirection = (currentDirection: Direction): Direction => {
@@ -67,28 +52,29 @@ export function HoverBorderGradient({
       }, duration * 1000);
       return () => clearInterval(interval);
     }
-  }, [hovered]);
+  }, [hovered, duration, clockwise]);
   return (
-    <Tag
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+    <div
+      onMouseEnter={() => {
+        setHovered(true);
+      }}
+      onMouseLeave={() => setHovered(false)}
       className={cn(
         "relative flex rounded-full border  content-center bg-black/20 hover:bg-black/10 transition duration-500 dark:bg-white/20 items-center flex-col flex-nowrap gap-10 h-min justify-center overflow-visible p-px decoration-clone w-fit",
-        containerClassName
+        containerClassName,
       )}
-      {...props}
     >
       <div
         className={cn(
           "w-auto text-white z-10 bg-black px-4 py-2 rounded-[inherit]",
-          className
+          className,
         )}
       >
         {children}
       </div>
       <motion.div
         className={cn(
-          "flex-none inset-0 overflow-hidden absolute z-0 rounded-[inherit]"
+          "flex-none inset-0 overflow-hidden absolute z-0 rounded-[inherit]",
         )}
         style={{
           filter: "blur(2px)",
@@ -105,6 +91,6 @@ export function HoverBorderGradient({
         transition={{ ease: "linear", duration: duration ?? 1 }}
       />
       <div className="bg-black absolute z-1 flex-none inset-[2px] rounded-[100px]" />
-    </Tag>
+    </div>
   );
 }
