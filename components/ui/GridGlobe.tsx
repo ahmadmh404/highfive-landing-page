@@ -15,9 +15,13 @@ const GridGlobe = () => {
     setIsMounted(true);
   }, []);
 
-  const globeConfig = {
-    pointSize: 4,
-    globeColor: "#062056",
+// Three.js/WebGL Scene Configuration
+// Note: These are Three.js-specific color values for 3D rendering
+// They cannot use CSS variables as they're passed to the WebGL context
+// Design tokens for 3D: Primary=#062056, Accent=#38bdf8, Lights=#ffffff
+const globeConfig = {
+  pointSize: 4,
+  globeColor: "#062056",
     showAtmosphere: true,
     atmosphereColor: "#FFFFFF",
     atmosphereAltitude: 0.1,

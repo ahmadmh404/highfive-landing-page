@@ -50,7 +50,26 @@ const members: TeamMember[] = [
   },
 ];
 
-function TeamCard({ member, t }: { member: TeamMember; t: any }) {
+interface TeamTranslations {
+  title: string;
+  subtitle: string;
+  roles: {
+    leadDeveloper: string;
+    aiEngineer: string;
+    uiDesigner: string;
+    projectManager: string;
+    backendDev: string;
+  };
+  bios: {
+    ahmed: string;
+    ali: string;
+    yara: string;
+    khalil: string;
+    abdulrahman: string;
+  };
+}
+
+function TeamCard({ member, t }: { member: TeamMember; t: TeamTranslations }) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -67,7 +86,7 @@ function TeamCard({ member, t }: { member: TeamMember; t: any }) {
       onHoverEnd={() => setIsHovered(false)}
     >
       {/* 1. The Main Image Container */}
-      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-white/10 bg-[#04071D]">
+      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-white/10 bg-background">
         <Image
           src={member.image}
           alt={member.nameKey}
@@ -83,8 +102,8 @@ function TeamCard({ member, t }: { member: TeamMember; t: any }) {
             <h3 className="font-bold text-foreground text-lg font-display tracking-tight">
               {member.nameKey}
             </h3>
-            <p className="text-[10px] uppercase tracking-[0.2em] text-[#CBACF9] font-semibold">
-              {(t.roles as any)[member.roleKey]}
+            <p className="text-[10px] uppercase tracking-[0.2em] text-primary font-semibold">
+              {t.roles[member.roleKey as keyof typeof t.roles]}
             </p>
 
             {/* Bio appears on hover */}
@@ -96,7 +115,7 @@ function TeamCard({ member, t }: { member: TeamMember; t: any }) {
                   exit={{ height: 0, opacity: 0 }}
                   className="text-xs text-muted-foreground mt-3 leading-relaxed overflow-hidden"
                 >
-                  {(t.bios as any)[member.bioKey]}
+                  {t.bios[member.bioKey as keyof typeof t.bios]}
                 </motion.p>
               )}
             </AnimatePresence>
@@ -104,7 +123,7 @@ function TeamCard({ member, t }: { member: TeamMember; t: any }) {
         </div>
 
         {/* 3. Top Shimmer Highlight (HighFive Signature) */}
-        <div className="absolute inset-0 border border-white/10 rounded-2xl pointer-events-none group-hover:border-[#CBACF9]/30 transition-colors" />
+        <div className="absolute inset-0 border border-white/10 rounded-2xl pointer-events-none group-hover:border-primary/30 transition-colors" />
       </div>
 
       {/* 4. Soft Glow behind card */}
@@ -113,9 +132,9 @@ function TeamCard({ member, t }: { member: TeamMember; t: any }) {
   );
 }
 
-export default function TeamSection({ t }: any) {
+export default function TeamSection({ t }: { t: TeamTranslations }) {
   return (
-    <section id="team" className="relative w-full py-24 overflow-hidden">
+    <section id="team" className="relative w-full py-20 overflow-hidden">
       {/* Background Ambient Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-accent/5 blur-[120px] rounded-full pointer-events-none" />
       <div className="max-w-7xl mx-auto px-6 relative z-10">

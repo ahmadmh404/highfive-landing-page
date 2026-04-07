@@ -58,8 +58,7 @@ export default function TestimonialsSection({ t }: TestimonialsSectionProps) {
           What Our <span className="text-purple">Clients Say</span>
         </h2>
         <p
-          className="mt-4 text-base md:text-lg max-w-2xl mx-auto"
-          style={{ color: "#C1C2D3" }}
+          className="mt-4 text-base md:text-lg max-w-2xl mx-auto text-muted-foreground"
         >
           {t.subtitle}
         </p>

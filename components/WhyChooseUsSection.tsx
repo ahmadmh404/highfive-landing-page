@@ -124,8 +124,7 @@ export default function WhyChooseUsSection({ t }: WhyChooseUsSectionProps) {
           Why Choose <span className="text-purple">HighFive</span>
         </h2>
         <p
-          className="mt-4 text-base md:text-lg max-w-2xl mx-auto"
-          style={{ color: "#C1C2D3" }}
+          className="mt-4 text-base md:text-lg max-w-2xl mx-auto text-muted-foreground"
         >
           {t.subtitle}
         </p>

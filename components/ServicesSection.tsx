@@ -27,9 +27,9 @@ interface ServicesSectionProps {
 
 export default function ServicesSection({ t }: ServicesSectionProps) {
   const services = [
-    { key: "customDev", icon: FaCode, color: "#CBACF9" },
-    { key: "aiTools", icon: FaBrain, color: "#E4ECFF" },
-    { key: "courses", icon: FaGraduationCap, color: "#CBACF9" },
+    { key: "customDev", icon: FaCode, color: "hsl(var(--primary))" },
+    { key: "aiTools", icon: FaBrain, color: "hsl(var(--accent))" },
+    { key: "courses", icon: FaGraduationCap, color: "hsl(var(--primary))" },
   ];
 
   return (
@@ -54,8 +54,7 @@ export default function ServicesSection({ t }: ServicesSectionProps) {
           )}
         </h2>
         <p
-          className="mt-4 text-base md:text-lg max-w-2xl mx-auto"
-          style={{ color: "#C1C2D3" }}
+          className="mt-4 text-base md:text-lg max-w-2xl mx-auto text-muted-foreground"
         >
           {t.subtitle}
         </p>
@@ -96,8 +95,7 @@ export default function ServicesSection({ t }: ServicesSectionProps) {
                   {(t as any)[key].title}
                 </h3>
                 <p
-                  className="text-sm leading-relaxed"
-                  style={{ color: "#BEC1DD" }}
+                  className="text-sm leading-relaxed text-muted-foreground"
                 >
                   {(t as any)[key].description}
                 </p>

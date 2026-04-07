@@ -54,8 +54,7 @@ export default function TechStackSection({ t }: TechStackSectionProps) {
           Technologies We <span className="text-purple">Master</span>
         </h2>
         <p
-          className="mt-4 text-base md:text-lg max-w-2xl mx-auto"
-          style={{ color: "#C1C2D3" }}
+          className="mt-4 text-base md:text-lg max-w-2xl mx-auto text-muted-foreground"
         >
           {t.subtitle}
         </p>
@@ -69,15 +68,10 @@ export default function TechStackSection({ t }: TechStackSectionProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: i * 0.15 }}
-            className="rounded-2xl p-6"
-            style={{
-              background: "rgb(4,7,29)",
-              border: "1px solid rgba(255,255,255,0.08)",
-            }}
+            className="rounded-2xl p-6 bg-background border border-border"
           >
             <h3
-              className="text-sm font-semibold uppercase tracking-widest mb-6"
-              style={{ color: "#CBACF9" }}
+              className="text-sm font-semibold uppercase tracking-widest mb-6 text-primary"
             >
               {cat.label}
             </h3>
@@ -101,8 +95,7 @@ export default function TechStackSection({ t }: TechStackSectionProps) {
                     />
                   </div>
                   <span
-                    className="text-sm font-medium"
-                    style={{ color: "#BEC1DD" }}
+                    className="text-sm font-medium text-muted-foreground"
                   >
                     {tech.name}
                   </span>

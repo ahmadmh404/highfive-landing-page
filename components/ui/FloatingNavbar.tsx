@@ -57,8 +57,7 @@ export const FloatingNav = ({
         {/* Logo */}
         <Link href="/" className="flex items-center gap-1.5 mr-2">
           <span
-            className="font-bold text-base font-display"
-            style={{ color: "#CBACF9" }}
+            className="font-bold text-base font-display text-primary"
           >
             High<span className="text-white">Five</span>
           </span>
@@ -70,8 +69,7 @@ export const FloatingNav = ({
             <Link
               key={`link=${idx}`}
               href={navItem.link}
-              className="text-sm transition-colors duration-200 hover:text-white"
-              style={{ color: "#C1C2D3" }}
+              className="text-sm transition-colors duration-200 hover:text-white text-muted-foreground"
             >
               {navItem.name}
             </Link>
@@ -83,12 +81,7 @@ export const FloatingNav = ({
           <LanguageSwitcher currentLocale={locale} />
           <Link
             href="#contact"
-            className="hidden sm:flex items-center px-4 py-1.5 rounded-lg text-sm font-medium transition-all duration-200 hover:opacity-90"
-            style={{
-              background: "rgba(203,172,249,0.15)",
-              border: "1px solid rgba(203,172,249,0.3)",
-              color: "#CBACF9",
-            }}
+            className="hidden sm:flex items-center px-4 py-1.5 rounded-lg text-sm font-medium transition-all duration-200 hover:opacity-90 bg-primary/15 border border-primary/30 text-primary"
           >
             Contact Us
           </Link>

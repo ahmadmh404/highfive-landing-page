@@ -38,7 +38,7 @@ export function HeroCodeBlock() {
         <div className="w-3 h-3 rounded-full bg-red-500/70" />
         <div className="w-3 h-3 rounded-full bg-yellow-500/70" />
         <div className="w-3 h-3 rounded-full bg-green-500/70" />
-        <span className="ml-3 text-xs font-mono" style={{ color: "#5c6370" }}>
+        <span className="ml-3 text-xs font-mono text-muted-foreground/70">
           search-enhanced.ts
         </span>
       </div>

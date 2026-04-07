@@ -28,9 +28,14 @@ const faqs = [
   },
 ];
 
+interface FAQTranslations {
+  title: string;
+  subtitle: string;
+}
+
 interface FAQSectionProps {
   lang: Lang;
-  t: any;
+  t: FAQTranslations;
 }
 
 export default function FAQSection({ lang, t }: FAQSectionProps) {
@@ -49,10 +54,9 @@ export default function FAQSection({ lang, t }: FAQSectionProps) {
           Frequently Asked <span className="text-purple">Questions</span>
         </h2>
         <p
-          className="mt-4 text-base md:text-lg max-w-2xl mx-auto"
-          style={{ color: "#C1C2D3" }}
+          className="mt-4 text-base md:text-lg max-w-2xl mx-auto text-muted-foreground"
         >
-          {t.faq.subtitle}
+          {t.subtitle}
         </p>
       </motion.div>
 
@@ -64,15 +68,9 @@ export default function FAQSection({ lang, t }: FAQSectionProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: i * 0.08 }}
-            className="rounded-2xl overflow-hidden"
-            style={{
-              background: "rgb(4,7,29)",
-              border:
-                openIndex === i
-                  ? "1px solid rgba(203,172,249,0.3)"
-                  : "1px solid rgba(255,255,255,0.08)",
-              transition: "border-color 0.3s",
-            }}
+            className={`rounded-2xl overflow-hidden bg-background border transition-colors duration-300 ${
+              openIndex === i ? "border-primary/30" : "border-border"
+            }`}
           >
             <button
               className="w-full flex items-center justify-between p-6 text-left"
@@ -84,8 +82,7 @@ export default function FAQSection({ lang, t }: FAQSectionProps) {
               <motion.div
                 animate={{ rotate: openIndex === i ? 180 : 0 }}
                 transition={{ duration: 0.2 }}
-                className="flex-shrink-0"
-                style={{ color: "#CBACF9" }}
+                className="flex-shrink-0 text-primary"
               >
                 <FaChevronDown className="w-4 h-4" />
               </motion.div>
@@ -101,9 +98,8 @@ export default function FAQSection({ lang, t }: FAQSectionProps) {
                   className="overflow-hidden"
                 >
                   <div
-                    className="px-6 pb-6 text-sm leading-relaxed"
+                    className="px-6 pb-6 text-sm leading-relaxed text-muted-foreground/80"
                     style={{
-                      color: "#BEC1DD",
                       borderTop: "1px solid rgba(255,255,255,0.06)",
                     }}
                   >

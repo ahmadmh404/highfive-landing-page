@@ -6,6 +6,15 @@ import { cn } from "@/lib/utils";
 
 type Direction = "TOP" | "LEFT" | "BOTTOM" | "RIGHT";
 
+type HoverBorderProps = {
+  children?: React.ReactNode;
+  containerClassName?: string;
+  className?: string;
+  as?: "button" | "div" | "span";
+  duration?: number;
+  clockwise?: boolean;
+} & Omit<React.HTMLAttributes<HTMLButtonElement>, "children">;
+
 export function HoverBorderGradient({
   children,
   containerClassName,
@@ -13,17 +22,21 @@ export function HoverBorderGradient({
   as: Tag = "button",
   duration = 1,
   clockwise = true,
-  ...props
-}: React.PropsWithChildren<
-  {
-    as?: React.ElementType;
-    containerClassName?: string;
-    className?: string;
-    duration?: number;
-    clockwise?: boolean;
-  } & React.HTMLAttributes<HTMLElement>
->) {
-  const [hovered, setHovered] = useState<boolean>(false);
+  ...restProps
+}: HoverBorderProps) {
+  const { onMouseEnter, onMouseLeave, ...restPropsWithoutHandlers } = restProps;
+  const props = restPropsWithoutHandlers as React.HTMLAttributes<HTMLElement>;
+  const [hovered, setHovered] = useState(false);
+
+  const handleMouseEnter = (event: React.MouseEvent) => {
+    setHovered(true);
+    onMouseEnter?.(event);
+  };
+
+  const handleMouseLeave = (event: React.MouseEvent) => {
+    setHovered(false);
+    onMouseLeave?.(event);
+  };
   const [direction, setDirection] = useState<Direction>("TOP");
 
   const rotateDirection = (currentDirection: Direction): Direction => {
@@ -57,10 +70,8 @@ export function HoverBorderGradient({
   }, [hovered]);
   return (
     <Tag
-      onMouseEnter={(event: React.MouseEvent<HTMLDivElement>) => {
-        setHovered(true);
-      }}
-      onMouseLeave={() => setHovered(false)}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       className={cn(
         "relative flex rounded-full border  content-center bg-black/20 hover:bg-black/10 transition duration-500 dark:bg-white/20 items-center flex-col flex-nowrap gap-10 h-min justify-center overflow-visible p-px decoration-clone w-fit",
         containerClassName

@@ -11,7 +11,7 @@ import {
 
 const toolIcons = [FaMagnifyingGlass, FaChartBar, FaStarHalfStroke];
 const toolKeys = ["scorpeSearch", "scorpeRank", "scorpeRecommend"] as const;
-const toolColors = ["#CBACF9", "#E4ECFF", "#CBACF9"];
+const toolColors = ["hsl(var(--primary))", "hsl(var(--accent))", "hsl(var(--primary))"];
 
 interface AIToolsSectionProps {
   t: {
@@ -66,8 +66,7 @@ export default function AIToolsSection({ t }: AIToolsSectionProps) {
           AI <span className="text-purple">Tools</span>
         </h2>
         <p
-          className="mt-4 text-base md:text-lg max-w-2xl mx-auto"
-          style={{ color: "#C1C2D3" }}
+          className="mt-4 text-base md:text-lg max-w-2xl mx-auto text-muted-foreground"
         >
           {t.subtitle}
         </p>
@@ -87,14 +86,10 @@ export default function AIToolsSection({ t }: AIToolsSectionProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.15 }}
-              className="relative rounded-2xl overflow-hidden cursor-pointer group shrink-0"
+              className="relative rounded-2xl overflow-hidden cursor-pointer group shrink-0 bg-background border border-border"
               style={{
-                background: "rgb(4,7,29)",
-                border: isActive
-                  ? `1px solid ${color}50`
-                  : "1px solid rgba(255,255,255,0.08)",
                 boxShadow: isActive ? `0 0 30px ${color}15` : "none",
-                transition: "border-color 0.3s, box-shadow 0.3s",
+                transition: "box-shadow 0.3s",
               }}
               onClick={() => setActiveKey(isActive ? null : key)}
             >
@@ -135,8 +130,7 @@ export default function AIToolsSection({ t }: AIToolsSectionProps) {
                   {tool.title}
                 </h3>
                 <p
-                  className="text-sm leading-relaxed mb-5"
-                  style={{ color: "#BEC1DD" }}
+                  className="text-sm leading-relaxed mb-5 text-muted-foreground"
                 >
                   {tool.desc}
                 </p>
@@ -160,28 +154,24 @@ export default function AIToolsSection({ t }: AIToolsSectionProps) {
                         <div className="space-y-3">
                           <div>
                             <span
-                              className="text-xs uppercase tracking-widest"
-                              style={{ color: "#5c6370" }}
+                              className="text-xs uppercase tracking-widest text-muted-foreground/70"
                             >
                               Problem Solved
                             </span>
                             <p
-                              className="text-sm mt-1"
-                              style={{ color: "#C1C2D3" }}
+                              className="text-sm mt-1 text-muted-foreground"
                             >
                               {tool.problem}
                             </p>
                           </div>
                           <div>
                             <span
-                              className="text-xs uppercase tracking-widest"
-                              style={{ color: "#5c6370" }}
+                              className="text-xs uppercase tracking-widest text-muted-foreground/70"
                             >
                               Who Needs This
                             </span>
                             <p
-                              className="text-sm mt-1"
-                              style={{ color: "#C1C2D3" }}
+                              className="text-sm mt-1 text-muted-foreground"
                             >
                               {tool.whoNeeds}
                             </p>
@@ -198,8 +188,7 @@ export default function AIToolsSection({ t }: AIToolsSectionProps) {
                   style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
                 >
                   <button
-                    className="text-xs"
-                    style={{ color: "#5c6370" }}
+                    className="text-xs text-muted-foreground/70"
                     onClick={(e) => {
                       e.stopPropagation();
                       setActiveKey(isActive ? null : key);
