@@ -9,6 +9,7 @@ import {
 } from "next/font/google";
 import { ThemeProvider } from "@/lib/theme/theme-provider";
 import { isRTL, type Locale } from "@/lib/i18n/config";
+import { MotionProvider } from "@/components/MotionProvider";
 import "../globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -107,7 +108,9 @@ export default async function LocaleLayout({
       <body
         className={`${fontClass} ${spaceGrotesk.variable} font-sans antialiased`}
       >
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <MotionProvider>{children}</MotionProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

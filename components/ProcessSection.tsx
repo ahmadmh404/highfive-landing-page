@@ -73,7 +73,7 @@ function Card({
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="border border-border group/canvas-card flex items-center justify-center max-w-sm w-full mx-auto p-4 relative lg:h-[35rem] cursor-pointer bg-card transition-all duration-500 hover:border-primary/50"
+      className="border border-border group/canvas-card flex items-center justify-center max-w-sm w-full mx-auto p-4 relative lg:h-[35rem] cursor-pointer bg-card hover:border-primary/50"
       style={{ borderRadius: "var(--radius-xl)" }}
     >
       <Icon className="absolute h-6 w-6 -top-3 -left-3 text-foreground opacity-20" />
@@ -93,13 +93,13 @@ function Card({
       </AnimatePresence>
 
       <div className="relative z-20 px-10">
-        <div className="text-center group-hover/canvas-card:-translate-y-4 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] group-hover/canvas-card:opacity-0 transition duration-200 min-w-40 mx-auto flex items-center justify-center">
+        <div className="text-center group-hover/canvas-card:-translate-y-4 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] group-hover/canvas-card:opacity-0 min-w-40 mx-auto flex items-center justify-center">
           {icon}
         </div>
-        <h3 className="text-foreground text-center text-3xl opacity-0 group-hover/canvas-card:opacity-100 relative z-10 mt-4 font-bold font-display group-hover/canvas-card:-translate-y-2 transition duration-200">
+        <h3 className="text-foreground text-center text-3xl opacity-0 group-hover/canvas-card:opacity-100 relative z-10 mt-4 font-bold font-display group-hover/canvas-card:-translate-y-2">
           {title}
         </h3>
-        <p className="text-sm opacity-0 group-hover/canvas-card:opacity-100 relative z-10 mt-4 text-center text-muted-foreground group-hover/canvas-card:-translate-y-2 transition duration-200">
+        <p className="text-sm opacity-0 group-hover/canvas-card:opacity-100 relative z-10 mt-4 text-center text-muted-foreground group-hover/canvas-card:-translate-y-2">
           {des}
         </p>
       </div>

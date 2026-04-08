@@ -91,7 +91,6 @@ export default function AIToolsSection({ t }: AIToolsSectionProps) {
               className="relative rounded-2xl overflow-hidden cursor-pointer group shrink-0 bg-background border border-border"
               style={{
                 boxShadow: isActive ? `0 0 30px ${color}15` : "none",
-                transition: "box-shadow 0.3s",
               }}
               onClick={() => setActiveKey(isActive ? null : key)}
             >
@@ -181,7 +180,7 @@ export default function AIToolsSection({ t }: AIToolsSectionProps) {
                     {isActive ? "Show less" : "Learn more"}
                   </button>
                   <button
-                    className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:opacity-90"
+                    className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium"
                     style={{
                       background: `${color}15`,
                       border: `1px solid ${color}30`,
