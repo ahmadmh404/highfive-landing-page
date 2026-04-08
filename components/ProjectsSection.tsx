@@ -96,13 +96,10 @@ export default function ProjectsSection({ t }: ProjectsSectionProps) {
         transition={{ duration: 0.6 }}
         className="text-center mb-12"
       >
-        <h2 className="heading">
-          Our <span className="text-purple">Projects</span>
+        <h2 className="text-3xl md:text-5xl font-bold tracking-tight font-display bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/60">
+          {t.title}
         </h2>
-        <p
-          className="mt-4 text-base md:text-lg max-w-2xl mx-auto"
-          style={{ color: "#C1C2D3" }}
-        >
+        <p className="mt-4 text-base text-foreground/50 md:text-lg max-w-2xl mx-auto">
           {t.subtitle}
         </p>
       </motion.div>

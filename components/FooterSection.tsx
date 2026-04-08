@@ -42,42 +42,15 @@ interface FooterSectionProps {
 export default function FooterSection({ t }: FooterSectionProps) {
   return (
     <footer className="w-full pt-20 pb-10 relative" id="footer">
-      {/* CTA Block */}
-      <div className="relative z-10 flex flex-col items-center text-center mb-16">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-3xl md:text-5xl font-bold max-w-2xl leading-tight font-display"
-        >
-          Ready to take <span className="text-purple">your</span> digital
-          presence to the next level?
-        </motion.h2>
-        <p
-          className="mt-5 mb-8 text-base max-w-xl text-muted-foreground"
-        >
-          Reach out to us today and let&apos;s discuss how HighFive can help you
-          achieve your goals.
-        </p>
-        <MagicButton
-          title="Start Your Project"
-          icon={<FaLocationArrow />}
-          position="right"
-        />
-      </div>
-
       {/* Footer grid */}
       <div
-        className="relative z-10 mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 pb-10"
+        className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-8 pb-10"
         style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
       >
         {/* Brand */}
         <div className="col-span-2 md:col-span-1 mt-8">
           <div className="flex items-center gap-2 mb-3">
-            <span
-              className="text-xl font-bold font-display text-primary"
-            >
+            <span className="text-xl font-bold font-display text-primary">
               HighFive
             </span>
           </div>
@@ -105,9 +78,7 @@ export default function FooterSection({ t }: FooterSectionProps) {
         {/* Links */}
         {Object.entries(footerLinks).map(([category, links]) => (
           <div key={category} className="mt-8">
-            <h4
-              className="text-sm font-semibold mb-4 uppercase tracking-widest text-primary"
-            >
+            <h4 className="text-sm font-semibold mb-4 uppercase tracking-widest text-primary">
               {(t as any)[category.toLowerCase()] || category}
             </h4>
             <ul className="flex flex-col gap-2">

@@ -146,12 +146,9 @@ export default function ProcessSection({ t }: ProcessSectionProps) {
         className="text-center mb-16"
       >
         <h2 className="text-3xl md:text-5xl font-bold tracking-tight font-display bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/60">
-          Our <span className="text-purple">Process</span>
+          {t.title}
         </h2>
-        <p
-          className="mt-4 text-base md:text-lg max-w-2xl mx-auto"
-          style={{ color: "#C1C2D3" }}
-        >
+        <p className="mt-4 text-base md:text-lg max-w-2xl mx-auto text-foreground/50">
           {t.subtitle}
         </p>
       </motion.div>
