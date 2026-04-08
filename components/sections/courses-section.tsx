@@ -50,7 +50,7 @@ export function CoursesSection({ t }: CoursesSectionProps) {
           <h2 className="mb-4 text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
             {t.title}
           </h2>
-          <p className="text-pretty text-lg text-muted-foreground lg:text-xl">
+          <p className="text-pretty text-base text-muted-foreground lg:text-lg">
             {t.subtitle}
           </p>
         </motion.div>
@@ -75,7 +75,7 @@ export function CoursesSection({ t }: CoursesSectionProps) {
                       {course.duration}
                     </div>
                   </div>
-                  <h3 className="mb-2 text-xl font-semibold">{course.title}</h3>
+                  <h3 className="mb-2 text-lg font-semibold">{course.title}</h3>
                   <p className="mb-4 flex-1 text-sm text-muted-foreground leading-relaxed">
                     {course.description}
                   </p>

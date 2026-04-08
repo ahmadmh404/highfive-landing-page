@@ -54,7 +54,7 @@ export function WhyChooseUsSection({ t }: WhyChooseUsSectionProps) {
           <h2 className="mb-4 text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
             {t.title}
           </h2>
-          <p className="text-pretty text-lg text-muted-foreground lg:text-xl">
+          <p className="text-pretty text-base text-muted-foreground lg:text-lg">
             {t.subtitle}
           </p>
         </motion.div>
@@ -73,7 +73,7 @@ export function WhyChooseUsSection({ t }: WhyChooseUsSectionProps) {
               <div className="mx-auto mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10">
                 <feature.icon className="h-8 w-8 text-primary" />
               </div>
-              <h3 className="mb-3 text-xl font-semibold">{feature.title}</h3>
+              <h3 className="mb-3 text-lg font-semibold">{feature.title}</h3>
               <p className="text-pretty text-muted-foreground leading-relaxed">
                 {feature.description}
               </p>

@@ -63,7 +63,7 @@ export function FAQSection({ t }: FAQSectionProps) {
           <h2 className="mb-4 text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
             {t.title}
           </h2>
-          <p className="text-pretty text-lg text-muted-foreground lg:text-xl">
+          <p className="text-pretty text-base text-muted-foreground lg:text-lg">
             {t.subtitle}
           </p>
         </motion.div>

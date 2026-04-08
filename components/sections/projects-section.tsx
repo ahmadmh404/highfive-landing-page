@@ -52,7 +52,7 @@ export function ProjectsSection({ t }: ProjectsSectionProps) {
           <h2 className="mb-4 text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
             {t.title}
           </h2>
-          <p className="text-pretty text-lg text-muted-foreground lg:text-xl">
+          <p className="text-pretty text-base text-muted-foreground lg:text-lg">
             {t.subtitle}
           </p>
         </motion.div>
@@ -100,7 +100,7 @@ export function ProjectsSection({ t }: ProjectsSectionProps) {
                   </Badge>
                 </div>
                 <CardContent className="p-6">
-                  <h3 className="mb-2 text-xl font-semibold">
+                  <h3 className="mb-2 text-lg font-semibold">
                     {project.title}
                   </h3>
                   <p className="mb-4 text-sm text-muted-foreground leading-relaxed">

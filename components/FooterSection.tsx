@@ -55,8 +55,7 @@ export default function FooterSection({ t }: FooterSectionProps) {
           presence to the next level?
         </motion.h2>
         <p
-          className="mt-5 mb-8 text-base max-w-xl"
-          style={{ color: "#C1C2D3" }}
+          className="mt-5 mb-8 text-base max-w-xl text-muted-foreground"
         >
           Reach out to us today and let&apos;s discuss how HighFive can help you
           achieve your goals.
@@ -77,13 +76,12 @@ export default function FooterSection({ t }: FooterSectionProps) {
         <div className="col-span-2 md:col-span-1 mt-8">
           <div className="flex items-center gap-2 mb-3">
             <span
-              className="text-xl font-bold font-display"
-              style={{ color: "#CBACF9" }}
+              className="text-xl font-bold font-display text-primary"
             >
               HighFive
             </span>
           </div>
-          <p className="text-sm leading-relaxed" style={{ color: "#BEC1DD" }}>
+          <p className="text-sm leading-relaxed text-muted-foreground">
             {t.tagline}
           </p>
           <div className="flex items-center gap-3 mt-5">
@@ -108,8 +106,7 @@ export default function FooterSection({ t }: FooterSectionProps) {
         {Object.entries(footerLinks).map(([category, links]) => (
           <div key={category} className="mt-8">
             <h4
-              className="text-sm font-semibold mb-4 uppercase tracking-widest"
-              style={{ color: "#CBACF9" }}
+              className="text-sm font-semibold mb-4 uppercase tracking-widest text-primary"
             >
               {(t as any)[category.toLowerCase()] || category}
             </h4>
@@ -118,8 +115,7 @@ export default function FooterSection({ t }: FooterSectionProps) {
                 <li key={link}>
                   <a
                     href="#"
-                    className="text-sm transition-colors duration-200 hover:text-white"
-                    style={{ color: "#BEC1DD" }}
+                    className="text-sm transition-colors duration-200 hover:text-foreground text-muted-foreground"
                   >
                     {link}
                   </a>
@@ -135,21 +131,19 @@ export default function FooterSection({ t }: FooterSectionProps) {
         className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-4 pt-6"
         style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
       >
-        <p className="text-sm" style={{ color: "#5c6370" }}>
+        <p className="text-sm text-muted-foreground">
           &copy; 2025 HighFive. {t.rights}
         </p>
         <div className="flex items-center gap-4">
           <a
             href="#"
-            className="text-xs transition-colors hover:text-white"
-            style={{ color: "#5c6370" }}
+            className="text-xs transition-colors hover:text-foreground text-muted-foreground"
           >
             {t.privacy}
           </a>
           <a
             href="#"
-            className="text-xs transition-colors hover:text-white"
-            style={{ color: "#5c6370" }}
+            className="text-xs transition-colors hover:text-foreground text-muted-foreground"
           >
             {t.terms}
           </a>

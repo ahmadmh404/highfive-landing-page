@@ -134,7 +134,7 @@ export function ContactSection({ t }: ContactSectionProps) {
           <h2 className="mb-4 text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
             {t.title}
           </h2>
-          <p className="text-pretty text-lg text-muted-foreground lg:text-xl">
+          <p className="text-pretty text-base text-muted-foreground lg:text-lg">
             {t.subtitle}
           </p>
         </motion.div>
@@ -298,7 +298,7 @@ export function ContactSection({ t }: ContactSectionProps) {
           >
             <div className="space-y-8">
               <div>
-                <h3 className="mb-6 text-2xl font-semibold">Get In Touch</h3>
+                <h3 className="mb-6 text-xl font-semibold">Get In Touch</h3>
                 <p className="text-muted-foreground leading-relaxed">
                   Have a project in mind? We'd love to hear from you. Send us a
                   message and we'll respond as soon as possible.
