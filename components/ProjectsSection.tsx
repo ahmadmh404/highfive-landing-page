@@ -96,12 +96,10 @@ export default function ProjectsSection({ t }: ProjectsSectionProps) {
         transition={{ duration: 0.6 }}
         className="text-center mb-12"
       >
-        <h2 className="heading">
-          Our <span className="text-primary">Projects</span>
+        <h2 className="text-3xl md:text-5xl font-bold tracking-tight font-display bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/60">
+          {t.title}
         </h2>
-        <p
-          className="mt-4 text-base md:text-lg max-w-2xl mx-auto text-muted-foreground"
-        >
+        <p className="mt-4 text-base text-foreground/50 md:text-lg max-w-2xl mx-auto">
           {t.subtitle}
         </p>
       </motion.div>
@@ -138,9 +136,7 @@ export default function ProjectsSection({ t }: ProjectsSectionProps) {
             >
               <PinContainer title={t.viewCase} href={item.link}>
                 <div className="relative flex items-center justify-center sm:w-96 w-[80vw] overflow-hidden h-[20vh] lg:h-[30vh] mb-10">
-                  <div
-                    className="relative w-full h-full overflow-hidden lg:rounded-3xl bg-background/50"
-                  >
+                  <div className="relative w-full h-full overflow-hidden lg:rounded-3xl bg-background/50">
                     <img src="/bg.png" alt="background" />
                   </div>
                   <img
@@ -154,9 +150,7 @@ export default function ProjectsSection({ t }: ProjectsSectionProps) {
                   {item.title}
                 </h1>
 
-                <p
-                  className="lg:text-xl lg:font-normal font-light text-sm line-clamp-2 mt-2 text-muted-foreground"
-                >
+                <p className="lg:text-xl lg:font-normal font-light text-sm line-clamp-2 mt-2 text-muted-foreground">
                   {item.des}
                 </p>
 
@@ -173,9 +167,7 @@ export default function ProjectsSection({ t }: ProjectsSectionProps) {
                     ))}
                   </div>
                   <div className="flex justify-center items-center">
-                    <p
-                      className="flex lg:text-xl md:text-xs text-sm text-primary"
-                    >
+                    <p className="flex lg:text-xl md:text-xs text-sm text-primary">
                       {t.viewCase}
                     </p>
                     <FaLocationArrow className="ms-3 text-primary" />

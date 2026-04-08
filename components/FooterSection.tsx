@@ -42,31 +42,11 @@ interface FooterSectionProps {
 export default function FooterSection({ t }: FooterSectionProps) {
   return (
     <footer className="w-full pt-20 pb-10 relative" id="footer">
-      {/* CTA Block */}
-      <div className="relative z-10 flex flex-col items-center text-center mb-16">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-3xl md:text-5xl font-bold max-w-2xl leading-tight font-display"
-        >
-          Ready to take <span className="text-primary">your</span> digital
-          presence to the next level?
-        </motion.h2>
-        <p className="mt-5 mb-8 text-base max-w-xl text-muted-foreground">
-          Reach out to us today and let&apos;s discuss how HighFive can help you
-          achieve your goals.
-        </p>
-        <MagicButton
-          title="Start Your Project"
-          icon={<FaLocationArrow />}
-          position="right"
-        />
-      </div>
-
       {/* Footer grid */}
-      <div className="relative z-10 mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 pb-10 border-t border-white/5">
+      <div
+        className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-8 pb-10"
+        style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
+      >
         {/* Brand */}
         <div className="col-span-2 md:col-span-1 mt-8">
           <div className="flex items-center gap-2 mb-3">
@@ -102,7 +82,7 @@ export default function FooterSection({ t }: FooterSectionProps) {
                 <li key={link}>
                   <a
                     href="#"
-                    className="text-sm transition-colors duration-200 hover:text-white text-muted-foreground"
+                    className="text-sm transition-colors duration-200 hover:text-foreground text-muted-foreground"
                   >
                     {link}
                   </a>
@@ -114,20 +94,23 @@ export default function FooterSection({ t }: FooterSectionProps) {
       </div>
 
       {/* Bottom bar */}
-      <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-4 pt-6 border-t border-white/5">
-        <p className="text-sm text-muted-foreground/70">
+      <div
+        className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-4 pt-6"
+        style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
+      >
+        <p className="text-sm text-muted-foreground">
           &copy; 2025 HighFive. {t.rights}
         </p>
         <div className="flex items-center gap-4">
           <a
             href="#"
-            className="text-xs transition-colors hover:text-white text-muted-foreground/70"
+            className="text-xs transition-colors hover:text-foreground text-muted-foreground"
           >
             {t.privacy}
           </a>
           <a
             href="#"
-            className="text-xs transition-colors hover:text-white text-muted-foreground/70"
+            className="text-xs transition-colors hover:text-foreground text-muted-foreground"
           >
             {t.terms}
           </a>

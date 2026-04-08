@@ -145,9 +145,9 @@ export default function TeamSection({ t }: { t: TeamTranslations }) {
           className="text-center mb-24"
         >
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight font-display bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/60">
-            The <span className="text-primary">Architects</span> behind the code
+            {t.title}
           </h2>
-          <p className="mt-4 text-muted-foreground max-w-lg mx-auto text-base md:text-lg leading-relaxed">
+          <p className="mt-4 text-foreground/50 max-w-lg mx-auto text-base md:text-lg leading-relaxed">
             {t.subtitle}
           </p>
         </motion.div>

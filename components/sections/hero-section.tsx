@@ -65,7 +65,7 @@ export function HeroSection({ locale, t }: HeroSectionProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mb-10 text-pretty text-lg text-muted-foreground sm:text-xl lg:text-2xl"
+            className="mb-10 text-pretty text-base text-muted-foreground sm:text-lg lg:text-xl"
           >
             {t.subtitle}
           </motion.p>
@@ -103,7 +103,7 @@ export function HeroSection({ locale, t }: HeroSectionProps) {
         >
           {STATS.map((stat, index) => (
             <div key={index} className="text-center">
-              <div className="text-3xl font-bold text-foreground lg:text-4xl">
+              <div className="text-4xl font-bold text-foreground lg:text-5xl">
                 {stat.value}
               </div>
               <div className="mt-2 text-sm text-muted-foreground lg:text-base">

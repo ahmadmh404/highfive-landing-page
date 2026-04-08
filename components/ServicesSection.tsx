@@ -41,21 +41,10 @@ export default function ServicesSection({ t }: ServicesSectionProps) {
         transition={{ duration: 0.6 }}
         className="text-center mb-16"
       >
-        <h2 className="heading">
-          {t.title.split(" ").map((word: string, i: number) =>
-            i === 2 ? (
-              <span key={i} className="text-primary">
-                {" "}
-                {word}
-              </span>
-            ) : (
-              <span key={i}> {word}</span>
-            ),
-          )}
+        <h2 className="text-3xl md:text-5xl font-bold tracking-tight font-display bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/60">
+          {t.title}
         </h2>
-        <p
-          className="mt-4 text-base md:text-lg max-w-2xl mx-auto text-muted-foreground"
-        >
+        <p className="mt-4 text-base text-foreground/50 md:text-lg max-w-2xl mx-auto">
           {t.subtitle}
         </p>
       </motion.div>
@@ -88,9 +77,7 @@ export default function ServicesSection({ t }: ServicesSectionProps) {
                 <h3 className="text-xl font-bold font-display text-foreground">
                   {(t as any)[key].title}
                 </h3>
-                <p
-                  className="text-sm leading-relaxed text-muted-foreground"
-                >
+                <p className="text-sm leading-relaxed text-muted-foreground">
                   {(t as any)[key].description}
                 </p>
               </div>

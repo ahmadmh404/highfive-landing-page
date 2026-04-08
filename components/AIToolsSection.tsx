@@ -11,7 +11,11 @@ import {
 
 const toolIcons = [FaMagnifyingGlass, FaChartBar, FaStarHalfStroke];
 const toolKeys = ["scorpeSearch", "scorpeRank", "scorpeRecommend"] as const;
-const toolColors = ["hsl(var(--primary))", "hsl(var(--accent))", "hsl(var(--primary))"];
+const toolColors = [
+  "hsl(var(--primary))",
+  "hsl(var(--accent))",
+  "hsl(var(--primary))",
+];
 
 interface AIToolsSectionProps {
   t: {
@@ -62,12 +66,10 @@ export default function AIToolsSection({ t }: AIToolsSectionProps) {
         transition={{ duration: 0.6 }}
         className="text-center mb-16"
       >
-        <h2 className="heading">
-          AI <span className="text-primary">Tools</span>
+        <h2 className="text-3xl md:text-5xl font-bold tracking-tight font-display bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/60">
+          {t.title}
         </h2>
-        <p
-          className="mt-4 text-base md:text-lg max-w-2xl mx-auto text-muted-foreground"
-        >
+        <p className="mt-4 text-base text-foreground/50 md:text-lg max-w-2xl mx-auto">
           {t.subtitle}
         </p>
       </motion.div>
@@ -129,9 +131,7 @@ export default function AIToolsSection({ t }: AIToolsSectionProps) {
                 <h3 className="text-lg font-bold text-foreground mb-2 font-display">
                   {tool.title}
                 </h3>
-                <p
-                  className="text-sm leading-relaxed mb-5 text-muted-foreground"
-                >
+                <p className="text-sm leading-relaxed mb-5 text-muted-foreground">
                   {tool.desc}
                 </p>
 
@@ -145,31 +145,21 @@ export default function AIToolsSection({ t }: AIToolsSectionProps) {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <div
-                        className="pt-4 pb-2 border-t border-white/5"
-                      >
+                      <div className="pt-4 pb-2 border-t border-white/5">
                         <div className="space-y-3">
                           <div>
-                            <span
-                              className="text-xs uppercase tracking-widest text-muted-foreground/70"
-                            >
+                            <span className="text-xs uppercase tracking-widest text-muted-foreground/70">
                               Problem Solved
                             </span>
-                            <p
-                              className="text-sm mt-1 text-muted-foreground"
-                            >
+                            <p className="text-sm mt-1 text-muted-foreground">
                               {tool.problem}
                             </p>
                           </div>
                           <div>
-                            <span
-                              className="text-xs uppercase tracking-widest text-muted-foreground/70"
-                            >
+                            <span className="text-xs uppercase tracking-widest text-muted-foreground/70">
                               Who Needs This
                             </span>
-                            <p
-                              className="text-sm mt-1 text-muted-foreground"
-                            >
+                            <p className="text-sm mt-1 text-muted-foreground">
                               {tool.whoNeeds}
                             </p>
                           </div>
@@ -180,9 +170,7 @@ export default function AIToolsSection({ t }: AIToolsSectionProps) {
                 </AnimatePresence>
 
                 {/* Footer */}
-                <div
-                  className="flex items-center justify-between mt-4 pt-4 border-t border-white/5"
-                >
+                <div className="flex items-center justify-between mt-4 pt-4 border-t border-white/5">
                   <button
                     className="text-xs text-muted-foreground/70"
                     onClick={(e) => {

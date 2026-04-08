@@ -50,12 +50,10 @@ export default function TechStackSection({ t }: TechStackSectionProps) {
         transition={{ duration: 0.6 }}
         className="text-center mb-16"
       >
-        <h2 className="heading">
-          Technologies We <span className="text-primary">Master</span>
+        <h2 className="text-3xl md:text-5xl font-bold tracking-tight font-display bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/60">
+          {t.title}
         </h2>
-        <p
-          className="mt-4 text-base md:text-lg max-w-2xl mx-auto text-muted-foreground"
-        >
+        <p className="mt-4 text-base text-foreground/50 md:text-lg max-w-2xl mx-auto">
           {t.subtitle}
         </p>
       </motion.div>
@@ -70,9 +68,7 @@ export default function TechStackSection({ t }: TechStackSectionProps) {
             transition={{ duration: 0.6, delay: i * 0.1 }}
             className="rounded-2xl p-6 bg-background border border-border"
           >
-            <h3
-              className="text-sm font-semibold uppercase tracking-widest mb-6 text-primary"
-            >
+            <h3 className="text-sm font-semibold uppercase tracking-widest mb-6 text-primary">
               {cat.label}
             </h3>
             <div className="grid grid-cols-2 gap-4">
@@ -90,9 +86,7 @@ export default function TechStackSection({ t }: TechStackSectionProps) {
                       className="w-6 h-6 object-contain"
                     />
                   </div>
-                  <span
-                    className="text-sm font-medium text-muted-foreground"
-                  >
+                  <span className="text-sm font-medium text-muted-foreground">
                     {tech.name}
                   </span>
                 </motion.div>

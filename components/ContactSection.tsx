@@ -56,12 +56,10 @@ export default function ContactSection({ t }: ContactSectionProps) {
         transition={{ duration: 0.6 }}
         className="text-center mb-16 relative z-10"
       >
-        <h2 className="heading">
-          Get In <span className="text-primary">Touch</span>
+        <h2 className="text-3xl md:text-5xl font-bold tracking-tight font-display bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/60">
+          {t.title}
         </h2>
-        <p
-          className="mt-4 text-base md:text-lg max-w-2xl mx-auto text-muted-foreground"
-        >
+        <p className="mt-4 text-base text-foreground/50 md:text-lg max-w-2xl mx-auto">
           {t.subtitle}
         </p>
       </motion.div>
@@ -99,15 +97,11 @@ export default function ContactSection({ t }: ContactSectionProps) {
                 key={label}
                 className="flex items-center gap-4 p-4 rounded-xl bg-card/60 border border-white/10"
               >
-                <div
-                  className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 bg-primary/15 border border-primary/30"
-                >
+                <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 bg-primary/15 border border-primary/30">
                   <Icon className="w-4 h-4 text-primary" />
                 </div>
                 <div>
-                  <div className="text-xs text-muted-foreground">
-                    {label}
-                  </div>
+                  <div className="text-xs text-muted-foreground">{label}</div>
                   <div className="text-sm font-medium text-white">{value}</div>
                 </div>
               </div>
@@ -130,9 +124,7 @@ export default function ContactSection({ t }: ContactSectionProps) {
             { key: "phone", type: "tel", required: false },
           ].map(({ key, type, required }) => (
             <div key={key}>
-              <label
-                className="block text-xs mb-1.5 uppercase tracking-widest text-muted-foreground/70"
-              >
+              <label className="block text-xs mb-1.5 uppercase tracking-widest text-muted-foreground/70">
                 {t[key as keyof typeof t]}
               </label>
               <input
@@ -148,9 +140,7 @@ export default function ContactSection({ t }: ContactSectionProps) {
           ))}
 
           <div>
-            <label
-              className="block text-xs mb-1.5 uppercase tracking-widest text-muted-foreground/70"
-            >
+            <label className="block text-xs mb-1.5 uppercase tracking-widest text-muted-foreground/70">
               {t.message}
             </label>
             <textarea
