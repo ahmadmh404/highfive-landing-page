@@ -1,5 +1,9 @@
 {
   "permissions": {
-    "allow": ["WebFetch(github.com)"]
-  }
+    "allow": [
+      "WebFetch(github.com)",
+      "Bash(dir *)"
+    ]
+  },
+  "$version": 3
 }
