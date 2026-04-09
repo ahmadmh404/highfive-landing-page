@@ -24,17 +24,17 @@ Audit and document all typography styles across the HighFive landing page sectio
 
 ## Constitution Check
 
-*GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
+_GATE: Must pass before Phase 0 research. Re-check after Phase 1 design._
 
-| Gate | Status | Notes |
-|------|--------|-------|
-| I. Honesty | Pass | Audit documents real state, no fabrication |
-| II. Usefulness | Pass | Documentation enables consistent future development |
-| III. Human + Technical | Pass | Typography system serves the team and visitors |
-| IV. High Quality | Pass | Audit ensures WCAG AA compliance and design consistency |
-| Localization Support | Pass | Typography must work with existing i18n setup |
-| Dark/Light Mode | Pass | Must audit typography in both themes |
-| No Fake Content | Pass | Only documents existing real styles |
+| Gate                   | Status | Notes                                                   |
+| ---------------------- | ------ | ------------------------------------------------------- |
+| I. Honesty             | Pass   | Audit documents real state, no fabrication              |
+| II. Usefulness         | Pass   | Documentation enables consistent future development     |
+| III. Human + Technical | Pass   | Typography system serves the team and visitors          |
+| IV. High Quality       | Pass   | Audit ensures WCAG AA compliance and design consistency |
+| Localization Support   | Pass   | Typography must work with existing i18n setup           |
+| Dark/Light Mode        | Pass   | Must audit typography in both themes                    |
+| No Fake Content        | Pass   | Only documents existing real styles                     |
 
 ## Project Structure
 
@@ -97,8 +97,8 @@ Output: [research.md](research.md) - created inline above
 > **Fill ONLY if Constitution Check has violations that must be justified**
 
 | Violation | Why Needed | Simpler Alternative Rejected Because |
-|-----------|------------|-------------------------------------|
-| None | N/A | N/A |
+| --------- | ---------- | ------------------------------------ |
+| None      | N/A        | N/A                                  |
 
 ## Next Steps
 
