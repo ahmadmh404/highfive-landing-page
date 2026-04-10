@@ -27,9 +27,9 @@ interface ServicesSectionProps {
 
 export default function ServicesSection({ t }: ServicesSectionProps) {
   const services = [
-    { key: "customDev", icon: FaCode, color: "hsl(var(--primary))" },
-    { key: "aiTools", icon: FaBrain, color: "hsl(var(--accent))" },
-    { key: "courses", icon: FaGraduationCap, color: "hsl(var(--primary))" },
+    { key: "customDev", icon: FaCode, color: "#CBACF9" },
+    { key: "aiTools", icon: FaBrain, color: "#E4ECFF" },
+    { key: "courses", icon: FaGraduationCap, color: "#CBACF9" },
   ];
 
   return (
@@ -38,7 +38,7 @@ export default function ServicesSection({ t }: ServicesSectionProps) {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.5 }}
         className="text-center mb-16"
       >
         <h2 className="text-3xl md:text-5xl font-bold tracking-tight font-display bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/60">
@@ -56,13 +56,13 @@ export default function ServicesSection({ t }: ServicesSectionProps) {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: i * 0.1 }}
+            transition={{ duration: 0.5, delay: i * 0.15 }}
           >
             <Button
               borderRadius="1.5rem"
               containerClassName="w-full h-full"
               duration={Math.floor(Math.random() * 5000) + 8000}
-              className="w-full text-foreground border border-white/10 bg-background"
+              className="w-full text-white border-white/10 bg-[rgb(4,7,29)]"
             >
               <div className="p-8 flex flex-col gap-4 h-full">
                 <div
@@ -74,10 +74,13 @@ export default function ServicesSection({ t }: ServicesSectionProps) {
                 >
                   <Icon style={{ color }} className="w-5 h-5" />
                 </div>
-                <h3 className="text-xl font-bold font-display text-foreground">
+                <h3 className="text-xl font-bold font-display text-white">
                   {(t as any)[key].title}
                 </h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">
+                <p
+                  className="text-sm leading-relaxed"
+                  style={{ color: "#BEC1DD" }}
+                >
                   {(t as any)[key].description}
                 </p>
               </div>

@@ -3,7 +3,9 @@
     "allow": [
       "WebFetch(github.com)",
       "Bash(dir *)",
-      "WebSearch"
+      "WebSearch",
+      "Bash(git reflog *)",
+      "Bash(findstr *)"
     ]
   },
   "$version": 3

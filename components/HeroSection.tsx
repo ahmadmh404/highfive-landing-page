@@ -143,29 +143,27 @@ export default function HeroSection({ locale, t }: HeroSectionProps) {
           className="absolute top-0 right-1/4 w-px h-full opacity-20"
           style={{
             background:
-              "linear-gradient(to bottom, transparent, var(--primary) 40%, var(--accent) 60%, transparent)",
+              "linear-gradient(to bottom, transparent, #CBACF9 40%, #E4ECFF 60%, transparent)",
           }}
         />
         <div
           className="absolute top-0 right-1/3 w-px h-3/4 opacity-10"
           style={{
             background:
-              "linear-gradient(to bottom, transparent, var(--primary) 50%, transparent)",
+              "linear-gradient(to bottom, transparent, #CBACF9 50%, transparent)",
           }}
         />
         <div
           className="absolute -top-20 right-1/4 w-96 h-96 rounded-full opacity-5"
           style={{
-            background:
-              "radial-gradient(circle, var(--primary) 0%, transparent 70%)",
+            background: "radial-gradient(circle, #CBACF9 0%, transparent 70%)",
             filter: "blur(40px)",
           }}
         />
         <div
           className="absolute bottom-1/4 right-1/3 w-64 h-64 rounded-full opacity-5"
           style={{
-            background:
-              "radial-gradient(circle, var(--accent) 0%, transparent 70%)",
+            background: "radial-gradient(circle, #E4ECFF 0%, transparent 70%)",
             filter: "blur(60px)",
           }}
         />
@@ -196,8 +194,11 @@ export default function HeroSection({ locale, t }: HeroSectionProps) {
           transition={{ duration: 0.6 }}
           className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm"
         >
-          <FaBolt className="text-primary w-3 h-3" />
-          <span className="text-xs tracking-widest uppercase text-muted-foreground">
+          <FaBolt style={{ color: "#CBACF9" }} className="w-3 h-3" />
+          <span
+            className="text-xs tracking-widest uppercase"
+            style={{ color: "#C1C2D3" }}
+          >
             {t.badgeText}
           </span>
         </motion.div>
@@ -217,7 +218,8 @@ export default function HeroSection({ locale, t }: HeroSectionProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="text-center text-base md:text-lg lg:text-xl max-w-2xl leading-relaxed text-muted-foreground"
+          className="text-center text-base md:text-lg lg:text-xl max-w-2xl leading-relaxed"
+          style={{ color: "#C1C2D3" }}
         >
           {t.subtitle}
         </motion.p>
@@ -234,8 +236,8 @@ export default function HeroSection({ locale, t }: HeroSectionProps) {
             href="#ai-tools"
             className="block px-6 py-3 rounded-lg border text-sm font-medium transition-all duration-200 hover:bg-white/5"
             style={{
-              borderColor: "var(--border)",
-              color: "var(--accent)",
+              borderColor: "rgba(255,255,255,0.15)",
+              color: "#E4ECFF",
             }}
           >
             {t.ctaSecondary}
@@ -259,25 +261,34 @@ export default function HeroSection({ locale, t }: HeroSectionProps) {
               animate={{ opacity: 1, scale: 1 }}
               whileHover={{
                 y: -5,
-                backgroundColor: "var(--card)",
-                borderColor: "var(--primary)/40",
+                backgroundColor: "rgba(255, 255, 255, 0.04)",
+                borderColor: "rgba(203, 172, 249, 0.4)",
               }}
               transition={{ duration: 0.3, delay: 0.2 + i }}
-              className="relative flex flex-col items-center justify-center p-6 rounded-xl border border-border/80 bg-card/80 backdrop-blur-xl transition-all duration-300 group"
+              className="relative flex flex-col items-center justify-center p-6 rounded-2xl border backdrop-blur-xl transition-all duration-300 group"
+              style={{
+                background:
+                  "linear-gradient(180deg, rgba(17, 25, 40, 0.8) 0%, rgba(10, 12, 28, 0.9) 100%)",
+                borderColor: "rgba(255, 255, 255, 0.08)",
+                backdropFilter: "blur(12px)",
+              }}
             >
               {/* Top Accent Glow */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-[1px] bg-gradient-to-r from-transparent via-[#CBACF9]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
 
-              <span className="text-3xl md:text-4xl font-bold tracking-tighter font-display bg-clip-text text-transparent bg-gradient-to-b from-white to-primary">
+              <span className="text-3xl md:text-4xl font-bold tracking-tighter font-display bg-clip-text text-transparent bg-gradient-to-b from-white to-[#CBACF9]">
                 {stat.value}
               </span>
 
-              <span className="text-xs mt-2 uppercase tracking-[0.2em] font-medium text-center text-muted-foreground">
+              <span
+                className="text-[10px] md:text-xs mt-2 uppercase tracking-[0.2em] font-medium text-center"
+                style={{ color: "#C1C2D3" }}
+              >
                 {t.stats[stat.label as keyof typeof t.stats]}
               </span>
 
               {/* Subtle Background Radial Glow on Hover */}
-              <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_50%_-20%,var(--primary)_10%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_50%_-20%,rgba(203,172,249,0.1),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity" />
             </motion.div>
           ))}
         </motion.div>

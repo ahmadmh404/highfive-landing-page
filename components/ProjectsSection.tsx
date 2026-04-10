@@ -110,11 +110,16 @@ export default function ProjectsSection({ t }: ProjectsSectionProps) {
           <button
             key={f}
             onClick={() => setActive(f)}
-            className={`relative px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 overflow-hidden ${
-              active === f
-                ? "bg-primary/15 border border-primary/50 text-primary"
-                : "bg-card/60 border border-white/10 text-muted-foreground"
-            }`}
+            className="relative px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 overflow-hidden"
+            style={{
+              background:
+                active === f ? "rgba(203,172,249,0.15)" : "rgba(17,25,40,0.6)",
+              border:
+                active === f
+                  ? "1px solid rgba(203,172,249,0.5)"
+                  : "1px solid rgba(255,255,255,0.1)",
+              color: active === f ? "#CBACF9" : "#BEC1DD",
+            }}
           >
             {(t.filter as any)[f]}
           </button>
@@ -135,7 +140,10 @@ export default function ProjectsSection({ t }: ProjectsSectionProps) {
               className="lg:min-h-[32.5rem] h-[25rem] flex items-center justify-center sm:w-96 w-[80vw]"
             >
               <PinContainer title={t.viewCase} href={item.link}>
-                <div className="relative flex items-center justify-center sm:w-96 w-[80vw] overflow-hidden h-[20vh] lg:h-[30vh] mb-10">
+                <div
+                  className="relative flex items-center justify-center sm:w-96 w-[80vw] overflow-hidden h-[20vh] lg:h-[30vh] mb-10"
+                  style={{ backgroundColor: "#13162D" }}
+                >
                   <div className="relative w-full h-full overflow-hidden lg:rounded-3xl bg-background/50">
                     <img src="/bg.png" alt="background" />
                   </div>
@@ -146,11 +154,14 @@ export default function ProjectsSection({ t }: ProjectsSectionProps) {
                   />
                 </div>
 
-                <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1 text-foreground">
+                <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1 text-white">
                   {item.title}
                 </h1>
 
-                <p className="lg:text-xl lg:font-normal font-light text-sm line-clamp-2 mt-2 text-muted-foreground">
+                <p
+                  className="lg:text-xl lg:font-normal font-light text-sm line-clamp-2 mt-2"
+                  style={{ color: "#BEC1DD" }}
+                >
                   {item.des}
                 </p>
 
@@ -167,10 +178,16 @@ export default function ProjectsSection({ t }: ProjectsSectionProps) {
                     ))}
                   </div>
                   <div className="flex justify-center items-center">
-                    <p className="flex lg:text-xl md:text-xs text-sm text-primary">
+                    <p
+                      className="flex lg:text-xl md:text-xs text-sm"
+                      style={{ color: "#CBACF9" }}
+                    >
                       {t.viewCase}
                     </p>
-                    <FaLocationArrow className="ms-3 text-primary" />
+                    <FaLocationArrow
+                      className="ms-3"
+                      style={{ color: "#CBACF9" }}
+                    />
                   </div>
                 </div>
               </PinContainer>

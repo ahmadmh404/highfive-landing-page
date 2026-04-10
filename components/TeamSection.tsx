@@ -134,7 +134,7 @@ function TeamCard({ member, t }: { member: TeamMember; t: TeamTranslations }) {
 
 export default function TeamSection({ t }: { t: TeamTranslations }) {
   return (
-    <section id="team" className="relative w-full py-20 overflow-hidden">
+    <section id="team" className="relative w-full py-24 overflow-hidden">
       {/* Background Ambient Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-accent/5 blur-[120px] rounded-full pointer-events-none" />
       <div className="max-w-7xl mx-auto px-6 relative z-10">

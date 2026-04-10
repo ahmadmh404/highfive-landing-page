@@ -11,11 +11,7 @@ import {
 
 const toolIcons = [FaMagnifyingGlass, FaChartBar, FaStarHalfStroke];
 const toolKeys = ["scorpeSearch", "scorpeRank", "scorpeRecommend"] as const;
-const toolColors = [
-  "hsl(var(--primary))",
-  "hsl(var(--accent))",
-  "hsl(var(--primary))",
-];
+const toolColors = ["#CBACF9", "#E4ECFF", "#CBACF9"];
 
 interface AIToolsSectionProps {
   t: {
@@ -87,10 +83,15 @@ export default function AIToolsSection({ t }: AIToolsSectionProps) {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="relative rounded-2xl overflow-hidden cursor-pointer group shrink-0 bg-background border border-border"
+              transition={{ duration: 0.5, delay: i * 0.15 }}
+              className="relative rounded-2xl overflow-hidden cursor-pointer group shrink-0"
               style={{
+                background: "rgb(4,7,29)",
+                border: isActive
+                  ? `1px solid ${color}50`
+                  : "1px solid rgba(255,255,255,0.08)",
                 boxShadow: isActive ? `0 0 30px ${color}15` : "none",
+                transition: "border-color 0.3s, box-shadow 0.3s",
               }}
               onClick={() => setActiveKey(isActive ? null : key)}
             >
@@ -127,10 +128,13 @@ export default function AIToolsSection({ t }: AIToolsSectionProps) {
                 </div>
 
                 {/* Title & desc */}
-                <h3 className="text-lg font-bold text-foreground mb-2 font-display">
+                <h3 className="text-lg font-bold text-white mb-2 font-display">
                   {tool.title}
                 </h3>
-                <p className="text-sm leading-relaxed mb-5 text-muted-foreground">
+                <p
+                  className="text-sm leading-relaxed mb-5"
+                  style={{ color: "#BEC1DD" }}
+                >
                   {tool.desc}
                 </p>
 
@@ -144,21 +148,38 @@ export default function AIToolsSection({ t }: AIToolsSectionProps) {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <div className="pt-4 pb-2 border-t border-white/5">
+                      <div
+                        className="pt-4 pb-2"
+                        style={{
+                          borderTop: "1px solid rgba(255,255,255,0.06)",
+                        }}
+                      >
                         <div className="space-y-3">
                           <div>
-                            <span className="text-xs uppercase tracking-widest text-muted-foreground/70">
+                            <span
+                              className="text-xs uppercase tracking-widest"
+                              style={{ color: "#5c6370" }}
+                            >
                               Problem Solved
                             </span>
-                            <p className="text-sm mt-1 text-muted-foreground">
+                            <p
+                              className="text-sm mt-1"
+                              style={{ color: "#C1C2D3" }}
+                            >
                               {tool.problem}
                             </p>
                           </div>
                           <div>
-                            <span className="text-xs uppercase tracking-widest text-muted-foreground/70">
+                            <span
+                              className="text-xs uppercase tracking-widest"
+                              style={{ color: "#5c6370" }}
+                            >
                               Who Needs This
                             </span>
-                            <p className="text-sm mt-1 text-muted-foreground">
+                            <p
+                              className="text-sm mt-1"
+                              style={{ color: "#C1C2D3" }}
+                            >
                               {tool.whoNeeds}
                             </p>
                           </div>
@@ -169,9 +190,13 @@ export default function AIToolsSection({ t }: AIToolsSectionProps) {
                 </AnimatePresence>
 
                 {/* Footer */}
-                <div className="flex items-center justify-between mt-4 pt-4 border-t border-white/5">
+                <div
+                  className="flex items-center justify-between mt-4 pt-4"
+                  style={{ borderTop: "1px solid rgba(255,255,255,0.07)" }}
+                >
                   <button
-                    className="text-xs text-muted-foreground/70"
+                    className="text-xs"
+                    style={{ color: "#5c6370" }}
                     onClick={(e) => {
                       e.stopPropagation();
                       setActiveKey(isActive ? null : key);
