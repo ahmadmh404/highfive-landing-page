@@ -1,5 +1,16 @@
 # Quickstart: Multilingual Support
 
+## Current Implementation Status
+
+| Feature | Status | Files |
+|---------|--------|-------|
+| Language Switching | ✅ Complete | `components/language-switcher.tsx` |
+| Cookie Persistence | ✅ Complete | `lib/i18n/locale-cookies.ts` |
+| Auto-Detection | ✅ Complete | `lib/i18n/detect-locale.ts` |
+| Locale Resolution | ✅ Complete | `lib/i18n/resolve-locale.ts` |
+| Toast Notifications | ✅ Complete | `lib/i18n/language-toast.ts` |
+| Testimonials i18n | ✅ Complete | `lib/i18n/translations.ts`, `components/TestimonialsSection.tsx` |
+
 ## Adding New Translatable Content
 
 ### Step 1: Add Translation Keys
@@ -7,38 +18,35 @@
 Add new keys to `lib/i18n/translations.ts`:
 
 ```typescript
-// For testimonials data (currently missing)
+// testimonials structure (current implementation)
 export const translations = {
   en: {
-    // ... existing
     testimonials: {
       title: "What Our Clients Say",
       subtitle: "Real feedback from real businesses",
-      items: [  // ADD THIS
-        {
-          name: "Sarah Johnson",
-          role: "CEO",
-          company: "TechStart Inc",
+      items: {
+        sarah: {
+          name: "Sarah Al-Mansouri",
+          role: "CTO",
+          company: "Horizon Tech Dubai",
           content: "HighFive transformed...",
         },
-        // ... more items
-      ],
+        // Add more keys as needed
+      },
     },
   },
   ar: {
-    // ... existing
     testimonials: {
       title: "ماذا يقول عملاؤنا",
       subtitle: "تقييمات حقيقية من شركات حقيقية",
-      items: [  // ADD THIS
-        {
-          name: "سارة جونسون",
-          role: "الرئيس التنفيذي",
-          company: "تك ستارت",
-          content: "حول هاي فايف حضورنا الرقمي...",
+      items: {
+        sarah: {
+          name: "سارة المنصوري",
+          role: "الرئيس التقني",
+          company: "هورايزن تك دبي",
+          content: "حولت هاي فايف...",
         },
-        // ... more items
-      ],
+      },
     },
   },
 };
@@ -47,24 +55,34 @@ export const translations = {
 ### Step 2: Update Component to Use Translations
 
 ```typescript
-// components/sections/testimonials-section.tsx
+// components/TestimonialsSection.tsx (current implementation)
 interface TestimonialsSectionProps {
   t: {
     title: string;
     subtitle: string;
-    items: Array<{  // ADD items type
-      name: string;
-      role: string;
-      company: string;
-      content: string;
-      rating: number;
-    }>;
+    items?: {
+      sarah: { name: string; role: string; company: string; content: string };
+      ahmed: { name: string; role: string; company: string; content: string };
+      maria: { name: string; role: string; company: string; content: string };
+      priya?: { name: string; role: string; company: string; content: string };
+      mohamed?: { name: string; role: string; company: string; content: string };
+      nour?: { name: string; role: string; company: string; content: string };
+    };
   };
 }
 
-export function TestimonialsSection({ t }: TestimonialsSectionProps) {
-  // Use t.items instead of hardcoded array
-  const testimonials = t.items;
+export default function TestimonialsSection({ t }: TestimonialsSectionProps) {
+  // Use translation keys dynamically
+  const testimonialItems = t.items
+    ? [
+        {
+          quote: t.items.sarah.content,
+          name: t.items.sarah.name,
+          title: `${t.items.sarah.role}, ${t.items.sarah.company}`,
+        },
+        // ... more items
+      ]
+    : [];
   // ... rest of component
 }
 ```
@@ -75,24 +93,42 @@ export function TestimonialsSection({ t }: TestimonialsSectionProps) {
 
 ### Manual Test
 
-1. Visit site → loads in English (default)
-2. Click LanguageSwitcher button ("عربي")
-3. URL changes: `/en` → `/ar`
-4. Page content displays in Arabic
-5. Refresh page → still Arabic (persisted)
+1. Visit site → loads in Arabic (default per spec)
+2. Click LanguageSwitcher button ("EN")
+3. URL changes: `/ar` → `/en`
+4. Page content displays in English
+5. Toast shows: "Language Changed / Switched to English successfully"
+6. Refresh page → still English (persisted via cookies)
+7. Close browser, reopen → still English (persisted)
+
+### Auto-Detection Test
+
+1. Clear cookies/localStorage
+2. Set browser language to Arabic
+3. Visit site → loads in Arabic automatically
+4. Set browser language to English
+5. Visit site → loads in English automatically
+
+### Locale Resolution Priority
+
+1. **URL locale** (highest) - e.g., `/ar` in URL
+2. **Stored preference** - cookies/localStorage
+3. **Auto-detection** - browser language
+4. **Default** - Arabic (per spec FR-017)
 
 ### Automated Test
 
 ```typescript
 // tests/i18n.test.ts
 import { render, screen, fireEvent } from "@testing-library/react";
+import { setStoredLocale, getStoredLocale } from "@/lib/i18n/locale-cookies";
 
-test("language switcher persists choice", () => {
-  // Set Arabic preference
-  localStorage.setItem("highfive-locale", JSON.stringify({
-    locale: "ar",
-    lastUpdated: Date.now()
-  }));
+test("language switcher persists choice in cookies", () => {
+  // Set Arabic preference via cookie
+  setStoredLocale("ar");
+  
+  // Verify preference saved
+  expect(getStoredLocale()).toBe("ar");
   
   // Render component
   render(<LanguageSwitcher currentLocale="ar" />);
@@ -100,9 +136,8 @@ test("language switcher persists choice", () => {
   // Click to switch to English
   fireEvent.click(screen.getByRole("button"));
   
-  // Verify localStorage updated
-  const saved = JSON.parse(localStorage.getItem("highfive-locale"));
-  expect(saved.locale).toBe("en");
+  // Verify preference updated
+  expect(getStoredLocale()).toBe("en");
 });
 ```
 
@@ -167,5 +202,9 @@ toast({
 | `lib/i18n/config.ts` | Locale config (unchanged) |
 | `lib/i18n/translations.ts` | All translation strings |
 | `lib/i18n/get-translations.ts` | Translation getter utility |
+| `lib/i18n/locale-cookies.ts` | Cookie/localStorage persistence |
+| `lib/i18n/detect-locale.ts` | Browser language detection |
+| `lib/i18n/resolve-locale.ts` | Locale resolution logic |
+| `lib/i18n/language-toast.ts` | Toast notification functions |
 | `components/language-switcher.tsx` | Language toggle component |
 | `app/[locale]/layout.tsx` | Layout with locale context |

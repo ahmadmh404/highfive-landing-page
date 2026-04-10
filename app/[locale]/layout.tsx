@@ -83,7 +83,11 @@ export async function generateMetadata({
     },
     metadataBase: new URL(process.env.SITE_URL!),
     alternates: {
-      canonical: "/",
+      canonical: `/${locale === "en" ? "" : locale}`,
+      languages: {
+        en: "/",
+        ar: "/ar",
+      },
     },
     robots: {
       index: true,

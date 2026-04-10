@@ -209,6 +209,50 @@ export const translations = {
     testimonials: {
       title: "What Our Clients Say",
       subtitle: "Real feedback from real businesses",
+      items: {
+        sarah: {
+          name: "Sarah Al-Mansouri",
+          role: "CTO",
+          company: "Horizon Tech Dubai",
+          content:
+            "HighFive transformed our outdated web presence into a sleek, AI-powered platform. The Scorpe Search integration alone boosted our user retention by 45%. Exceptional work from a truly talented team.",
+        },
+        ahmed: {
+          name: "James Whitfield",
+          role: "Founder",
+          company: "LaunchPad London",
+          content:
+            "Working with HighFive was a game-changer. They delivered our mobile app on time, within budget, and with features we hadn't even considered. Their bilingual support made communication seamless.",
+        },
+        maria: {
+          name: "Nour Khalid",
+          role: "Head of Digital",
+          company: "Retail Arabia",
+          content:
+            "The AI tools HighFive built for our e-commerce store are incredible. Product recommendations are spot-on and our conversion rate has doubled. Highly recommend their AI packages.",
+        },
+        priya: {
+          name: "Priya Sharma",
+          role: "VP Product",
+          company: "FinFlow Singapore",
+          content:
+            "HighFive doesn't just build software — they build partnerships. Their team understood our vision and delivered a product that exceeded every expectation. Five stars without hesitation.",
+        },
+        mohamed: {
+          name: "Mohamed Samir",
+          role: "Senior Developer",
+          company: "TechCorp Egypt",
+          content:
+            "I enrolled in HighFive's Next.js course and went from beginner to landing a senior developer role in 6 months. The quality of instruction is world-class.",
+        },
+        nour: {
+          name: "Mohamed Ahmed",
+          role: "CTO",
+          company: "DataTech Arabia",
+          content:
+            "Exceptional Arabic support and localization. They truly understand the MENA market and delivered a platform that resonates with our local audience.",
+        },
+      },
     },
     newsletter: {
       title: "Stay Updated",
@@ -226,6 +270,38 @@ export const translations = {
     faq: {
       title: "Frequently Asked Questions",
       subtitle: "Everything you need to know",
+      items: {
+        technologies: {
+          question: "What technologies do you specialize in?",
+          answer:
+            "We specialize in modern web technologies including Next.js, React, TypeScript for web development, Flutter for mobile apps, and cutting-edge AI/ML frameworks like TensorFlow and OpenAI for intelligent solutions.",
+        },
+        timeline: {
+          question: "How long does a typical project take?",
+          answer:
+            "Project timelines vary based on complexity. A standard website takes 4-6 weeks, mobile apps 8-12 weeks, and AI integrations 6-10 weeks. We provide detailed timelines during the discovery phase.",
+        },
+        support: {
+          question: "Do you provide ongoing support and maintenance?",
+          answer:
+            "Yes, we offer comprehensive support packages including bug fixes, security updates, feature enhancements, and technical support. Our team ensures your solution stays current and performs optimally.",
+        },
+        integration: {
+          question: "Can you work with our existing systems?",
+          answer:
+            "Absolutely. We excel at integrating with existing systems and databases. Our team conducts thorough analysis to ensure seamless integration without disrupting your current operations.",
+        },
+        pricing: {
+          question: "What is your pricing model?",
+          answer:
+            "We offer flexible pricing models including fixed-price projects, time-and-materials, and retainer agreements. Pricing depends on project scope, complexity, and timeline. Contact us for a detailed quote.",
+        },
+        languages: {
+          question: "Do you support multiple languages?",
+          answer:
+            "Yes, we have expertise in building bilingual and multilingual applications with proper RTL support for Arabic and other languages. Our team ensures cultural appropriateness and linguistic accuracy.",
+        },
+      },
     },
     contact: {
       title: "Get In Touch",
@@ -457,6 +533,50 @@ export const translations = {
     testimonials: {
       title: "ماذا يقول عملاؤنا",
       subtitle: "تقييمات حقيقية من شركات حقيقية",
+      items: {
+        sarah: {
+          name: "سارة المنصوري",
+          role: "الرئيس التقني",
+          company: "هورايزن تك دبي",
+          content:
+            "حولت هاي فايف حضورنا الرقمي المتقادم إلى منصة أنيقة مدعومة بالذكاء الاصطناعي. تكامل Scorpe Search وحده رفع معدل الاحتفاظ بالمستخدمين بنسبة 45%. عمل استثنائي من فريق موهوب حقاً.",
+        },
+        ahmed: {
+          name: "جيمس وايتفيلد",
+          role: "المؤسس",
+          company: "لونش باد لندن",
+          content:
+            "العمل مع هاي فايف كان نقطة تحول. سلموا تطبيقنا في الوقت المحددضمن الميزانية وبميزات لم نكن قد فكرنا فيها. دعمهم ثنائي اللغة جعل التواصل سلساً.",
+        },
+        maria: {
+          name: "نور خالد",
+          role: "مدير الرقمنة",
+          company: "تجارة عربية",
+          content:
+            "أدوات الذكاء الاصطناعي التي بنتها هاي فايف لمتجرنا الإلكتروني لا تصدق. توصيات المنتجات كانت في الصميم ومعدل التحويل تضاعف. أنصح بشدة ب-packages الذكاء الاصطناعي.",
+        },
+        priya: {
+          name: "بريا شارما",
+          role: "نائب رئيس المنتج",
+          company: "فاين فلو سنغافورة",
+          content:
+            "هاي فايف لا تبني برمجيات فقط — تبني شراكات. فريقهم فهم رؤيتنا وسلمو منتجاً تجاوز كل التوقعات. خمسة نجوم بدون تردد.",
+        },
+        mohamed: {
+          name: "محمد سمير",
+          role: "مطور أول",
+          company: "تك كورب مصر",
+          content:
+            "التحقت بدورة Next.js من هاي فايف ومن مبتدئ إلى الحصول على وظيفة مطور أول في 6 أشهر. جودة التعليم على مستوى عالمي.",
+        },
+        nour: {
+          name: "أحمد محمد",
+          role: "الرئيس التقني",
+          company: "داتا تك عربية",
+          content:
+            "استثنائي في دعم العربية والتوطين. فهمهم حقاً لسوق الشرق الأوسط وشمال أفريقيا وسلمو منصة تناسب جمهورنا المحلي.",
+        },
+      },
     },
     newsletter: {
       title: "ابق على اطلاع",
@@ -474,6 +594,38 @@ export const translations = {
     faq: {
       title: "الأسئلة الشائعة",
       subtitle: "كل ما تحتاج لمعرفته",
+      items: {
+        technologies: {
+          question: "ما التقنيات التي تتخصصون فيها؟",
+          answer:
+            "نتخصص في تقنيات الويب الحديثة بما في ذلك Next.js وReact وTypeScript لتطوير الويب، وFlutter لتطبيقات الموبايل، وأطر الذكاء الاصطناعي والتعلم الآلي المتطورة مثل TensorFlow وOpenAI للحلول الذكية.",
+        },
+        timeline: {
+          question: "كم يستغرق المشروع النموذجي؟",
+          answer:
+            "تختلف جداول المشاريع حسب التعقيد. يستغرق الموقع العادي 4-6 أسابيع، وتطبيقات الموبايل 8-12 أسبوعًا، وتكاملات الذكاء الاصطناعي 6-10 أسابيع. نوفر جداول مفصلة خلال مرحلة الاكتشاف.",
+        },
+        support: {
+          question: "هل تقدمون الدعم والصيانة المستمرة؟",
+          answer:
+            "نعم، نقدمackages دعم شاملة تشمل إصلاح الأخطاء وتحديثات الأمان وتحسينات الميزات والدعم التقني. يضمن فريقنا أن تبقى حلولك محدثة وتعمل بأفضل أداء.",
+        },
+        integration: {
+          question: "هل يمكنكم العمل مع أنظمتنا الحالية؟",
+          answer:
+            "بالتأكيد. نتفوق في التكامل مع الأنظمة وقواعد البيانات الحالية. يقوم فريقنا بتحليل شامل لضمان التكامل السلس دون تعطيل عملياتك الحالية.",
+        },
+        pricing: {
+          question: "ما نموذج التسعير لديكم؟",
+          answer:
+            "نقدم نماذج تسعير مرنة تشمل مشاريع بسعر ثابت، وعقود الوقت والمواد، واتفاقياتRetention يعتمد التسعير على نطاق المشروع وتعقيده والجدول الزمني. تواصل معنا للحصول على عرض تفصيلي.",
+        },
+        languages: {
+          question: "هل تدعمون لغات متعددة؟",
+          answer:
+            "نعم، لدينا خبرة في بناء تطبيقات ثنائية اللغة ومتعددة اللغات مع دعم RTL الكامل للعربية واللغات الأخرى. يضمن فريقنا الملاءمة الثقافية والدقة اللغوية.",
+        },
+      },
     },
     contact: {
       title: "تواصل معنا",

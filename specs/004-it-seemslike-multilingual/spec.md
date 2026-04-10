@@ -20,7 +20,7 @@
 - Q: Performance requirements → A: Fast loading - language should feel like content delivery, not a waterfall
 - Q: Fallback behavior → A: Toast message + default to English
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 ### User Story 1 - Language Switching (Priority: P1)
 
@@ -91,31 +91,31 @@ System handles unavailable languages gracefully with user feedback.
 - What happens when URL locale and stored locale mismatch? → Priority: 1) URL locale if valid, 2) Stored locale if valid, 3) Default to Arabic
 - What happens when testimonial translations are missing? → Show English content with toast notification
 
-## Additional Requirements *(mandatory)*
+## Additional Requirements _(mandatory)_
 
 ### Sections Requiring Multilingual Support
 
 All page sections MUST have translations in both English and Arabic:
 
-| Section | Component | Status |
-|---------|-----------|--------|
-| Hero | `HeroSection` | ✅ Complete |
-| Services | `ServicesSection` | ✅ Complete |
-| Why Choose Us | `WhyChooseUsSection` | ✅ Complete |
-| Process | `ProcessSection` | ✅ Complete |
-| Tech Stack | `TechStackSection` | ✅ Complete |
-| Projects | `ProjectsSection` | ✅ Complete |
-| Team | `TeamSection` | ✅ Complete |
-| Courses | `CoursesSection` | ✅ Complete |
-| AI Tools | `AIToolsSection` | ✅ Complete |
-| **Testimonials** | `TestimonialsSection` | ⚠️ **Missing: names, roles, companies, quotes** |
-| **FAQ** | `FAQSection` | ⚠️ **Missing: all 6 questions and answers** |
-| Newsletter | `NewsletterSection` | ✅ Complete |
-| CTA | `CTASection` | ✅ Complete |
-| Contact | `ContactSection` | ✅ Complete |
-| Footer | `Footer` | ✅ Complete |
+| Section          | Component             | Status                                      |
+| ---------------- | --------------------- | ------------------------------------------- |
+| Hero             | `HeroSection`         | ✅ Complete                                 |
+| Services         | `ServicesSection`     | ✅ Complete                                 |
+| Why Choose Us    | `WhyChooseUsSection`  | ✅ Complete                                 |
+| Process          | `ProcessSection`      | ✅ Complete                                 |
+| Tech Stack       | `TechStackSection`    | ✅ Complete                                 |
+| Projects         | `ProjectsSection`     | ✅ Complete                                 |
+| Team             | `TeamSection`         | ✅ Complete                                 |
+| Courses          | `CoursesSection`      | ✅ Complete                                 |
+| AI Tools         | `AIToolsSection`      | ✅ Complete                                 |
+| **Testimonials** | `TestimonialsSection` | ✅ Complete (6 testimonials EN+AR)          |
+| **FAQ**          | `FAQSection`          | ⚠️ **Missing: all 6 questions and answers** |
+| Newsletter       | `NewsletterSection`   | ✅ Complete                                 |
+| CTA              | `CTASection`          | ✅ Complete                                 |
+| Contact          | `ContactSection`      | ✅ Complete                                 |
+| Footer           | `Footer`              | ✅ Complete                                 |
 
-> **Note**: Both testimonials and FAQ have hardcoded English content in their components that needs translation data added.
+> **Note**: Testimonials now have full multilingual support. FAQ still needs Arabic content.
 
 ### Language Detection Priority
 
@@ -146,7 +146,7 @@ All page sections MUST have translations in both English and Arabic:
 - **FR-024**: SEO metadata (title, description) MUST be stored in translation files and generated centrally
 - **FR-025**: hreflang and metadata generation MUST be centralized in one config file, not copy-pasted per page
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 ### Functional Requirements
 
@@ -182,7 +182,7 @@ All page sections MUST have translations in both English and Arabic:
 - **Translation Data**: Content strings for each supported language
 - **Toast Notification**: User feedback messages for language events
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 ### Measurable Outcomes
 

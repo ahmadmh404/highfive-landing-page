@@ -9,10 +9,10 @@ Configuration for supported languages.
 | Field | Type | Description |
 |-------|------|-------------|
 | `locales` | `readonly ["en", "ar"]` | Supported locale codes |
-| `defaultLocale` | `"en"` | Fallback locale |
+| `defaultLocale` | `"ar"` | Fallback locale (Arabic per spec) |
 | `rtlLocales` | `["ar"]` | Right-to-left languages |
 
-**Source**: `lib/i18n/config.ts` (existing, no changes needed)
+**Source**: `lib/i18n/config.ts` (unchanged)
 
 ---
 
@@ -42,11 +42,11 @@ translations
 └── footer
 ```
 
-**Testimonials Gap**:
-- Current: `title`, `subtitle` have translations
-- Missing: `testimonials[].name`, `role`, `company`, `content`
+**Testimonials Status**: ✅ RESOLVED
+- Now includes: 6 testimonials with name, role, company, content in both EN and AR
+- Keys: `sarah`, `ahmed`, `maria`, `priya`, `mohamed`, `nour`
 
-**Source**: `lib/i18n/translations.ts` (needs extension)
+**Source**: `lib/i18n/translations.ts` (extended)
 
 ---
 
@@ -59,19 +59,25 @@ User's language choice.
 | `locale` | `Locale` | User's selected language ("en" or "ar") |
 | `lastUpdated` | `number` | Timestamp of last selection |
 
-**Storage**: localStorage key: `"highfive-locale"`
+**Storage**: Cookie `"highfive-locale"` (with localStorage fallback)
 
 **Persistence Implementation**:
 ```typescript
-// Save preference
-localStorage.setItem("highfive-locale", JSON.stringify({
-  locale: newLocale,
-  lastUpdated: Date.now()
-}));
+// lib/i18n/locale-cookies.ts
+import { setStoredLocale, getStoredLocale } from "@/lib/i18n/locale-cookies";
 
-// Load preference
-const saved = localStorage.getItem("highfive-locale");
+// Save preference (cookies + localStorage fallback)
+setStoredLocale(newLocale);
+
+// Load preference (cookies first, then localStorage)
+const savedLocale = getStoredLocale();
 ```
+
+**Files**:
+- `lib/i18n/locale-cookies.ts` - Cookie/localStorage persistence
+- `lib/i18n/detect-locale.ts` - Browser language auto-detection
+- `lib/i18n/resolve-locale.ts` - Locale resolution (URL > storage > auto > default)
+- `lib/i18n/language-toast.ts` - Toast notifications
 
 ---
 
@@ -157,11 +163,15 @@ Save preference to localStorage
 
 ---
 
-## File Changes Required
+## File Changes Completed
 
-| File | Change Type | Description |
-|------|-------------|-------------|
-| `lib/i18n/translations.ts` | Extend | Add Arabic testimonials data |
-| `components/language-switcher.tsx` | Modify | Add persistence + auto-detection |
-| `components/ui/toast.tsx` | Create | Add toast notification component |
-| `app/[locale]/layout.tsx` | Verify | Ensure RTL class applied |
+| File | Change Type | Status |
+|------|-------------|--------|
+| `lib/i18n/translations.ts` | Extended | ✅ Complete |
+| `lib/i18n/locale-cookies.ts` | New | ✅ Complete |
+| `lib/i18n/detect-locale.ts` | New | ✅ Complete |
+| `lib/i18n/resolve-locale.ts` | New | ✅ Complete |
+| `lib/i18n/language-toast.ts` | New | ✅ Complete |
+| `components/language-switcher.tsx` | Modified | ✅ Complete |
+| `components/TestimonialsSection.tsx` | Modified | ✅ Complete |
+| `app/[locale]/layout.tsx` | Verified | ✅ Complete |

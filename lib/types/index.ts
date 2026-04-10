@@ -94,3 +94,10 @@ export interface HowWeWorkStep {
   icon: string;
   order: number;
 }
+
+export interface Testimonial {
+  name: string;
+  role: string;
+  company: string;
+  content: string;
+}

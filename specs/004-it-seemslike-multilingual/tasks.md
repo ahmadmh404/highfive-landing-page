@@ -17,9 +17,9 @@
 
 **Purpose**: Prepare project for multilingual feature implementation
 
-- [ ] T001 Verify existing i18n configuration in lib/i18n/config.ts supports en and ar locales
-- [ ] T002 [P] Review existing translations.ts structure at lib/i18n/translations.ts
-- [ ] T003 [P] Examine current LanguageSwitcher component at components/language-switcher.tsx
+- [x] T001 Verify existing i18n configuration in lib/i18n/config.ts supports en and ar locales
+- [x] T002 [P] Review existing translations.ts structure at lib/i18n/translations.ts
+- [x] T003 [P] Examine current LanguageSwitcher component at components/language-switcher.tsx
 
 **Checkpoint**: Setup complete - understand current state
 
@@ -29,10 +29,10 @@
 
 **Purpose**: Core infrastructure required before user story implementation
 
-- [ ] T004 Create cookie-based locale persistence utility in lib/i18n/locale-cookies.ts
-- [ ] T005 [P] Implement browser language auto-detection function in lib/i18n/detect-locale.ts
-- [ ] T006 Integrate existing shadcn toast at components/ui/toast.tsx for language fallback feedback messages
-- [ ] T006b **[FR-017]** Implement default-to-Arabic locale resolution when no URL locale and no stored preference exists
+- [x] T004 Create cookie-based locale persistence utility in lib/i18n/locale-cookies.ts
+- [x] T005 [P] Implement browser language auto-detection function in lib/i18n/detect-locale.ts
+- [x] T006 Integrate existing shadcn toast at components/ui/toast.tsx for language fallback feedback messages
+- [x] T006b **[FR-017]** Implement default-to-Arabic locale resolution when no URL locale and no stored preference exists
 
 **Checkpoint**: Foundation ready - user story implementation can now begin
 
@@ -46,9 +46,9 @@
 
 ### Implementation for User Story 1
 
-- [ ] T007 [P] [US1] Enhance LanguageSwitcher at components/language-switcher.tsx to use cookie persistence
-- [ ] T008 [US1] Integrate auto-detection in LanguageSwitcher for first-time visitors
-- [ ] T009 [US1] Add URL locale priority handling (URL locale wins over stored preference)
+- [x] T007 [P] [US1] Enhance LanguageSwitcher at components/language-switcher.tsx to use cookie persistence
+- [x] T008 [US1] Integrate auto-detection in LanguageSwitcher for first-time visitors
+- [x] T009 [US1] Add URL locale priority handling (URL locale wins over stored preference)
 
 **Checkpoint**: User can switch languages with persistence - MVP complete
 
@@ -62,9 +62,9 @@
 
 ### Implementation for User Story 2
 
-- [ ] T010 [P] [US2] Extend locale-cookies.ts with getLocale and setLocale functions
-- [ ] T011 [US2] Add localStorage fallback to cookies for private/incognito mode in locale-cookies.ts
-- [ ] T012 [US2] Update LanguageSwitcher to use new cookie utility for preference storage
+- [x] T010 [P] [US2] Extend locale-cookies.ts with getLocale and setLocale functions
+- [x] T011 [US2] Add localStorage fallback to cookies for private/incognito mode in locale-cookies.ts
+- [x] T012 [US2] Update LanguageSwitcher to use new cookie utility for preference storage
 
 **Checkpoint**: Language persists across sessions
 
@@ -78,9 +78,9 @@
 
 ### Implementation for User Story 3
 
-- [ ] T013 [P] [US3] Add Arabic translations for testimonials content in lib/i18n/translations.ts (3 testimonials: names, roles, companies, quotes)
-- [ ] T014 [US3] Update TestimonialsSection at components/sections/testimonials-section.tsx to use translation keys instead of hardcoded content
-- [ ] T015 [US3] Verify RTL rendering works correctly for Arabic testimonials
+- [x] T013 [P] [US3] Add Arabic translations for testimonials content in lib/i18n/translations.ts (3 testimonials: names, roles, companies, quotes)
+- [x] T014 [US3] Update TestimonialsSection at components/TestimonialsSection.tsx to use translation keys instead of hardcoded content
+- [x] T015 [US3] Verify RTL rendering works correctly for Arabic testimonials
 
 **Checkpoint**: Testimonials section fully multilingual
 
@@ -94,10 +94,10 @@
 
 ### Implementation for User Story 4
 
-- [ ] T016 [P] [US4] Add Arabic FAQ translations in lib/i18n/translations.ts (6 Q&A pairs)
-- [ ] T017 [US4] Update FAQSection at components/sections/faq-section.tsx to use translation keys
-- [ ] T018 [US4] Add fallback toast notification when translation key is missing
-- [ ] T019 [US4] Handle fallback to English when Arabic translation is missing
+- [X] T016 [P] [US4] Add Arabic FAQ translations in lib/i18n/translations.ts (6 Q&A pairs)
+- [X] T017 [US4] Update FAQSection at components/FAQSection.tsx to use translation keys
+- [X] T018 [US4] Add fallback toast notification when translation key is missing
+- [X] T019 [US4] Handle fallback to English when Arabic translation is missing
 
 **Checkpoint**: Fallback handling works for all sections
 
@@ -107,8 +107,8 @@
 
 **Purpose**: SEO improvements and overall quality
 
-- [ ] T020 [P] Add hreflang and canonical meta tags via Next.js generateMetadata in app/[locale]/layout.tsx for en and ar variants
-- [ ] T021 Verify html lang attribute is set correctly per locale in layout.tsx
+- [X] T020 [P] Add hreflang and canonical meta tags via Next.js generateMetadata in app/[locale]/layout.tsx for en and ar variants
+- [X] T021 Verify html lang attribute is set correctly per locale in layout.tsx
 
 ### Verification Notes (SC-001, SC-003, SC-004)
 
@@ -172,4 +172,4 @@
 - [Story] label maps task to specific user story for traceability
 - Each user story should be independently completable and testable
 - User clarifications: cookies for persistence (not localStorage), Arabic as default locale, URL locale priority
-- Translation gaps: testimonials (3 items), FAQ (6 Q&A pairs) need Arabic content
+- Translation gaps: FAQ (6 Q&A pairs) need Arabic content

@@ -36,7 +36,7 @@ export default async function HomePage({
         <TechStackSection t={t.techStack} />
         <TestimonialsSection t={t.testimonials} />
         <AIToolsSection t={t.aiTools} />
-        {/* <FAQSection t={t.faq} /> */}
+        <FAQSection t={t.faq} />
         <ContactSection t={t.contact} />
         <FooterSection t={t.footer} />
       </div>

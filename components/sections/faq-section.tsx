@@ -12,43 +12,29 @@ interface FAQSectionProps {
   t: {
     title: string;
     subtitle: string;
+    items?: {
+      technologies?: { question: string; answer: string };
+      timeline?: { question: string; answer: string };
+      support?: { question: string; answer: string };
+      integration?: { question: string; answer: string };
+      pricing?: { question: string; answer: string };
+      languages?: { question: string; answer: string };
+    };
   };
+  fallbackItems?: Array<{ question: string; answer: string }>;
 }
 
-export function FAQSection({ t }: FAQSectionProps) {
-  // Mock FAQs - fetch from Strapi CMS in production
-  const faqs = [
-    {
-      question: "What technologies do you specialize in?",
-      answer:
-        "We specialize in modern web technologies including Next.js, React, TypeScript for web development, Flutter for mobile apps, and cutting-edge AI/ML frameworks like TensorFlow and OpenAI for intelligent solutions.",
-    },
-    {
-      question: "How long does a typical project take?",
-      answer:
-        "Project timelines vary based on complexity. A standard website takes 4-6 weeks, mobile apps 8-12 weeks, and AI integrations 6-10 weeks. We provide detailed timelines during the discovery phase.",
-    },
-    {
-      question: "Do you provide ongoing support and maintenance?",
-      answer:
-        "Yes, we offer comprehensive support packages including bug fixes, security updates, feature enhancements, and technical support. Our team ensures your solution stays current and performs optimally.",
-    },
-    {
-      question: "Can you work with our existing systems?",
-      answer:
-        "Absolutely. We excel at integrating with existing systems and databases. Our team conducts thorough analysis to ensure seamless integration without disrupting your current operations.",
-    },
-    {
-      question: "What is your pricing model?",
-      answer:
-        "We offer flexible pricing models including fixed-price projects, time-and-materials, and retainer agreements. Pricing depends on project scope, complexity, and timeline. Contact us for a detailed quote.",
-    },
-    {
-      question: "Do you support multiple languages?",
-      answer:
-        "Yes, we have expertise in building bilingual and multilingual applications with proper RTL support for Arabic and other languages. Our team ensures cultural appropriateness and linguistic accuracy.",
-    },
-  ];
+export function FAQSection({ t, fallbackItems }: FAQSectionProps) {
+  const faqItems = t.items
+    ? [
+        t.items.technologies,
+        t.items.timeline,
+        t.items.support,
+        t.items.integration,
+        t.items.pricing,
+        t.items.languages,
+      ].filter((item): item is { question: string; answer: string } => !!item)
+    : fallbackItems || [];
 
   return (
     <section className="bg-muted/30 py-24 lg:py-32">
@@ -76,7 +62,7 @@ export function FAQSection({ t }: FAQSectionProps) {
           className="mx-auto max-w-3xl"
         >
           <Accordion type="single" collapsible className="space-y-4">
-            {faqs.map((faq, index) => (
+            {faqItems.map((faq, index) => (
               <AccordionItem
                 key={index}
                 value={`item-${index}`}

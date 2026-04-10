@@ -5,7 +5,30 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaChevronDown } from "react-icons/fa6";
 import type { Lang } from "@/data/translations";
 
-const faqs = [
+interface FAQItem {
+  q: string;
+  a: string;
+}
+
+interface FAQSectionProps {
+  lang: Lang;
+  t: {
+    faq?: {
+      title?: string;
+      subtitle?: string;
+      items?: {
+        technologies?: { question: string; answer: string };
+        timeline?: { question: string; answer: string };
+        support?: { question: string; answer: string };
+        integration?: { question: string; answer: string };
+        pricing?: { question: string; answer: string };
+        languages?: { question: string; answer: string };
+      };
+    };
+  };
+}
+
+const fallbackFAQs: FAQItem[] = [
   {
     q: "What types of projects does HighFive specialize in?",
     a: "HighFive specializes in custom web applications, mobile apps, AI integrations, and SaaS products. We work with startups, SMEs, and enterprise clients across the MENA region and globally.",
@@ -28,18 +51,41 @@ const faqs = [
   },
 ];
 
-interface FAQTranslations {
-  title: string;
-  subtitle: string;
-}
+function getFAQItems(t: FAQSectionProps["t"]): FAQItem[] {
+  const faqData = t.faq;
 
-interface FAQSectionProps {
-  lang: Lang;
-  t: FAQTranslations;
+  if (!faqData?.items) {
+    return fallbackFAQs;
+  }
+
+  const items = faqData.items;
+  const faqs: FAQItem[] = [];
+
+  if (items.technologies) {
+    faqs.push({ q: items.technologies.question, a: items.technologies.answer });
+  }
+  if (items.timeline) {
+    faqs.push({ q: items.timeline.question, a: items.timeline.answer });
+  }
+  if (items.support) {
+    faqs.push({ q: items.support.question, a: items.support.answer });
+  }
+  if (items.integration) {
+    faqs.push({ q: items.integration.question, a: items.integration.answer });
+  }
+  if (items.pricing) {
+    faqs.push({ q: items.pricing.question, a: items.pricing.answer });
+  }
+  if (items.languages) {
+    faqs.push({ q: items.languages.question, a: items.languages.answer });
+  }
+
+  return faqs.length > 0 ? faqs : fallbackFAQs;
 }
 
 export default function FAQSection({ lang, t }: FAQSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const faqs = getFAQItems(t);
 
   return (
     <section id="faq" className="w-full py-20">
@@ -53,10 +99,9 @@ export default function FAQSection({ lang, t }: FAQSectionProps) {
         <h2 className="heading">
           Frequently Asked <span className="text-primary">Questions</span>
         </h2>
-        <p
-          className="mt-4 text-base md:text-lg max-w-2xl mx-auto text-muted-foreground"
-        >
-          {t.subtitle}
+        <p className="mt-4 text-base md:text-lg max-w-2xl mx-auto text-muted-foreground">
+          {t.faq?.subtitle ||
+            "Get answers to common questions about our services"}
         </p>
       </motion.div>
 
@@ -97,9 +142,7 @@ export default function FAQSection({ lang, t }: FAQSectionProps) {
                   transition={{ duration: 0.3 }}
                   className="overflow-hidden"
                 >
-                  <div
-                    className="px-6 pb-6 text-sm leading-relaxed text-muted-foreground/80 pt-4 border-t border-white/5"
-                  >
+                  <div className="px-6 pb-6 text-sm leading-relaxed text-muted-foreground/80 pt-4 border-t border-white/5">
                     <div className="pt-4">{faq.a}</div>
                   </div>
                 </motion.div>
