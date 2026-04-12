@@ -137,30 +137,25 @@ function ProjectCard({
             {item.des}
           </p>
 
-          <div className="flex items-center justify-between mt-7">
-            <div className="flex items-center">
-              {item.iconLists.map((icon, index) => (
-                <div
-                  key={index}
-                  className="border border-white/[.2] rounded-full bg-black lg:w-10 lg:h-10 w-8 h-8 flex justify-center items-center"
-                  style={{ transform: `translateX(-${5 * index + 2}px)` }}
-                >
-                  <img src={icon} alt="tech" className="p-2" />
-                </div>
-              ))}
-            </div>
-            <div className="flex justify-center items-center">
-              <p
-                className="flex lg:text-xl md:text-xs text-sm transition-all duration-200 group-hover:translate-x-2"
-                style={{ color: "#CBACF9" }}
+          {/* Tech Icons - Overflow row */}
+          <div className="flex items-center mt-7 mb-4 overflow-visible">
+            {item.iconLists.map((icon, index) => (
+              <div
+                key={index}
+                className="border border-white/[.2] rounded-full bg-black lg:w-10 lg:h-10 w-8 h-8 flex justify-center items-center shrink-0"
+                style={{ transform: `translateX(-${5 * index + 4}px)` }}
               >
-                {t.viewCase}
-              </p>
-              <FaLocationArrow
-                className="ms-3 transition-all duration-200 group-hover:translate-x-1"
-                style={{ color: "#CBACF9" }}
-              />
-            </div>
+                <img src={icon} alt="tech" className="p-2" />
+              </div>
+            ))}
+          </div>
+
+          {/* CTA Button - Contained, no overflow */}
+          <div className="flex items-center gap-2 mt-2">
+            <span className="text-sm font-medium text-primary">
+              {t.viewCase}
+            </span>
+            <FaLocationArrow className="text-primary transition-transform duration-300 group-hover:translate-x-1" />
           </div>
         </div>
 
@@ -222,7 +217,7 @@ export default function ProjectsSection({ t }: ProjectsSectionProps) {
       </div>
 
       {/* Projects Grid */}
-      <div className="flex flex-wrap items-center justify-center gap-16 mt-10">
+      <div className="grid grid-cols-3 gap-x-5 gap-y-10 mt-10">
         <AnimatePresence mode="popLayout">
           {filtered.map((item) => (
             <ProjectCard key={item.id} item={item} t={t} />
