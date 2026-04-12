@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaLocationArrow } from "react-icons/fa6";
-import { PinContainer } from "@/components/effects";
+import type { Lang } from "@/data/translations";
 
 const allProjects = [
   {
@@ -78,6 +78,102 @@ interface ProjectsSectionProps {
   };
 }
 
+function ProjectCard({
+  item,
+  t,
+}: {
+  item: (typeof allProjects)[0];
+  t: ProjectsSectionProps["t"];
+}) {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <motion.a
+      href={item.link}
+      className="group relative cursor-pointer sm:w-96 w-[80vw]"
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.9 }}
+      whileHover={{
+        scale: 1.05,
+        zIndex: 20,
+        transition: { type: "spring", stiffness: 260, damping: 20 },
+      }}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+    >
+      {/* 1. Main Card Container */}
+      <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[rgb(4,7,29)]">
+        {/* Image Area */}
+        <div className="relative overflow-hidden bg-[#13162D] h-[20vh] lg:h-[30vh]">
+          <div className="absolute inset-0 bg-background/50">
+            <img
+              src="/bg.png"
+              alt="background"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <img
+            src={item.img}
+            alt={item.title}
+            className={`relative z-10 absolute bottom-0 w-full transition-all duration-700 ease-in-out ${
+              isHovered ? "scale-110" : "scale-100"
+            }`}
+          />
+          {/* Overlay gradient */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[rgb(4,7,29)] via-transparent to-transparent opacity-60" />
+        </div>
+
+        {/* Content */}
+        <div className="p-6">
+          <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1 text-white transition-all duration-200 group-hover:translate-x-2">
+            {item.title}
+          </h1>
+
+          <p
+            className="lg:text-xl lg:font-normal font-light text-sm line-clamp-2 mt-2 transition-all duration-200 group-hover:translate-x-2"
+            style={{ color: "#BEC1DD" }}
+          >
+            {item.des}
+          </p>
+
+          <div className="flex items-center justify-between mt-7">
+            <div className="flex items-center">
+              {item.iconLists.map((icon, index) => (
+                <div
+                  key={index}
+                  className="border border-white/[.2] rounded-full bg-black lg:w-10 lg:h-10 w-8 h-8 flex justify-center items-center"
+                  style={{ transform: `translateX(-${5 * index + 2}px)` }}
+                >
+                  <img src={icon} alt="tech" className="p-2" />
+                </div>
+              ))}
+            </div>
+            <div className="flex justify-center items-center">
+              <p
+                className="flex lg:text-xl md:text-xs text-sm transition-all duration-200 group-hover:translate-x-2"
+                style={{ color: "#CBACF9" }}
+              >
+                {t.viewCase}
+              </p>
+              <FaLocationArrow
+                className="ms-3 transition-all duration-200 group-hover:translate-x-1"
+                style={{ color: "#CBACF9" }}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Top Shimmer Highlight (HighFive Signature) */}
+        <div className="absolute inset-0 border border-white/10 rounded-2xl pointer-events-none group-hover:border-primary/30 transition-colors duration-300" />
+      </div>
+
+      {/* Soft Glow behind card (HighFive Signature) */}
+      <div className="absolute -inset-2 bg-primary/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
+    </motion.a>
+  );
+}
+
 export default function ProjectsSection({ t }: ProjectsSectionProps) {
   const [active, setActive] = useState<string>("all");
 
@@ -129,68 +225,7 @@ export default function ProjectsSection({ t }: ProjectsSectionProps) {
       <div className="flex flex-wrap items-center justify-center gap-16 mt-10">
         <AnimatePresence mode="popLayout">
           {filtered.map((item) => (
-            <motion.div
-              key={item.id}
-              layout
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.3 }}
-              className="lg:min-h-[32.5rem] h-[25rem] flex items-center justify-center sm:w-96 w-[80vw]"
-            >
-              <PinContainer title={t.viewCase} href={item.link}>
-                <div
-                  className="relative flex items-center justify-center sm:w-96 w-[80vw] overflow-hidden h-[20vh] lg:h-[30vh] mb-10"
-                  style={{ backgroundColor: "#13162D" }}
-                >
-                  <div className="relative w-full h-full overflow-hidden lg:rounded-3xl bg-background/50">
-                    <img src="/bg.png" alt="background" />
-                  </div>
-                  <img
-                    src={item.img}
-                    alt={item.title}
-                    className="z-10 absolute bottom-0"
-                  />
-                </div>
-
-                <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1 text-white">
-                  {item.title}
-                </h1>
-
-                <p
-                  className="lg:text-xl lg:font-normal font-light text-sm line-clamp-2 mt-2"
-                  style={{ color: "#BEC1DD" }}
-                >
-                  {item.des}
-                </p>
-
-                <div className="flex items-center justify-between mt-7 mb-3">
-                  <div className="flex items-center">
-                    {item.iconLists.map((icon, index) => (
-                      <div
-                        key={index}
-                        className="border border-white/[.2] rounded-full bg-black lg:w-10 lg:h-10 w-8 h-8 flex justify-center items-center"
-                        style={{ transform: `translateX(-${5 * index + 2}px)` }}
-                      >
-                        <img src={icon} alt="tech" className="p-2" />
-                      </div>
-                    ))}
-                  </div>
-                  <div className="flex justify-center items-center">
-                    <p
-                      className="flex lg:text-xl md:text-xs text-sm"
-                      style={{ color: "#CBACF9" }}
-                    >
-                      {t.viewCase}
-                    </p>
-                    <FaLocationArrow
-                      className="ms-3"
-                      style={{ color: "#CBACF9" }}
-                    />
-                  </div>
-                </div>
-              </PinContainer>
-            </motion.div>
+            <ProjectCard key={item.id} item={item} t={t} />
           ))}
         </AnimatePresence>
       </div>
