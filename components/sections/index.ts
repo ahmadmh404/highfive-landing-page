@@ -9,5 +9,6 @@ export { default as ProjectsSection } from "./projects-section";
 export { default as TechStackSection } from "./tech-stack-section";
 export { default as TestimonialsSection } from "./testimonials-section";
 export { default as AIToolsSection } from "./ai-tools-section";
+export { default as CoursesSection } from "./courses-section";
 export { default as ContactSection } from "./contact-section";
 export { default as FooterSection } from "./footer-section";

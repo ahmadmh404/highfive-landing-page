@@ -13,6 +13,7 @@ import TeamSection from "@/components/sections/team-section";
 import ProjectsSection from "@/components/sections/projects-section";
 import TechStackSection from "@/components/sections/tech-stack-section";
 import TestimonialsSection from "@/components/sections/testimonials-section";
+import CoursesSection from "@/components/sections/courses-section";
 import ContactSection from "@/components/sections/contact-section";
 
 export default async function HomePage({
@@ -35,6 +36,7 @@ export default async function HomePage({
         <ProjectsSection t={t.projects} />
         <TechStackSection t={t.techStack} />
         <TestimonialsSection t={t.testimonials} />
+        <CoursesSection t={t.courses} />
         <AIToolsSection t={t.aiTools} />
         <FAQSection t={t.faq} />
         <ContactSection t={t.contact} />
