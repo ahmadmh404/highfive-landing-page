@@ -6,6 +6,7 @@ import dynamic from "next/dynamic";
 // Dynamically import World with SSR disabled
 const World = dynamic(() => import("./Globe").then((m) => m.World), {
   ssr: false,
+  loading: () => <div className="w-full h-full" />,
 });
 
 const GridGlobe = () => {
@@ -15,6 +16,10 @@ const GridGlobe = () => {
   useEffect(() => {
     setIsMounted(true);
   }, []);
+
+  if (!isMounted) {
+    return <div className="w-full h-full" />;
+  }
 
   // Three.js/WebGL Scene Configuration
   // Note: These are Three.js-specific color values for 3D rendering
