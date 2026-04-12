@@ -7,7 +7,7 @@ import {
   FaXTwitter,
   FaLinkedin,
 } from "react-icons/fa6";
-import MagicButton from "./MagicButton";
+import MagicButton from "@/components/shared/magic-button";
 import type { Lang } from "@/data/translations";
 
 const footerLinks = {

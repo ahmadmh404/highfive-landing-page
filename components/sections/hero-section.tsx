@@ -1,10 +1,104 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { FaArrowRight, FaBolt } from "react-icons/fa6";
+import { Spotlight } from "@/components/effects";
+import MagicButton from "@/components/shared/magic-button";
+import type { Lang } from "@/data/translations";
 import Link from "next/link";
-import { STATS } from "@/lib/constants";
+import { HeroCodeBlock } from "@/components/shared/code-block";
+
+const codeLines = [
+  {
+    indent: 0,
+    tokens: [
+      { t: "import", c: "code-keyword" },
+      { t: " { scorpeSearch } ", c: "code-punctuation" },
+      { t: "from", c: "code-keyword" },
+      { t: ' "scorpe-ai"', c: "code-string" },
+    ],
+  },
+  { indent: 0, tokens: [] },
+  {
+    indent: 0,
+    tokens: [
+      { t: "// Enhance search with AI-powered ranking", c: "code-comment" },
+    ],
+  },
+  {
+    indent: 0,
+    tokens: [
+      { t: "const", c: "code-keyword" },
+      { t: " results ", c: "code-punctuation" },
+      { t: "=", c: "code-operator" },
+      { t: " await ", c: "code-keyword" },
+      { t: "scorpeSearch", c: "code-function" },
+      { t: "({", c: "code-punctuation" },
+    ],
+  },
+  {
+    indent: 1,
+    tokens: [
+      { t: "query", c: "code-variable" },
+      { t: ": ", c: "code-punctuation" },
+      { t: '"best AI agency near me"', c: "code-string" },
+      { t: ",", c: "code-punctuation" },
+    ],
+  },
+  {
+    indent: 1,
+    tokens: [
+      { t: "filters", c: "code-variable" },
+      { t: ": { ", c: "code-punctuation" },
+      { t: "category", c: "code-variable" },
+      { t: ": ", c: "code-punctuation" },
+      { t: '"tech"', c: "code-string" },
+      { t: " },", c: "code-punctuation" },
+    ],
+  },
+  {
+    indent: 1,
+    tokens: [
+      { t: "rankBy", c: "code-variable" },
+      { t: ": ", c: "code-punctuation" },
+      { t: '"relevance"', c: "code-string" },
+      { t: ",", c: "code-punctuation" },
+    ],
+  },
+  {
+    indent: 1,
+    tokens: [
+      { t: "limit", c: "code-variable" },
+      { t: ": ", c: "code-punctuation" },
+      { t: "10", c: "code-number" },
+    ],
+  },
+  { indent: 0, tokens: [{ t: "});", c: "code-punctuation" }] },
+  { indent: 0, tokens: [] },
+  {
+    indent: 0,
+    tokens: [
+      { t: "console", c: "code-variable" },
+      { t: ".", c: "code-punctuation" },
+      { t: "log", c: "code-function" },
+      { t: "(results.", c: "code-punctuation" },
+      { t: "items", c: "code-variable" },
+      { t: ");", c: "code-punctuation" },
+    ],
+  },
+  {
+    indent: 0,
+    tokens: [{ t: "// → HighFive Agency  score: 0.98 ✓", c: "code-comment" }],
+  },
+];
+
+const stats = [
+  { value: "50+", label: "projects_delivered" },
+  { value: "30+", label: "global_clients" },
+  { value: "5+", label: "years_experience" },
+  { value: "98%", label: "client_satisfaction" },
+];
 
 interface HeroSectionProps {
   locale: string;
@@ -23,93 +117,175 @@ interface HeroSectionProps {
   };
 }
 
-export function HeroSection({ locale, t }: HeroSectionProps) {
+export default function HeroSection({ locale, t }: HeroSectionProps) {
+  const [visibleLines, setVisibleLines] = useState(0);
+
+  useEffect(() => {
+    if (visibleLines < codeLines.length) {
+      const timer = setTimeout(() => setVisibleLines((v) => v + 1), 120);
+      return () => clearTimeout(timer);
+    }
+  }, [visibleLines]);
+
   return (
-    <section className="relative overflow-hidden bg-linear-to-b from-background via-background to-muted/20 pt-24 pb-20 lg:pt-32 lg:pb-28">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-20 left-1/4 h-72 w-72 rounded-full bg-primary/10 blur-3xl animate-pulse-glow" />
+    <section className="relative min-h-screen flex flex-col items-center justify-center pt-28 pb-16 overflow-hidden">
+      {/* Spotlights */}
+      <Spotlight
+        className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen"
+        fill="white"
+      />
+      <Spotlight className="h-[80vh] w-[50vw] top-10 left-full" fill="purple" />
+      <Spotlight className="left-80 top-28 h-[80vh] w-[50vw]" fill="blue" />
+
+      {/* Atmospheric light streaks inspired by Finsepa hero */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div
-          className="absolute bottom-20 right-1/4 h-96 w-96 rounded-full bg-accent/10 blur-3xl animate-pulse-glow"
-          style={{ animationDelay: "1s" }}
+          className="absolute top-0 right-1/4 w-px h-full opacity-20"
+          style={{
+            background:
+              "linear-gradient(to bottom, transparent, #CBACF9 40%, #E4ECFF 60%, transparent)",
+          }}
+        />
+        <div
+          className="absolute top-0 right-1/3 w-px h-3/4 opacity-10"
+          style={{
+            background:
+              "linear-gradient(to bottom, transparent, #CBACF9 50%, transparent)",
+          }}
+        />
+        <div
+          className="absolute -top-20 right-1/4 w-96 h-96 rounded-full opacity-5"
+          style={{
+            background: "radial-gradient(circle, #CBACF9 0%, transparent 70%)",
+            filter: "blur(40px)",
+          }}
+        />
+        <div
+          className="absolute bottom-1/4 right-1/3 w-64 h-64 rounded-full opacity-5"
+          style={{
+            background: "radial-gradient(circle, #E4ECFF 0%, transparent 70%)",
+            filter: "blur(60px)",
+          }}
         />
       </div>
 
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className="mx-auto max-w-4xl text-center">
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="mb-6 inline-flex"
-          >
-            <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm font-medium text-primary">
-              <Sparkles className="h-4 w-4" />
-              <span>{t.badgeText}</span>
-            </div>
-          </motion.div>
+      {/* Grid background */}
+      <div
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgba(255,255,255,1)'><path d='M0 .5H31.5V32'/></svg>")`,
+        }}
+      />
 
-          {/* Title */}
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="mb-6 text-balance text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl"
-          >
-            {t.title}
-          </motion.h1>
+      {/* Radial fade center */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 80% 60% at 50% 50%, transparent 30%, rgba(4,7,29,0.8) 100%)",
+        }}
+      />
 
-          {/* Subtitle */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="mb-10 text-pretty text-base text-muted-foreground sm:text-lg lg:text-xl"
-          >
-            {t.subtitle}
-          </motion.p>
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 flex flex-col items-center gap-8">
+        {/* Badge */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm"
+        >
+          <FaBolt style={{ color: "#CBACF9" }} className="w-3 h-3" />
+          <span className="text-xs tracking-widest uppercase text-text-muted">
+            {t.badgeText}
+          </span>
+        </motion.div>
 
-          {/* CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-col items-center justify-center gap-4 sm:flex-row"
+        {/* Title */}
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+          className="text-4xl md:text-6xl lg:text-7xl font-bold text-center text-foreground text-balance max-w-4xl leading-tight font-display"
+        >
+          {t.title}
+        </motion.h1>
+
+        {/* Subtitle */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="text-center text-base md:text-lg lg:text-xl max-w-2xl leading-relaxed text-text-muted"
+        >
+          {t.subtitle}
+        </motion.p>
+
+        {/* CTAs */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+          className="flex flex-col sm:flex-row gap-4 items-center"
+        >
+          <MagicButton title={t.cta} icon={<FaArrowRight />} position="right" />
+          <Link
+            href="#ai-tools"
+            className="block px-6 py-3 rounded-lg border text-sm font-medium transition-all duration-200 hover:bg-white/5"
+            style={{
+              borderColor: "rgba(255,255,255,0.15)",
+              color: "#E4ECFF",
+            }}
           >
-            <Button asChild size="lg" className="group gap-2 text-base">
-              <Link href={`/${locale}#contact`}>
-                {t.cta}
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </Button>
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="text-base bg-transparent"
-            >
-              <Link href={`/${locale}#ai-tools`}>{t.ctaSecondary}</Link>
-            </Button>
-          </motion.div>
-        </div>
+            {t.ctaSecondary}
+          </Link>
+        </motion.div>
+
+        {/* Code Block */}
+        <HeroCodeBlock />
 
         {/* Stats */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.4 }}
-          className="mx-auto mt-20 grid max-w-5xl grid-cols-2 gap-8 md:grid-cols-4"
+          transition={{ duration: 0.7, delay: 0.8 }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 w-full max-w-4xl mt-12"
         >
-          {STATS.map((stat, index) => (
-            <div key={index} className="text-center">
-              <div className="text-4xl font-bold text-foreground lg:text-5xl">
+          {stats.map((stat, i) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              whileHover={{
+                y: -5,
+                backgroundColor: "rgba(255, 255, 255, 0.04)",
+                borderColor: "rgba(203, 172, 249, 0.4)",
+              }}
+              transition={{ duration: 0.3, delay: 0.2 + i }}
+              className="relative flex flex-col items-center justify-center p-6 rounded-2xl border backdrop-blur-xl transition-all duration-300 group"
+              style={{
+                background:
+                  "linear-gradient(180deg, rgba(17, 25, 40, 0.8) 0%, rgba(10, 12, 28, 0.9) 100%)",
+                borderColor: "rgba(255, 255, 255, 0.08)",
+                backdropFilter: "blur(12px)",
+              }}
+            >
+              {/* Top Accent Glow */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-[1px] bg-gradient-to-r from-transparent via-[#CBACF9]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+
+              <span className="text-3xl md:text-4xl font-bold tracking-tighter font-display bg-clip-text text-transparent bg-gradient-to-b from-white to-[#CBACF9]">
                 {stat.value}
-              </div>
-              <div className="mt-2 text-sm text-muted-foreground lg:text-base">
+              </span>
+
+              <span
+                className="text-[10px] md:text-xs mt-2 uppercase tracking-[0.2em] font-medium text-center"
+                style={{ color: "#C1C2D3" }}
+              >
                 {t.stats[stat.label as keyof typeof t.stats]}
-              </div>
-            </div>
+              </span>
+
+              {/* Subtle Background Radial Glow on Hover */}
+              <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_50%_-20%,rgba(203,172,249,0.1),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity" />
+            </motion.div>
           ))}
         </motion.div>
       </div>

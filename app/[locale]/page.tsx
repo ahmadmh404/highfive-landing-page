@@ -1,19 +1,19 @@
 import { getTranslations } from "@/lib/i18n/get-translations";
 import type { Locale } from "@/lib/i18n/config";
 import { FAQSection } from "@/components/sections/faq-section";
-import { FloatingNav } from "@/components/ui/FloatingNavbar";
-import AIToolsSection from "@/components/AIToolsSection";
-import FooterSection from "@/components/FooterSection";
+import { FloatingNav } from "@/components/layout";
+import AIToolsSection from "@/components/sections/ai-tools-section";
+import FooterSection from "@/components/sections/footer-section";
 import { navItems } from "@/data";
-import HeroSection from "@/components/HeroSection";
-import ServicesSection from "@/components/ServicesSection";
-import WhyChooseUsSection from "@/components/WhyChooseUsSection";
-import ProcessSection from "@/components/ProcessSection";
-import TeamSection from "@/components/TeamSection";
-import ProjectsSection from "@/components/ProjectsSection";
-import TechStackSection from "@/components/TechStackSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
-import ContactSection from "@/components/ContactSection";
+import HeroSection from "@/components/sections/hero-section";
+import ServicesSection from "@/components/sections/services-section";
+import WhyChooseUsSection from "@/components/sections/why-choose-us-section";
+import ProcessSection from "@/components/sections/process-section";
+import TeamSection from "@/components/sections/team-section";
+import ProjectsSection from "@/components/sections/projects-section";
+import TechStackSection from "@/components/sections/tech-stack-section";
+import TestimonialsSection from "@/components/sections/testimonials-section";
+import ContactSection from "@/components/sections/contact-section";
 
 export default async function HomePage({
   params,

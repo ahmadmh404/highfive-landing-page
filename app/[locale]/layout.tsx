@@ -9,7 +9,7 @@ import {
 } from "next/font/google";
 import { ThemeProvider } from "@/lib/theme/theme-provider";
 import { isRTL, type Locale } from "@/lib/i18n/config";
-import { MotionProvider } from "@/components/MotionProvider";
+import { MotionProvider } from "@/components/providers";
 import "../globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });

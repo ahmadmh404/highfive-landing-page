@@ -5,7 +5,12 @@
       "Bash(dir *)",
       "WebSearch",
       "Bash(git reflog *)",
-      "Bash(findstr *)"
+      "Bash(findstr *)",
+      "Bash(uipro *)",
+      "WebFetch(www.awwtomation.com)",
+      "WebFetch(huggingface.co)",
+      "Bash(del *)",
+      "Bash(mkdir *)"
     ]
   },
   "$version": 3

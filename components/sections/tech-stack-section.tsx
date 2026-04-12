@@ -1,81 +1,114 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
+import type { Lang } from "@/data/translations";
+
+const techCategories = [
+  {
+    label: "Frontend",
+    techs: [
+      { name: "React", icon: "/re.svg" },
+      { name: "Next.js", icon: "/next.svg" },
+      { name: "TypeScript", icon: "/ts.svg" },
+      { name: "Tailwind", icon: "/tail.svg" },
+    ],
+  },
+  {
+    label: "Backend & APIs",
+    techs: [
+      { name: "Node.js", icon: "/c.svg" },
+      { name: "Python", icon: "/fm.svg" },
+      { name: "Docker", icon: "/dock.svg" },
+      { name: "Cloud", icon: "/cloud.svg" },
+    ],
+  },
+  {
+    label: "Animation & 3D",
+    techs: [
+      { name: "Three.js", icon: "/three.svg" },
+      { name: "Framer Motion", icon: "/fm.svg" },
+      { name: "GSAP", icon: "/gsap.svg" },
+      { name: "Stream", icon: "/stream.svg" },
+    ],
+  },
+];
 
 interface TechStackSectionProps {
   t: {
-    title: string
-    subtitle: string
-  }
+    title: string;
+    subtitle: string;
+  };
 }
 
-export function TechStackSection({ t }: TechStackSectionProps) {
-  const technologies = [
-    { name: "Next.js", category: "Frontend" },
-    { name: "React", category: "Frontend" },
-    { name: "TypeScript", category: "Language" },
-    { name: "Flutter", category: "Mobile" },
-    { name: "Node.js", category: "Backend" },
-    { name: "Python", category: "Backend" },
-    { name: "TensorFlow", category: "AI/ML" },
-    { name: "OpenAI", category: "AI/ML" },
-    { name: "PostgreSQL", category: "Database" },
-    { name: "MongoDB", category: "Database" },
-    { name: "AWS", category: "Cloud" },
-    { name: "Vercel", category: "Cloud" },
-  ]
-
-  const categories = ["Frontend", "Mobile", "Backend", "AI/ML", "Database", "Cloud"]
-
+export default function TechStackSection({ t }: TechStackSectionProps) {
   return (
-    <section className="py-24 lg:py-32">
-      <div className="container mx-auto px-4 lg:px-8">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mx-auto mb-16 max-w-3xl text-center"
-        >
-          <h2 className="mb-4 text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">{t.title}</h2>
-          <p className="text-pretty text-base text-muted-foreground lg:text-lg">{t.subtitle}</p>
-        </motion.div>
+    <section id="tech" className="w-full py-20">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="text-center mb-16"
+      >
+        <h2 className="text-3xl md:text-5xl font-bold tracking-tight font-display bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/60">
+          {t.title}
+        </h2>
+        <p className="mt-4 text-base text-foreground/50 md:text-lg max-w-2xl mx-auto">
+          {t.subtitle}
+        </p>
+      </motion.div>
 
-        {/* Tech Grid by Category */}
-        <div className="space-y-12">
-          {categories.map((category, catIndex) => {
-            const techsInCategory = technologies.filter((tech) => tech.category === category)
-            return (
-              <motion.div
-                key={category}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: catIndex * 0.1 }}
-              >
-                <h3 className="mb-6 text-center text-sm font-semibold uppercase tracking-wider text-muted-foreground">
-                  {category}
-                </h3>
-                <div className="flex flex-wrap justify-center gap-4">
-                  {techsInCategory.map((tech, index) => (
-                    <motion.div
-                      key={tech.name}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: catIndex * 0.1 + index * 0.05 }}
-                      whileHover={{ scale: 1.05 }}
-                      className="flex h-16 items-center justify-center rounded-lg border border-border bg-card px-6 shadow-sm transition-all hover:border-primary/50 hover:shadow-md"
-                    >
-                      <span className="font-medium">{tech.name}</span>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            )
-          })}
-        </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {techCategories.map((cat, i) => (
+          <motion.div
+            key={cat.label}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: i * 0.15 }}
+            className="rounded-2xl p-6"
+            style={{
+              background: "rgb(4,7,29)",
+              border: "1px solid rgba(255,255,255,0.08)",
+            }}
+          >
+            <h3
+              className="text-sm font-semibold uppercase tracking-widest mb-6"
+              style={{ color: "#CBACF9" }}
+            >
+              {cat.label}
+            </h3>
+            <div className="grid grid-cols-2 gap-4">
+              {cat.techs.map((tech, j) => (
+                <motion.div
+                  key={tech.name}
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  transition={{ duration: 0.2 }}
+                  className="flex items-center gap-3 p-3 rounded-xl"
+                  style={{
+                    background: "rgba(255,255,255,0.03)",
+                    border: "1px solid rgba(255,255,255,0.06)",
+                  }}
+                >
+                  <div className="w-8 h-8 flex items-center justify-center">
+                    <img
+                      src={tech.icon}
+                      alt={tech.name}
+                      className="w-6 h-6 object-contain"
+                    />
+                  </div>
+                  <span
+                    className="text-sm font-medium"
+                    style={{ color: "#BEC1DD" }}
+                  >
+                    {tech.name}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        ))}
       </div>
     </section>
-  )
+  );
 }

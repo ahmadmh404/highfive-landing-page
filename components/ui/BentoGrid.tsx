@@ -5,12 +5,14 @@ import Lottie from "react-lottie";
 
 import { cn } from "@/lib/utils";
 
-import { BackgroundGradientAnimation } from "./GradientBg";
+import { BackgroundGradientAnimation } from "@/components/effects";
 import dynamic from "next/dynamic";
 import animationData from "@/data/confetti.json";
 
-const GridGlobe = dynamic(() => import("./GridGlobe"), { ssr: false });
-import MagicButton from "../MagicButton";
+const GridGlobe = dynamic(() => import("@/components/effects/GridGlobe"), {
+  ssr: false,
+});
+import MagicButton from "@/components/shared/magic-button";
 
 export const BentoGrid = ({
   className,

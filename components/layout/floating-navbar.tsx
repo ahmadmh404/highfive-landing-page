@@ -9,7 +9,7 @@ import {
 } from "framer-motion";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { LanguageSwitcher } from "../language-switcher";
+import { LanguageSwitcher } from "@/components/shared";
 import { Locale } from "@/lib/i18n/config";
 
 interface NavItem {
@@ -56,9 +56,7 @@ export const FloatingNav = ({
       >
         {/* Logo */}
         <Link href="/" className="flex items-center gap-1.5 mr-2">
-          <span
-            className="font-bold text-base font-display text-primary"
-          >
+          <span className="font-bold text-base font-display text-primary">
             High<span className="text-white">Five</span>
           </span>
         </Link>

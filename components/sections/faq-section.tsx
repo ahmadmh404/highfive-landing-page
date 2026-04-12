@@ -37,7 +37,7 @@ export function FAQSection({ t, fallbackItems }: FAQSectionProps) {
     : fallbackItems || [];
 
   return (
-    <section className="bg-muted/30 py-24 lg:py-32">
+    <section className="py-24 lg:py-32">
       <div className="container mx-auto px-4 lg:px-8">
         {/* Header */}
         <motion.div
@@ -66,7 +66,7 @@ export function FAQSection({ t, fallbackItems }: FAQSectionProps) {
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
-                className="rounded-lg border border-border bg-card px-6 shadow-sm"
+                className="rounded-lg border border-border px-6 shadow-sm"
               >
                 <AccordionTrigger className="text-left text-base font-semibold hover:no-underline">
                   {faq.question}

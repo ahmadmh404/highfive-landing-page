@@ -1,21 +1,14 @@
 "use client";
 
-import type React from "react";
-
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Card, CardContent } from "@/components/ui/card";
+import dynamic from "next/dynamic";
 import {
-  Send,
-  CheckCircle2,
-  AlertCircle,
-  Mail,
-  MapPin,
-  Phone,
-} from "lucide-react";
+  FaLocationArrow,
+  FaEnvelope,
+  FaPhone,
+  FaMapPin,
+} from "react-icons/fa6";
 
 interface ContactSectionProps {
   t: {
@@ -29,318 +22,179 @@ interface ContactSectionProps {
   };
 }
 
-export function ContactSection({ t }: ContactSectionProps) {
-  const [formData, setFormData] = useState({
+export default function ContactSection({ t }: ContactSectionProps) {
+  const [form, setForm] = useState({
     name: "",
     email: "",
     phone: "",
     message: "",
   });
+  const [sent, setSent] = useState(false);
 
-  const [errors, setErrors] = useState<{
-    name?: string;
-    email?: string;
-    phone?: string;
-    message?: string;
-  }>({});
-
-  const [status, setStatus] = useState<
-    "idle" | "loading" | "success" | "error"
-  >("idle");
-  const [responseMessage, setResponseMessage] = useState("");
-
-  const validateForm = (): boolean => {
-    const newErrors: typeof errors = {};
-    const startTime = performance.now();
-
-    if (!formData.name.trim()) {
-      newErrors.name = "Name is required";
-    }
-
-    if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email";
-    }
-
-    if (formData.phone && !/^[\d\s\-+()]*$/.test(formData.phone)) {
-      newErrors.phone = "Please enter a valid phone number";
-    }
-
-    if (!formData.message.trim()) {
-      newErrors.message = "Message is required";
-    }
-
-    setErrors(newErrors);
-
-    const validationTime = performance.now() - startTime;
-    if (validationTime < 200) {
-      return Object.keys(newErrors).length === 0;
-    }
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
-    if (!validateForm()) {
-      return;
-    }
-
-    setStatus("loading");
-
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      setStatus("success");
-      setResponseMessage("Thank you! We'll get back to you soon.");
-      setFormData({ name: "", email: "", phone: "", message: "" });
-    } catch (error) {
-      setStatus("error");
-      setResponseMessage("Failed to send message. Please try again.");
-    }
+    setSent(true);
+    setTimeout(() => setSent(false), 3000);
+    setForm({ name: "", email: "", phone: "", message: "" });
   };
-
-  const contactInfo = [
-    {
-      icon: Mail,
-      label: "Email",
-      value: "hello@highfive.com",
-      href: "mailto:hello@highfive.com",
-    },
-    {
-      icon: Phone,
-      label: "Phone",
-      value: "+1 (555) 123-4567",
-      href: "tel:+15551234567",
-    },
-    {
-      icon: MapPin,
-      label: "Address",
-      value: "123 Tech Street, Innovation City",
-      href: null,
-    },
-  ];
 
   return (
-    <section id="contact" className="bg-muted/30 py-24 lg:py-32">
-      <div className="container mx-auto px-4 lg:px-8">
-        {/* Header */}
+    <section id="contact" className="w-full py-20 relative">
+      {/* Grid background overlay */}
+      <div className="w-full absolute left-0 -bottom-72 min-h-96 pointer-events-none">
+        <img
+          src="/footer-grid.svg"
+          alt="grid"
+          className="w-full h-full opacity-30"
+        />
+      </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="text-center mb-16 relative z-10"
+      >
+        <h2 className="text-3xl md:text-5xl font-bold tracking-tight font-display bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/60">
+          {t.title}
+        </h2>
+        <p className="mt-4 text-base text-foreground/50 md:text-lg max-w-2xl mx-auto">
+          {t.subtitle}
+        </p>
+      </motion.div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto relative z-10">
+        {/* Contact Info */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="mx-auto mb-16 max-w-3xl text-center"
+          transition={{ duration: 0.6 }}
+          className="flex flex-col gap-6"
         >
-          <h2 className="mb-4 text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-            {t.title}
-          </h2>
-          <p className="text-pretty text-base text-muted-foreground lg:text-lg">
-            {t.subtitle}
-          </p>
+          <div>
+            <h3 className="text-2xl font-bold text-white mb-2 font-display">
+              {"Let's build something together"}
+            </h3>
+            <p className="text-sm leading-relaxed" style={{ color: "#BEC1DD" }}>
+              Whether you have a project in mind or just want to explore
+              possibilities, we&apos;re here to help.
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-4">
+            {[
+              { icon: FaEnvelope, label: "Email", value: "hello@highfive.dev" },
+              { icon: FaPhone, label: "Phone", value: "+966 55 000 0000" },
+              {
+                icon: FaMapPin,
+                label: "Location",
+                value: "Riyadh, Saudi Arabia",
+              },
+            ].map(({ icon: Icon, label, value }) => (
+              <div
+                key={label}
+                className="flex items-center gap-4 p-4 rounded-xl"
+                style={{
+                  background: "rgba(17,25,40,0.6)",
+                  border: "1px solid rgba(255,255,255,0.07)",
+                }}
+              >
+                <div
+                  className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
+                  style={{
+                    background: "rgba(203,172,249,0.15)",
+                    border: "1px solid rgba(203,172,249,0.3)",
+                  }}
+                >
+                  <Icon style={{ color: "#CBACF9" }} className="w-4 h-4" />
+                </div>
+                <div>
+                  <div className="text-xs" style={{ color: "#5c6370" }}>
+                    {label}
+                  </div>
+                  <div className="text-sm font-medium text-white">{value}</div>
+                </div>
+              </div>
+            ))}
+          </div>
         </motion.div>
 
-        <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 lg:grid-cols-2">
-          {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <Card className="border-border/50">
-              <CardContent className="p-8">
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div>
-                    <label
-                      htmlFor="name"
-                      className="mb-2 block text-sm font-medium"
-                    >
-                      {t.name}
-                    </label>
-                    <Input
-                      id="name"
-                      type="text"
-                      value={formData.name}
-                      onChange={(e) =>
-                        setFormData({ ...formData, name: e.target.value })
-                      }
-                      required
-                      className="h-12"
-                      disabled={status === "loading"}
-                    />
-                    {errors.name && (
-                      <p className="mt-1 text-sm text-destructive">
-                        {errors.name}
-                      </p>
-                    )}
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="mb-2 block text-sm font-medium"
-                    >
-                      {t.email}
-                    </label>
-                    <Input
-                      id="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) =>
-                        setFormData({ ...formData, email: e.target.value })
-                      }
-                      required
-                      className="h-12"
-                      disabled={status === "loading"}
-                    />
-                    {errors.email && (
-                      <p className="mt-1 text-sm text-destructive">
-                        {errors.email}
-                      </p>
-                    )}
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="phone"
-                      className="mb-2 block text-sm font-medium"
-                    >
-                      {t.phone}
-                    </label>
-                    <Input
-                      id="phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={(e) =>
-                        setFormData({ ...formData, phone: e.target.value })
-                      }
-                      className="h-12"
-                      disabled={status === "loading"}
-                    />
-                    {errors.phone && (
-                      <p className="mt-1 text-sm text-destructive">
-                        {errors.phone}
-                      </p>
-                    )}
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="message"
-                      className="mb-2 block text-sm font-medium"
-                    >
-                      {t.message}
-                    </label>
-                    <Textarea
-                      id="message"
-                      value={formData.message}
-                      onChange={(e) =>
-                        setFormData({ ...formData, message: e.target.value })
-                      }
-                      required
-                      rows={6}
-                      className="resize-none"
-                      disabled={status === "loading"}
-                    />
-                    {errors.message && (
-                      <p className="mt-1 text-sm text-destructive">
-                        {errors.message}
-                      </p>
-                    )}
-                  </div>
-
-                  <Button
-                    type="submit"
-                    size="lg"
-                    className="w-full gap-2"
-                    disabled={status === "loading"}
-                  >
-                    {status === "loading" ? (
-                      <>Sending...</>
-                    ) : (
-                      <>
-                        {t.send}
-                        <Send className="h-4 w-4" />
-                      </>
-                    )}
-                  </Button>
-
-                  {status === "success" && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="flex items-center gap-2 text-green-600"
-                    >
-                      <CheckCircle2 className="h-5 w-5" />
-                      <span>{responseMessage}</span>
-                    </motion.div>
-                  )}
-
-                  {status === "error" && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="flex items-center gap-2 text-destructive"
-                    >
-                      <AlertCircle className="h-5 w-5" />
-                      <span>{responseMessage}</span>
-                    </motion.div>
-                  )}
-                </form>
-              </CardContent>
-            </Card>
-          </motion.div>
-
-          {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <div className="space-y-8">
-              <div>
-                <h3 className="mb-6 text-xl font-semibold">Get In Touch</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Have a project in mind? We'd love to hear from you. Send us a
-                  message and we'll respond as soon as possible.
-                </p>
-              </div>
-
-              <div className="space-y-4">
-                {contactInfo.map((info) => (
-                  <Card
-                    key={info.label}
-                    className="border-border/50 bg-card/50"
-                  >
-                    <CardContent className="p-4">
-                      <div className="flex items-start gap-4">
-                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
-                          <info.icon className="h-5 w-5 text-primary" />
-                        </div>
-                        <div className="flex-1">
-                          <div className="mb-1 text-sm font-medium text-muted-foreground">
-                            {info.label}
-                          </div>
-                          {info.href ? (
-                            <a
-                              href={info.href}
-                              className="font-medium text-foreground hover:text-primary transition-colors"
-                            >
-                              {info.value}
-                            </a>
-                          ) : (
-                            <div className="font-medium text-foreground">
-                              {info.value}
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
+        {/* Contact Form */}
+        <motion.form
+          onSubmit={handleSubmit}
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col gap-4 p-8 rounded-2xl"
+          style={{
+            background: "rgba(4,7,29,0.9)",
+            border: "1px solid rgba(255,255,255,0.08)",
+          }}
+        >
+          {[
+            { key: "name", type: "text", required: true },
+            { key: "email", type: "email", required: true },
+            { key: "phone", type: "tel", required: false },
+          ].map(({ key, type, required }) => (
+            <div key={key}>
+              <label
+                className="block text-xs mb-1.5 uppercase tracking-widest"
+                style={{ color: "#5c6370" }}
+              >
+                {t[key as keyof typeof t]}
+              </label>
+              <input
+                type={type}
+                required={required}
+                value={(form as any)[key]}
+                onChange={(e) =>
+                  setForm((f) => ({ ...f, [key]: e.target.value }))
+                }
+                className="w-full px-4 py-3 rounded-xl text-sm text-white placeholder-gray-600 outline-none transition-all duration-200 focus:border-purple-400/50"
+                style={{
+                  background: "rgba(255,255,255,0.04)",
+                  border: "1px solid rgba(255,255,255,0.1)",
+                }}
+              />
             </div>
-          </motion.div>
-        </div>
+          ))}
+
+          <div>
+            <label
+              className="block text-xs mb-1.5 uppercase tracking-widest"
+              style={{ color: "#5c6370" }}
+            >
+              {t.message}
+            </label>
+            <textarea
+              required
+              rows={4}
+              value={form.message}
+              onChange={(e) =>
+                setForm((f) => ({ ...f, message: e.target.value }))
+              }
+              className="w-full px-4 py-3 rounded-xl text-sm text-white placeholder-gray-600 outline-none resize-none transition-all duration-200 focus:border-purple-400/50"
+              style={{
+                background: "rgba(255,255,255,0.04)",
+                border: "1px solid rgba(255,255,255,0.1)",
+              }}
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="relative inline-flex h-12 w-full overflow-hidden rounded-lg p-[1px] focus:outline-none mt-2"
+          >
+            <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+            <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-lg bg-slate-950 px-7 text-sm font-medium text-white backdrop-blur-3xl gap-2">
+              {sent ? "Message Sent!" : t.send}
+              {!sent && <FaLocationArrow className="w-3 h-3" />}
+            </span>
+          </button>
+        </motion.form>
       </div>
     </section>
   );

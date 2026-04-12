@@ -1,14 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Code, Sparkles, GraduationCap } from "lucide-react";
+import { Button } from "@/components/effects";
+import { FaCode, FaBrain, FaGraduationCap } from "react-icons/fa6";
+
+const icons = [FaCode, FaBrain, FaGraduationCap];
 
 interface ServicesSectionProps {
   t: {
@@ -29,75 +25,68 @@ interface ServicesSectionProps {
   };
 }
 
-export function ServicesSection({ t }: ServicesSectionProps) {
+export default function ServicesSection({ t }: ServicesSectionProps) {
   const services = [
-    {
-      icon: Code,
-      title: t.customDev.title,
-      description: t.customDev.description,
-      color: "text-blue-500",
-      bgColor: "bg-blue-500/10",
-    },
-    {
-      icon: Sparkles,
-      title: t.aiTools.title,
-      description: t.aiTools.description,
-      color: "text-purple-500",
-      bgColor: "bg-purple-500/10",
-    },
-    {
-      icon: GraduationCap,
-      title: t.courses.title,
-      description: t.courses.description,
-      color: "text-green-500",
-      bgColor: "bg-green-500/10",
-    },
+    { key: "customDev", icon: FaCode, color: "#CBACF9" },
+    { key: "aiTools", icon: FaBrain, color: "#E4ECFF" },
+    { key: "courses", icon: FaGraduationCap, color: "#CBACF9" },
   ];
 
   return (
-    <section id="services" className="py-24 lg:py-32">
-      <div className="container mx-auto px-4 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mx-auto mb-16 max-w-3xl text-center"
-        >
-          <h2 className="mb-4 text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-            {t.title}
-          </h2>
-          <p className="text-pretty text-base text-muted-foreground lg:text-lg">
-            {t.subtitle}
-          </p>
-        </motion.div>
+    <section id="services" className="w-full py-20">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="text-center mb-16"
+      >
+        <h2 className="text-3xl md:text-5xl font-bold tracking-tight font-display bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/60">
+          {t.title}
+        </h2>
+        <p className="mt-4 text-base text-foreground/50 md:text-lg max-w-2xl mx-auto">
+          {t.subtitle}
+        </p>
+      </motion.div>
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-          {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+        {services.map(({ key, icon: Icon, color }, i) => (
+          <motion.div
+            key={key}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: i * 0.15 }}
+          >
+            <Button
+              borderRadius="1.5rem"
+              containerClassName="w-full h-full"
+              duration={Math.floor(Math.random() * 5000) + 8000}
+              className="w-full text-white border-white/10 bg-[rgb(4,7,29)]"
             >
-              <Card className="h-full border-border/50 transition-all hover:border-primary/50 hover:shadow-lg">
-                <CardHeader>
-                  <div
-                    className={`mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg ${service.bgColor}`}
-                  >
-                    <service.icon className={`h-6 w-6 ${service.color}`} />
-                  </div>
-                  <CardTitle className="text-lg">{service.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-base leading-relaxed">
-                    {service.description}
-                  </CardDescription>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
+              <div className="p-8 flex flex-col gap-4 h-full">
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center"
+                  style={{
+                    background: `${color}15`,
+                    border: `1px solid ${color}30`,
+                  }}
+                >
+                  <Icon style={{ color }} className="w-5 h-5" />
+                </div>
+                <h3 className="text-xl font-bold font-display text-white">
+                  {(t as any)[key].title}
+                </h3>
+                <p
+                  className="text-sm leading-relaxed"
+                  style={{ color: "#BEC1DD" }}
+                >
+                  {(t as any)[key].description}
+                </p>
+              </div>
+            </Button>
+          </motion.div>
+        ))}
       </div>
     </section>
   );

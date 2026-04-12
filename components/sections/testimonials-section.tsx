@@ -1,120 +1,108 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Star } from "lucide-react";
+import { InfiniteMovingCards } from "@/components/effects";
+import type { Lang } from "@/data/translations";
 
 interface TestimonialsSectionProps {
   t: {
     title: string;
     subtitle: string;
+    items?: {
+      sarah: { name: string; role: string; company: string; content: string };
+      ahmed: { name: string; role: string; company: string; content: string };
+      maria: { name: string; role: string; company: string; content: string };
+      priya?: { name: string; role: string; company: string; content: string };
+      mohamed?: {
+        name: string;
+        role: string;
+        company: string;
+        content: string;
+      };
+      nour?: { name: string; role: string; company: string; content: string };
+    };
   };
 }
 
-export function TestimonialsSection({ t }: TestimonialsSectionProps) {
-  // Mock testimonials - fetch from Strapi CMS in production
-  const testimonials = [
-    {
-      name: "Sarah Johnson",
-      role: "CEO",
-      company: "TechStart Inc",
-      content:
-        "HighFive transformed our digital presence completely. Their AI integration saved us countless hours and their team was professional throughout.",
-      avatar: "/placeholder.svg?height=80&width=80",
-      rating: 5,
-    },
-    {
-      name: "Ahmed Al-Rashid",
-      role: "Marketing Director",
-      company: "Global Ventures",
-      content:
-        "The mobile app they built exceeded our expectations. The bilingual support was seamless and the performance is outstanding.",
-      avatar: "/placeholder.svg?height=80&width=80",
-      rating: 5,
-    },
-    {
-      name: "Maria Garcia",
-      role: "Founder",
-      company: "Creative Studios",
-      content:
-        "Their social media video production is top-notch. Our engagement rates tripled after working with HighFive.",
-      avatar: "/placeholder.svg?height=80&width=80",
-      rating: 5,
-    },
-  ];
+export default function TestimonialsSection({ t }: TestimonialsSectionProps) {
+  const testimonialItems = t.items
+    ? [
+        {
+          quote: t.items.sarah.content,
+          name: t.items.sarah.name,
+          title: `${t.items.sarah.role}, ${t.items.sarah.company}`,
+        },
+        {
+          quote: t.items.ahmed.content,
+          name: t.items.ahmed.name,
+          title: `${t.items.ahmed.role}, ${t.items.ahmed.company}`,
+        },
+        {
+          quote: t.items.maria.content,
+          name: t.items.maria.name,
+          title: `${t.items.maria.role}, ${t.items.maria.company}`,
+        },
+        ...(t.items.priya
+          ? [
+              {
+                quote: t.items.priya.content,
+                name: t.items.priya.name,
+                title: `${t.items.priya.role}, ${t.items.priya.company}`,
+              },
+            ]
+          : []),
+        ...(t.items.mohamed
+          ? [
+              {
+                quote: t.items.mohamed.content,
+                name: t.items.mohamed.name,
+                title: `${t.items.mohamed.role}, ${t.items.mohamed.company}`,
+              },
+            ]
+          : []),
+        ...(t.items.nour
+          ? [
+              {
+                quote: t.items.nour.content,
+                name: t.items.nour.name,
+                title: `${t.items.nour.role}, ${t.items.nour.company}`,
+              },
+            ]
+          : []),
+      ]
+    : [
+        {
+          quote: t.title,
+          name: t.subtitle,
+          title: "",
+        },
+      ];
+
+  const hasContent = t.items && testimonialItems.length > 0;
 
   return (
-    <section className="py-24 lg:py-32">
-      <div className="container mx-auto px-4 lg:px-8">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mx-auto mb-16 max-w-3xl text-center"
-        >
-          <h2 className="mb-4 text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-            {t.title}
-          </h2>
-          <p className="text-pretty text-base text-muted-foreground lg:text-lg">
-            {t.subtitle}
-          </p>
-        </motion.div>
+    <section id="testimonials" className="w-full py-20">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="text-center mb-16"
+      >
+        <h2 className="text-3xl md:text-5xl font-bold tracking-tight font-display bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/60">
+          {t.title}
+        </h2>
+        <p className="mt-4 text-base text-foreground/50 md:text-lg max-w-2xl mx-auto">
+          {t.subtitle}
+        </p>
+      </motion.div>
 
-        {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {testimonials.map((testimonial, index) => (
-            <motion.div
-              key={testimonial.name}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-            >
-              <Card className="h-full border-border/50 bg-card">
-                <CardContent className="p-6">
-                  {/* Rating */}
-                  <div className="mb-4 flex gap-1">
-                    {Array.from({ length: testimonial.rating }).map((_, i) => (
-                      <Star
-                        key={i}
-                        className="h-4 w-4 fill-yellow-400 text-yellow-400"
-                      />
-                    ))}
-                  </div>
-
-                  {/* Content */}
-                  <p className="mb-6 text-muted-foreground leading-relaxed">
-                    {testimonial.content}
-                  </p>
-
-                  {/* Author */}
-                  <div className="flex items-center gap-4">
-                    <Avatar className="h-12 w-12">
-                      <AvatarImage
-                        src={testimonial.avatar || "/placeholder.svg"}
-                        alt={testimonial.name}
-                      />
-                      <AvatarFallback>
-                        {testimonial.name
-                          .split(" ")
-                          .map((n) => n[0])
-                          .join("")}
-                      </AvatarFallback>
-                    </Avatar>
-                    <div>
-                      <div className="font-semibold">{testimonial.name}</div>
-                      <div className="text-sm text-muted-foreground">
-                        {testimonial.role}, {testimonial.company}
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
+      <div className="h-[50vh] md:h-120 rounded-md flex flex-col antialiased items-center justify-center relative overflow-hidden">
+        <InfiniteMovingCards
+          items={testimonialItems}
+          direction="right"
+          speed="slow"
+        />
       </div>
     </section>
   );

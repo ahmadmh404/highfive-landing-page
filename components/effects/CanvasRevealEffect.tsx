@@ -1,4 +1,5 @@
 "use client";
+
 import { cn } from "@/lib/utils";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import React, { useMemo, useRef } from "react";
@@ -195,6 +196,11 @@ const ShaderMaterial = ({
   const ref = useRef<THREE.Mesh | null>(null);
   let lastFrameTime = 0;
 
+  const safeWidth =
+    Number.isFinite(size?.width) && size.width > 0 ? size.width : 1;
+  const safeHeight =
+    Number.isFinite(size?.height) && size.height > 0 ? size.height : 1;
+
   useFrame(({ clock }) => {
     if (!ref.current) return;
     const timestamp = clock.getElapsedTime();
@@ -249,7 +255,7 @@ const ShaderMaterial = ({
 
     preparedUniforms["u_time"] = { value: 0, type: "1f" };
     preparedUniforms["u_resolution"] = {
-      value: new THREE.Vector2(size.width * 2, size.height * 2),
+      value: new THREE.Vector2(safeWidth * 2, safeHeight * 2),
     }; // Initialize u_resolution
     return preparedUniforms;
   };
@@ -279,7 +285,7 @@ const ShaderMaterial = ({
     });
 
     return materialObject;
-  }, [size.width, size.height, source]);
+  }, [safeWidth, safeHeight, source]);
 
   return (
     <mesh ref={ref as any}>

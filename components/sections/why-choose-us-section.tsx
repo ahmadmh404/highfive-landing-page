@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Award, Globe2, TrendingUp } from "lucide-react";
+import { BentoGrid, BentoGridItem } from "@/components/ui/BentoGrid";
+import type { Lang } from "@/data/translations";
 
 interface WhyChooseUsSectionProps {
   t: {
@@ -19,68 +20,131 @@ interface WhyChooseUsSectionProps {
       title: string;
       description: string;
     };
+    techStack: {
+      title: string;
+      description: string;
+    };
+    bilingual: {
+      title: string;
+    };
+    ready: {
+      title: string;
+      CTA: string;
+      success: string;
+    };
   };
 }
 
-export function WhyChooseUsSection({ t }: WhyChooseUsSectionProps) {
-  const features = [
+export default function WhyChooseUsSection({ t }: WhyChooseUsSectionProps) {
+  const items = [
     {
-      icon: Award,
+      id: 1,
       title: t.expertise.title,
       description: t.expertise.description,
+      className: "lg:col-span-3 md:col-span-6 md:row-span-4 lg:min-h-[60vh]",
+      imgClassName: "w-full h-full",
+      titleClassName: "justify-end",
+      img: "/b1.svg",
+      spareImg: "",
+      CTA: "",
+      success: "",
     },
     {
-      icon: Globe2,
+      id: 2,
       title: t.global.title,
       description: t.global.description,
+      className: "lg:col-span-2 md:col-span-3 md:row-span-2",
+      imgClassName: "",
+      titleClassName: "justify-start",
+      img: "",
+      spareImg: "",
+      CTA: "",
+      success: "",
     },
     {
-      icon: TrendingUp,
+      id: 3,
+      title: t.techStack.title,
+      description: t.techStack.description,
+      className: "lg:col-span-2 md:col-span-3 md:row-span-2",
+      imgClassName: "",
+      titleClassName: "justify-center",
+      img: "",
+      spareImg: "",
+      CTA: "",
+      success: "",
+    },
+    {
+      id: 4,
+      title: t.bilingual.title,
+      description: "",
+      className: "lg:col-span-2 md:col-span-3 md:row-span-1",
+      imgClassName: "",
+      titleClassName: "justify-start",
+      img: "/grid.svg",
+      spareImg: "/b4.svg",
+      CTA: "",
+      success: "",
+    },
+    {
+      id: 5,
       title: t.results.title,
       description: t.results.description,
+      className: "md:col-span-3 md:row-span-2",
+      imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
+      titleClassName: "justify-center md:justify-start lg:justify-center",
+      img: "/b5.svg",
+      spareImg: "/grid.svg",
+      CTA: "",
+      success: "",
+    },
+    {
+      id: 6,
+      title: t.ready.title,
+      description: "",
+      className: "lg:col-span-2 md:col-span-3 md:row-span-1",
+      imgClassName: "",
+      titleClassName: "justify-center md:max-w-full max-w-60 text-center",
+      img: "",
+      spareImg: "",
+      CTA: t.ready.CTA,
+      success: t.ready.success,
     },
   ];
 
   return (
-    <section id="about" className="bg-muted/30 py-24 lg:py-32">
-      <div className="container mx-auto px-4 lg:px-8">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mx-auto mb-16 max-w-3xl text-center"
-        >
-          <h2 className="mb-4 text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-            {t.title}
-          </h2>
-          <p className="text-pretty text-base text-muted-foreground lg:text-lg">
-            {t.subtitle}
-          </p>
-        </motion.div>
+    <section id="about" className="w-full py-20">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="text-center mb-16"
+      >
+        <h2 className="text-3xl md:text-5xl font-bold tracking-tight font-display bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/60">
+          {t.title}
+        </h2>
+        <p className="mt-4 text-base text-foreground/50 md:text-lg max-w-2xl mx-auto">
+          {t.subtitle}
+        </p>
+      </motion.div>
 
-        {/* Features */}
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
-          {features.map((feature, index) => (
-            <motion.div
-              key={feature.title}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.15 }}
-              className="text-center"
-            >
-              <div className="mx-auto mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10">
-                <feature.icon className="h-8 w-8 text-primary" />
-              </div>
-              <h3 className="mb-3 text-lg font-semibold">{feature.title}</h3>
-              <p className="text-pretty text-muted-foreground leading-relaxed">
-                {feature.description}
-              </p>
-            </motion.div>
-          ))}
-        </div>
-      </div>
+      <BentoGrid className="w-full">
+        {items.map((item, i) => (
+          <BentoGridItem
+            key={i}
+            id={item.id}
+            title={item.title}
+            description={item.description}
+            className={item.className}
+            img={item.img}
+            imgClassName={item.imgClassName}
+            titleClassName={item.titleClassName}
+            spareImg={item.spareImg}
+            CTA={item.CTA}
+            success={item.success}
+          />
+        ))}
+      </BentoGrid>
     </section>
   );
 }
