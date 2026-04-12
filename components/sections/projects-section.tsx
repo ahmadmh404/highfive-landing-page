@@ -4,7 +4,6 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaLocationArrow } from "react-icons/fa6";
 import { PinContainer } from "@/components/effects";
-import type { Lang } from "@/data/translations";
 
 const allProjects = [
   {
