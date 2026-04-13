@@ -11,7 +11,7 @@ import {
 
 const toolIcons = [FaMagnifyingGlass, FaChartBar, FaStarHalfStroke];
 const toolKeys = ["scorpeSearch", "scorpeRank", "scorpeRecommend"] as const;
-const toolColors = ["#CBACF9", "#E4ECFF", "#CBACF9"];
+const toolColors = ["text-primary", "text-accent", "text-primary"];
 
 interface AIToolsSectionProps {
   t: {
@@ -84,44 +84,29 @@ export default function AIToolsSection({ t }: AIToolsSectionProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.15 }}
-              className="relative rounded-2xl overflow-hidden cursor-pointer group shrink-0"
-              style={{
-                background: "rgb(4,7,29)",
-                border: isActive
-                  ? `1px solid ${color}50`
-                  : "1px solid rgba(255,255,255,0.08)",
-                boxShadow: isActive ? `0 0 30px ${color}15` : "none",
-                transition: "border-color 0.3s, box-shadow 0.3s",
-              }}
+              className={`relative rounded-2xl overflow-hidden cursor-pointer group shrink-0 bg-[rgb(4,7,29)] border ${
+                isActive ? `border-primary/50` : "border-white/10"
+              }`}
+              style={
+                isActive ? { boxShadow: "0 0 30px rgba(203,172,249,0.15)" } : {}
+              }
               onClick={() => setActiveKey(isActive ? null : key)}
             >
               {/* Top colored accent line */}
               <div
-                className="h-0.5 w-full"
-                style={{
-                  background: `linear-gradient(90deg, transparent, ${color}, transparent)`,
-                }}
+                className={`h-0.5 w-full bg-gradient-to-r from-transparent via-${color} to-transparent`}
               />
 
               <div className="p-7">
                 {/* Header */}
                 <div className="flex items-start justify-between mb-5">
                   <div
-                    className="w-11 h-11 rounded-xl flex items-center justify-center"
-                    style={{
-                      background: `${color}15`,
-                      border: `1px solid ${color}30`,
-                    }}
+                    className={`w-11 h-11 rounded-xl flex items-center justify-center bg-${color}/15 border border-${color}/30`}
                   >
-                    <Icon style={{ color }} className="w-5 h-5" />
+                    <Icon className={`w-5 h-5 ${color}`} />
                   </div>
                   <span
-                    className="text-xs px-2.5 py-1 rounded-full font-mono"
-                    style={{
-                      background: `${color}12`,
-                      color,
-                      border: `1px solid ${color}25`,
-                    }}
+                    className={`text-xs px-2.5 py-1 rounded-full font-mono bg-${color}/12 ${color} border border-${color}/25`}
                   >
                     {tool.category}
                   </span>
@@ -131,10 +116,7 @@ export default function AIToolsSection({ t }: AIToolsSectionProps) {
                 <h3 className="text-lg font-bold text-white mb-2 font-display">
                   {tool.title}
                 </h3>
-                <p
-                  className="text-sm leading-relaxed mb-5"
-                  style={{ color: "#BEC1DD" }}
-                >
+                <p className="text-sm leading-relaxed mb-5 text-muted-foreground">
                   {tool.desc}
                 </p>
 
@@ -148,38 +130,21 @@ export default function AIToolsSection({ t }: AIToolsSectionProps) {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <div
-                        className="pt-4 pb-2"
-                        style={{
-                          borderTop: "1px solid rgba(255,255,255,0.06)",
-                        }}
-                      >
+                      <div className="pt-4 pb-2 border-t border-white/10">
                         <div className="space-y-3">
                           <div>
-                            <span
-                              className="text-xs uppercase tracking-widest"
-                              style={{ color: "#5c6370" }}
-                            >
+                            <span className="text-xs uppercase tracking-widest text-foreground/40">
                               Problem Solved
                             </span>
-                            <p
-                              className="text-sm mt-1"
-                              style={{ color: "#C1C2D3" }}
-                            >
+                            <p className="text-sm mt-1 text-muted-foreground">
                               {tool.problem}
                             </p>
                           </div>
                           <div>
-                            <span
-                              className="text-xs uppercase tracking-widest"
-                              style={{ color: "#5c6370" }}
-                            >
+                            <span className="text-xs uppercase tracking-widest text-foreground/40">
                               Who Needs This
                             </span>
-                            <p
-                              className="text-sm mt-1"
-                              style={{ color: "#C1C2D3" }}
-                            >
+                            <p className="text-sm mt-1 text-muted-foreground">
                               {tool.whoNeeds}
                             </p>
                           </div>
@@ -190,13 +155,9 @@ export default function AIToolsSection({ t }: AIToolsSectionProps) {
                 </AnimatePresence>
 
                 {/* Footer */}
-                <div
-                  className="flex items-center justify-between mt-4 pt-4"
-                  style={{ borderTop: "1px solid rgba(255,255,255,0.07)" }}
-                >
+                <div className="flex items-center justify-between mt-4 pt-4 border-t border-white/10">
                   <button
-                    className="text-xs"
-                    style={{ color: "#5c6370" }}
+                    className="text-xs text-foreground/40"
                     onClick={(e) => {
                       e.stopPropagation();
                       setActiveKey(isActive ? null : key);
@@ -205,12 +166,7 @@ export default function AIToolsSection({ t }: AIToolsSectionProps) {
                     {isActive ? "Show less" : "Learn more"}
                   </button>
                   <button
-                    className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium"
-                    style={{
-                      background: `${color}15`,
-                      border: `1px solid ${color}30`,
-                      color,
-                    }}
+                    className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium bg-${color}/15 border border-${color}/30 ${color}`}
                     onClick={(e) => e.stopPropagation()}
                   >
                     <FaArrowUpRightFromSquare className="w-3 h-3" />

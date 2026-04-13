@@ -15,10 +15,8 @@ export function HeroCodeBlock() {
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.5 }}
-      className="w-full max-w-2xl mt-4 rounded-2xl overflow-hidden"
+      className="w-full max-w-2xl mt-4 rounded-2xl overflow-hidden bg-card/95 border border-primary/25"
       style={{
-        background: "rgba(10, 12, 28, 0.9)",
-        border: "1px solid rgba(203, 172, 249, 0.25)",
         boxShadow:
           "0 0 40px rgba(203, 172, 249, 0.12), 0 0 80px rgba(203, 172, 249, 0.05), inset 0 0 40px rgba(203, 172, 249, 0.03)",
       }}
@@ -48,13 +46,7 @@ export function HeroCodeBlock() {
         </CodeBlockBody>
       </CodeBlock>
       {/* Glow bar at bottom */}
-      <div
-        className="h-px w-full"
-        style={{
-          background:
-            "linear-gradient(90deg, transparent, rgba(203,172,249,0.5), transparent)",
-        }}
-      />
+      <div className="h-px w-full bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
     </motion.div>
   );
 }

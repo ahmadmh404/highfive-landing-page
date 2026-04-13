@@ -34,11 +34,7 @@ export function LanguageSwitcher({ currentLocale }: LanguageSwitcherProps) {
   return (
     <button
       onClick={switchLocale}
-      className="px-3 py-1 rounded-lg text-xs font-medium transition-all duration-200 hover:bg-white/10"
-      style={{
-        border: "1px solid rgba(203,172,249,0.3)",
-        color: "#CBACF9",
-      }}
+      className="px-3 py-1 rounded-lg text-xs font-medium transition-all duration-200 hover:bg-white/10 border border-primary/30 text-primary"
       aria-label={
         currentLocale === "en" ? "Switch to Arabic" : "Switch to English"
       }

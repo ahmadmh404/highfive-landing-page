@@ -43,10 +43,7 @@ export default function FooterSection({ t }: FooterSectionProps) {
   return (
     <footer className="w-full pt-20 pb-10 relative" id="footer">
       {/* Footer grid */}
-      <div
-        className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-8 pb-10"
-        style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
-      >
+      <div className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-8 pb-10 border-t border-white/10">
         {/* Brand */}
         <div className="col-span-2 md:col-span-1 mt-8">
           <div className="flex items-center gap-2 mb-3">
@@ -63,11 +60,7 @@ export default function FooterSection({ t }: FooterSectionProps) {
                 key={label}
                 href={href}
                 aria-label={label}
-                className="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200 hover:scale-110"
-                style={{
-                  background: "rgba(17,25,40,0.8)",
-                  border: "1px solid rgba(255,255,255,0.125)",
-                }}
+                className="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200 hover:scale-110 bg-card/80 border border-white/10"
               >
                 <Icon className="w-4 h-4 text-white" />
               </a>
@@ -98,10 +91,7 @@ export default function FooterSection({ t }: FooterSectionProps) {
       </div>
 
       {/* Bottom bar */}
-      <div
-        className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-4 pt-6"
-        style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
-      >
+      <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-4 pt-6 border-t border-white/10">
         <p className="text-sm text-muted-foreground">
           &copy; 2025 HighFive. {t.rights}
         </p>

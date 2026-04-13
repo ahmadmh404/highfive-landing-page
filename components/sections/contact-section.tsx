@@ -77,7 +77,7 @@ export default function ContactSection({ t }: ContactSectionProps) {
             <h3 className="text-2xl font-bold text-white mb-2 font-display">
               {"Let's build something together"}
             </h3>
-            <p className="text-sm leading-relaxed" style={{ color: "#BEC1DD" }}>
+            <p className="text-sm leading-relaxed text-muted-foreground">
               Whether you have a project in mind or just want to explore
               possibilities, we&apos;re here to help.
             </p>
@@ -95,25 +95,13 @@ export default function ContactSection({ t }: ContactSectionProps) {
             ].map(({ icon: Icon, label, value }) => (
               <div
                 key={label}
-                className="flex items-center gap-4 p-4 rounded-xl"
-                style={{
-                  background: "rgba(17,25,40,0.6)",
-                  border: "1px solid rgba(255,255,255,0.07)",
-                }}
+                className="flex items-center gap-4 p-4 rounded-xl bg-card/60 border border-white/10"
               >
-                <div
-                  className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
-                  style={{
-                    background: "rgba(203,172,249,0.15)",
-                    border: "1px solid rgba(203,172,249,0.3)",
-                  }}
-                >
-                  <Icon style={{ color: "#CBACF9" }} className="w-4 h-4" />
+                <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 bg-primary/15 border border-primary/30">
+                  <Icon className="w-4 h-4 text-primary" />
                 </div>
                 <div>
-                  <div className="text-xs" style={{ color: "#5c6370" }}>
-                    {label}
-                  </div>
+                  <div className="text-xs text-foreground/40">{label}</div>
                   <div className="text-sm font-medium text-white">{value}</div>
                 </div>
               </div>
@@ -128,11 +116,7 @@ export default function ContactSection({ t }: ContactSectionProps) {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="flex flex-col gap-4 p-8 rounded-2xl"
-          style={{
-            background: "rgba(4,7,29,0.9)",
-            border: "1px solid rgba(255,255,255,0.08)",
-          }}
+          className="flex flex-col gap-4 p-8 rounded-2xl bg-background/90 border border-white/10"
         >
           {[
             { key: "name", type: "text", required: true },
@@ -140,10 +124,7 @@ export default function ContactSection({ t }: ContactSectionProps) {
             { key: "phone", type: "tel", required: false },
           ].map(({ key, type, required }) => (
             <div key={key}>
-              <label
-                className="block text-xs mb-1.5 uppercase tracking-widest"
-                style={{ color: "#5c6370" }}
-              >
+              <label className="block text-xs mb-1.5 uppercase tracking-widest text-foreground/40">
                 {t[key as keyof typeof t]}
               </label>
               <input
@@ -153,20 +134,13 @@ export default function ContactSection({ t }: ContactSectionProps) {
                 onChange={(e) =>
                   setForm((f) => ({ ...f, [key]: e.target.value }))
                 }
-                className="w-full px-4 py-3 rounded-xl text-sm text-white placeholder-gray-600 outline-none transition-all duration-200 focus:border-purple-400/50"
-                style={{
-                  background: "rgba(255,255,255,0.04)",
-                  border: "1px solid rgba(255,255,255,0.1)",
-                }}
+                className="w-full px-4 py-3 rounded-xl text-sm text-white placeholder-gray-600 outline-none transition-all duration-200 focus:border-primary/50 bg-white/[0.04] border border-white/10"
               />
             </div>
           ))}
 
           <div>
-            <label
-              className="block text-xs mb-1.5 uppercase tracking-widest"
-              style={{ color: "#5c6370" }}
-            >
+            <label className="block text-xs mb-1.5 uppercase tracking-widest text-foreground/40">
               {t.message}
             </label>
             <textarea
@@ -176,11 +150,7 @@ export default function ContactSection({ t }: ContactSectionProps) {
               onChange={(e) =>
                 setForm((f) => ({ ...f, message: e.target.value }))
               }
-              className="w-full px-4 py-3 rounded-xl text-sm text-white placeholder-gray-600 outline-none resize-none transition-all duration-200 focus:border-purple-400/50"
-              style={{
-                background: "rgba(255,255,255,0.04)",
-                border: "1px solid rgba(255,255,255,0.1)",
-              }}
+              className="w-full px-4 py-3 rounded-xl text-sm text-white placeholder-gray-600 outline-none resize-none transition-all duration-200 focus:border-primary/50 bg-white/[0.04] border border-white/10"
             />
           </div>
 
