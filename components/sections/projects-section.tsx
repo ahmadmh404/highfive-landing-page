@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaLocationArrow } from "react-icons/fa6";
+import { Globe, Cpu, Wrench } from "lucide-react";
 import type { Lang } from "@/data/translations";
 
 const allProjects = [
@@ -64,6 +65,24 @@ const allProjects = [
 
 const filters = ["all", "webApps", "aiFeatures", "tools"] as const;
 
+const projectFallbacks: Record<
+  string,
+  { gradient: string; icon: React.ReactNode }
+> = {
+  webApps: {
+    gradient: "from-purple-500/20 via-blue-500/20 to-teal-500/20",
+    icon: <Globe className="h-10 w-10 text-white/30" />,
+  },
+  aiFeatures: {
+    gradient: "from-blue-500/20 via-cyan-500/20 to-indigo-500/20",
+    icon: <Cpu className="h-10 w-10 text-white/30" />,
+  },
+  tools: {
+    gradient: "from-teal-500/20 via-green-500/20 to-emerald-500/20",
+    icon: <Wrench className="h-10 w-10 text-white/30" />,
+  },
+};
+
 interface ProjectsSectionProps {
   t: {
     title: string;
@@ -86,6 +105,9 @@ function ProjectCard({
   t: ProjectsSectionProps["t"];
 }) {
   const [isHovered, setIsHovered] = useState(false);
+  const [imgLoaded, setImgLoaded] = useState(false);
+  const [imgError, setImgError] = useState(false);
+  const fallback = projectFallbacks[item.category] || projectFallbacks.webApps;
 
   return (
     <motion.a
@@ -104,8 +126,18 @@ function ProjectCard({
     >
       {/* 1. Main Card Container */}
       <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[rgb(4,7,29)]">
-        {/* Image Area */}
-        <div className="relative overflow-hidden bg-[#13162D] h-[20vh] lg:h-[30vh]">
+        {/* Image Area with Gradient Fallback */}
+        <div className="relative overflow-hidden h-[20vh] lg:h-[30vh]">
+          {/* Gradient fallback (always present, fades out when image loads) */}
+          <div
+            className={`absolute inset-0 bg-gradient-to-br ${fallback.gradient} flex items-center justify-center transition-opacity duration-500 ${
+              imgLoaded ? "opacity-0" : "opacity-100"
+            }`}
+          >
+            {fallback.icon}
+          </div>
+
+          {/* Background pattern */}
           <div className="absolute inset-0 bg-background/50">
             <img
               src="/bg.png"
@@ -113,13 +145,19 @@ function ProjectCard({
               className="w-full h-full object-cover"
             />
           </div>
+
+          {/* Project image - crossfades in when loaded */}
           <img
             src={item.img}
             alt={item.title}
+            loading="lazy"
+            onLoad={() => setImgLoaded(true)}
+            onError={() => setImgError(true)}
             className={`relative z-10 absolute bottom-0 w-full transition-all duration-700 ease-in-out ${
               isHovered ? "scale-110" : "scale-100"
-            }`}
+            } ${imgLoaded || imgError ? "opacity-100" : "opacity-0"}`}
           />
+
           {/* Overlay gradient */}
           <div className="absolute inset-0 bg-gradient-to-t from-[rgb(4,7,29)] via-transparent to-transparent opacity-60" />
         </div>

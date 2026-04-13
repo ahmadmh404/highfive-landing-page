@@ -71,6 +71,16 @@ interface TeamTranslations {
 
 function TeamCard({ member, t }: { member: TeamMember; t: TeamTranslations }) {
   const [isHovered, setIsHovered] = useState(false);
+  const [imgLoaded, setImgLoaded] = useState(false);
+  const [imgError, setImgError] = useState(false);
+
+  // Derive initials from name
+  const initials = member.nameKey
+    .split(" ")
+    .map((n) => n[0])
+    .join("")
+    .toUpperCase()
+    .slice(0, 2);
 
   return (
     <motion.div
@@ -87,13 +97,27 @@ function TeamCard({ member, t }: { member: TeamMember; t: TeamTranslations }) {
     >
       {/* 1. The Main Image Container */}
       <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-white/10 bg-background">
+        {/* Gradient fallback with initials */}
+        <div
+          className={`absolute inset-0 bg-gradient-to-br from-primary/20 via-accent/20 to-primary/10 flex items-center justify-center transition-opacity duration-500 ${
+            imgLoaded ? "opacity-0" : "opacity-100"
+          }`}
+        >
+          <span className="text-4xl font-bold text-white/40 font-display">
+            {initials}
+          </span>
+        </div>
+
         <Image
           src={member.image}
           alt={member.nameKey}
           fill
+          loading="lazy"
+          onLoadingComplete={() => setImgLoaded(true)}
+          onError={() => setImgError(true)}
           className={`object-cover transition-all duration-700 ease-in-out ${
             isHovered ? "grayscale-0 scale-110" : "grayscale opacity-60"
-          }`}
+          } ${imgLoaded || imgError ? "opacity-100" : "opacity-0"}`}
         />
 
         {/* 2. Glassmorphism Overlay (The "Label") */}
