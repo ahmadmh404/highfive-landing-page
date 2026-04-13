@@ -136,7 +136,7 @@ export const Icon = ({ className, ...rest }: IconProps) => (
 
 export default function ProcessSection({ t }: ProcessSectionProps) {
   return (
-    <section className="w-full py-20">
+    <section id="process" className="w-full py-20">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

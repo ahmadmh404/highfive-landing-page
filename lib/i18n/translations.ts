@@ -2,7 +2,12 @@ export const translations = {
   en: {
     nav: {
       services: "Services",
+      process: "Process",
+      team: "Team",
       projects: "Projects",
+      techStack: "Tech Stack",
+      courses: "Courses",
+      aiTools: "AI Tools",
       about: "About Us",
       contact: "Contact",
     },
@@ -325,7 +330,12 @@ export const translations = {
   ar: {
     nav: {
       services: "الخدمات",
+      process: "المنهجية",
+      team: "الفريق",
       projects: "المشاريع",
+      techStack: "التقنيات",
+      courses: "الدورات",
+      aiTools: "أدوات الذكاء",
       about: "من نحن",
       contact: "اتصل بنا",
     },
