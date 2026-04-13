@@ -130,10 +130,7 @@ function ProjectCard({
             {item.title}
           </h1>
 
-          <p
-            className="lg:text-xl lg:font-normal font-light text-sm line-clamp-2 mt-2 transition-all duration-200 group-hover:translate-x-2"
-            style={{ color: "#BEC1DD" }}
-          >
+          <p className="lg:text-xl lg:font-normal font-light text-sm line-clamp-2 mt-2 transition-all duration-200 group-hover:translate-x-2 text-muted-foreground">
             {item.des}
           </p>
 
@@ -200,16 +197,11 @@ export default function ProjectsSection({ t }: ProjectsSectionProps) {
           <button
             key={f}
             onClick={() => setActive(f)}
-            className="relative px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 overflow-hidden"
-            style={{
-              background:
-                active === f ? "rgba(203,172,249,0.15)" : "rgba(17,25,40,0.6)",
-              border:
-                active === f
-                  ? "1px solid rgba(203,172,249,0.5)"
-                  : "1px solid rgba(255,255,255,0.1)",
-              color: active === f ? "#CBACF9" : "#BEC1DD",
-            }}
+            className={`relative px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 overflow-hidden ${
+              active === f
+                ? "bg-primary/15 border-primary/50 text-primary"
+                : "bg-card/60 border-white/10 text-muted-foreground"
+            } border`}
           >
             {(t.filter as any)[f]}
           </button>

@@ -136,9 +136,14 @@ export default function CoursesSection({ t }: CoursesSectionProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group block"
+              className="group block relative"
+              whileHover={{
+                scale: 1.05,
+                zIndex: 20,
+                transition: { type: "spring", stiffness: 260, damping: 20 },
+              }}
             >
-              <Card className="h-full overflow-hidden border-white/10 bg-[rgb(4,7,29)] transition-all duration-300 hover:border-primary/50 hover:shadow-xl hover:-translate-y-1">
+              <Card className="h-full overflow-hidden border-white/10 bg-[rgb(4,7,29)]">
                 {/* Thumbnail */}
                 <CourseThumbnail courseId={course.id} image={course.image} />
 
@@ -173,7 +178,13 @@ export default function CoursesSection({ t }: CoursesSectionProps) {
                     <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                   </div>
                 </CardContent>
+
+                {/* Top Shimmer Highlight (HighFive Signature) */}
+                <div className="absolute inset-0 border border-white/10 rounded-2xl pointer-events-none group-hover:border-primary/30 transition-colors duration-300" />
               </Card>
+
+              {/* Soft Glow behind card (HighFive Signature) */}
+              <div className="absolute -inset-2 bg-primary/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 rounded-2xl" />
             </motion.a>
           );
         })}

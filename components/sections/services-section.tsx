@@ -27,9 +27,9 @@ interface ServicesSectionProps {
 
 export default function ServicesSection({ t }: ServicesSectionProps) {
   const services = [
-    { key: "customDev", icon: FaCode, color: "#CBACF9" },
-    { key: "aiTools", icon: FaBrain, color: "#E4ECFF" },
-    { key: "courses", icon: FaGraduationCap, color: "#CBACF9" },
+    { key: "customDev", icon: FaCode, color: "text-primary" },
+    { key: "aiTools", icon: FaBrain, color: "text-accent" },
+    { key: "courses", icon: FaGraduationCap, color: "text-primary" },
   ];
 
   return (
@@ -38,7 +38,7 @@ export default function ServicesSection({ t }: ServicesSectionProps) {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.6 }}
         className="text-center mb-16"
       >
         <h2 className="text-3xl md:text-5xl font-bold tracking-tight font-display bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/60">
@@ -56,7 +56,7 @@ export default function ServicesSection({ t }: ServicesSectionProps) {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: i * 0.15 }}
+            transition={{ duration: 0.6, delay: i * 0.1 }}
           >
             <Button
               borderRadius="1.5rem"
@@ -66,21 +66,14 @@ export default function ServicesSection({ t }: ServicesSectionProps) {
             >
               <div className="p-8 flex flex-col gap-4 h-full">
                 <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center"
-                  style={{
-                    background: `${color}15`,
-                    border: `1px solid ${color}30`,
-                  }}
+                  className={`w-12 h-12 rounded-xl flex items-center justify-center bg-primary/10 border border-primary/30`}
                 >
-                  <Icon style={{ color }} className="w-5 h-5" />
+                  <Icon className={`w-5 h-5 ${color}`} />
                 </div>
                 <h3 className="text-xl font-bold font-display text-white">
                   {(t as any)[key].title}
                 </h3>
-                <p
-                  className="text-sm leading-relaxed"
-                  style={{ color: "#BEC1DD" }}
-                >
+                <p className="text-sm leading-relaxed text-muted-foreground">
                   {(t as any)[key].description}
                 </p>
               </div>

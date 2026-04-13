@@ -142,6 +142,7 @@ export default function TeamSection({ t }: { t: TeamTranslations }) {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
           className="text-center mb-24"
         >
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight font-display bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/60">
@@ -152,14 +153,14 @@ export default function TeamSection({ t }: { t: TeamTranslations }) {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-8 px-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
           {members.map((member, i) => (
             <motion.div
               key={member.nameKey}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
             >
               <TeamCard member={member} t={t} />
             </motion.div>
