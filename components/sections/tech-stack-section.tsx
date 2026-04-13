@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import type { Lang } from "@/data/translations";
 
 const techCategories = [
   {

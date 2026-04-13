@@ -1,231 +1,202 @@
-# Tasks: 001-landing-page-mvp
+# Tasks: 001-landing-page-mvp (Finalization Phase)
 
-**Branch**: `001-landing-page-mvp` | **Generated**: 2026-04-03
+**Branch**: `001-landing-page-mvp` | **Generated**: 2026-04-13
+**Status**: Regenerated after spec-finalization.md analysis
 
 ## Summary
 
-Landing page implementation tasks organized by user story in priority order. Independent test criteria defined for each story to enable incremental validation.
+Finalization tasks organized by implementation plan phase. Each phase addresses one distinct aspect of the landing page polish. Phases 1-5 are independent and can run in parallel; Phase 6 validates everything together.
 
 ---
 
-## Phase 1: Setup
+## Phase 1: Animation Fingerprint Standardization
 
-Project initialization and configuration.
+- [ ] T036 Verify `lib/animation-constants.ts` exports spring hover pattern (stiffness: 260, damping: 20)
+- [ ] T037 Apply standardized hover fingerprint to `projects-section.tsx`: `whileHover={{ scale: 1.05 }}` + spring physics
+- [ ] T038 Add glow overlay to all project cards: `-inset-2 bg-primary/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`
+- [ ] T039 Add border shimmer to all cards: `group-hover:border-primary/30 transition-colors duration-300`
+- [ ] T040 Verify TeamSection, CoursesSection, ServicesSection use identical hover pattern
+- [ ] T041 Remove any non-standard hardcoded hover transitions (e.g., `duration: 0.2` linear, custom ease curves)
 
-- [x] T001 Verify existing Next.js 16 setup and dependencies in package.json
-- [x] T002 [P] Verify existing dark/light mode setup (next-themes) in app/providers.tsx
-- [x] T003 [P] Verify existing localization setup (next-intl) in app/[locale]/
-- [x] T004 Create project directory structure: components/sections/, components/features/ai-demos/, lib/data/
-
-**Independent Test**: All commands run without errors.
-
----
-
-## Phase 2: Foundational
-
-Blocking prerequisites that MUST complete before user stories.
-
-- [x] T005 Create base TypeScript types for all entities in lib/types/index.ts
-- [x] T006 [P] Create site constants (team, services, AI tools placeholder data) in lib/constants.ts
-- [x] T007 [P] Create mock data files in lib/data/: team.ts, ai-tools.ts, projects.ts, courses.ts
-- [x] T008 Create reusable section wrapper component in components/sections/SectionWrapper.tsx
-
-**Dependencies**: Phase 1 complete  
-**Independent Test**: Types compile without errors, constants export valid data.
+**Spec Coverage**: FR-001
+**Success Criteria**: All 4 interactive card types use identical hover parameters
 
 ---
 
-## Phase 3: User Story 1 - Discover Services and Contact Team (P1)
+## Phase 2: CSS Gradient Fallback Images
 
-**Goal**: Hero section, services section, and contact form working.
+- [ ] T042 Create `ProjectImage` sub-component with CSS gradient fallback per category:
+  - webApps: `from-purple-500/20 via-blue-500/20 to-teal-500/20`
+  - aiFeatures: `from-blue-500/20 via-cyan-500/20 to-indigo-500/20`
+  - tools: `from-teal-500/20 via-green-500/20 to-emerald-500/20`
+- [ ] T043 Add lucide icon overlay to project fallbacks (`Globe`, `Cpu`, `Wrench`)
+- [ ] T044 Implement 500ms crossfade from gradient to loaded image
+- [ ] T045 Create `TeamAvatar` sub-component with gradient + initials fallback:
+  - Gradient: `from-primary/20 via-accent/20 to-primary/10`
+  - Initials: centered, derived from member names (`A`, `AJ`, `Y`, `K`, `AD`)
+- [ ] T046 Verify CoursesSection images use same fallback pattern
+- [ ] T047 Test fallbacks with network throttling (offline mode)
 
-**Independent Test**: Visitor can view hero, services, and submit contact form with success message.
-
-### Implementation
-
-- [x] T009 [US1] Create Hero section component in components/sections/Hero.tsx
-- [x] T010 [US1] Create services cards component in components/sections/Services.tsx
-- [x] T011 [US1] Create contact form component in components/sections/ContactForm.tsx
-- [x] T012 [US1] Implement contact form client-side validation (name, email required; phone optional)
-- [x] T013 [US1] Add smooth-scroll behavior for "Start a Project" CTA to contact form
-
-**Tests**: Contact form validation <200ms, form clears on success (FR-019)
-
----
-
-## Phase 4: User Story 2 - Explore and Interact with AI Tools (P1)
-
-**Goal**: Interactive AI tool demos with mock API.
-
-**Independent Test**: Visitor can open demo modal, fill form, run demo, see loading, view results.
-
-### Implementation
-
-- [x] T014 [US2] Create AI Tools section component in components/sections/AiTools.tsx
-- [x] T015 [US2] Create AI demo modal component in components/features/ai-demos/DemoModal.tsx
-- [x] T016 [US2] Create mock API function with 2-5s delay in lib/api/mock-ai-demo.ts
-- [x] T017 [US2] Add loading animation during demo processing
-- [x] T018 [US2] Handle rapid click protection (extend to max 10s with warning)
-- [x] T019 [US2] Add smooth-scroll behavior for "Explore AI Tools" CTA to AI Tools section
-
-**Tests**: Demo completes full cycle <8s (SC-002), loading animation visible (SC-009)
+**Spec Coverage**: FR-002, FR-003, FR-004
+**Success Criteria**: All project/team cards show styled gradient when image loading/failing
 
 ---
 
-## Phase 5: User Story 3 - Evaluate Team Credibility (P2)
+## Phase 3: Color Token Migration
 
-**Goal**: Team member cards displaying all required info.
+- [ ] T048 Grep all hardcoded hex values across sections: `#CBACF9`, `#BEC1DD`, `#E4ECFF`, `rgba(203,172,249,`, `rgba(255,255,255,`, `rgba(4,7,29,`
+- [ ] T049 Migrate `projects-section.tsx` colors to Tailwind tokens
+- [ ] T050 Migrate `services-section.tsx` colors to Tailwind tokens
+- [ ] T051 Migrate `tech-stack-section.tsx` colors to Tailwind tokens (inline style blocks)
+- [ ] T052 Migrate `process-section.tsx` colors if any hardcoded values found
+- [ ] T053 Migrate `ai-tools-section.tsx` colors if any hardcoded values found
+- [ ] T054 Migrate `contact-section.tsx` colors if any hardcoded values found
+- [ ] T055 Migrate `footer-section.tsx` colors if any hardcoded values found
+- [ ] T056 Migrate `floating-navbar.tsx` inline style colors to tokens
+- [ ] T057 Migrate `BentoGrid.tsx` inline style colors to tokens
+- [ ] T058 Run `pnpm lint` to verify zero remaining hardcoded hex values
+- [ ] T059 Verify dark mode renders identically after migration
 
-**Independent Test**: Visitor can view 5 team member cards with photos, names, roles, bios, social links.
-
-### Implementation
-
-- [x] T020 [US3] Create Team section component in components/sections/Team.tsx
-- [x] T021 [US3] Create team member card component in components/sections/TeamMemberCard.tsx
-
-**Dependencies**: T006 (constants)
-
----
-
-## Phase 6: User Story 4 - Browse Projects Portfolio (P2)
-
-**Goal**: Filterable project gallery.
-
-**Independent Test**: Visitor can filter projects by category and view filtered results.
-
-### Implementation
-
-- [x] T022 [US4] Create Projects section component in components/sections/Projects.tsx
-- [x] T023 [US4] Create project filter bar component in components/sections/ProjectsFilter.tsx
-- [x] T024 [US4] Implement real-time filter without page reload (<300ms)
-- [x] T025 [US4] Create project card component in components/sections/ProjectCard.tsx
-
-**Tests**: Filter update <300ms (SC-007)
+**Spec Coverage**: FR-007, FR-020
+**Success Criteria**: Zero hardcoded hex values, all colors reference CSS variables or Tailwind utilities
 
 ---
 
-## Phase 7: User Story 5 - Preview Available Courses (P2)
+## Phase 4: Responsive Grid Standardization
 
-**Goal**: Course preview grid.
+- [ ] T060 Convert ProjectsSection from `flex flex-wrap` to `grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3`
+- [ ] T061 Verify CoursesSection uses `grid-cols-1 sm:grid-cols-2 lg:grid-cols-4`
+- [ ] T062 Verify ServicesSection uses `grid-cols-1 md:grid-cols-3`
+- [ ] T063 Verify TechStackSection uses `grid-cols-1 md:grid-cols-3`
+- [ ] T064 Verify TeamSection uses consistent grid (5 items → `grid-cols-1 sm:grid-cols-2 lg:grid-cols-3` with last row centered, or 5-col layout)
+- [ ] T065 Ensure all section grids use `gap-6` standard spacing
+- [ ] T066 Test responsive behavior at 320px, 768px, 1024px, 1440px
+- [ ] T067 Verify no horizontal scrolling at any viewport width
 
-**Independent Test**: Visitor can view course cards with titles, levels, descriptions.
-
-### Implementation
-
-- [x] T026 [US5] Create Courses section component in components/sections/Courses.tsx
-- [x] T027 [US5] Create course card component in components/sections/CourseCard.tsx
-
----
-
-## Phase 8: User Story 6 - Switch Theme and Language (P3)
-
-**Goal**: Dark/light mode toggle and language switcher.
-
-**Independent Test**: Visitor can toggle theme and switch language.
-
-### Implementation
-
-- [x] T028 [US6] Verify dark/light mode transitions smoothly (<500ms)
-- [x] T029 [US6] Add new content keys to localization files for any new text
-
-**Tests**: Theme transition <500ms (SC-004)
+**Spec Coverage**: FR-009, FR-021
+**Success Criteria**: All sections use consistent responsive breakpoints, no horizontal scrolling
 
 ---
 
-## Phase 9: How We Work Section
+## Phase 5: Globe/BentoGrid SSR Fix
 
-**Goal**: Process visualization section.
+- [ ] T068 Add `isMounted` state to `GridGlobe.tsx` with `useEffect(() => setIsMounted(true), [])`
+- [ ] T069 Return loading placeholder (`<div className="w-full h-full" />`) when `!isMounted`
+- [ ] T070 Verify World import uses `dynamic(() => import("./Globe").then(m => m.World), { ssr: false })`
+- [ ] T071 Add `loading` component to dynamic import
+- [ ] T072 Clear build cache: `rm -rf .next && pnpm dev`
+- [ ] T073 Verify Globe renders correctly after hydration with no SSR errors
 
-### Implementation
-
-- [x] T030 Create HowWeWork section component in components/sections/HowWeWork.tsx
+**Spec Coverage**: FR-010, FR-022
+**Success Criteria**: No `window is not defined` errors, Globe renders after client hydration
 
 ---
 
-## Phase 10: Navigation & Polish
+## Phase 6: Localization & Navigation Sync
 
-Cross-cutting concerns and final integration.
+- [ ] T074 Add missing nav translation keys to `lib/i18n/translations.ts` for both EN and AR:
+  - `nav.process`, `nav.techStack`, `nav.courses`, `nav.aiTools`
+- [ ] T075 Remove unused translation keys (`trustedBy`, `newsletter`, `cta`) if no sections consume them
+- [ ] T076 Update `data/index.ts` to generate nav items from locale-aware translations:
+  ```ts
+  export const getNavItems = (t) => [
+    { name: t.services, link: "#services" },
+    { name: t.process, link: "#process" },
+    { name: t.team, link: "#team" },
+    { name: t.projects, link: "#projects" },
+    { name: t.techStack, link: "#tech" },
+    { name: t.courses, link: "#courses" },
+    { name: t.aiTools, link: "#ai-tools" },
+    { name: t.contact, link: "#contact" },
+  ];
+  ```
+- [ ] T077 Update `app/[locale]/page.tsx` to pass localized nav items to `FloatingNav`
+- [ ] T078 Update `FloatingNav` component to accept and render localized nav labels
+- [ ] T079 Verify all section `id` attributes match nav link anchors:
+  - `#services`, `#process`, `#team`, `#projects`, `#tech`, `#courses`, `#ai-tools`, `#contact`
+- [ ] T080 Align section `t` prop types with `lib/i18n/translations.ts` for type safety
+- [ ] T081 Test Arabic locale: verify RTL layout, nav labels, and section content render correctly
+- [ ] T082 Verify smooth-scroll behavior works for all nav links in both locales
 
-- [x] T031 [P] Create responsive navigation bar with mobile hamburger in components/sections/Navbar.tsx
-- [x] T032 [P] Add mobile-first responsive styles to all sections (320px-2560px)
-- [x] T033 Add smooth-scroll anchor support to navbar (FR-017)
-- [x] T034 Integrate all sections into app/page.tsx in correct order
-- [x] T035 Remove all placeholder/fake content per FR-016
+**Spec Coverage**: FR-011, FR-012, FR-023, FR-024
+**Success Criteria**: Nav labels display in current locale, all links scroll to correct sections, Arabic renders correctly
 
-**Tests**: Lighthouse score >90 (SC-008), responsive 320px-2560px (SC-003)
+---
+
+## Phase 7: Constitution Compliance Cleanup
+
+- [ ] T083 Audit all testimonials for fake/placeholder content per Constitution §I (Honesty)
+- [ ] T084 Audit all stats/numbers for accuracy — remove fabricated metrics
+- [ ] T085 Audit all client logos — remove any not explicitly approved
+- [ ] T086 Verify HeroSection copy uses first-person plural ("we") per Constitution §III
+- [ ] T087 Verify ServicesSection copy uses first-person plural ("we") per Constitution §III
+- [ ] T088 Verify no corporate buzzwords remain ("cutting-edge", "digital transformation", "excellence")
+- [ ] T089 Add comprehensive dark/light mode testing task with transition verification (<500ms)
+- [ ] T090 Add accessibility spot-check task for WCAG 2.1 AA compliance (focus states, contrast, alt text)
+
+**Spec Coverage**: FR-016, Constitution §I, §III, §IV
+**Success Criteria**: All content is real or explicitly marked placeholder, tone matches Constitution, accessibility baseline met
 
 ---
 
 ## Dependency Graph
 
 ```
-Phase 1 (Setup)
-    │
-    ▼
-Phase 2 (Foundational) ───────┐
-    │                        │
-    ▼                        ▼
-Phase 3 (US1)         Phase 5 (US3)
-    │                        │
-    ▼                        ▼
-Phase 4 (US2) ◄────────────┤
-    │
-    ▼
-Phase 6 (US4)
-    │
-    ▼
-Phase 7 (US5)
-    │
-    ▼
-Phase 8-10 (Polish)
+Phase 1: Animation Fingerprint    ← Independent
+Phase 2: Fallback Images         ← Independent
+Phase 3: Color Token Migration   ← Independent
+Phase 4: Grid Standardization    ← Independent
+Phase 5: Globe SSR Fix           ← Independent
+Phase 6: Localization & Nav Sync ← Independent (but test last)
+Phase 7: Constitution Compliance ← Depends on Phases 1-6 complete
 ```
 
 ---
 
 ## Parallel Execution Opportunities
 
-| Tasks            | Parallel Because                                 |
-| ---------------- | ------------------------------------------------ |
-| T002, T003       | Independent verification                         |
-| T006, T007       | Independent constant/data creation               |
-| T020, T022, T026 | Different sections, no dependencies between them |
-| T031, T032       | Different concerns (nav + responsive)            |
+| Tasks     | Parallel Because                                  |
+| --------- | ------------------------------------------------- |
+| T036-T041 | Independent of all other phases                   |
+| T042-T047 | Independent of all other phases                   |
+| T048-T059 | Independent, but batch by file for efficiency     |
+| T060-T067 | Independent of all other phases                   |
+| T068-T073 | Independent of all other phases                   |
+| T074-T082 | Independent, but test after other phases complete |
+| T083-T090 | Depends on visual consistency from Phases 1-6     |
 
 ---
 
 ## Implementation Strategy
 
-**MVP Scope**: User Story 1 (T009-T013) + Hero/Services/Contact form
+**Priority Order**:
 
-**Incremental Delivery**:
+1. Phase 5 (Globe SSR fix) — unblocks site loading
+2. Phase 1 (Animation fingerprint) — foundation for consistency
+3. Phase 3 (Color migration) — eliminates tech debt
+4. Phase 2 (Fallback images) — visual polish
+5. Phase 4 (Grid standardization) — responsive consistency
+6. Phase 6 (Localization) — validates everything together
+7. Phase 7 (Constitution compliance) — final quality gate
 
-1. First: Hero + Services + Contact Form (complete lead gen flow)
-2. Second: AI Tools demos (differentiating feature)
-3. Third: Team + Projects
-4. Fourth: Courses + How We Work
-5. Fifth: Theme/Language + Polish
-
----
-
-## Total Task Count: 35
-
-| Phase                 | Tasks     | Count |
-| --------------------- | --------- | ----- |
-| Phase 1: Setup        | T001-T004 | 4     |
-| Phase 2: Foundational | T005-T008 | 4     |
-| Phase 3: US1          | T009-T013 | 5     |
-| Phase 4: US2          | T014-T019 | 6     |
-| Phase 5: US3          | T020-T021 | 2     |
-| Phase 6: US4          | T022-T025 | 4     |
-| Phase 7: US5          | T026-T027 | 2     |
-| Phase 8: US6          | T028-T029 | 2     |
-| Phase 9: HowWeWork    | T030      | 1     |
-| Phase 10: Polish      | T031-T035 | 5     |
+**MVP for this finalization**: Phases 1-5 complete, site loads without errors, all cards use consistent hover/entrance patterns, colors use tokens, images have fallbacks.
 
 ---
 
-## Suggested MVP Scope
+## Total Task Count: 55
 
-**MVP**: Complete Phase 3 (User Story 1) - Hero, Services, Contact Form
+| Phase                          | Tasks     | Count |
+| ------------------------------ | --------- | ----- |
+| Phase 1: Animation Fingerprint | T036-T041 | 6     |
+| Phase 2: Fallback Images       | T042-T047 | 6     |
+| Phase 3: Color Migration       | T048-T059 | 12    |
+| Phase 4: Grid Standardization  | T060-T067 | 8     |
+| Phase 5: Globe SSR Fix         | T068-T073 | 6     |
+| Phase 6: Localization & Nav    | T074-T082 | 9     |
+| Phase 7: Constitution Cleanup  | T083-T090 | 8     |
 
-This delivers the primary business goal: converting visitors into clients. The MVP should be independently testable with a complete lead generation flow.
+---
+
+## Previous Tasks (Already Complete)
+
+Tasks T001-T035 from the original spec are marked complete and represent the foundational implementation work. The tasks above (T036-T090) represent the remaining finalization work needed to bring the site to production quality.

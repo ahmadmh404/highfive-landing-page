@@ -21,9 +21,9 @@ Sync Impact Report:
 
 ## Vision
 
-Build a modern, personal showcase for a 3-person freelance coding team
-(Frontend, Backend+AI, Social Media) specialized in custom apps,
-AI tools/packages, and programming courses.
+Build a modern, personal showcase for a 5-person freelance coding team
+(Frontend, Backend+AI, UI/UX Design, Project Management, Backend),
+specialized in custom apps, AI tools/packages, and programming courses.
 
 ## Core Principles
 
@@ -125,4 +125,8 @@ HighFive Website.
 - **Runtime Guidance**: Use `AGENTS.md` for day-to-day development
   guidance that supplements but does not contradict this constitution.
 
-**Version**: 1.1.0 | **Ratified**: TODO(RATIFICATION_DATE): confirm original adoption date | **Last Amended**: 2026-04-02
+**Version**: 1.2.0 | **Ratified**: 2026-04-02 | **Last Amended**: 2026-04-13
+
+## Amendment History
+
+- **1.1.0 → 1.2.0** (2026-04-13): Updated Vision to reflect actual team size (3 → 5 members). Core principles unchanged.
