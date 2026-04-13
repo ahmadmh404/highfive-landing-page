@@ -247,7 +247,7 @@ export default function ProjectsSection({ t }: ProjectsSectionProps) {
       </div>
 
       {/* Projects Grid */}
-      <div className="grid grid-cols-3 gap-x-5 gap-y-10 mt-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 justify-items-center">
         <AnimatePresence mode="popLayout">
           {filtered.map((item) => (
             <ProjectCard key={item.id} item={item} t={t} />
