@@ -8,8 +8,7 @@ interface TeamMember {
   nameKey: string;
   roleKey: string;
   bioKey: string;
-  image: string; // Added image path
-  rotation: number; // For the "tilted" effect
+  image: string;
 }
 
 const members: TeamMember[] = [
@@ -18,35 +17,30 @@ const members: TeamMember[] = [
     roleKey: "leadDeveloper",
     bioKey: "ahmed",
     image: "/team/ahmad.jpg",
-    rotation: -3,
   },
   {
     nameKey: "Ali",
     roleKey: "aiEngineer",
     bioKey: "ali",
     image: "/team/ali.jpg",
-    rotation: 2,
   },
   {
     nameKey: "Yara",
     roleKey: "uiDesigner",
     bioKey: "yara",
     image: "/team/yara.jpg",
-    rotation: -2,
   },
   {
     nameKey: "Khalil",
     roleKey: "projectManager",
     bioKey: "khalil",
     image: "/team/khalil.jpg",
-    rotation: 3,
   },
   {
     nameKey: "Abdulrahman",
     roleKey: "backendDev",
     bioKey: "abdulrahman",
     image: "/team/abdul.jpg",
-    rotation: -1,
   },
 ];
 
@@ -85,9 +79,8 @@ function TeamCard({ member, t }: { member: TeamMember; t: TeamTranslations }) {
   return (
     <motion.div
       className="relative group cursor-pointer"
-      initial={{ rotate: member.rotation }}
+      initial={{ opacity: 1 }}
       whileHover={{
-        rotate: 0,
         scale: 1.05,
         zIndex: 20,
         transition: { type: "spring", stiffness: 260, damping: 20 },

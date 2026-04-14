@@ -68,6 +68,7 @@ export const fadeInDown = {
 export const scaleIn = {
   hidden: { opacity: 0, scale: 0.9 },
   visible: {
+    y: -3,
     opacity: 1,
     scale: 1,
     transition: { duration: ANIMATION.durations.MEDIUM },
@@ -132,8 +133,8 @@ export const teamCardHover = {
 export const statCardHover = {
   whileHover: {
     y: -5,
-    backgroundColor: "rgba(255, 255, 255, 0.04)",
-    borderColor: "rgba(203, 172, 249, 0.4)",
+    backgroundColor: "var(--hf-bg-card-hover)",
+    borderColor: "var(--hf-accent-purple-border)",
   },
   transition: {
     duration: ANIMATION.durations.HOVER,

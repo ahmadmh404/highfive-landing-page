@@ -84,12 +84,14 @@ export default function AIToolsSection({ t }: AIToolsSectionProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.15 }}
+              whileHover={{
+                scale: 1.05,
+                zIndex: 20,
+                transition: { type: "spring", stiffness: 260, damping: 20 },
+              }}
               className={`relative rounded-2xl overflow-hidden cursor-pointer group shrink-0 bg-[rgb(4,7,29)] border ${
                 isActive ? `border-primary/50` : "border-white/10"
               }`}
-              style={
-                isActive ? { boxShadow: "0 0 30px rgba(203,172,249,0.15)" } : {}
-              }
               onClick={() => setActiveKey(isActive ? null : key)}
             >
               {/* Top colored accent line */}
@@ -173,7 +175,13 @@ export default function AIToolsSection({ t }: AIToolsSectionProps) {
                     {t.tryDemo}
                   </button>
                 </div>
+
+                {/* Top Shimmer Highlight (HighFive Signature) */}
+                <div className="absolute inset-0 border border-white/10 rounded-2xl pointer-events-none group-hover:border-primary/30 transition-colors duration-300" />
               </div>
+
+              {/* Soft Glow behind card (HighFive Signature) */}
+              <div className="absolute -inset-2 bg-primary/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 rounded-2xl" />
             </motion.div>
           );
         })}
