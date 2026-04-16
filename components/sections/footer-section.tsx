@@ -1,13 +1,4 @@
-"use client";
-
-import { footerLinks } from "@/lib/constants";
-import { FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
-
-const socialLinks = [
-  { icon: FaGithub, href: "#", label: "GitHub" },
-  { icon: FaXTwitter, href: "#", label: "X (Twitter)" },
-  { icon: FaLinkedin, href: "#", label: "LinkedIn" },
-];
+import { footerLinks, socialLinks } from "@/lib/constants";
 
 interface FooterSectionProps {
   t: {
