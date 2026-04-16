@@ -1,8 +1,9 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { Button } from "@/components/effects";
 import { FaCode, FaBrain, FaGraduationCap } from "react-icons/fa6";
+import { ANIMATION, sectionItemsVariant } from "@/lib/animation-constants";
+import { StaggerChild } from "../animated/stagger-child";
+import { AnimatedSectionHeader } from "../animated/animated-section-header";
+import { StaggerContainer } from "../animated/staggered-container";
 
 const icons = [FaCode, FaBrain, FaGraduationCap];
 
@@ -34,35 +35,25 @@ export default function ServicesSection({ t }: ServicesSectionProps) {
 
   return (
     <section id="services" className="w-full py-20">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="text-center mb-16"
-      >
-        <h2 className="text-3xl md:text-5xl font-bold tracking-tight font-display bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/60">
-          {t.title}
-        </h2>
-        <p className="mt-4 text-base text-foreground/50 md:text-lg max-w-2xl mx-auto">
-          {t.subtitle}
-        </p>
-      </motion.div>
+      <AnimatedSectionHeader title={t.title} subtitle={t.subtitle} />
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+      <StaggerContainer>
         {services.map(({ key, icon: Icon, color }, i) => (
-          <motion.div
-            key={key}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+          <StaggerChild
+            variant={sectionItemsVariant}
+            initial="initial"
+            whileInView="animate"
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: i * 0.1 }}
+            transition={{
+              duration: ANIMATION.durations.MEDIUM,
+              delay: ANIMATION.durations.STAGGER * i,
+            }}
           >
             <Button
               borderRadius="1.5rem"
               containerClassName="w-full h-full"
               duration={Math.floor(Math.random() * 5000) + 8000}
-              className="w-full text-white border-white/10 bg-[rgb(4,7,29)]"
+              className="w-full text-foreground border-muted-foreground/10 bg-[rgb(4,7,29)]"
             >
               <div className="p-8 flex flex-col gap-4 h-full">
                 <div
@@ -78,9 +69,9 @@ export default function ServicesSection({ t }: ServicesSectionProps) {
                 </p>
               </div>
             </Button>
-          </motion.div>
+          </StaggerChild>
         ))}
-      </div>
+      </StaggerContainer>
     </section>
   );
 }

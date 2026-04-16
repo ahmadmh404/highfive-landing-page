@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { IoCopyOutline } from "react-icons/io5";
 
@@ -80,7 +82,7 @@ export const BentoGridItem = ({
   return (
     <div
       className={cn(
-        "row-span-1 relative overflow-hidden border border-border group/bento hover:shadow-2xl transition duration-300 flex flex-col space-y-4 bg-card",
+        "row-span-1 relative overflow-hidden border border-border group/bento hover:shadow-2xl transition duration-300 flex flex-col space-y-4",
         className,
       )}
       style={{ borderRadius: "var(--radius-xl)" }}

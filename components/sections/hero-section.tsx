@@ -1,21 +1,19 @@
-import { motion } from "framer-motion";
-import { FaArrowRight, FaBolt } from "react-icons/fa6";
+import { FaArrowRight } from "react-icons/fa6";
 import { Spotlight } from "@/components/effects";
 import MagicButton from "@/components/shared/magic-button";
 import Link from "next/link";
 import { ANIMATION, scaleIn, statCardHover } from "@/lib/animation-constants";
 import { BackgroundGlow } from "../animated/background-glow";
-import { HERO_CODE_BLOCK, STATS } from "@/lib/constants";
-import { CodeBlock } from "../animate-ui/primitives/animate/code-block";
+import { STATS } from "@/lib/constants";
 import { AtmosphericStrike } from "../effects/atmospheric-strike";
 import { GridBackground } from "../effects/grid-background";
 import { AnimatedBadge } from "../animated/animated-badge";
 import { AnimatedTitle } from "../animated/animated-title";
 import { AnimatedSubtitle } from "../animated/animated-subtitle";
 import { AnimatedButton } from "../animated/animated-button";
-import { StaggerContainer } from "../animated/staggered-container";
-import { StaggerChild } from "../animated/atagger-child";
+import { StaggerChild } from "../animated/stagger-child";
 import { HeroCodeBlock } from "../shared/code-block";
+import { AnimatedStatsSection } from "../animated/animated-stats-section";
 
 interface HeroSectionProps {
   locale: string;
@@ -86,12 +84,19 @@ export default function HeroSection({ t }: HeroSectionProps) {
         <HeroCodeBlock />
 
         {/* Stats */}
-        <StaggerContainer delay={0.8}>
+        <AnimatedStatsSection>
           {STATS.map((stat, i) => (
             <StaggerChild
               key={stat.label}
+              variant={scaleIn}
+              initial="hidden"
+              animate="visible"
               whileHover={statCardHover}
-              transition={{ delay: ANIMATION.durations.FAST * i }}
+              className="relative flex flex-col items-center justify-center p-6 rounded-2xl border backdrop-blur-xl transition-all duration-300 group"
+              transition={{
+                duration: ANIMATION.durations.HOVER,
+                delay: ANIMATION.durations.FAST * i,
+              }}
             >
               {/* Top Accent Glow */}
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-linear-to-r from-transparent via-[#CBACF9]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -111,7 +116,7 @@ export default function HeroSection({ t }: HeroSectionProps) {
               <BackgroundGlow />
             </StaggerChild>
           ))}
-        </StaggerContainer>
+        </AnimatedStatsSection>
       </div>
     </section>
   );

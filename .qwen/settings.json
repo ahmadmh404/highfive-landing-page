@@ -10,7 +10,8 @@
       "WebFetch(www.awwtomation.com)",
       "WebFetch(huggingface.co)",
       "Bash(del *)",
-      "Bash(mkdir *)"
+      "Bash(mkdir *)",
+      "WebFetch(news.ycombinator.com)"
     ]
   },
   "$version": 3

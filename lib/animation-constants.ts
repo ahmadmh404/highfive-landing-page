@@ -104,6 +104,15 @@ export const staggerContainer = {
   },
 } as const;
 
+// (NEEDS UPDATE TO REAL STAGGER)
+export const sectionItemsVariant = {
+  initial: {
+    opacity: 0,
+    y: 30,
+  },
+  animate: { opacity: 1, y: 0 },
+} as const;
+
 // ============================================
 // HOVER TRANSITIONS (for Framer Motion whileHover)
 // ============================================

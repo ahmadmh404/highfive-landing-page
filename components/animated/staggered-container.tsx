@@ -19,11 +19,10 @@ export function StaggerContainer({
   return (
     <motion.div
       variants={fadeInUp}
+      initial="hidden"
+      whileInView="visible"
       transition={{ delay }}
-      className={cn(
-        "grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 w-full max-w-4xl mt-12",
-        className,
-      )}
+      className={cn("grid grid-cols-1 md:grid-cols-3 gap-6 mt-10", className)}
     >
       {children}
     </motion.div>

@@ -81,21 +81,23 @@ export const translations = {
     process: {
       title: "Our Process",
       subtitle: "A proven methodology for success",
-      discovery: {
-        title: "Discovery",
-        description: "We analyze your needs and define clear objectives.",
-      },
-      design: {
-        title: "Design",
-        description: "Create stunning, user-centered designs.",
-      },
-      development: {
-        title: "Development",
-        description: "Build with modern, scalable technologies.",
-      },
-      launch: {
-        title: "Launch & Support",
-        description: "Deploy and provide ongoing maintenance.",
+      cards: {
+        discovery: {
+          title: "Discovery",
+          description: "We analyze your needs and define clear objectives.",
+        },
+        design: {
+          title: "Design",
+          description: "Create stunning, user-centered designs.",
+        },
+        development: {
+          title: "Development",
+          description: "Build with modern, scalable technologies.",
+        },
+        launch: {
+          title: "Launch & Support",
+          description: "Deploy and provide ongoing maintenance.",
+        },
       },
     },
     techStack: {
@@ -409,21 +411,23 @@ export const translations = {
     process: {
       title: "عمليتنا",
       subtitle: "منهجية مثبتة للنجاح",
-      discovery: {
-        title: "الاكتشاف",
-        description: "نحلل احتياجاتك ونحدد أهدافًا واضحة.",
-      },
-      design: {
-        title: "التصميم",
-        description: "نصنع تصاميم مذهلة تركز على المستخدم.",
-      },
-      development: {
-        title: "التطوير",
-        description: "نبني بتقنيات حديثة وقابلة للتوسع.",
-      },
-      launch: {
-        title: "الإطلاق والدعم",
-        description: "نطلق ونوفر صيانة مستمرة.",
+      cards: {
+        discovery: {
+          title: "الاكتشاف",
+          description: "نحلل احتياجاتك ونحدد أهدافًا واضحة.",
+        },
+        design: {
+          title: "التصميم",
+          description: "نصنع تصاميم مذهلة تركز على المستخدم.",
+        },
+        development: {
+          title: "التطوير",
+          description: "نبني بتقنيات حديثة وقابلة للتوسع.",
+        },
+        launch: {
+          title: "الإطلاق والدعم",
+          description: "نطلق ونوفر صيانة مستمرة.",
+        },
       },
     },
     techStack: {

@@ -1,4 +1,5 @@
-import { NavItem } from "./types";
+import { FaBrain, FaCode, FaGraduationCap } from "react-icons/fa6";
+import { MockTeamMember, NavItem } from "./types";
 
 export const SITE_NAME = "HighFive";
 export const SITE_TAGLINE = "Expert Custom Development & AI Solutions";
@@ -76,5 +77,89 @@ import { scorpeSearch } from "scorpe-ai";
 
 console.log(results.items);
 // → HighFive Agency score: 0.98 ✓`,
+  },
+];
+
+export const SERVICES = [
+  { key: "customDev", icon: FaCode, color: "text-primary" },
+  { key: "aiTools", icon: FaBrain, color: "text-accent" },
+  { key: "courses", icon: FaGraduationCap, color: "text-primary" },
+];
+
+export const PHASES = [
+  {
+    key: "discovery",
+    order: "Phase 1",
+    canvasProps: {
+      animationSpeed: 5.1,
+      containerClassName: "bg-emerald-900 rounded-3xl overflow-hidden",
+    },
+  },
+  {
+    key: "design",
+    order: "Phase 2",
+    canvasProps: {
+      animationSpeed: 3,
+      containerClassName: "bg-pink-900 rounded-3xl overflow-hidden",
+      colors: [
+        [255, 166, 158],
+        [221, 255, 247],
+      ] as number[][],
+      dotSize: 2,
+    },
+  },
+  {
+    key: "development",
+    order: "Phase 3",
+    canvasProps: {
+      animationSpeed: 3,
+      containerClassName: "bg-sky-600 rounded-3xl overflow-hidden",
+      colors: [[125, 211, 252]] as number[][],
+    },
+  },
+  {
+    key: "launch",
+    order: "Phase 4",
+    canvasProps: {
+      animationSpeed: 4,
+      containerClassName: "rounded-3xl overflow-hidden",
+      colors: [
+        [203, 172, 249],
+        [100, 120, 220],
+      ] as number[][],
+    },
+  },
+];
+
+export const TEAM_MEMBERS: MockTeamMember[] = [
+  {
+    nameKey: "Ahmad",
+    roleKey: "leadDeveloper",
+    bioKey: "ahmed",
+    image: "/team/ahmad.jpg",
+  },
+  {
+    nameKey: "Ali",
+    roleKey: "aiEngineer",
+    bioKey: "ali",
+    image: "/team/ali.jpg",
+  },
+  {
+    nameKey: "Yara",
+    roleKey: "uiDesigner",
+    bioKey: "yara",
+    image: "/team/yara.jpg",
+  },
+  {
+    nameKey: "Khalil",
+    roleKey: "projectManager",
+    bioKey: "khalil",
+    image: "/team/khalil.jpg",
+  },
+  {
+    nameKey: "Abdulrahman",
+    roleKey: "backendDev",
+    bioKey: "abdulrahman",
+    image: "/team/abdul.jpg",
   },
 ];

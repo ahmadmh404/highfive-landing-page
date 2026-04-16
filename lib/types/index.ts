@@ -1,3 +1,10 @@
+export interface MockTeamMember {
+  nameKey: string;
+  roleKey: string;
+  bioKey: string;
+  image: string;
+}
+
 export interface TeamMember {
   id: string;
   name: string;
