@@ -1,5 +1,17 @@
-import { FaBrain, FaCode, FaGraduationCap } from "react-icons/fa6";
+import {
+  FaBrain,
+  FaCode,
+  FaEnvelope,
+  FaGithub,
+  FaGraduationCap,
+  FaLinkedin,
+  FaMapPin,
+  FaPhone,
+  FaXTwitter,
+} from "react-icons/fa6";
 import { MockTeamMember, NavItem } from "./types";
+import { Cpu, Globe, Wrench } from "lucide-react";
+import { IconType } from "react-icons";
 
 export const SITE_NAME = "HighFive";
 export const SITE_TAGLINE = "Expert Custom Development & AI Solutions";
@@ -66,6 +78,8 @@ export const HERO_CODE_BLOCK = [
     filename: "searchRepo.py",
     code: `
 import { scorpeSearch } from "scorpe-ai";
+import { Globe } from '../components/effects/Globe';
+import { Cpu, Wrench } from 'lucide-react';
 
 // Enhance search with AI-powered ranking
  const results = await scorpeSearch({
@@ -161,5 +175,125 @@ export const TEAM_MEMBERS: MockTeamMember[] = [
     roleKey: "backendDev",
     bioKey: "abdulrahman",
     image: "/team/abdul.jpg",
+  },
+];
+
+export const FILTERS = ["all", "webApps", "aiFeatures", "tools"] as const;
+export const PROJECTS = [
+  {
+    id: 1,
+    title: "AI-Powered E-Commerce Platform",
+    des: "Full-stack e-commerce solution with AI-driven product recommendations, smart search, and real-time analytics dashboard.",
+    img: "/p1.svg",
+    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
+    link: "#",
+    category: "webApps",
+  },
+  {
+    id: 2,
+    title: "Scorpe Search Integration",
+    des: "Seamlessly integrated our AI search package into a SaaS platform, boosting user engagement by 40%.",
+    img: "/p2.svg",
+    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/stream.svg", "/c.svg"],
+    link: "#",
+    category: "aiFeatures",
+  },
+  {
+    id: 3,
+    title: "Real Estate Mobile App",
+    des: "Cross-platform mobile app with 3D property tours, AI valuation tool, and integrated payment processing.",
+    img: "/p3.svg",
+    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/c.svg"],
+    link: "#",
+    category: "webApps",
+  },
+  {
+    id: 4,
+    title: "Analytics Dashboard Tool",
+    des: "Enterprise-grade analytics tool with real-time data processing, custom report builder, and AI forecasting.",
+    img: "/p4.svg",
+    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.svg"],
+    link: "#",
+    category: "tools",
+  },
+  {
+    id: 5,
+    title: "NLP Text Classification API",
+    des: "High-performance text classification API trained on Arabic and English datasets for content moderation.",
+    img: "/p1.svg",
+    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/c.svg", "/fm.svg"],
+    link: "#",
+    category: "aiFeatures",
+  },
+  {
+    id: 6,
+    title: "DevOps Automation Suite",
+    des: "CI/CD pipeline automation tool with one-click deployment, monitoring, and multi-cloud support.",
+    img: "/p3.svg",
+    iconLists: ["/next.svg", "/ts.svg", "/tail.svg", "/git.svg", "/dock.svg"],
+    link: "#",
+    category: "tools",
+  },
+];
+
+export const PROJECTS_FALLBACKS: Record<
+  string,
+  { gradient: string; icon: IconType }
+> = {
+  webApps: {
+    gradient: "from-purple-500/20 via-blue-500/20 to-teal-500/20",
+    icon: Globe,
+  },
+  aiFeatures: {
+    gradient: "from-blue-500/20 via-cyan-500/20 to-indigo-500/20",
+    icon: Cpu,
+  },
+  tools: {
+    gradient: "from-teal-500/20 via-green-500/20 to-emerald-500/20",
+    icon: Wrench,
+  },
+};
+
+// ============================= CORSES =============================
+
+export const levelColors = {
+  beginner: "bg-green-500/15 text-green-400 border-green-500/30",
+  intermediate: "bg-yellow-500/15 text-yellow-400 border-yellow-500/30",
+  advanced: "bg-red-500/15 text-red-400 border-red-500/30",
+} as const;
+
+// Fallback backgrounds per course type
+export const fallbackBgs = {
+  frontend: "from-blue-500/20 via-purple-500/20 to-pink-500/20",
+  backend: "from-green-500/20 via-emerald-500/20 to-teal-500/20",
+  "ai-ml": "from-purple-500/20 via-violet-500/20 to-indigo-500/20",
+  marketing: "from-orange-500/20 via-amber-500/20 to-yellow-500/20",
+} as const;
+
+// =========================== FOOTER ===============================
+export const footerLinks = {
+  Services: [
+    "Custom Development",
+    "AI Tools",
+    "Programming Courses",
+    "Consulting",
+  ],
+  Company: ["About Us", "Our Team", "Blog", "Careers"],
+  Legal: ["Privacy Policy", "Terms of Service", "Cookie Policy"],
+};
+
+export const socialLinks = [
+  { icon: FaGithub, href: "#", label: "GitHub" },
+  { icon: FaXTwitter, href: "#", label: "X (Twitter)" },
+  { icon: FaLinkedin, href: "#", label: "LinkedIn" },
+];
+
+export const contactInfo = [
+  { icon: FaEnvelope, label: "Email", value: "hello@highfive.dev" },
+  { icon: FaPhone, label: "Phone", value: "+966 55 000 0000" },
+  {
+    icon: FaMapPin,
+    label: "Location",
+    value: "Riyadh, Saudi Arabia",
   },
 ];

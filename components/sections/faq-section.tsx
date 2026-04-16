@@ -1,12 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
+
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+
+import { AnimatedSectionHeader } from "../animated/animated-section-header";
 
 interface FAQSectionProps {
   t: {
@@ -40,19 +43,7 @@ export function FAQSection({ t, fallbackItems }: FAQSectionProps) {
     <section className="py-24 lg:py-32">
       <div className="container mx-auto px-4 lg:px-8">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mx-auto mb-16 max-w-3xl text-center"
-        >
-          <h2 className="mb-4 text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-            {t.title}
-          </h2>
-          <p className="text-pretty text-base text-muted-foreground lg:text-lg">
-            {t.subtitle}
-          </p>
-        </motion.div>
+        <AnimatedSectionHeader title={t.title} subtitle={t.subtitle} />
 
         {/* FAQ Accordion */}
         <motion.div

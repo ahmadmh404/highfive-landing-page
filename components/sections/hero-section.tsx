@@ -1,19 +1,21 @@
 import { FaArrowRight } from "react-icons/fa6";
+
+import { ANIMATION, scaleIn, statCardHover } from "@/lib/animation-constants";
+import { STATS } from "@/lib/constants";
 import { Spotlight } from "@/components/effects";
 import MagicButton from "@/components/shared/magic-button";
 import Link from "next/link";
-import { ANIMATION, scaleIn, statCardHover } from "@/lib/animation-constants";
+
 import { BackgroundGlow } from "../animated/background-glow";
-import { STATS } from "@/lib/constants";
+import { AnimatedBadge } from "../animated/animated-badge";
+import { AnimatedButton } from "../animated/animated-button";
+import { AnimatedStatsSection } from "../animated/animated-stats-section";
+import { AnimatedSubtitle } from "../animated/animated-subtitle";
+import { AnimatedTitle } from "../animated/animated-title";
 import { AtmosphericStrike } from "../effects/atmospheric-strike";
 import { GridBackground } from "../effects/grid-background";
-import { AnimatedBadge } from "../animated/animated-badge";
-import { AnimatedTitle } from "../animated/animated-title";
-import { AnimatedSubtitle } from "../animated/animated-subtitle";
-import { AnimatedButton } from "../animated/animated-button";
-import { StaggerChild } from "../animated/stagger-child";
 import { HeroCodeBlock } from "../shared/code-block";
-import { AnimatedStatsSection } from "../animated/animated-stats-section";
+import { StaggerChild } from "../animated/stagger-child";
 
 interface HeroSectionProps {
   locale: string;

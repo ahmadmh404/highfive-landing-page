@@ -1,7 +1,6 @@
-import { AnimatePresence, motion } from "framer-motion";
-import { CanvasRevealEffect } from "@/components/effects";
-import React from "react";
 import { PHASES } from "@/lib/constants";
+import { CanvasRevealEffect } from "@/components/effects";
+
 import { AnimatedSectionHeader } from "../animated/animated-section-header";
 import { AceternityIcon, PhaseCard } from "./phase-card";
 

@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import { type ReactNode, useRef } from "react";
 import {
   motion,
   useAnimationFrame,
@@ -21,7 +21,7 @@ export function Button({
   ...otherProps
 }: {
   borderRadius?: string;
-  children: React.ReactNode;
+  children: ReactNode;
   as?: any;
   containerClassName?: string;
   borderClassName?: string;
@@ -77,7 +77,7 @@ export const MovingBorder = ({
   ry,
   ...otherProps
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
   duration?: number;
   rx?: string;
   ry?: string;

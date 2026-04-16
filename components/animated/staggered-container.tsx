@@ -6,7 +6,7 @@ import { fadeInUp } from "@/lib/animation-constants";
 import { cn } from "@/lib/utils";
 
 interface StaggerContainerProps {
-  children: ReactNode[];
+  children: ReactNode | ReactNode[];
   className?: string;
   delay?: number;
 }

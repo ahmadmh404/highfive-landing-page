@@ -1,11 +1,11 @@
-import { Button } from "@/components/effects";
-import { FaCode, FaBrain, FaGraduationCap } from "react-icons/fa6";
-import { ANIMATION, sectionItemsVariant } from "@/lib/animation-constants";
-import { StaggerChild } from "../animated/stagger-child";
-import { AnimatedSectionHeader } from "../animated/animated-section-header";
-import { StaggerContainer } from "../animated/staggered-container";
+import { FaBrain, FaCode, FaGraduationCap } from "react-icons/fa6";
 
-const icons = [FaCode, FaBrain, FaGraduationCap];
+import { ANIMATION } from "@/lib/animation-constants";
+import { Button } from "@/components/effects";
+
+import { AnimatedSectionHeader } from "../animated/animated-section-header";
+import { StaggerChild } from "../animated/stagger-child";
+import { StaggerContainer } from "../animated/staggered-container";
 
 interface ServicesSectionProps {
   t: {
@@ -40,12 +40,7 @@ export default function ServicesSection({ t }: ServicesSectionProps) {
       <StaggerContainer>
         {services.map(({ key, icon: Icon, color }, i) => (
           <StaggerChild
-            variant={sectionItemsVariant}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
             transition={{
-              duration: ANIMATION.durations.MEDIUM,
               delay: ANIMATION.durations.STAGGER * i,
             }}
           >
@@ -53,7 +48,7 @@ export default function ServicesSection({ t }: ServicesSectionProps) {
               borderRadius="1.5rem"
               containerClassName="w-full h-full"
               duration={Math.floor(Math.random() * 5000) + 8000}
-              className="w-full text-foreground border-muted-foreground/10 bg-[rgb(4,7,29)]"
+              className="w-full text-foreground border-muted-foreground/10 bg-bg-primary"
             >
               <div className="p-8 flex flex-col gap-4 h-full">
                 <div

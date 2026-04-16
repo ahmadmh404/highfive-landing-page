@@ -1,14 +1,17 @@
 "use client";
 
 import { useState } from "react";
+
 import { motion } from "framer-motion";
-import dynamic from "next/dynamic";
 import {
-  FaLocationArrow,
   FaEnvelope,
-  FaPhone,
+  FaLocationArrow,
   FaMapPin,
+  FaPhone,
 } from "react-icons/fa6";
+import Image from "next/image";
+import { AnimatedSectionHeader } from "../animated/animated-section-header";
+import { contactInfo } from "@/lib/constants";
 
 interface ContactSectionProps {
   t: {
@@ -42,27 +45,15 @@ export default function ContactSection({ t }: ContactSectionProps) {
     <section id="contact" className="w-full py-20 relative">
       {/* Grid background overlay */}
       <div className="w-full absolute left-0 -bottom-72 min-h-96 pointer-events-none">
-        <img
+        <Image
+          fill
           src="/footer-grid.svg"
           alt="grid"
           className="w-full h-full opacity-30"
         />
       </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="text-center mb-16 relative z-10"
-      >
-        <h2 className="text-3xl md:text-5xl font-bold tracking-tight font-display bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/60">
-          {t.title}
-        </h2>
-        <p className="mt-4 text-base text-foreground/50 md:text-lg max-w-2xl mx-auto">
-          {t.subtitle}
-        </p>
-      </motion.div>
+      <AnimatedSectionHeader title={t.title} subtitle={t.subtitle} />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto relative z-10">
         {/* Contact Info */}
@@ -74,7 +65,7 @@ export default function ContactSection({ t }: ContactSectionProps) {
           className="flex flex-col gap-6"
         >
           <div>
-            <h3 className="text-2xl font-bold text-white mb-2 font-display">
+            <h3 className="text-2xl font-bold text-foreground mb-2 font-display">
               {"Let's build something together"}
             </h3>
             <p className="text-sm leading-relaxed text-muted-foreground">
@@ -84,24 +75,16 @@ export default function ContactSection({ t }: ContactSectionProps) {
           </div>
 
           <div className="flex flex-col gap-4">
-            {[
-              { icon: FaEnvelope, label: "Email", value: "hello@highfive.dev" },
-              { icon: FaPhone, label: "Phone", value: "+966 55 000 0000" },
-              {
-                icon: FaMapPin,
-                label: "Location",
-                value: "Riyadh, Saudi Arabia",
-              },
-            ].map(({ icon: Icon, label, value }) => (
+            {contactInfo.map(({ icon: Icon, label, value }) => (
               <div
                 key={label}
-                className="flex items-center gap-4 p-4 rounded-xl bg-card/60 border border-white/10"
+                className="flex items-center gap-4 p-4 rounded-xl bg-background/95 border border-muted-foreground/10"
               >
                 <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 bg-primary/15 border border-primary/30">
                   <Icon className="w-4 h-4 text-primary" />
                 </div>
                 <div>
-                  <div className="text-xs text-foreground/40">{label}</div>
+                  <div className="text-xs text-while/40">{label}</div>
                   <div className="text-sm font-medium text-white">{value}</div>
                 </div>
               </div>
@@ -116,7 +99,7 @@ export default function ContactSection({ t }: ContactSectionProps) {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="flex flex-col gap-4 p-8 rounded-2xl bg-background/90 border border-white/10"
+          className="flex flex-col gap-4 p-8 rounded-2xl bg-background/95 border border-muted-foreground/10"
         >
           {[
             { key: "name", type: "text", required: true },
@@ -134,7 +117,7 @@ export default function ContactSection({ t }: ContactSectionProps) {
                 onChange={(e) =>
                   setForm((f) => ({ ...f, [key]: e.target.value }))
                 }
-                className="w-full px-4 py-3 rounded-xl text-sm text-white placeholder-gray-600 outline-none transition-all duration-200 focus:border-primary/50 bg-white/[0.04] border border-white/10"
+                className="w-full px-4 py-3 rounded-xl text-sm text-foreground placeholder-muted-foreground outline-none transition-all duration-200 focus:border-primary/50 bg-white/[foreby-background.95bg-background/95] border border-muted-foreground/10"
               />
             </div>
           ))}
@@ -150,13 +133,13 @@ export default function ContactSection({ t }: ContactSectionProps) {
               onChange={(e) =>
                 setForm((f) => ({ ...f, message: e.target.value }))
               }
-              className="w-full px-4 py-3 rounded-xl text-sm text-white placeholder-gray-600 outline-none resize-none transition-all duration-200 focus:border-primary/50 bg-white/[0.04] border border-white/10"
+              className="w-full px-4 py-3 rounded-xl text-sm text-foreground placeholder-muted-foreground outline-none resize-none transition-all duration-200 focus:border-primary/50 bg-background/95 border border-muted-foreground/10"
             />
           </div>
 
           <button
             type="submit"
-            className="relative inline-flex h-12 w-full overflow-hidden rounded-lg p-[1px] focus:outline-none mt-2"
+            className="relative inline-flex h-12 w-full overflow-hidden rounded-lg p-px focus:outline-none mt-2"
           >
             <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
             <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-lg bg-slate-950 px-7 text-sm font-medium text-white backdrop-blur-3xl gap-2">

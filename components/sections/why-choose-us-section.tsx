@@ -1,4 +1,5 @@
 import { BentoGrid, BentoGridItem } from "@/components/ui/BentoGrid";
+
 import { AnimatedSectionHeader } from "../animated/animated-section-header";
 
 interface WhyChooseUsSectionProps {

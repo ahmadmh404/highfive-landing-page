@@ -1,87 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { FaLocationArrow } from "react-icons/fa6";
-import { Globe, Cpu, Wrench } from "lucide-react";
-import type { Lang } from "@/data/translations";
 
-const allProjects = [
-  {
-    id: 1,
-    title: "AI-Powered E-Commerce Platform",
-    des: "Full-stack e-commerce solution with AI-driven product recommendations, smart search, and real-time analytics dashboard.",
-    img: "/p1.svg",
-    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
-    link: "#",
-    category: "webApps",
-  },
-  {
-    id: 2,
-    title: "Scorpe Search Integration",
-    des: "Seamlessly integrated our AI search package into a SaaS platform, boosting user engagement by 40%.",
-    img: "/p2.svg",
-    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/stream.svg", "/c.svg"],
-    link: "#",
-    category: "aiFeatures",
-  },
-  {
-    id: 3,
-    title: "Real Estate Mobile App",
-    des: "Cross-platform mobile app with 3D property tours, AI valuation tool, and integrated payment processing.",
-    img: "/p3.svg",
-    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/c.svg"],
-    link: "#",
-    category: "webApps",
-  },
-  {
-    id: 4,
-    title: "Analytics Dashboard Tool",
-    des: "Enterprise-grade analytics tool with real-time data processing, custom report builder, and AI forecasting.",
-    img: "/p4.svg",
-    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.svg"],
-    link: "#",
-    category: "tools",
-  },
-  {
-    id: 5,
-    title: "NLP Text Classification API",
-    des: "High-performance text classification API trained on Arabic and English datasets for content moderation.",
-    img: "/p1.svg",
-    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/c.svg", "/fm.svg"],
-    link: "#",
-    category: "aiFeatures",
-  },
-  {
-    id: 6,
-    title: "DevOps Automation Suite",
-    des: "CI/CD pipeline automation tool with one-click deployment, monitoring, and multi-cloud support.",
-    img: "/p3.svg",
-    iconLists: ["/next.svg", "/ts.svg", "/tail.svg", "/git.svg", "/dock.svg"],
-    link: "#",
-    category: "tools",
-  },
-];
+import { AnimatePresence } from "framer-motion";
 
-const filters = ["all", "webApps", "aiFeatures", "tools"] as const;
+import { FILTERS, PROJECTS } from "@/lib/constants";
 
-const projectFallbacks: Record<
-  string,
-  { gradient: string; icon: React.ReactNode }
-> = {
-  webApps: {
-    gradient: "from-purple-500/20 via-blue-500/20 to-teal-500/20",
-    icon: <Globe className="h-10 w-10 text-white/30" />,
-  },
-  aiFeatures: {
-    gradient: "from-blue-500/20 via-cyan-500/20 to-indigo-500/20",
-    icon: <Cpu className="h-10 w-10 text-white/30" />,
-  },
-  tools: {
-    gradient: "from-teal-500/20 via-green-500/20 to-emerald-500/20",
-    icon: <Wrench className="h-10 w-10 text-white/30" />,
-  },
-};
+import { AnimatedSectionHeader } from "../animated/animated-section-header";
+import { StaggerContainer } from "../animated/staggered-container";
+import { ProjectCard } from "./project-card";
 
 interface ProjectsSectionProps {
   t: {
@@ -97,141 +24,19 @@ interface ProjectsSectionProps {
   };
 }
 
-function ProjectCard({
-  item,
-  t,
-}: {
-  item: (typeof allProjects)[0];
-  t: ProjectsSectionProps["t"];
-}) {
-  const [isHovered, setIsHovered] = useState(false);
-  const [imgLoaded, setImgLoaded] = useState(false);
-  const [imgError, setImgError] = useState(false);
-  const fallback = projectFallbacks[item.category] || projectFallbacks.webApps;
-
-  return (
-    <motion.a
-      href={item.link}
-      className="group relative cursor-pointer sm:w-96 w-[80vw]"
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.9 }}
-      whileHover={{
-        scale: 1.05,
-        zIndex: 20,
-        transition: { type: "spring", stiffness: 260, damping: 20 },
-      }}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
-    >
-      {/* 1. Main Card Container */}
-      <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[rgb(4,7,29)]">
-        {/* Image Area with Gradient Fallback */}
-        <div className="relative overflow-hidden h-[20vh] lg:h-[30vh]">
-          {/* Gradient fallback (always present, fades out when image loads) */}
-          <div
-            className={`absolute inset-0 bg-gradient-to-br ${fallback.gradient} flex items-center justify-center transition-opacity duration-500 ${
-              imgLoaded ? "opacity-0" : "opacity-100"
-            }`}
-          >
-            {fallback.icon}
-          </div>
-
-          {/* Background pattern */}
-          <div className="absolute inset-0 bg-background/50">
-            <img
-              src="/bg.png"
-              alt="background"
-              className="w-full h-full object-cover"
-            />
-          </div>
-
-          {/* Project image - crossfades in when loaded */}
-          <img
-            src={item.img}
-            alt={item.title}
-            loading="lazy"
-            onLoad={() => setImgLoaded(true)}
-            onError={() => setImgError(true)}
-            className={`relative z-10 absolute bottom-0 w-full transition-all duration-700 ease-in-out ${
-              isHovered ? "scale-110" : "scale-100"
-            } ${imgLoaded || imgError ? "opacity-100" : "opacity-0"}`}
-          />
-
-          {/* Overlay gradient */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[rgb(4,7,29)] via-transparent to-transparent opacity-60" />
-        </div>
-
-        {/* Content */}
-        <div className="p-6">
-          <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1 text-white transition-all duration-200 group-hover:translate-x-2">
-            {item.title}
-          </h1>
-
-          <p className="lg:text-xl lg:font-normal font-light text-sm line-clamp-2 mt-2 transition-all duration-200 group-hover:translate-x-2 text-muted-foreground">
-            {item.des}
-          </p>
-
-          {/* Tech Icons - Overflow row */}
-          <div className="flex items-center mt-7 mb-4 overflow-visible">
-            {item.iconLists.map((icon, index) => (
-              <div
-                key={index}
-                className="border border-white/[.2] rounded-full bg-black lg:w-10 lg:h-10 w-8 h-8 flex justify-center items-center shrink-0"
-                style={{ transform: `translateX(-${5 * index + 4}px)` }}
-              >
-                <img src={icon} alt="tech" className="p-2" />
-              </div>
-            ))}
-          </div>
-
-          {/* CTA Button - Contained, no overflow */}
-          <div className="flex items-center gap-2 mt-2">
-            <span className="text-sm font-medium text-primary">
-              {t.viewCase}
-            </span>
-            <FaLocationArrow className="text-primary transition-transform duration-300 group-hover:translate-x-1" />
-          </div>
-        </div>
-
-        {/* Top Shimmer Highlight (HighFive Signature) */}
-        <div className="absolute inset-0 border border-white/10 rounded-2xl pointer-events-none group-hover:border-primary/30 transition-colors duration-300" />
-      </div>
-
-      {/* Soft Glow behind card (HighFive Signature) */}
-      <div className="absolute -inset-2 bg-primary/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
-    </motion.a>
-  );
-}
-
 export default function ProjectsSection({ t }: ProjectsSectionProps) {
   const [active, setActive] = useState<string>("all");
 
   const filtered =
-    active === "all"
-      ? allProjects
-      : allProjects.filter((p) => p.category === active);
+    active === "all" ? PROJECTS : PROJECTS.filter((p) => p.category === active);
 
   return (
     <section id="projects" className="w-full py-20">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="text-center mb-12"
-      >
-        <h2 className="text-3xl md:text-5xl font-bold tracking-tight font-display bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/60">
-          {t.title}
-        </h2>
-        <p className="mt-4 text-base text-foreground/50 md:text-lg max-w-2xl mx-auto">
-          {t.subtitle}
-        </p>
-      </motion.div>
+      <AnimatedSectionHeader title={t.title} subtitle={t.subtitle} />
 
       {/* Filter Tabs */}
       <div className="flex flex-wrap justify-center gap-3 mb-12">
-        {filters.map((f) => (
+        {FILTERS.map((f) => (
           <button
             key={f}
             onClick={() => setActive(f)}
@@ -247,13 +52,13 @@ export default function ProjectsSection({ t }: ProjectsSectionProps) {
       </div>
 
       {/* Projects Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 justify-items-center">
+      <StaggerContainer>
         <AnimatePresence mode="popLayout">
-          {filtered.map((item) => (
-            <ProjectCard key={item.id} item={item} t={t} />
+          {filtered.map((item, index) => (
+            <ProjectCard key={item.id} item={item} t={t} index={index} />
           ))}
         </AnimatePresence>
-      </div>
+      </StaggerContainer>
     </section>
   );
 }

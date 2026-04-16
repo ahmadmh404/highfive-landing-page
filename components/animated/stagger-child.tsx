@@ -11,10 +11,11 @@ import {
 } from "framer-motion";
 
 import { cn } from "@/lib/utils";
+import { ANIMATION, sectionItemsVariant } from "@/lib/animation-constants";
 
 interface StaggerChildProps {
   children: ReactNode;
-  variant: Variants;
+  variant?: Variants;
   initial?: string;
   animate?: string;
   whileHover?: TargetAndTransition | VariantLabels;
@@ -37,13 +38,13 @@ export function StaggerChild({
 }: StaggerChildProps) {
   return (
     <motion.div
-      variants={variant}
-      initial={initial}
+      variants={variant ?? sectionItemsVariant}
+      initial={initial ?? "initial"}
       animate={animate}
-      whileInView={whileInView}
-      viewport={viewport}
+      whileInView={whileInView ?? "animate"}
+      viewport={viewport ?? { once: true }}
       whileHover={whileHover}
-      transition={transition}
+      transition={transition ?? { duration: ANIMATION.durations.MEDIUM }}
       className={cn(className)}
     >
       {children}

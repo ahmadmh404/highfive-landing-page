@@ -151,6 +151,15 @@ export const statCardHover = {
   },
 } as const;
 
+export const techCardHover = {
+  whileHover: { scale: 1.05, y: -2 },
+  transition: {
+    type: "spring" as const,
+    stiffness: 260,
+    damping: 20,
+  },
+} as const;
+
 // ============================================
 // GLOW EFFECTS (for CSS box-shadow transitions)
 // ============================================
