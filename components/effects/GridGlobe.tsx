@@ -1,11 +1,8 @@
 "use client";
 
-import { useEffect, useReducer, useRef } from "react";
 import dynamic from "next/dynamic";
 
-// Stub out THREE on server to prevent "window is not defined"
-
-// Dynamically import World with SSR disabled
+// Dynamic import with SSR completely disabled – this is the critical isolation
 const World = dynamic(() => import("./Globe").then((m) => m.World), {
   ssr: false,
   loading: () => (
@@ -16,21 +13,7 @@ const World = dynamic(() => import("./Globe").then((m) => m.World), {
 });
 
 const GridGlobe = () => {
-  const mountedRef = useRef(false);
-  const [, forceRender] = useReducer(() => ({}), 0);
-
-  if (typeof window === "undefined") {
-    return null;
-  }
-
-  useEffect(() => {
-    mountedRef.current = true;
-    forceRender();
-  }, []);
-
-  // Three.js/WebGL Scene Configuration
-  // Note: These are Three.js-specific color values for 3D rendering
-  // They cannot use CSS variables as they're passed to the WebGL context
+  // Static config – safe to define here
   const globeConfig = {
     pointSize: 4,
     globeColor: "#062056",
@@ -85,11 +68,6 @@ const GridGlobe = () => {
       color: colors[2],
     },
   ];
-
-  // CRITICAL: Do not render World component unless mounted on client
-  if (!mountedRef.current) {
-    return <div className="w-full h-full" />;
-  }
 
   return (
     <div className="flex items-center justify-center absolute -left-5 top-36 md:top-40 w-full h-full min-h-[300px]">
