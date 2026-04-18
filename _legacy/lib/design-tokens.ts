@@ -108,3 +108,10 @@ export const SPACING = {
   20: 80,
   24: 96,
 } as const;
+
+// =========================================
+// Gradient Tokens
+// =========================================
+export const GRADIENTS = {
+  CARD: "",
+};

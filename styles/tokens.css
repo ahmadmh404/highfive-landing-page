@@ -11,9 +11,9 @@
   /* ============================================
      BACKGROUND TOKENS
      ============================================ */
-  --hf-bg-primary: rgb(4, 7, 29);        /* Main page background */
-  --hf-bg-secondary: rgb(12, 14, 35);    /* Alternate sections */
-  --hf-bg-card: rgba(17, 25, 40, 0.75);  /* All cards/panels */
+  --hf-bg-primary: rgb(4, 7, 29); /* Main page background */
+  --hf-bg-secondary: rgb(12, 14, 35); /* Alternate sections */
+  --hf-bg-card: rgba(17, 25, 40, 0.75); /* All cards/panels */
   --hf-bg-card-hover: rgba(255, 255, 255, 0.04);
   --hf-bg-elevated: rgba(17, 25, 40, 0.9);
   --hf-bg-overlay: rgba(4, 7, 29, 0.8);
@@ -32,9 +32,9 @@
      TEXT TOKENS
      ============================================ */
   --hf-text-primary: #ffffff;
-  --hf-text-muted: #bec1dd;        /* Standardized muted text */
-  --hf-text-muted-alt: #c1c2d3;    /* Alternate muted (deprecated - use --hf-text-muted) */
-  --hf-text-label: #5c6370;        /* Form labels, captions */
+  --hf-text-muted: #bec1dd; /* Standardized muted text */
+  --hf-text-muted-alt: #c1c2d3; /* Alternate muted (deprecated - use --hf-text-muted) */
+  --hf-text-label: #5c6370; /* Form labels, captions */
   --hf-text-link: #cbacf9;
 
   /* ============================================
@@ -68,38 +68,38 @@
   /* ============================================
      SPACING TOKENS
      ============================================ */
-  --hf-space-1: 0.25rem;   /* 4px */
-  --hf-space-2: 0.5rem;    /* 8px */
-  --hf-space-3: 0.75rem;   /* 12px */
-  --hf-space-4: 1rem;      /* 16px */
-  --hf-space-5: 1.25rem;   /* 20px */
-  --hf-space-6: 1.5rem;    /* 24px */
-  --hf-space-8: 2rem;      /* 32px */
-  --hf-space-10: 2.5rem;   /* 40px */
-  --hf-space-12: 3rem;     /* 48px */
-  --hf-space-16: 4rem;     /* 64px */
-  --hf-space-20: 5rem;     /* 80px */
-  --hf-space-24: 6rem;     /* 96px */
+  --hf-space-1: 0.25rem; /* 4px */
+  --hf-space-2: 0.5rem; /* 8px */
+  --hf-space-3: 0.75rem; /* 12px */
+  --hf-space-4: 1rem; /* 16px */
+  --hf-space-5: 1.25rem; /* 20px */
+  --hf-space-6: 1.5rem; /* 24px */
+  --hf-space-8: 2rem; /* 32px */
+  --hf-space-10: 2.5rem; /* 40px */
+  --hf-space-12: 3rem; /* 48px */
+  --hf-space-16: 4rem; /* 64px */
+  --hf-space-20: 5rem; /* 80px */
+  --hf-space-24: 6rem; /* 96px */
 
   /* ============================================
      RADIUS TOKENS
      ============================================ */
-  --hf-radius-sm: 0.375rem;   /* 6px */
-  --hf-radius-md: 0.5rem;     /* 8px */
-  --hf-radius-lg: 0.625rem;   /* 10px */
-  --hf-radius-xl: 0.875rem;   /* 14px */
-  --hf-radius-2xl: 1rem;      /* 16px */
+  --hf-radius-sm: 0.375rem; /* 6px */
+  --hf-radius-md: 0.5rem; /* 8px */
+  --hf-radius-lg: 0.625rem; /* 10px */
+  --hf-radius-xl: 0.875rem; /* 14px */
+  --hf-radius-2xl: 1rem; /* 16px */
   --hf-radius-full: 9999px;
 
   /* ============================================
      ANIMATION DURATION TOKENS
      ============================================ */
-  --hf-duration-fast: 200ms;     /* Micro interactions */
-  --hf-duration-medium: 300ms;   /* Standard transitions */
-  --hf-duration-slow: 500ms;     /* Page transitions */
-  --hf-duration-stagger: 100ms;  /* Stagger delay */
+  --hf-duration-fast: 200ms; /* Micro interactions */
+  --hf-duration-medium: 300ms; /* Standard transitions */
+  --hf-duration-slow: 500ms; /* Page transitions */
+  --hf-duration-stagger: 100ms; /* Stagger delay */
   --hf-duration-entrance: 500ms; /* Entrance animations */
-  --hf-duration-hover: 350ms;    /* Hover transitions */
+  --hf-duration-hover: 350ms; /* Hover transitions */
 
   /* ============================================
      ANIMATION EASING TOKENS
@@ -116,18 +116,34 @@
    ============================================ */
 
 /* Background utilities */
-.hf-bg-primary { background-color: var(--hf-bg-primary); }
-.hf-bg-card { background-color: var(--hf-bg-card); }
-.hf-bg-card-hover { background-color: var(--hf-bg-card-hover); }
+.hf-bg-primary {
+  background-color: var(--hf-bg-primary);
+}
+.hf-bg-card {
+  background-color: var(--hf-bg-card);
+}
+.hf-bg-card-hover {
+  background-color: var(--hf-bg-card-hover);
+}
 
 /* Text utilities */
-.hf-text-muted { color: var(--hf-text-muted); }
-.hf-text-label { color: var(--hf-text-label); }
+.hf-text-muted {
+  color: var(--hf-text-muted);
+}
+.hf-text-label {
+  color: var(--hf-text-label);
+}
 
 /* Border utilities */
-.hf-border-default { border-color: var(--hf-border-default); }
-.hf-border-hover { border-color: var(--hf-border-hover); }
-.hf-border-active { border-color: var(--hf-border-active); }
+.hf-border-default {
+  border-color: var(--hf-border-default);
+}
+.hf-border-hover {
+  border-color: var(--hf-border-hover);
+}
+.hf-border-active {
+  border-color: var(--hf-border-active);
+}
 
 /* Glow utilities */
 .hf-glow-hover:hover {
@@ -139,7 +155,7 @@
 
 /* Transition utilities */
 .hf-transition-card {
-  transition: 
+  transition:
     background-color var(--hf-duration-hover) var(--hf-easing-default),
     border-color var(--hf-duration-hover) var(--hf-easing-default),
     box-shadow var(--hf-duration-hover) var(--hf-easing-default),
@@ -147,7 +163,7 @@
 }
 
 .hf-transition-border {
-  transition: 
+  transition:
     border-color var(--hf-duration-medium) var(--hf-easing-default),
     box-shadow var(--hf-duration-medium) var(--hf-easing-default);
 }

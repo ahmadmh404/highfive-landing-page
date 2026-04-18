@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "framer-motion";
 import {
   BundledLanguage,
@@ -35,7 +37,7 @@ export function HeroCodeBlock() {
         data={HERO_CODE_BLOCK}
         defaultValue={HERO_CODE_BLOCK[0].language}
       >
-        <CodeBlockBody className="bg-">
+        <CodeBlockBody className="bg-back">
           {(item) => (
             <CodeBlockItem key={item.language} value={item.language}>
               <CodeBlockContent language={item.language as BundledLanguage}>

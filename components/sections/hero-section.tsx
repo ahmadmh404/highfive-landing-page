@@ -1,104 +1,21 @@
-"use client";
+import { FaArrowRight } from "react-icons/fa6";
 
-import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
-import { FaArrowRight, FaBolt } from "react-icons/fa6";
+import { scaleIn, statCardHover } from "@/lib/animation-constants";
+import { STATS } from "@/lib/constants";
 import { Spotlight } from "@/components/effects";
 import MagicButton from "@/components/shared/magic-button";
-import type { Lang } from "@/data/translations";
 import Link from "next/link";
-import { HeroCodeBlock } from "@/components/shared/code-block";
 
-const codeLines = [
-  {
-    indent: 0,
-    tokens: [
-      { t: "import", c: "code-keyword" },
-      { t: " { scorpeSearch } ", c: "code-punctuation" },
-      { t: "from", c: "code-keyword" },
-      { t: ' "scorpe-ai"', c: "code-string" },
-    ],
-  },
-  { indent: 0, tokens: [] },
-  {
-    indent: 0,
-    tokens: [
-      { t: "// Enhance search with AI-powered ranking", c: "code-comment" },
-    ],
-  },
-  {
-    indent: 0,
-    tokens: [
-      { t: "const", c: "code-keyword" },
-      { t: " results ", c: "code-punctuation" },
-      { t: "=", c: "code-operator" },
-      { t: " await ", c: "code-keyword" },
-      { t: "scorpeSearch", c: "code-function" },
-      { t: "({", c: "code-punctuation" },
-    ],
-  },
-  {
-    indent: 1,
-    tokens: [
-      { t: "query", c: "code-variable" },
-      { t: ": ", c: "code-punctuation" },
-      { t: '"best AI agency near me"', c: "code-string" },
-      { t: ",", c: "code-punctuation" },
-    ],
-  },
-  {
-    indent: 1,
-    tokens: [
-      { t: "filters", c: "code-variable" },
-      { t: ": { ", c: "code-punctuation" },
-      { t: "category", c: "code-variable" },
-      { t: ": ", c: "code-punctuation" },
-      { t: '"tech"', c: "code-string" },
-      { t: " },", c: "code-punctuation" },
-    ],
-  },
-  {
-    indent: 1,
-    tokens: [
-      { t: "rankBy", c: "code-variable" },
-      { t: ": ", c: "code-punctuation" },
-      { t: '"relevance"', c: "code-string" },
-      { t: ",", c: "code-punctuation" },
-    ],
-  },
-  {
-    indent: 1,
-    tokens: [
-      { t: "limit", c: "code-variable" },
-      { t: ": ", c: "code-punctuation" },
-      { t: "10", c: "code-number" },
-    ],
-  },
-  { indent: 0, tokens: [{ t: "});", c: "code-punctuation" }] },
-  { indent: 0, tokens: [] },
-  {
-    indent: 0,
-    tokens: [
-      { t: "console", c: "code-variable" },
-      { t: ".", c: "code-punctuation" },
-      { t: "log", c: "code-function" },
-      { t: "(results.", c: "code-punctuation" },
-      { t: "items", c: "code-variable" },
-      { t: ");", c: "code-punctuation" },
-    ],
-  },
-  {
-    indent: 0,
-    tokens: [{ t: "// → HighFive Agency  score: 0.98 ✓", c: "code-comment" }],
-  },
-];
-
-const stats = [
-  { value: "50+", label: "projects_delivered" },
-  { value: "30+", label: "global_clients" },
-  { value: "5+", label: "years_experience" },
-  { value: "98%", label: "client_satisfaction" },
-];
+import { BackgroundGlow } from "../animated/background-glow";
+import { AnimatedBadge } from "../animated/animated-badge";
+import { AnimatedButton } from "../animated/animated-button";
+import { AnimatedStatsSection } from "../animated/animated-stats-section";
+import { AnimatedSubtitle } from "../animated/animated-subtitle";
+import { AnimatedTitle } from "../animated/animated-title";
+import { AtmosphericStrike } from "../effects/atmospheric-strike";
+import { GridBackground } from "../effects/grid-background";
+import { HeroCodeBlock } from "../shared/code-block";
+import { StaggerChild } from "../animated/stagger-child";
 
 interface HeroSectionProps {
   locale: string;
@@ -117,65 +34,26 @@ interface HeroSectionProps {
   };
 }
 
-export default function HeroSection({ locale, t }: HeroSectionProps) {
-  const [visibleLines, setVisibleLines] = useState(0);
-
-  useEffect(() => {
-    if (visibleLines < codeLines.length) {
-      const timer = setTimeout(() => setVisibleLines((v) => v + 1), 120);
-      return () => clearTimeout(timer);
-    }
-  }, [visibleLines]);
-
+export default function HeroSection({ t }: HeroSectionProps) {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center pt-28 pb-16 overflow-hidden">
+    <section className="relative min-h-screen flex flex-col items-center justify-center pt-4 sm:pt-16 md:pt-28 pb-16 overflow-hidden">
       {/* Spotlights */}
       <Spotlight
         className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen"
         fill="white"
       />
+
       <Spotlight className="h-[80vh] w-[50vw] top-10 left-full" fill="purple" />
-      <Spotlight className="left-80 top-28 h-[80vh] w-[50vw]" fill="blue" />
+      <Spotlight
+        className="left-80 top-16pt-16 h-[80vh] w-[50vw]"
+        fill="blue"
+      />
 
       {/* Atmospheric light streaks inspired by Finsepa hero */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div
-          className="absolute top-0 right-1/4 w-px h-full opacity-20"
-          style={{
-            background:
-              "linear-gradient(to bottom, transparent, #CBACF9 40%, #E4ECFF 60%, transparent)",
-          }}
-        />
-        <div
-          className="absolute top-0 right-1/3 w-px h-3/4 opacity-10"
-          style={{
-            background:
-              "linear-gradient(to bottom, transparent, #CBACF9 50%, transparent)",
-          }}
-        />
-        <div
-          className="absolute -top-20 right-1/4 w-96 h-96 rounded-full opacity-5"
-          style={{
-            background: "radial-gradient(circle, #CBACF9 0%, transparent 70%)",
-            filter: "blur(40px)",
-          }}
-        />
-        <div
-          className="absolute bottom-1/4 right-1/3 w-64 h-64 rounded-full opacity-5"
-          style={{
-            background: "radial-gradient(circle, #E4ECFF 0%, transparent 70%)",
-            filter: "blur(60px)",
-          }}
-        />
-      </div>
+      <AtmosphericStrike />
 
       {/* Grid background */}
-      <div
-        className="absolute inset-0 opacity-[0.03] pointer-events-none"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgba(255,255,255,1)'><path d='M0 .5H31.5V32'/></svg>")`,
-        }}
-      />
+      <GridBackground />
 
       {/* Radial fade center */}
       <div
@@ -188,91 +66,43 @@ export default function HeroSection({ locale, t }: HeroSectionProps) {
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 flex flex-col items-center gap-8">
         {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm"
-        >
-          <FaBolt style={{ color: "#CBACF9" }} className="w-3 h-3" />
-          <span className="text-xs tracking-widest uppercase text-text-muted">
-            {t.badgeText}
-          </span>
-        </motion.div>
+        <AnimatedBadge badgeText={t.badgeText} />
 
         {/* Title */}
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.1 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-bold text-center text-foreground text-balance max-w-4xl leading-tight font-display"
-        >
-          {t.title}
-        </motion.h1>
+        <AnimatedTitle title={t.title} />
 
         {/* Subtitle */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="text-center text-base md:text-lg lg:text-xl max-w-2xl leading-relaxed text-text-muted"
-        >
-          {t.subtitle}
-        </motion.p>
+        <AnimatedSubtitle subtitle={t.subtitle} />
 
         {/* CTAs */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.3 }}
-          className="flex flex-col sm:flex-row gap-4 items-center"
-        >
+        <AnimatedButton>
           <MagicButton title={t.cta} icon={<FaArrowRight />} position="right" />
           <Link
             href="#ai-tools"
             className="block px-6 py-3 rounded-lg border text-sm font-medium transition-all duration-200 hover:bg-white/5"
-            style={{
-              borderColor: "rgba(255,255,255,0.15)",
-              color: "#E4ECFF",
-            }}
           >
             {t.ctaSecondary}
           </Link>
-        </motion.div>
+        </AnimatedButton>
 
         {/* Code Block */}
         <HeroCodeBlock />
 
         {/* Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.8 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 w-full max-w-4xl mt-12"
-        >
-          {stats.map((stat, i) => (
-            <motion.div
+        <AnimatedStatsSection>
+          {STATS.map((stat, i) => (
+            <StaggerChild
               key={stat.label}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              whileHover={{
-                y: -5,
-                backgroundColor: "rgba(255, 255, 255, 0.04)",
-                borderColor: "rgba(203, 172, 249, 0.4)",
-              }}
-              transition={{ duration: 0.3, delay: 0.2 + i }}
+              variant={scaleIn}
+              initial={"hidden"}
+              animate={"visible"}
+              whileHover={statCardHover}
               className="relative flex flex-col items-center justify-center p-6 rounded-2xl border backdrop-blur-xl transition-all duration-300 group"
-              style={{
-                background:
-                  "linear-gradient(180deg, rgba(17, 25, 40, 0.8) 0%, rgba(10, 12, 28, 0.9) 100%)",
-                borderColor: "rgba(255, 255, 255, 0.08)",
-                backdropFilter: "blur(12px)",
-              }}
             >
               {/* Top Accent Glow */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-[1px] bg-gradient-to-r from-transparent via-[#CBACF9]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-linear-to-r from-transparent via-[#CBACF9]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
 
-              <span className="text-3xl md:text-4xl font-bold tracking-tighter font-display bg-clip-text text-transparent bg-gradient-to-b from-white to-[#CBACF9]">
+              <span className="text-3xl md:text-4xl font-bold tracking-tighter font-display bg-clip-text text-transparent bg-linear-to-b from-white to-[#CBACF9]">
                 {stat.value}
               </span>
 
@@ -284,10 +114,10 @@ export default function HeroSection({ locale, t }: HeroSectionProps) {
               </span>
 
               {/* Subtle Background Radial Glow on Hover */}
-              <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_50%_-20%,rgba(203,172,249,0.1),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity" />
-            </motion.div>
+              <BackgroundGlow />
+            </StaggerChild>
           ))}
-        </motion.div>
+        </AnimatedStatsSection>
       </div>
     </section>
   );

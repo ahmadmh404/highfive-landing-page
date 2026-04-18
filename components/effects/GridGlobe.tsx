@@ -1,30 +1,35 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useReducer, useRef } from "react";
 import dynamic from "next/dynamic";
+
+// Stub out THREE on server to prevent "window is not defined"
+if (typeof window === "undefined") {
+  (globalThis as any).THREE = {};
+}
 
 // Dynamically import World with SSR disabled
 const World = dynamic(() => import("./Globe").then((m) => m.World), {
   ssr: false,
-  loading: () => <div className="w-full h-full" />,
+  loading: () => (
+    <div className="w-full h-full flex items-center justify-center">
+      <div className="w-8 h-8 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
+    </div>
+  ),
 });
 
 const GridGlobe = () => {
-  // Add a mounted state to prevent Three.js from initializing too early
-  const [isMounted, setIsMounted] = useState(false);
+  const mountedRef = useRef(false);
+  const [, forceRender] = useReducer(() => ({}), 0);
 
   useEffect(() => {
-    setIsMounted(true);
+    mountedRef.current = true;
+    forceRender();
   }, []);
-
-  if (!isMounted) {
-    return <div className="w-full h-full" />;
-  }
 
   // Three.js/WebGL Scene Configuration
   // Note: These are Three.js-specific color values for 3D rendering
   // They cannot use CSS variables as they're passed to the WebGL context
-  // Design tokens for 3D: Primary=#062056, Accent=#38bdf8, Lights=#ffffff
   const globeConfig = {
     pointSize: 4,
     globeColor: "#062056",
@@ -50,7 +55,6 @@ const GridGlobe = () => {
 
   const colors = ["#06b6d4", "#3b82f6", "#6366f1"];
 
-  // Static arcs data (Optimization: Move outside or memoize to prevent re-renders)
   const sampleArcs = [
     {
       order: 1,
@@ -79,19 +83,18 @@ const GridGlobe = () => {
       arcAlt: 0.5,
       color: colors[2],
     },
-    // ... rest of your arcs
   ];
 
-  if (!isMounted) return <div className="w-full h-full bg-transparent" />;
+  // CRITICAL: Do not render World component unless mounted on client
+  if (!mountedRef.current) {
+    return <div className="w-full h-full" />;
+  }
 
   return (
     <div className="flex items-center justify-center absolute -left-5 top-36 md:top-40 w-full h-full min-h-[300px]">
       <div className="max-w-7xl mx-auto w-full relative overflow-hidden h-96 px-4">
-        {/* Ambient Gradient Overlay to prevent sharp edges */}
         <div className="absolute w-full bottom-0 inset-x-0 h-40 bg-gradient-to-b pointer-events-none select-none from-transparent to-background z-40" />
-
         <div className="absolute w-full h-72 md:h-full z-10">
-          {/* Ensure data is passed only when we are sure the environment is ready */}
           <World data={sampleArcs} globeConfig={globeConfig} />
         </div>
       </div>

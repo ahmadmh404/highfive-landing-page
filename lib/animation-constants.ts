@@ -68,6 +68,7 @@ export const fadeInDown = {
 export const scaleIn = {
   hidden: { opacity: 0, scale: 0.9 },
   visible: {
+    y: -3,
     opacity: 1,
     scale: 1,
     transition: { duration: ANIMATION.durations.MEDIUM },
@@ -95,12 +96,22 @@ export const slideInRight = {
 } as const;
 
 /** Staggered children container */
+
+// Stagger container animations
 export const staggerContainer = {
+  hidden: { opacity: 0 },
   visible: {
+    opacity: 1,
     transition: {
-      staggerChildren: ANIMATION.stagger.DEFAULT,
+      staggerChildren: 0.2,
+      delayChildren: 0.2,
     },
   },
+} as const;
+
+export const sectionItemsVariant = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
 } as const;
 
 // ============================================
@@ -132,12 +143,21 @@ export const teamCardHover = {
 export const statCardHover = {
   whileHover: {
     y: -5,
-    backgroundColor: "rgba(255, 255, 255, 0.04)",
-    borderColor: "rgba(203, 172, 249, 0.4)",
+    backgroundColor: "var(--hf-bg-card-hover)",
+    borderColor: "var(--hf-accent-purple-border)",
   },
   transition: {
     duration: ANIMATION.durations.HOVER,
     ease: ANIMATION.easings.EASE_OUT,
+  },
+} as const;
+
+export const techCardHover = {
+  whileHover: { scale: 1.05, y: -2 },
+  transition: {
+    type: "spring" as const,
+    stiffness: 260,
+    damping: 20,
   },
 } as const;
 

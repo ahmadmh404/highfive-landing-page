@@ -1,8 +1,6 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { InfiniteMovingCards } from "@/components/effects";
-import type { Lang } from "@/data/translations";
+
+import { AnimatedSectionHeader } from "../animated/animated-section-header";
 
 interface TestimonialsSectionProps {
   t: {
@@ -78,24 +76,9 @@ export default function TestimonialsSection({ t }: TestimonialsSectionProps) {
         },
       ];
 
-  const hasContent = t.items && testimonialItems.length > 0;
-
   return (
     <section id="testimonials" className="w-full py-20">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="text-center mb-16"
-      >
-        <h2 className="text-3xl md:text-5xl font-bold tracking-tight font-display bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/60">
-          {t.title}
-        </h2>
-        <p className="mt-4 text-base text-foreground/50 md:text-lg max-w-2xl mx-auto">
-          {t.subtitle}
-        </p>
-      </motion.div>
+      <AnimatedSectionHeader title={t.title} subtitle={t.subtitle} />
 
       <div className="h-[50vh] md:h-120 rounded-md flex flex-col antialiased items-center justify-center relative overflow-hidden">
         <InfiniteMovingCards

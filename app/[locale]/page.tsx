@@ -37,7 +37,7 @@ export default async function HomePage({
   const t = getTranslations(locale);
 
   return (
-    <main className="relative flex justify-center items-center flex-col overflow-hidden mx-auto sm:px-10 px-5 bg-[rgb(4,7,29)] bg-linear-[(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)]">
+    <main className="relative flex justify-center items-center flex-col overflow-hidden mx-auto sm:px-10 px-5 bg-[rgb(4,7,29)] bg-linear-[(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)] dark">
       <div className="max-w-7xl w-full">
         <FloatingNav locale={locale} navItems={getNavItems(t.nav)} />
         <HeroSection locale={locale} t={t.hero} />

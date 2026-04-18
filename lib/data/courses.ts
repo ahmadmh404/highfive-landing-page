@@ -5,7 +5,7 @@ export interface Course {
   level: "beginner" | "intermediate" | "advanced";
   duration: string;
   icon: string;
-  image?: string;
+  image: string;
 }
 
 export const courses: Course[] = [
