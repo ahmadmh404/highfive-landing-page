@@ -1,6 +1,6 @@
 import { FaArrowRight } from "react-icons/fa6";
 
-import { ANIMATION, scaleIn, statCardHover } from "@/lib/animation-constants";
+import { scaleIn, statCardHover } from "@/lib/animation-constants";
 import { STATS } from "@/lib/constants";
 import { Spotlight } from "@/components/effects";
 import MagicButton from "@/components/shared/magic-button";
@@ -36,7 +36,7 @@ interface HeroSectionProps {
 
 export default function HeroSection({ t }: HeroSectionProps) {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center pt-28 pb-16 overflow-hidden">
+    <section className="relative min-h-screen flex flex-col items-center justify-center pt-4 sm:pt-16 md:pt-28 pb-16 overflow-hidden">
       {/* Spotlights */}
       <Spotlight
         className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen"
@@ -44,7 +44,10 @@ export default function HeroSection({ t }: HeroSectionProps) {
       />
 
       <Spotlight className="h-[80vh] w-[50vw] top-10 left-full" fill="purple" />
-      <Spotlight className="left-80 top-28 h-[80vh] w-[50vw]" fill="blue" />
+      <Spotlight
+        className="left-80 top-16pt-16 h-[80vh] w-[50vw]"
+        fill="blue"
+      />
 
       {/* Atmospheric light streaks inspired by Finsepa hero */}
       <AtmosphericStrike />
@@ -91,14 +94,10 @@ export default function HeroSection({ t }: HeroSectionProps) {
             <StaggerChild
               key={stat.label}
               variant={scaleIn}
-              initial="hidden"
-              animate="visible"
+              initial={"hidden"}
+              animate={"visible"}
               whileHover={statCardHover}
               className="relative flex flex-col items-center justify-center p-6 rounded-2xl border backdrop-blur-xl transition-all duration-300 group"
-              transition={{
-                duration: ANIMATION.durations.HOVER,
-                delay: ANIMATION.durations.FAST * i,
-              }}
             >
               {/* Top Accent Glow */}
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-linear-to-r from-transparent via-[#CBACF9]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />

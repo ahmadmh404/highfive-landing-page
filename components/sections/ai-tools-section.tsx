@@ -75,9 +75,6 @@ export default function AIToolsSection({ t }: AIToolsSectionProps) {
           return (
             <StaggerChild
               key={key}
-              transition={{
-                delay: ANIMATION.durations.STAGGER * i,
-              }}
               className={`relative rounded-2xl overflow-hidden cursor-pointer group shrink-0 bg-bg-primary border ${
                 isActive ? `border-primary/50` : "border-muted-foreground/10"
               }`}

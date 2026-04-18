@@ -2,6 +2,7 @@
 
 import { ReactNode } from "react";
 import {
+  LegacyAnimationControls,
   motion,
   TargetAndTransition,
   Transition,
@@ -16,8 +17,8 @@ import { ANIMATION, sectionItemsVariant } from "@/lib/animation-constants";
 interface StaggerChildProps {
   children: ReactNode;
   variant?: Variants;
-  initial?: string;
-  animate?: string;
+  initial?: boolean | TargetAndTransition | VariantLabels;
+  animate?: boolean | TargetAndTransition | VariantLabels;
   whileHover?: TargetAndTransition | VariantLabels;
   whileInView?: TargetAndTransition | VariantLabels;
   viewport?: ViewportOptions;

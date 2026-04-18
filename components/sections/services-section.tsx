@@ -39,11 +39,7 @@ export default function ServicesSection({ t }: ServicesSectionProps) {
 
       <StaggerContainer>
         {services.map(({ key, icon: Icon, color }, i) => (
-          <StaggerChild
-            transition={{
-              delay: ANIMATION.durations.STAGGER * i,
-            }}
-          >
+          <StaggerChild>
             <Button
               borderRadius="1.5rem"
               containerClassName="w-full h-full"

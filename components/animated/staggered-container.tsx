@@ -22,7 +22,10 @@ export function StaggerContainer({
       initial="hidden"
       whileInView="visible"
       transition={{ delay }}
-      className={cn("grid grid-cols-1 md:grid-cols-3 gap-6 mt-10", className)}
+      className={cn(
+        "grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mt-10",
+        className,
+      )}
     >
       {children}
     </motion.div>

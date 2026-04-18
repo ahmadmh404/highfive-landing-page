@@ -14,7 +14,7 @@ export function AnimatedBadge({ badgeText }: { badgeText: string }) {
       className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm"
     >
       <FaBolt style={{ color: "#CBACF9" }} className="w-3 h-3" />
-      <span className="text-xs tracking-widest uppercase text-muted-foreground">
+      <span className="text-[10px] md:text-xs max-md:text-center tracking-widest uppercase text-muted-foreground">
         {badgeText}
       </span>
     </motion.div>

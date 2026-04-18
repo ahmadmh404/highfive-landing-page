@@ -6,10 +6,15 @@ import { motion } from "framer-motion";
 import { FaLocationArrow } from "react-icons/fa6";
 
 import { PROJECTS, PROJECTS_FALLBACKS } from "@/lib/constants";
-import { glowHover, scaleIn } from "@/lib/animation-constants";
+import {
+  glowHover,
+  scaleIn,
+  sectionItemsVariant,
+} from "@/lib/animation-constants";
 import { cn } from "@/lib/utils";
 
 import { CustomImage } from "../shared/custom-image";
+import { StaggerContainer } from "../animated/staggered-container";
 
 interface ProjectsSectionProps {
   t: {
@@ -53,7 +58,7 @@ export function ProjectCard({ index, item, t }: ProjectCardProps) {
       {/* 1. Main Card Container */}
       <div className="relative overflow-hidden rounded-2xl border border-muted-foreground/10 bg-bg-primary">
         {/* Image Area with Gradient Fallback */}
-        <div className="relative overflow-hidden h-[20vh] lg:h-[30vh]">
+        <div className="relative overflow-hidden min-h-70 max-h-80">
           {/* Background pattern */}
           <div className="absolute inset-0 bg-background/50">
             <img
@@ -90,7 +95,7 @@ export function ProjectCard({ index, item, t }: ProjectCardProps) {
         </div>
 
         {/* Content */}
-        <div className="p-6">
+        <div className="p-6 mt-3">
           <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1 text-foreground transition-all duration-200 group-hover:translate-x-2">
             {item.title}
           </h1>
@@ -100,29 +105,34 @@ export function ProjectCard({ index, item, t }: ProjectCardProps) {
           </p>
 
           {/* Tech Icons - Overflow row */}
-          <div className="flex items-center mt-7 mb-4 overflow-visible">
-            {item.iconLists.map((icon, index) => (
-              <div
-                key={index}
-                className="border border-muted-foreground/10 rounded-full bg-card lg:w-10 lg:h-10 w-8 h-8 flex justify-center items-center shrink-0"
-                style={{ transform: `translateX(-${5 * index + 4}px)` }}
-              >
-                <img src={icon} alt="tech" className="p-2" />
-              </div>
-            ))}
-          </div>
-
-          {/* CTA Button - Contained, no overflow */}
-          <div className="flex items-center gap-2 mt-2">
-            <span className="text-sm font-medium text-primary">
-              {t.viewCase}
-            </span>
-            <FaLocationArrow className="text-primary transition-transform duration-300 group-hover:translate-x-1" />
+          <div className="flex items-center justify-between mt-4">
+            <div className="flex items-center overflow-visible">
+              {item.iconLists.map((icon, index) => (
+                <div
+                  key={index}
+                  className="border border-muted-foreground/10 rounded-full bg-card lg:w-10 lg:h-10 w-8 h-8 flex justify-center items-center shrink-0"
+                >
+                  <motion.img
+                    variants={sectionItemsVariant}
+                    src={icon}
+                    alt="tech"
+                    className="p-2"
+                  />
+                </div>
+              ))}
+            </div>
+            {/* CTA Button - Contained, no overflow */}
+            <div className="flex items-center gap-2">
+              <span className="text-sm font-medium text-primary">
+                {t.viewCase}
+              </span>
+              <FaLocationArrow className="text-primary transition-transform duration-300 group-hover:translate-x-1" />
+            </div>
           </div>
         </div>
 
         {/* Top Shimmer Highlight (HighFive Signature) */}
-        <div className="absolute inset-0 border border-white/10 rounded-2xl pointer-events-none group-hover:border-primary/30 transition-colors duration-300" />
+        <div className="absolute inset-0 border border-muted-foreground/10 rounded-2xl pointer-events-none group-hover:border-primary/30 transition-colors duration-300" />
       </div>
 
       {/* Soft Glow behind card (HighFive Signature) */}

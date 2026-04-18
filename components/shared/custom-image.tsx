@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 type RenderFallback = (imgLoaded: boolean, imgError: boolean) => ReactNode;
 
 interface CustomImageProps {
-  fallback: RenderFallback;
+  fallback?: RenderFallback;
   url: string;
   alt: string;
   className: RenderFallback;
@@ -22,7 +22,7 @@ export function CustomImage({
 
   return (
     <>
-      {fallback(imgLoaded, imgError)}
+      {fallback && fallback(imgLoaded, imgError)}
 
       <Image
         src={url}

@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { CustomImage } from "./custom-image";
 import { teamCardHover } from "@/lib/animation-constants";
 import { cn, getInitials } from "@/lib/utils";
+import { FlipCard } from "../animate-ui/components/community/flip-card";
 
 interface TeamTranslations {
   title: string;
@@ -31,7 +32,7 @@ interface TeamCardProps {
   t: TeamTranslations;
 }
 
-export function TeamCard({ member, t }: TeamCardProps) {
+export function _legacyTeamCard({ member, t }: TeamCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const initials = getInitials(member.nameKey);
 
@@ -102,5 +103,19 @@ export function TeamCard({ member, t }: TeamCardProps) {
       {/* 4. Soft Glow behind card */}
       <div className="absolute -inset-2 bg-primary/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
     </motion.div>
+  );
+}
+
+export function TeamCard({ member, t }: TeamCardProps) {
+  return (
+    <FlipCard
+      data={{
+        name: member.nameKey,
+        role: t.roles[member.roleKey as keyof typeof t.roles],
+        image: member.image,
+        bio: t.bios[member.nameKey.toLowerCase() as keyof typeof t.bios],
+        socialLinks: member.socialLinks,
+      }}
+    />
   );
 }

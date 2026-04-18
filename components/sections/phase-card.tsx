@@ -18,7 +18,7 @@ export function PhaseCard({ title, icon, children, des }: PhaseCardProps) {
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="border border-border group/canvas-card flex items-center justify-center max-w-sm w-full mx-auto p-4 relative lg:h-[35rem] cursor-pointer bg-card transition-all duration-500 hover:border-primary/50"
+      className="min-h-70 lg:h-140 border border-border group/canvas-card flex items-center justify-center w-full mx-auto p-4 relative cursor-pointer bg-card transition-all duration-500 hover:border-primary/50"
       style={{ borderRadius: "var(--radius-xl)" }}
     >
       <Icon className="absolute h-6 w-6 -top-3 -left-3 text-foreground opacity-20" />

@@ -28,7 +28,7 @@ function MagicButton({
   return (
     <button
       className={cn(
-        "relative inline-flex h-12 w-full md:w-60 overflow-hidden rounded-lg p-[1px] focus:outline-none",
+        "relative inline-flex h-12 w-fit md:w-60 overflow-hidden rounded-lg p-[1px] focus:outline-none",
         className,
       )}
       onClick={handleClick}

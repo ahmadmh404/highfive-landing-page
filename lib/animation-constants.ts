@@ -96,21 +96,22 @@ export const slideInRight = {
 } as const;
 
 /** Staggered children container */
+
+// Stagger container animations
 export const staggerContainer = {
+  hidden: { opacity: 0 },
   visible: {
+    opacity: 1,
     transition: {
-      staggerChildren: ANIMATION.stagger.DEFAULT,
+      staggerChildren: 0.2,
+      delayChildren: 0.2,
     },
   },
 } as const;
 
-// (NEEDS UPDATE TO REAL STAGGER)
 export const sectionItemsVariant = {
-  initial: {
-    opacity: 0,
-    y: 30,
-  },
-  animate: { opacity: 1, y: 0 },
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
 } as const;
 
 // ============================================

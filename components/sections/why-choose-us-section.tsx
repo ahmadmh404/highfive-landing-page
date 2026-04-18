@@ -1,6 +1,7 @@
 import { BentoGrid, BentoGridItem } from "@/components/ui/BentoGrid";
 
 import { AnimatedSectionHeader } from "../animated/animated-section-header";
+import { AnimatePresence } from "framer-motion";
 
 interface WhyChooseUsSectionProps {
   t: {
@@ -114,21 +115,23 @@ export default function WhyChooseUsSection({ t }: WhyChooseUsSectionProps) {
       <AnimatedSectionHeader title={t.title} subtitle={t.subtitle} />
 
       <BentoGrid className="w-full">
-        {items.map((item, i) => (
-          <BentoGridItem
-            key={i}
-            id={item.id}
-            title={item.title}
-            description={item.description}
-            className={item.className}
-            img={item.img}
-            imgClassName={item.imgClassName}
-            titleClassName={item.titleClassName}
-            spareImg={item.spareImg}
-            CTA={item.CTA}
-            success={item.success}
-          />
-        ))}
+        <AnimatePresence>
+          {items.map((item, i) => (
+            <BentoGridItem
+              key={i}
+              id={item.id}
+              title={item.title}
+              description={item.description}
+              className={item.className}
+              img={item.img}
+              imgClassName={item.imgClassName}
+              titleClassName={item.titleClassName}
+              spareImg={item.spareImg}
+              CTA={item.CTA}
+              success={item.success}
+            />
+          ))}
+        </AnimatePresence>
       </BentoGrid>
     </section>
   );

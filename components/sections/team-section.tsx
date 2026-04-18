@@ -40,12 +40,7 @@ export default function TeamSection({ t }: TeamSectionProps) {
 
       <StaggerContainer>
         {TEAM_MEMBERS.map((member, i) => (
-          <StaggerChild
-            key={member.nameKey}
-            transition={{
-              delay: ANIMATION.durations.STAGGER * i,
-            }}
-          >
+          <StaggerChild key={i}>
             <TeamCard member={member} t={t} />
           </StaggerChild>
         ))}

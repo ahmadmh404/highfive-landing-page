@@ -3,6 +3,7 @@ import { CanvasRevealEffect } from "@/components/effects";
 
 import { AnimatedSectionHeader } from "../animated/animated-section-header";
 import { AceternityIcon, PhaseCard } from "./phase-card";
+import { StaggerContainer } from "../animated/staggered-container";
 
 interface ProcessSectionProps {
   t: {
@@ -34,7 +35,7 @@ export default function ProcessSection({ t }: ProcessSectionProps) {
     <section id="process" className="w-full py-20">
       <AnimatedSectionHeader title={t.title} subtitle={t.subtitle} />
 
-      <div className="my-10  grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full gap-4 flex-wrap">
+      <StaggerContainer>
         {PHASES.map((phase) => (
           <PhaseCard
             key={phase.key}
@@ -45,7 +46,7 @@ export default function ProcessSection({ t }: ProcessSectionProps) {
             <CanvasRevealEffect {...phase.canvasProps} />
           </PhaseCard>
         ))}
-      </div>
+      </StaggerContainer>
     </section>
   );
 }

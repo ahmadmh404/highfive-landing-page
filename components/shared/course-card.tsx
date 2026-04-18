@@ -49,7 +49,7 @@ export function CourseCard({ course, index, t }: CourseCardProps) {
       className="group block relative"
       whileHover={glowHover.whileHover}
     >
-      <Card className="h-full overflow-hidden border-muted-foreground/10 bg-bg-primary">
+      <Card className="min-h-100 max-h-120 overflow-hidden border-muted-foreground/10 bg-bg-primary">
         {/* Thumbnail */}
         <CourseThumbnail courseId={course.id} image={course.image} />
 
