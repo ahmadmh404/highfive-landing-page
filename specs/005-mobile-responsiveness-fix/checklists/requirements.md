@@ -63,6 +63,35 @@
 
 Checked on: 2026-04-18
 
+## Updates Made (From Commit 6a4c511)
+
+### Hero Section
+- ✅ Lines 102, 107: Added responsive text scaling with md:text-4xl and md:text-xs breakpoints
+- ✅ Stats grid now uses responsive flex layout with mobile wrapping
+- ✅ Hero margin adapted to viewport breakpoints
+
+### Services Section  
+- ✅ Lines 46-47: Added responsive constraints
+
+### Tech Stack Section
+- ✅ 3-column layout now has mobile breakpoints
+
+### Floating Nav
+- ✅ Line 58: Fixed absolute positioning to prevent content overlap
+- ✅ Line 89: Fixed fixed positioning with responsive max-w
+
+### Team Card
+- ✅ Fixed card sizing for mobile viewports
+
+### Projects Section
+- ✅ Filter buttons now properly wrap on small screens
+- ✅ Hide 3D globe on screens < 1024px
+- ✅ Fixed mozzarella spacing bug in project cards
+
+**Status**: ✅ COMPLETED - All major mobile responsiveness issues fixed
+
+---
+
 **Mobile Issues Identified from Code Analysis:**
 
 1. Hero Section (`components/sections/hero-section.tsx`):

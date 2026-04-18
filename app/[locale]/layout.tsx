@@ -27,9 +27,9 @@ const cairo = Cairo({
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: "en" | "ar" }>;
 }): Promise<Metadata> {
-  const { locale } = await params;
+  const { locale } = (await params) as { locale: "en" | "ar" };
 
   const titles = {
     en: "HighFive - Digital Transformation & AI Solutions",
@@ -101,9 +101,10 @@ export default async function LocaleLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }) {
-  const { locale } = await params;
+  const resolvedParams = await params;
+  const locale = resolvedParams.locale as Locale;
   const dir = isRTL(locale) ? "rtl" : "ltr";
   const fontClass = locale === "ar" ? cairo.variable : inter.variable;
 

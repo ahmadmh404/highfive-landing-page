@@ -31,9 +31,9 @@ function getNavItems(t: ReturnType<typeof getTranslations>["nav"]) {
 export default async function HomePage({
   params,
 }: {
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: "en" | "ar" }>;
 }) {
-  const { locale } = await params;
+  const { locale } = (await params) as { locale: "en" | "ar" };
   const t = getTranslations(locale);
 
   return (

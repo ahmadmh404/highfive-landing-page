@@ -4,9 +4,6 @@ import { useEffect, useReducer, useRef } from "react";
 import dynamic from "next/dynamic";
 
 // Stub out THREE on server to prevent "window is not defined"
-if (typeof window === "undefined") {
-  (globalThis as any).THREE = {};
-}
 
 // Dynamically import World with SSR disabled
 const World = dynamic(() => import("./Globe").then((m) => m.World), {
@@ -21,6 +18,10 @@ const World = dynamic(() => import("./Globe").then((m) => m.World), {
 const GridGlobe = () => {
   const mountedRef = useRef(false);
   const [, forceRender] = useReducer(() => ({}), 0);
+
+  if (typeof window === "undefined") {
+    return null;
+  }
 
   useEffect(() => {
     mountedRef.current = true;

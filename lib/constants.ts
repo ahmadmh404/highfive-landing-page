@@ -151,30 +151,55 @@ export const TEAM_MEMBERS: MockTeamMember[] = [
     roleKey: "leadDeveloper",
     bioKey: "ahmed",
     image: "/team/ahmad.jpg",
+    socialLinks: {
+      github: "https://link.com",
+      twitter: "https://link.com",
+      linkedin: "https://link.com",
+    },
   },
   {
     nameKey: "Ali",
     roleKey: "aiEngineer",
     bioKey: "ali",
     image: "/team/ali.jpg",
+    socialLinks: {
+      github: "https://link.com",
+      twitter: "https://link.com",
+      linkedin: "https://link.com",
+    },
   },
   {
     nameKey: "Yara",
     roleKey: "uiDesigner",
     bioKey: "yara",
     image: "/team/yara.jpg",
+    socialLinks: {
+      github: "https://link.com",
+      twitter: "https://link.com",
+      linkedin: "https://link.com",
+    },
   },
   {
     nameKey: "Khalil",
     roleKey: "projectManager",
     bioKey: "khalil",
     image: "/team/khalil.jpg",
+    socialLinks: {
+      github: "https://link.com",
+      twitter: "https://link.com",
+      linkedin: "https://link.com",
+    },
   },
   {
     nameKey: "Abdulrahman",
     roleKey: "backendDev",
     bioKey: "abdulrahman",
     image: "/team/abdul.jpg",
+    socialLinks: {
+      github: "https://link.com",
+      twitter: "https://link.com",
+      linkedin: "https://link.com",
+    },
   },
 ];
 

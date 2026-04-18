@@ -4,13 +4,12 @@ import { Button } from "@/components/ui/button";
 import { easeOut, motion } from "motion/react";
 import * as React from "react";
 import { Github, Linkedin, Twitter } from "lucide-react";
-import { cn, getInitials } from "@/lib/utils";
-import { CustomImage } from "@/components/shared";
+import { getInitials } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export interface FlipCardData {
   name: string;
-  role: string;
+  role?: string;
   image: string;
   bio: string;
   // stats: {
@@ -31,9 +30,11 @@ interface FlipCardProps {
 
 export function FlipCard({ data }: FlipCardProps) {
   const [isFlipped, setIsFlipped] = React.useState(false);
+  const [isTouchDevice, setIsTouchDevice] = React.useState(false);
 
-  const isTouchDevice =
-    typeof window !== "undefined" && "ontouchstart" in window;
+  React.useEffect(() => {
+    setIsTouchDevice(typeof window !== "undefined" && "ontouchstart" in window);
+  }, []);
 
   const handleClick = () => {
     if (isTouchDevice) setIsFlipped(!isFlipped);

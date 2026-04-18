@@ -3,10 +3,11 @@ export interface MockTeamMember {
   roleKey: string;
   bioKey: string;
   image: string;
-  socialLinks: {
+  socialLinks?: {
     linkedin?: string;
     twitter?: string;
     dribbble?: string;
+    github?: string;
   };
 }
 
@@ -20,6 +21,7 @@ export interface TeamMember {
     linkedin?: string;
     twitter?: string;
     dribbble?: string;
+    github?: string;
   };
 }
 
